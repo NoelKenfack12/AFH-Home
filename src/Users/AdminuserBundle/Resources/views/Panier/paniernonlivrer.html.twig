@@ -1,0 +1,89 @@
+{% extends "UsersAdminuserBundle::layoutadmin.html.twig" %}
+{% block meta %}
+{{ parent() }}
+<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
+<meta name="author" content="Noel Kenfack"/>
+<meta name="description" content="{{ site }} | Administration | Cameroun | {{ metier }}"/>
+{% endblock %}
+{% block title %}
+{{ parent() }} | Accueil Admin
+{% endblock %}
+
+{% block userblog_body %}
+		 
+		<!-- START CONTENT -->
+      <section id="content">
+			<!--card stats start-->
+		  <!--start container-->
+        <div class="container" >
+          <div class="section">
+			<!-- profile-page-content -->
+            <div id="profile-page-content" class="row">
+			
+				<div class="col s12">
+				<div class="card-panel" style="margin-top: -10px; padding: 0px;">
+				<h4 style="padding: 3px; margin-bottom: 0px;  background: #95a5a6; color: #fff;">Liste des commandes non validées</h4>
+				<div style="background: #7f8c8d; padding: 10px; color: #fff;">Veuillez contacter les auteurs de ces commandes avant toutes validations <a href="{{ path('users_adminuser_accueil_administration') }}">Accueil</a> <span class="new badge right" style="margin-right: 15px;">{{ liste_panier|length }}</span></div>
+				</div>
+			
+                  <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Position</th>
+                            <th>nb produit</th>
+                            <th>coût</th>
+                            <th>date</th>
+                            <th>Tel</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                 
+                    <tfoot>
+                        <tr>
+                            <th>N°</th>
+                            <th>Position</th>
+                            <th>nb produit</th>
+                            <th>coût</th>
+                            <th>date</th>
+                            <th>Tel</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                 
+                    <tbody>
+					{% for panier in liste_panier %}
+                        <tr>
+                            <td>{{ panier.user.name(25) }} {% if panier.domaine != null %} | {{ panier.domaine }}{% endif %}</td>
+                            {% set nbr = 0 %}
+                            {% set composition = '' %}
+                            {% set cout = 0 %}
+							{% for propan in panier.produitpaniers %}
+							{% set nbr = nbr + propan.quantite %}
+							{% set composition = propan.produit.nom ~ ',' ~ composition %}
+							{% set cout = cout + propan.produit.newprise * propan.quantite %}
+							{% endfor %}
+							{% set cout = cout + panier.coastlivraison %}
+							<td>{{ composition }}</td>
+                            <td>{{ nbr }}</td>
+                            <td>{{ cout }}</td>
+                            <td>{{ panier.date|date('d') }}.{{ panier.date|date('m') }}.{{ panier.date|date('y') }}</td>
+                            <td>{% if panier.tel == null %}({{ panier.user.pays }}) {{ panier.user.tel }}{% else %}{{ panier.tel }}{% endif %}</td>
+                            <td><a href="{{ path('users_adminuser_contenu_panier_user', {'id': panier.id }) }}" title="Description du produit" class="btn-floating waves-effect waves-light green right" style="margin-right: 3px;"><i class="mdi-action-visibility"></i></a>
+							<a href="{{ path('users_adminuser_livraison_panier_commander',{'id': panier.id}) }}" title="Description du produit" class="btn-floating waves-effect waves-light green right" style="margin-right: 3px;"><i class="mdi-action-done right"></i></a>
+							</td>
+                        </tr>
+					{% endfor %} 
+                    </tbody>
+                  </table>
+                </div>
+			</div>
+		  </div>
+		</div>
+	  </section>
+
+
+{% endblock %}
+
+{% block javascripttemplate %}
+{% endblock %}

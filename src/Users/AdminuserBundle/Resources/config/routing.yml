@@ -1,0 +1,191 @@
+users_adminuser_accueil_administration:
+    path: /admin/accueil
+    defaults: { _controller: UsersAdminuserBundle:Accueil:accueiladmin }
+users_adminuser_save_categorie_product:
+    path: /nouvelle/categorie
+    defaults: { _controller: ProduitProduitBundle:Categorie:savecategorie }
+users_adminuser_ajouter_sous_categorie:
+    path: /ajouter/nouvelle/souscategorie
+    defaults: { _controller: ProduitProduitBundle:Categorie:ajoutersouscategorie }
+users_adminuser_add_new_slide:
+    path: /add/new/slide
+    defaults: { _controller: UsersUserBundle:Imgslide:addnewslide }
+users_adminuser_delete_courant_slide:
+    path: /delete/courant/slide/{id}
+    defaults: { _controller: UsersUserBundle:Imgslide:deleteslide }
+    requirements:
+        id: \d+
+users_adminuser_liste_produit_souscategorie:
+    path: /liste/produit/souscategorie
+    defaults: { _controller: ProduitProduitBundle:Categorie:listeproduitadmin }
+users_adminuser_miseajour_produit:
+    path: /miseajour/du/produit/{id}
+    defaults: { _controller: ProduitProduitBundle:Produit:miseajourproduit }
+    requirements:
+        id: \d+
+users_adminuser_supprimer_image_produit:
+    path: /supprimer/image/produit/{id}
+    defaults: { _controller: ProduitProduitBundle:Produit:supprimerimage }
+    requirements:
+        id: '^[a-zA-Z0-9]*$'
+users_adminuser_validation_dupayement:
+    path: /validation/du/payement/{id}
+    defaults: { _controller: ProduitProduitBundle:Panier:validationpayement }
+    requirements:
+        id: \d+
+users_adminuser_liste_panier_non_livrer:
+    path: /liste/des/paniers/non/livrer
+    defaults: { _controller: ProduitProduitBundle:Panier:paniernonlivrer }
+    requirements:
+        id: \d+
+users_adminuser_contenu_panier_user:
+    path: /contenu/admin/panier/user/{id}
+    defaults: { _controller: ProduitProduitBundle:Panier:contenupanier }
+    requirements:
+        id: \d+
+users_adminuser_livraison_panier_commander:
+    path: /livraison/panier/commander/{id}
+    defaults: { _controller: ProduitProduitBundle:Panier:livraisonpanier }
+    requirements:
+        id: \d+
+users_adminuser_tousles_panier_livrer:
+    path: /tousles/paniers/livrer
+    defaults: { _controller: ProduitProduitBundle:Panier:panierlivrer }
+    requirements:
+        id: \d+
+users_adminuser_supprimer_courant_produit:
+    path: /supprimer/produit/admin/{id}
+    defaults: { _controller: ProduitProduitBundle:Produit:supprimerproduit }
+    requirements:
+        id: \d+
+users_adminuser_ajout_nouveau_admin:
+    path: /ajout/nouveau/admin/plateforme
+    defaults: { _controller: UsersUserBundle:User:nouveauadmin }
+    requirements:
+        id: \d+
+users_adminuser_enleve_role_admin:
+    path: /enleve/role/admin/user/{id}
+    defaults: { _controller: UsersUserBundle:User:eleverole }
+    requirements:
+        id: \d+
+users_adminuser_ajouter_nouveau_service:
+    path: /ajouter/nouveau/service
+    defaults: { _controller: ProduitServiceBundle:Service:nouveauservice }
+users_adminuser_modifier_un_service:
+    path: /modifier/un/nouveau/service/{id}
+    defaults: { _controller: ProduitServiceBundle:Service:modifierservice, id: 0 }
+    requirements:
+        id: \d+
+users_adminuser_mod_evolution_indicateur:
+    path: /mod/evolution/indicateur/{id}
+    defaults: { _controller: ProduitServiceBundle:Service:modifevolutionindicateur, id: 0 }
+    requirements:
+        id: \d+
+users_adminuser_add_un_evenement:
+    path: /add/un/evenement/service
+    defaults: { _controller: ProduitServiceBundle:Service:addevenement }
+users_adminuser_supprim_service_evenement:
+    path: /supprim/service/evenement/{id}
+    defaults: { _controller: ProduitServiceBundle:Service:supprimevenement }
+    requirements:
+        id: \d+
+users_adminuser_supprimer_service_even:
+    path: /supprimer/service/even/{id}
+    defaults: { _controller: ProduitServiceBundle:Service:supprimerservice }
+    requirements:
+        id: \d+
+users_adminuser_liste_message_recu:
+    path: /liste/des/messages/recu
+    defaults: { _controller: ProduitServiceBundle:Message:messagerecu }
+users_adminuser_supprim_message_contact:
+    path: /supprimer/message/contact/{id}
+    defaults: { _controller: ProduitServiceBundle:Message:supprimermessage }
+    requirements:
+        id: \d+
+produit_service_ajouter_ville:
+    path: /ajout/nouvelle/ville
+    defaults: { _controller: ProduitServiceBundle:Ville:ajoutville }
+produit_service_supprimer_ville_courante:
+    path: /supprimer/ville/courante/{id}
+    defaults: { _controller: ProduitServiceBundle:Ville:supprimerville }
+    requirements:
+        id: \d+
+users_adminuser_add_cout_livraison:
+    path: /add/cout/livraison/produit/{id}
+    defaults: { _controller: ProduitProduitBundle:Produit:addcoutlivraison }
+    requirements:
+        id: \d+
+users_adminuser_modif_coutlivraison_produit:
+    path: /modif/coutlivraison/produit/{id}
+    defaults: { _controller: ProduitProduitBundle:Produit:modifcoutlivraison }
+    requirements:
+        id: \d+
+users_adminuser_delete_coutlivraison:
+    path: /delete/produit/coutlivraison/{id}
+    defaults: { _controller: ProduitProduitBundle:Produit:supprimercoutlivraison }
+    requirements:
+        id: \d+
+users_adminuser_addnew_continent_localite_user:
+    path: /addnew/continent/localite/user
+    defaults: { _controller: UsersLocalisationuserBundle:Continent:accueilcontinent }
+users_adminuser_savenew_pays_localite_user:
+    path: /savenew/pays/localite/user
+    defaults: { _controller: UsersLocalisationuserBundle:Pays:ajouterpays }
+users_adminuser_validation_message_market:
+    path: /validation/message/market/{id}
+    defaults: { _controller: ProduitServiceBundle:Message:validationmessage }
+    requirements:
+        id: \d+
+users_adminuser_message_email_new_letter:
+    path: /message/email/news/letter
+    defaults: { _controller: ProduitServiceBundle:Messemail:messageemail }
+users_adminuser_suppression_mess_email_user:
+    path: /suppression/mess/email/user/{id}
+    defaults: { _controller: ProduitServiceBundle:Messemail:supprimermessemail }
+    requirements:
+        id: \d+
+users_adminuser_update_content_continent:
+    path: /user/update/content/continent/{id}
+    defaults: { _controller: UsersLocalisationuserBundle:Continent:updatecontinent, id: 0 }
+    requirements:
+        id: \d+
+users_adminuser_upgrate_categorie_produit:
+    path: /user/upgrate/categorie/produit/{id}
+    defaults: { _controller: ProduitProduitBundle:Categorie:upgratecategorie, id: 0 }
+    requirements:
+        id: \d+
+users_adminuser_modif_souscategorie_application:
+    path: /user/modif/souscategorie/application/{id}
+    defaults: { _controller: ProduitProduitBundle:Categorie:modifscat, id: 0 }
+    requirements:
+        id: \d+
+users_adminuser_alter_application_produit:
+    path: /user/alter/application/produit/{id}
+    defaults: { _controller: ProduitProduitBundle:Produit:miseajourproduit, id: 0 }
+    requirements:
+        id: \d+
+users_adminuser_modif_pays_localisation_user:
+    path: /modif/pays/localisation/user/{id}
+    defaults: { _controller: UsersLocalisationuserBundle:Pays:modificationpays, id: 0 }
+    requirements:
+        id: \d+
+users_adminuser_localisation_supprimer_continent:
+    path: /user/localisation/supprimer/continent/{id}
+    defaults: { _controller: UsersLocalisationuserBundle:Continent:supprimercontinent, id: 0 }
+    requirements:
+        id: \d+
+users_adminuser_drop_country_user_local:
+    path: /drop/country/user/local/{id}
+    defaults: { _controller: UsersLocalisationuserBundle:Pays:dropcountryuser, id: 0 }
+    requirements:
+        id: \d+
+users_adminuser_delete_categorie_produit:
+    path: /delete/categorie/produit/{id}
+    defaults: { _controller: ProduitProduitBundle:Categorie:deletecategorie }
+    requirements:
+        id: \d+
+users_adminuser_del_souscategorie_appli:
+    path: /del/souscategorie/appli/{id}
+    defaults: { _controller: ProduitProduitBundle:Categorie:delsouscategorie }
+    requirements:
+        id: \d+

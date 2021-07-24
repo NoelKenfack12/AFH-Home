@@ -1,0 +1,138 @@
+<div class="col-md-12" style="padding: 0px 30px;">
+
+{% if position == 1 %}
+<div class="comparison" style="padding: 0px 0px;">
+<table id="myTable">
+<thead style="background: #005dff; color: #fff;">
+  <tr>
+	<th class="tl">
+		<strong style="font-size: 20px; float: left;">Produits/Services</strong>
+	</th>
+	{% for indicateur in liste_indicateur %}
+	<th class="compare-heading">
+	  {{ indicateur.nom }}
+	</th>
+	{% endfor %}
+  </tr>
+</thead>
+<tbody>
+  {% for appli in all_appli %}
+  <tr class="compare-row" title="">
+	<td></td>
+	<td style="font-weight: bold;" colspan="5"><img src="{% if appli.src != null %}{{ asset(appli.getwebpath) }}{% else %}{{ asset('templateafh/images/600.jpg') }}{% endif %}" alt="" style="width: 30px; height: 30px; margin-right: 15px; "> {{ appli.nom }}</td>
+  </tr>
+
+  <tr class="compare-row" title="">
+	<td style="font-weight: bold;"><img src="{% if appli.src != null %}{{ asset(appli.getwebpath) }}{% else %}{{ asset('templateafh/images/600.jpg') }}{% endif %}" alt="" style="width: 30px; height: 30px; margin-right: 15px; "> {{ appli.nom }}</td>
+	
+	{% for indicateur in liste_indicateur %}
+		{% set currentval = indicateur.getvaleurAppli(appli.id, anneeid) %}
+		
+		{# % for stat in liste_valeurs if currentval == false %}
+			{% if stat.indicateur == indicateur and stat.produit == appli %}
+				<td class="text-center"><span class="tickblue" style="color: #333; border-bottom : 2px solid red;">12</span></td>
+				{% set currentval = true %}
+			{% endif %}
+		{% endfor %}
+		{% if currentval == false %}
+			<td class="text-center"><span class="tickblue" style="color: #333; border-bottom : 2px solid red;">-</span></td>
+		{% endif % #}
+		
+		{% if currentval != null %}
+			<td class="text-center" style="background: {{ currentval.getCodecouleur[0] }};"><span class="tickblue" style="color: {{ currentval.getCodecouleur[1] }}; border-bottom : 2px solid red;">{{ currentval.falsevalue }} </span></td>
+		{% else %}
+			<td class="text-center"><span class="tickblue" style="color: #333; border-bottom : 2px solid red;">-</span></td>
+		{% endif %}
+		
+	{% endfor %}
+	
+  </tr>
+   {% endfor %}
+</tbody>
+<tfoot style="background: #005dff; color: #fff;">
+  <tr>
+	<th class="tl">
+		<strong style="font-size: 20px; float: left;">Produits/Services</strong>
+	</th>
+	{% for indicateur in liste_indicateur %}
+	<th class="compare-heading">
+	  {{ indicateur.nom }}
+	</th>
+	{% endfor %}
+  </tr>
+</tfoot>
+</table>
+</div>
+
+{% else %}
+	<h3 style="text-align: center; margin-top: 40px;">
+	Patientez pendant le chargement des statistiques ...</br>
+	<img src="{{ asset('template/images/loader.gif') }}" alt="Attente" style="height: 20px; width: 20px; margin-top: 10px;"/>
+	</h3>
+{% endif %}
+</div>
+
+
+<script type="text/javascript">
+$('.open-stat-current-year').click(function(){
+	var height = ($(window).height() + $(window).scrollTop());
+	var width = $(window).width() + 100;
+	var scrolltop = $(window).scrollTop();
+	$('.panel-result-action-hosting-user').show();
+	$('.content-alert-action-hosting-user').show();
+	$('.img-loader-panel').show();
+	$('.content-alert-action-hosting-user').html('<div style="position: fixed; top: 0px; margin-bottom: '+scrolltop+'px; left: 0px; z-index: 9000; width: '+width+'px; height: '+height+'px; background: rgba(0,0,0,0.5);"></div>');
+
+	uploadSlideCatalogue($(this).attr('value'));
+});
+
+var idyear = 0;
+function uploadSlideCatalogue(idyear)
+{
+	idyear = idyear;
+	if($('.content-stat-application-current-year').attr('value') == 0)
+	{
+	$('.content-stat-application-current-year').attr('value', 1);
+    $.ajax({
+		url : '{{ path('produit_service_chargement_statatistique_annee', {'position': 1 }) }}',
+		type : 'POST',
+		dataType : 'html', // On désire recevoir du HTML
+		data : "anneeid=" + idyear,
+		success : function(data, statut){ // code_html contient le HTML renvoyé
+		  $('.content-stat-application-current-year').html(data);
+		  $('.open-stat-current-year').removeClass('activestatyear');
+		  $('.open-stat-current-year-'+idyear).addClass('activestatyear');
+		  
+		  $('.panel-result-action-hosting-user').hide();
+		  $('.content-alert-action-hosting-user').hide();
+		  $('.img-loader-panel').hide();
+		  $('.content-stat-application-current-year').attr('value', 0);
+		},
+        error : function(resultat, statut, erreur){
+            var hauteur1 = $(".error-manager-catalogue").height() - 15;
+            var largeur1 = $(".error-manager-catalogue").width();
+            var padding1 = Math.round(hauteur1/2 - 60);
+            $(".error-manager-catalogue").before('<div class="attente-resultat-ajax-catalogue" style="padding-top: '+80+'px; z-index: 1; height: '+hauteur1+'px; text-align: center; vertical-align: center; width: '+largeur1+'px; position: absolute; background: #fff; margin-top: 7px;"><div>Erreur de chargement ! </br><a href="#!" onclick="rechargementcatalogue()"><span class="fa fa-repeat"></span> Recharger</a></div></div>');
+			
+			$('.panel-result-action-hosting-user').hide();
+			$('.content-alert-action-hosting-user').hide();
+			$('.img-loader-panel').hide();
+			$('.content-stat-application-current-year').attr('value', 0);
+	   }
+	});
+	}
+}
+
+function rechargementcatalogue(){
+    $('.attente-resultat-ajax-catalogue').replaceWith('');
+	var height = ($(window).height() + $(window).scrollTop());
+	var width = $(window).width() + 100;
+	var scrolltop = $(window).scrollTop();
+	$('.panel-result-action-hosting-user').show();
+	$('.content-alert-action-hosting-user').show();
+	$('.img-loader-panel').show();
+	$('.content-alert-action-hosting-user').html('<div style="position: fixed; top: 0px; margin-bottom: '+scrolltop+'px; left: 0px; z-index: 9000; width: '+width+'px; height: '+height+'px; background: rgba(0,0,0,0.5);"></div>');
+
+    uploadSlideCatalogue(idyear);
+}
+</script>

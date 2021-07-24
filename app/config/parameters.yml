@@ -1,0 +1,36 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: afh_home
+    database_user: root
+    database_password: 'secret'
+    mailer_transport: smtp
+    mailer_host: server1.akiba01.com
+    mailer_user: support@hosting.africexplorer.com
+    mailer_password: 91122219
+    locale: en
+    secret: ThisTokenIsNotSoSecretChangeIt
+    debug_toolbar: true
+    debug_redirects: false
+    use_assetic_controller: true
+    site: AFHunt
+    metier: Technologies Web
+    devise: FCFA
+    ville: Douala
+    telephone: +237693839823
+    telephone2: +237680288416
+    twitter: https://twitter.com/afhunt12/
+    facebook: https://www.facebook.com/afhunt12/
+    google: https://www.youtube.com/channel/UCqz6fuN3Da8Q1fXn4wwKYeg/
+    linkedin: https://www.linkedin.com/company/afhunt12/
+    myaconect: http://myaconect.com/afexhosting
+    slogan: Votre guide sur la toile.
+    description: Localisation des entreprises Afrique
+    localisation: P.O Box. 30020 Yaoundé, Obili, Carrefour Kameni. 
+    keywords: Innovation, développement, it,etc. 
+    email: infos@africexplorer.com
+    regex_number: /^[0-9][0-9]{7,12}$/
+    regex_mail: /[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}/i
+    siteweb: http://www.afhunt.com

@@ -1,0 +1,66 @@
+{% extends "UsersUserBundle::layoutuser.html.twig" %}
+{% block meta %}
+{{ parent() }}
+<meta name="keywords" content="{{ site }}, Hébergement web Cameroun, Vente de nom de domaine,Site web, hébergement revendeur, travail en ligne, affiliation"/>
+<meta name="author" content="Noel Kenfack"/>
+<meta name="description" content="{{ site }}, Hébergement web Cameroun, Vente de nom de domaine,Site web, hébergement revendeur, travail en ligne, affiliation" />
+{% endblock %}
+{% block title %}
+{{ parent() }} | {{ site }}, Hébergement web Cameroun, Vente de nom de domaine,Site web, hébergement revendeur, travail en ligne, affiliation
+{% endblock %}
+
+{% block userblog_body %}
+
+<div class="row" style="background: #f2f2f2;">
+    <div class="col-md-6 col-md-offset-3 col-xs-12 panel" style="height: 700px;">
+	   <form action="{{ path('users_user_connexion_user') }}" method="post" class="login-form" style="margin-top: 50px;">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <h2>Administration {{ site }}.</h2>
+          </div>
+		  {% if error %}
+		  <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+		  <p style="color: red;">Mot de passe ou Email invalid</p>
+		  </div>
+		  {% endif %}
+        </div>
+        <div class="row">
+          <div class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+		    <label for="username">Mot de passe</label>
+			<input type="text" id="username" name="_username" value="{{ last_username }}" required class="form-control"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+			<label for="password">Mot de passe</label>
+			<input type="password" id="password" name="_password" required class="form-control"/>
+          </div>
+        </div>
+        <div class="row">          
+          <div class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+			  <input type="checkbox" id="remember_me" name="_remember_me"/>
+              <label for="remember_me">Garder ma session ouverte</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <button class="btn btn-primary">Connexion</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <p class="margin medium-small"><a href="{{ path('users_user_inscription_user') }}">Inscription !</a></p>
+          </div>
+          <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+              <p class="margin right-align medium-small"><a href="">Mot de passe oublié ?</a></p>
+          </div>          
+        </div>
+      </form>
+    </div>
+  </div>
+	
+{% endblock %}
+
+{% block javascripttemplate %}
+$('#username').focus();
+{% endblock %}

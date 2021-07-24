@@ -1,0 +1,3 @@
+users_localisationuser_chargement_pays_appli:
+    path: /chargement/pays/appli
+    defaults: { _controller: UsersLocalisationuserBundle:Pays:chargementpays }

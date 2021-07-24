@@ -1,0 +1,4 @@
+[22-Jul-2020 17:16:27 UTC] PHP Fatal error:  Class 'PDO' not found in /home/afhunt/public_html/Symfony/vendor/doctrine/dbal/lib/Doctrine/DBAL/DriverManager.php on line 155
+[22-Jul-2020 17:19:30 UTC] PHP Fatal error:  Class 'PDO' not found in /home/afhunt/public_html/Symfony/vendor/doctrine/dbal/lib/Doctrine/DBAL/DriverManager.php on line 155
+[22-Jul-2020 17:42:23 UTC] PHP Fatal error:  Class 'PDO' not found in /home/afhunt/public_html/Symfony/vendor/doctrine/dbal/lib/Doctrine/DBAL/DriverManager.php on line 155
+[22-Jul-2020 17:42:28 UTC] PHP Fatal error:  Class 'PDO' not found in /home/afhunt/public_html/Symfony/vendor/doctrine/dbal/lib/Doctrine/DBAL/DriverManager.php on line 155

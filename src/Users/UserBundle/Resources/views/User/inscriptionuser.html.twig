@@ -1,0 +1,83 @@
+{% extends "UsersUserBundle::layoutuser.html.twig" %}
+{% block meta %}
+{{ parent() }}
+<meta name="keywords" content="{{ site }},site web, hébergement web Cameroun, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, cameroun, site cameroun,hébergement web cameroun,site moins cher."/>
+<meta name="author" content="Noel Kenfack"/>
+<meta name="description" content="{{ site }} | Hébergement web, Site web, Hébergement revendeur pas cher, domaine à partir de 10000F." />
+{% endblock %}
+{% block title %}
+{{ parent() }} | {{ site }} | Hébergement web, Site web, Hébergement revendeur pas cher, domaine à partir de 10000F
+{% endblock %}
+
+{% block userblog_body %}
+<div class="row" style="background: #f2f2f2;">
+    <div class="col-md-6 col-md-offset-3 col-xs-12 panel" style="height: 700px;">
+	  <form action="{{ path('users_user_inscription_user') }}" class="login-form" method="post" {{ form_enctype(form) }}>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <h4>Inscription</h4>
+            <p class="center">Nous joindre maintenant !</p>
+				{% for infos in app.session.flashbag.get('information') %}
+				{% if loop.last %}
+				<span style="color: red;"> {{ infos }}</span>
+				{% endif %}
+				{% endfor %}
+          </div>
+        </div>
+        <div class="row">
+		  <div class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <span style="color:red;">{{ form_errors(form) }}</span>
+			<span style="color:red;">{{ form_errors(form.nom) }}</span>
+		  </div>
+		  <div class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+		    {{ form_label(form.nom, 'Nom d\'utilisateur') }}
+            {{ form_widget(form.nom,{'attr': {'class': 'form-control'}}) }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+		    <span style="color:red;">{{ form_errors(form.username) }}</span>
+			{{ form_label(form.username, 'Email') }}
+            {{ form_widget(form.username,{'attr': {'class': 'form-control'}}) }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <span style="color:red;">{{ form_errors(form.password) }}</span>
+			{{ form_label(form.password, 'Mot de passe') }}
+            {{ form_widget(form.password,{'attr': {'class': 'form-control'}}) }}
+          </div>
+        </div>
+		<div class="row">
+          <div class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <span style="color:red;">{{ form_errors(form.pays) }}</span>
+			{{ form_label(form.pays, 'Pays') }}
+            {{ form_widget(form.pays,{'attr': {'class': 'form-control'}}) }}
+          </div>
+        </div>
+        
+		<div class="row">
+          <div class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+		    <span style="color:red;">{{ form_errors(form.tel) }}</span>
+		    {{ form_label(form.tel, 'Téléphone') }}
+            {{ form_widget(form.tel,{'attr': {'class': 'form-control'}}) }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <button class="btn btn-primary">Inscription</button>
+          </div>
+          <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+            <p class="margin center medium-small sign-up">Vous avez un compte ? <a href="{{ path('login') }}">Connexion</a></p>
+          </div>
+        </div>
+		{{ form_rest(form) }}
+      </form>
+    </div>
+  </div>
+		
+{% endblock %}
+
+{% block javascripttemplate %}
+$('#users_userbundle_user_nom').focus();
+{% endblock %}

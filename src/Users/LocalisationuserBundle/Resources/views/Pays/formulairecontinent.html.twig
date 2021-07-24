@@ -1,0 +1,74 @@
+
+
+<div class="identification espace-top">
+<div class="tab-content">
+<div class="tab-pane active" id="accueil" >
+<h4 style="color: #fff; background: #212121;   background: rgba(27, 27, 27, 0.75);border-bottom: 4px solid #37c0fb; text-align: left; padding-right: 10px; margin-bottom: 0px;">
+	Ajouter un nouveau continent.
+</h4>
+<div style="border: 1px solid #CCC;">
+	<div style="padding-left: 15px; padding-right: 15px;">
+	<fieldset>
+	<legend>Nom du continent et citoyen</legend>
+	<div class="col-xs-12 col-sm-6 col-lg-6 col-md-6 espace-bottom espace-top">
+	<span style="color:red;">{{ form_errors(form) }}</span>
+	<div class="form-group nom">
+	<span style="color:red;">{{ form_errors(form.nom) }}</span>
+	{{ form_widget(form.nom) }}
+	</div>
+	<div class="alert alert1 alert-danger" style="display:none">
+	<h4>Erreur !</h4>
+	Valeur comprise entre 4 et 60 caractères !
+	</div>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-lg-6 col-md-6  espace-bottom espace-top">
+	<div class="form-group">
+	<span style="color:red;">{{ form_errors(form.file) }}</span>
+	{{ form_widget(form.file) }}
+	</div>
+	</div>
+	</fieldset>
+	<fieldset>
+	<legend>Désignation donné aux habitants de ce continent</legend>
+	<div class="col-xs-12 col-sm-6 col-lg-6 col-md-6  espace-bottom espace-top">
+	<div class="form-group citoyen">
+	<span style="color:red;">{{ form_errors(form.citoyen) }}</span>
+	{{ form_widget(form.citoyen) }}
+	</div>
+	<div class="alert alert2 alert-danger" style="display:none">
+	<h4>Erreur !</h4>
+	Valeur comprise entre 4 et 60 caractères !
+	</div>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-lg-6 col-md-6  espace-bottom espace-top">
+	<div class="form-group citoyenne">
+	<span style="color:red;">{{ form_errors(form.citoyenne) }}</span>
+	{{ form_widget(form.citoyenne) }}
+	</div>
+	<div class="alert alert3 alert-danger" style="display:none">
+	<h4>Erreur !</h4>
+	Valeur comprise entre 4 et 60 caractères !
+	</div>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-lg-6 col-md-6  espace-bottom espace-top">
+	<div class="form-group siteweb">
+	<span style="color:red;">{{ form_errors(form.siteweb) }}</span>
+	{{ form_widget(form.siteweb) }}
+	</div>
+	<div class="alert alert3 alert-danger" style="display:none">
+	<h4>Erreur !</h4>
+	Site web invalide
+	</div>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-lg-6 col-md-6 espace-top espace-bottom" style="margin-bottom: 15px;">
+		<button type="submit" class="btn btn-primary btn-lg pull-right ">Envoyer <span class="fa fa-check"></span></button>
+	</div>
+	</fieldset>
+	</div>
+</div>
+</div>
+</div>
+</div>
+{{ form_rest(form) }}
+
+

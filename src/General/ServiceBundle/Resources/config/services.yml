@@ -1,0 +1,19 @@
+parameters:
+    nbcategorie: 10
+    nbsouscategorie: 7
+    nbslide: 7
+    nbproduitsouscat: 10
+    nbimgparproduit: 5
+    username: africexplorer
+    password: 91122219
+    siteweb: http://afhunt.com/
+    sitename: AFHunt
+    emailadmin: support@afhunt.com
+#    general_service.example.class: General\ServiceBundle\Example
+
+services:
+#    general_service.example:
+#        class: %general_service.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    general_service.servicetext:
+        class: General\ServiceBundle\Servicetext\GeneralServicetext

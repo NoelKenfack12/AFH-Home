@@ -1,0 +1,70 @@
+produit_produit_liste_produit_souscategorie:
+    path: /market/liste/produit/souscategorie/{id}
+    defaults: { _controller: ProduitProduitBundle:Produit:listeproduituser }
+    requirements:
+        id: \d+
+produit_produit_detail_produit_market:
+    path: /market/detail/produit/{id}
+    defaults: { _controller: ProduitProduitBundle:Produit:detailproduit }
+    requirements:
+        id: \d+
+produit_produit_like_courant_product:
+    path: /like/courant/product
+    defaults: { _controller: ProduitProduitBundle:Produit:likeproduct }
+produit_produit_ajouter_product_panier:
+    path: /ajouter/product/panier
+    defaults: { _controller: ProduitProduitBundle:Produit:ajouterpanier }
+produit_produit_add_panier_produit:
+    path: /add/panier/produit/{id}
+    defaults: { _controller: ProduitProduitBundle:Produit:addpanier }
+    requirements:
+        id: \d+
+produit_produit_reglement_commande_du_panier:
+    path: /reglement/commande/dupanier/{id}
+    defaults: { _controller: ProduitProduitBundle:Produit:reglementcommande }
+    requirements:
+        id: \d+
+produit_produit_editer_courant_commande:
+    path: /edit/courant/commande
+    defaults: { _controller: ProduitProduitBundle:Produit:editcommande }
+    requirements:
+        id: \d+
+produit_produit_elever_produit_commande:
+    path: /enleve/produit/commande/{id}
+    defaults: { _controller: ProduitProduitBundle:Produit:eleveproduit }
+    requirements:
+        id: \d+
+produit_produit_recherche_new_produit:
+    path: /recherche/new/produit
+    defaults: { _controller: ProduitProduitBundle:Produit:rechercheproduit }
+produit_produit_modifier_lieu_livraison:
+    path: /modifier/lieu/livraison/panier/{id}
+    defaults: { _controller: ProduitProduitBundle:Panier:modifierlieulivraison }
+    requirements:
+        id: \d+
+produit_produit_payement_dupanier_utilisateur:
+    path: /payement/dupanier/utilisateur/{id}/{montant}
+    defaults: { _controller: ProduitProduitBundle:Panier:payementpanier, montant: 0 }
+    requirements:
+        id: \d+
+produit_produit_ajout_nom_domaine_panier:
+    path: /ajouter/domaine/panier/{domaine}
+    defaults: { _controller: ProduitProduitBundle:Panier:ajoutdomaine, domaine: '' }
+produit_produit_application_references:
+    path: /applications
+    defaults: { _controller: ProduitProduitBundle:Produit:nosreferences }
+produit_produit_application_references_slache:
+    path: /applications/
+    defaults: { _controller: ProduitProduitBundle:Produit:nosreferences }
+produit_produit_service_struct:
+    path: /services
+    defaults: { _controller: ProduitProduitBundle:Produit:servicesstruct }
+produit_produit_service_struct_slache:
+    path: /services/
+    defaults: { _controller: ProduitProduitBundle:Produit:servicesstruct }
+produit_produit_about_us:
+    path: /about/us
+    defaults: { _controller: ProduitProduitBundle:Produit:aboutuser }
+produit_produit_about_us_slache:
+    path: /about/us/
+    defaults: { _controller: ProduitProduitBundle:Produit:aboutuser }

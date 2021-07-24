@@ -1,0 +1,10 @@
+<div class="row">
+<div class="col-md-8 col-md-offset-2 col-sm-12">
+	<form class="row" action="{{ path('users_adminuser_modif_pays_localisation_user', {'id': pays.id }) }}" method="post" {{ form_enctype(form2) }} style="margin-top: 15px;">
+	
+	  {% include "UsersLocalisationuserBundle:Pays:formulairepays.html.twig" %}
+      {{ form_rest(form2) }}
+	</form>	
+	<div class="clearfix"></div>
+</div>
+</div>

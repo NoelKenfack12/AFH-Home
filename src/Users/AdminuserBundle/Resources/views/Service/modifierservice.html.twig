@@ -1,0 +1,40 @@
+<div class="row">
+<div class="col-md-8 col-md-offset-2 col-sm-12">
+	<form class="row" action="{{ path('users_adminuser_modifier_un_service', {'id': nosservice.id }) }}" method="post" {{ form_enctype(formservice) }} style="margin-top: 15px;">
+	
+	  <div class="col-sm-12">
+		 <span style="color:red;">{{ form_errors(formservice) }}</span>
+		 <span style="color:red;">{{ form_errors(formservice.nom) }}</span>
+		 <div class="form-group nom">
+			<span style="color:red;">{{ form_errors(formservice.nom) }}</span>
+			{{ form_widget(formservice.nom) }}
+		 </div>
+		 <div class="form-group description">
+			<span style="color:red;">{{ form_errors(formservice.description) }}</span>
+			{{ form_widget(formservice.description) }}
+		 </div>
+		 <div class="form-group rang">
+			<span style="color:red;">{{ form_errors(formservice.rang) }}</span>
+			{{ form_widget(formservice.rang) }}
+		 </div>
+	</div>
+	  <div class="col-sm-12" style="margin-top: 15px;">
+		<div class="form-group rang">
+			<select name="type" class="form-control">
+				<option value="0">Indicateur périodique</option>
+				<option value="1">Indicateur Statistique</option>
+			</select>
+		 </div>
+		 <span style="color:red;">{{ form_errors(formservice.imgservice) }}</span>
+		 <span>{{ form_label(formservice.imgservice,'Ajouter une image descriptive') }}</span>
+		 <div style="margin-top: 10px;">{{ form_widget(formservice.imgservice) }}</div>
+		 
+		<div class="keywords" style="margin-top: 15px;">
+			<button class="btn btn-primary">Enregistrer l'indicateur</button>
+		</div>
+	  </div>
+	 <div class="clear"></div>
+	 {{ form_rest(formservice) }}
+</form>
+</div>
+</div>

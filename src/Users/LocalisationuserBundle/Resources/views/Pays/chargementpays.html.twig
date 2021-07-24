@@ -1,0 +1,112 @@
+
+
+<div class="col-md-12" style="">
+{% if itemapp == 'accueil' %}
+<div style="background: #005dff; color: #fff; padding: 7px; font-size: 15px;">AFH Afrique</div>
+<ul class="list-group">
+  {% for pays in liste_pays %}
+  <li class="list-group-item" style="border: none; height: 60px; display: block;">
+   <a href="{{ pays.siteweb }}" target="_blank" style="display: block; border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; height: 100%; padding-top: 7px;">
+	<img src="{% if pays.drapeau != null %}{{ asset(pays.drapeau.getwebpath) }}{% else %}{{ asset('templateafh/images/600.jpg') }}{% endif %}" class="img-responsive" style="width: 40px; height: 40px; border-radius: 20px; float: left; margin-right: 10px;"/>
+	<strong>{{ pays.nom }} </strong></br>
+	{{ pays.code }} | http://{{ pays.domaine }}.africexplorer.com
+   </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+	{% if itemapp == 'blog' %}
+	<div style="background: #005dff; color: #fff; padding: 7px; font-size: 15px;">Blog AFH Afrique</div>
+	<ul class="list-group">
+	  {% for pays in liste_pays %}
+	  <li class="list-group-item" style="border: none; height: 60px; display: block;">
+	   <a href="http://{{ pays.domaine }}.africexplorer.com{% if produit != null %}{{ produit.bloglink }}{% endif %}" target="_blank" style="display: block; border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; height: 100%; padding-top: 7px;">
+		<img src="{% if pays.drapeau != null %}{{ asset(pays.drapeau.getwebpath) }}{% else %}{{ asset('templateafh/images/600.jpg') }}{% endif %}" class="img-responsive" style="width: 40px; height: 40px; border-radius: 20px; float: left; margin-right: 10px;"/>
+		<strong>{{ pays.nom }} </strong></br>
+		{{ pays.code }} | http://{{ pays.domaine }}.africexplorer.com
+	   </a>
+	  </li>
+	  {% endfor %}
+	</ul>
+	{% else %}
+		{% if itemapp == 'document' %}
+		<div style="background: #005dff; color: #fff; padding: 7px; font-size: 15px;">Documentation AFH Afrique</div>
+		<ul class="list-group">
+		  {% for pays in liste_pays %}
+		  <li class="list-group-item" style="border: none; height: 60px; display: block;">
+		   <a href="http://{{ pays.domaine }}.africexplorer.com{% if produit != null %}{{ produit.documentlink }}{% endif %}" target="_blank" style="display: block; border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; height: 100%; padding-top: 7px;">
+			<img src="{% if pays.drapeau != null %}{{ asset(pays.drapeau.getwebpath) }}{% else %}{{ asset('templateafh/images/600.jpg') }}{% endif %}" class="img-responsive" style="width: 40px; height: 40px; border-radius: 20px; float: left; margin-right: 10px;"/>
+			<strong>{{ pays.nom }} </strong></br>
+			{{ pays.code }} | http://{{ pays.domaine }}.africexplorer.com
+		   </a>
+		  {% endfor %}
+		</ul>
+		{% else %}
+			{% if itemapp == 'forum' %}
+			<div style="background: #005dff; color: #fff; padding: 7px; font-size: 15px;">Forum AFH Afrique</div>
+			<ul class="list-group">
+			  {% for pays in liste_pays %}
+			  <li class="list-group-item" style="border: none; height: 60px; display: block;">
+			   <a href="http://{{ pays.domaine }}.africexplorer.com{% if produit != null %}{{ produit.forumlink }}{% endif %}" target="_blank" style="display: block; border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; height: 100%; padding-top: 7px;">
+				<img src="{% if pays.drapeau != null %}{{ asset(pays.drapeau.getwebpath) }}{% else %}{{ asset('templateafh/images/600.jpg') }}{% endif %}" class="img-responsive" style="width: 40px; height: 40px; border-radius: 20px; float: left; margin-right: 10px;"/>
+				<strong>{{ pays.nom }} </strong></br>
+				{{ pays.code }} | http://{{ pays.domaine }}.africexplorer.com
+			   </a>
+			  </li>
+			  {% endfor %}
+			</ul>
+			{% else %}
+				{% if itemapp == 'tarification' %}
+				<div style="background: #005dff; color: #fff; padding: 7px; font-size: 15px;">Tarification AFH Afrique</div>
+				<ul class="list-group">
+				  {% for pays in liste_pays %}
+				  <li class="list-group-item" style="border: none; height: 60px; display: block;">
+				   <a href="http://{{ pays.domaine }}.africexplorer.com{% if produit != null %}{{ produit.tariflink }}{% endif %}" target="_blank" style="display: block; border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; height: 100%; padding-top: 7px;">
+					<img src="{% if pays.drapeau != null %}{{ asset(pays.drapeau.getwebpath) }}{% else %}{{ asset('templateafh/images/600.jpg') }}{% endif %}" class="img-responsive" style="width: 40px; height: 40px; border-radius: 20px; float: left; margin-right: 10px;"/>
+					<strong>{{ pays.nom }} </strong></br>
+					{{ pays.code }} | http://{{ pays.domaine }}.africexplorer.com
+				   </a>
+				  </li>
+				  {% endfor %}
+				</ul>
+				{% else %}
+					{% if itemapp == 'avis' %}
+					<div style="background: #005dff; color: #fff; padding: 7px; font-size: 15px;">Avis utilisateurd AFH Afrique</div>
+					<ul class="list-group">
+					  {% for pays in liste_pays %}
+					  <li class="list-group-item" style="border: none; height: 60px; display: block;">
+					   <a href="http://{{ pays.domaine }}.africexplorer.com{% if produit != null %}{{ produit.avislink }}{% endif %}" target="_blank" style="display: block; border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; height: 100%; padding-top: 7px;">
+						<img src="{% if pays.drapeau != null %}{{ asset(pays.drapeau.getwebpath) }}{% else %}{{ asset('templateafh/images/600.jpg') }}{% endif %}" class="img-responsive" style="width: 40px; height: 40px; border-radius: 20px; float: left; margin-right: 10px;"/>
+						<strong>{{ pays.nom }} </strong></br>
+						{{ pays.code }} | http://{{ pays.domaine }}.africexplorer.com
+					   </a>
+					  </li>
+					  {% endfor %}
+					</ul>
+					{% else %}
+						{% if itemapp == 'contacts' %}
+						<div style="background: #005dff; color: #fff; padding: 7px; font-size: 15px;">Contacts AFH Afrique</div>
+						<ul class="list-group">
+						  {% for pays in liste_pays %}
+						  <li class="list-group-item" style="border: none; height: 60px; display: block;">
+						   <a href="http://{{ pays.domaine }}.africexplorer.com{% if produit != null %}{{ produit.contactlink }}{% endif %}" target="_blank" style="display: block; border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; height: 100%; padding-top: 7px;">
+							<img src="{% if pays.drapeau != null %}{{ asset(pays.drapeau.getwebpath) }}{% else %}{{ asset('templateafh/images/600.jpg') }}{% endif %}" class="img-responsive" style="width: 40px; height: 40px; border-radius: 20px; float: left; margin-right: 10px;"/>
+							<strong>{{ pays.nom }} </strong></br>
+							{{ pays.code }} | http://{{ pays.domaine }}.africexplorer.com
+						   </a>
+						  </li>
+						  {% endfor %}
+						 </ul>
+						{% else %}
+						<ul class="list-group">
+						
+						</ul>
+						{% endif %}
+					{% endif %}
+				{% endif %}
+			{% endif %}
+		{% endif %}
+	{% endif %}
+{% endif %}
+</ul>
+</div>
