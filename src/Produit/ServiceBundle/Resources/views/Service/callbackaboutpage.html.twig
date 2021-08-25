@@ -1,112 +1,128 @@
 
 
 <style>
-	.middle {
-  top: 50%;
-  transform: translateY(-50%);
-  position: absolute;
+	/* style member component */
+.list-members {
+  background: #ed6e11;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+.member-info2{
+	background: #a0bb2e!important;
+	position: sticky;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
-  padding: 50px;
+.member {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.membre {
-  box-shadow: 0px 2px 6px 0px #ccc;
-  position: relative;
+.member-image {
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
   overflow: hidden;
-  transition: all 0.5s ease-in;
-}
-.membre .info {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px 10px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  transition: all 0.5s ease-in;
-}
-.membre .name {
-  color: #fff;
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-.membre .job {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-}
-.membre .text {
-  margin: 15px 10px 15px 0px;
-  font-size: 14px;
-}
-.membre .overly {
-  height: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 0;
-  position: absolute;
-  width: 100%;
-  display: block;
-  transition: all 0.5s ease-in;
-}
-.membre .top {
-  top: -100%;
-  left: 0;
-}
-.membre .bottom {
-  bottom: -100%;
-  left: 0;
-  height: 100%;
-}
-.membre .left {
-  top: 0;
-  right: -100%;
-  height: 100%;
-}
-.membre .social-icones {
-  display: inline-flex;
   position: relative;
 }
-.membre .social-icones .icon {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  background-color: #fff;
-  display: block;
-  text-align: center;
-  margin-right: 5px;
-  color: #000;
-}
-.membre .to-top {
-  bottom: 0;
-  transition: all 0.5s ease-in;
-}
-.membre:hover .overly {
+
+.member-image img {
+  width: 100%;
   height: 100%;
-  padding: 20px 10px;
+  transition: 1s;
 }
-.membre:hover .info {
+
+.member-image:hover img {
+  transform: scale(1.1);
+}
+
+.member-info {
+  width: 50%;
+  text-align: left;
+  padding: 15px;
+}
+
+.member-info h3{
+  font-size: 22px;
+  font-family: Philosopher-Bold;
+}
+
+.member-info p {
+  margin: 5px 0;
+}
+
+
+/* Membuat segitiga */
+.member-image::after {
+  content: '';
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 15px solid #ed6e11;
   position: absolute;
-  bottom: -80px;
-  padding: 0;
-  transition: all 0.5s ease-in;
-}
-.membre:hover .top {
-  top: 0;
-  bottom: 0px;
-}
-.membre:hover .bottom {
-  bottom: 0;
-}
-.membre:hover .left {
+  top: 50%;
   right: 0;
+  transform: translateY(-50%);
 }
-.membre:hover .to-top {
-  bottom: 100% !important;
-  transition: all 0.5s ease-in;
+.member-image2::after {
+	border-right: 15px solid #a0bb2e!important;
+}
+.social-teams{
+	white-space: nowrap!important; min-width: 400px; position: absolute; bottom: -30px; left: 10px; z-index: 10005;
+}
+
+
+/* Merubah posisi member-image dengan member-info */
+@media screen and (min-width: 771px) {
+  .member:nth-child(4n+3) .member-info,
+  .member:nth-child(4n+4) .member-info {
+    order: 1;
+  }
+  .member:nth-child(4n+3) .member-image,
+  .member:nth-child(4n+4) .member-image {
+    order: 2;
+  }
+
+  /* Merubah posisi sigitiga pada baris genap */
+  .member:nth-child(4n+3) .member-image::after,
+  .member:nth-child(4n+4) .member-image::after {
+    left: 0;
+    right: auto;
+    transform: translateY(-50%) rotateZ(180deg);
+  }
+}
+
+
+/* Mobile Styles */
+@media screen and (max-width: 770px) {
+  .list-members {
+    width: 95%;
+  }
+  .member {
+    flex-basis: 100%;
+    font-size: 14px;
+  }
+  .social-link .fa {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .member:nth-child(even) .member-info {
+    order: 1;
+  }
+  .member:nth-child(even) .member-image {
+    order: 2;
+  }
+  
+  /* Merubah posisi sigitiga elemen genap */
+  .member:nth-child(even) .member-image::after {
+    left: 0;
+    right: auto;
+    transform: translateY(-50%) rotateZ(180deg);
+  }
 }
 </style>
 
@@ -138,9 +154,9 @@
 
 	<div class="col-sm-12 col-md-8">
 		<div class="border-0" style="padding:  0px 0px 50px 0px;">
-			<div class="shadow3">
+			<div class="shadow3" style="border: 3px solid #9dba3d; border-radius: 5px;">
 				<div class="article-detail article-panel">
-					<h2>Le Challenge est grand</h2>
+					<!-- h2>Le Challenge est grand</h2 -->
 					<h4 style="margin-bottom: 20px;">
 						<span class="mic" style="background: #98d3ce; color: #fff;">AFHunt Group </span>	est un groupe  d'entreprises innovantes qui vise à opérer une véritable transformation numérique au Cameroun et en Afrique, pour faciliter le traitement des flux d'informations dans des entreprises et des organisations.
 					</h4>
@@ -163,151 +179,238 @@
 				</h4>
 			</div>
 
-			<div class="row" >
-				<div class="col-md-6">
-					<!--membre 1-->
-					<div class="membre">
-						<img src="https://i.imgur.com/jMtQiws.jpg" alt="" >
-					
-						<div class="info">
-						<h5 class="name">Aya Smith</h5>
-						<p class="job">Web Designer</p>
-						</div>
-			
-					<div class="overly top">
-						<div class="middle">
-								<h5 class="name">Aya Smith</h5>
-						<p class="job"> Web Designer</p>
-						<p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-							Repellat nobis perspiciatis molestiae tempora quasi. Nulla.
-						</p>
-						
-						<div class="social-icones">
-							<a href="#" class="icon"><i class="fa fa-facebook-f"></i></a>
-							<a href="#" class="icon">
+			<ul class="list-members">
+				<li class="member">
+				  <div class="member-image member-image2">
+					<img src="https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/1.png">
+				  </div>
+				  <div class="member-info member-info2">
+					<h3>Noel Kenfack</h3>
+					<p>Dev Full-stack polyglotte & CEO</p>
+					  <div class="social-teams">
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
 								<i class="fa fa-twitter"></i>
-							</a>
-							<a href="#" class="icon">
-								<i class="fa fa-instagram"></i>
-							</a>
-							<a href="#" class="icon">
-								<i class="fa fa-google-plus"></i>
-							</a>
-						</div>
-					</div>
-					</div>
-					</div>
-				</div>
-
-				<div class="col-md-6">
-					<!--membre 2-->
-					<div class="membre">
-						<div class="img">
-							<img src="https://i.imgur.com/jMtQiws.jpg" alt="" class="img">
-						</div>
-						<div class="info">
-							<h5 class="name">Aya Smith</h5>
-							<p class="job">Pro Web Designer</p>
-						</div>
-						<div class="overly left">
-							<div class="middle">
-								<h5 class="name">Aya Smith</h5>
-								<p class="job">Web Designer</p>
-								<p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nobis perspiciatis molestiae tempora quasi.
-									Nulla.
-								</p>
-					
-								<div class="social-icones">
-									<a href="#" class="icon">
-										<i class="fa fa-facebook-f"></i>
-									</a>
-									<a href="#" class="icon">
-										<i class="fa fa-twitter"></i>
-									</a>
-									<a href="#" class="icon">
-										<i class="fa fa-instagram"></i>
-									</a>
-									<a href="#" class="icon">
-										<i class="fa fa-google-plus"></i>
-									</a>
-								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-6">
-					<!--membre 3-->
-					<div class="membre">
-						<img src="https://i.imgur.com/jMtQiws.jpg" alt="">
-						
-						<div class="info to-top">
-							<h5 class="name">Aya Smith</h5>
-							<p class="job"> Web Designer</p>
-						</div>
-						<div class="overly bottom">
-							<div class="middle">
-								<h5 class="name">Aya Smith</h5>
-								<p class="job"> Web Designer</p>
-								<p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nobis perspiciatis molestiae tempora quasi.
-									Nulla.
-								</p>
-					
-								<div class="social-icones">
-									<a href="#" class="icon">
-										<i class="fa fa-facebook-f"></i>
-									</a>
-									<a href="#" class="icon">
-										<i class="fa fa-twitter"></i>
-									</a>
-									<a href="#" class="icon">
-										<i class="fa fa-instagram"></i>
-									</a>
-									<a href="#" class="icon">
-										<i class="fa fa-google-plus"></i>
-									</a>
-								</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
 							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-6">
-					<!--membre 3-->
-					<div class="membre">
-						<img src="https://i.imgur.com/jMtQiws.jpg" alt="">
-						
-						<div class="info to-top">
-							<h5 class="name">Aya Smith</h5>
-							<p class="job"> Web Designer</p>
-						</div>
-						<div class="overly bottom">
-							<div class="middle">
-								<h5 class="name">Aya Smith</h5>
-								<p class="job"> Web Designer</p>
-								<p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nobis perspiciatis molestiae tempora quasi.
-									Nulla.
-								</p>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+				  </div>
+				</li>
+				<li class="member">
+				  <div class="member-image member-image2">
+					<img src="https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/2.png">
+				  </div>
+				  <div class="member-info member-info2">
+					<h3>Gaiel Azambou</h3>
+					<p>Stratège communication</p>
 					
-								<div class="social-icones">
-									<a href="#" class="icon">
-										<i class="fa fa-facebook-f"></i>
-									</a>
-									<a href="#" class="icon">
-										<i class="fa fa-twitter"></i>
-									</a>
-									<a href="#" class="icon">
-										<i class="fa fa-instagram"></i>
-									</a>
-									<a href="#" class="icon">
-										<i class="fa fa-google-plus"></i>
-									</a>
-								</div>
+					<div class="social-teams">
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
 							</div>
-						</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+
+				  </div>
+				</li>
+				<li class="member">
+				  <div class="member-image member-image2">
+					<img src="https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/3.png">
+				  </div>
+				  <div class="member-info member-info2">
+					<h3>Ghislain Takam</h3>
+					<p>UX/UI & graphic designer</p>
+					
+					<div class="social-teams">
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+
+				  </div>
+				</li>
+				<li class="member">
+				  <div class="member-image member-image2">
+					<img src="https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/4.png">
+				  </div>
+				  <div class="member-info member-info2">
+					<h3>Mariane Kazé</h3>
+					<p>Content Manager</p>
+					
+					<div class="social-teams">
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+
+				  </div>
+				</li>
+				<li class="member">
+					<div class="member-image member-image2">
+					  <img src="https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/4.png">
 					</div>
-				</div>
-			</div>
+					<div class="member-info member-info2">
+					  <h3>Gaetan Nozawo</h3>
+					  <p>Stratégique AFH Factory</p>
+					  
+					  <div class="social-teams">
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+					</div>
+				  </li>
+				  <li class="member">
+					<div class="member-image member-image2">
+					  <img src="https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/4.png">
+					</div>
+					<div class="member-info member-info2">
+					  <h3>Guilou Tiaya</h3>
+					  <p>Comptabilité & Fiscalité</p>
+					  
+					  <div class="social-teams">
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+					</div>
+				  </li>
+				  <li class="member">
+					<div class="member-image member-image2">
+					  <img src="https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/4.png">
+					</div>
+					<div class="member-info member-info2">
+					  <h3>Rodrigue Ayemetio</h3>
+					  <p>Affaires juridique</p>
+					  
+					  <div class="social-teams">
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+
+					</div>
+				  </li>
+				  <li class="member" style="background: #325ea9;">
+					
+				  </li>
+			  </ul>
 	
 		</div>
 	

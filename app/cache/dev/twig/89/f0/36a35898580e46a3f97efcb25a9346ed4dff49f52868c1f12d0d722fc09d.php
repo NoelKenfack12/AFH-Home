@@ -19,112 +19,128 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
         echo "
 
 <style>
-\t.middle {
-  top: 50%;
-  transform: translateY(-50%);
-  position: absolute;
+\t/* style member component */
+.list-members {
+  background: #ed6e11;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+.member-info2{
+\tbackground: #a0bb2e!important;
+\tposition: sticky;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
-  padding: 50px;
+.member {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.membre {
-  box-shadow: 0px 2px 6px 0px #ccc;
-  position: relative;
+.member-image {
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
   overflow: hidden;
-  transition: all 0.5s ease-in;
-}
-.membre .info {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px 10px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  transition: all 0.5s ease-in;
-}
-.membre .name {
-  color: #fff;
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-.membre .job {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-}
-.membre .text {
-  margin: 15px 10px 15px 0px;
-  font-size: 14px;
-}
-.membre .overly {
-  height: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 0;
-  position: absolute;
-  width: 100%;
-  display: block;
-  transition: all 0.5s ease-in;
-}
-.membre .top {
-  top: -100%;
-  left: 0;
-}
-.membre .bottom {
-  bottom: -100%;
-  left: 0;
-  height: 100%;
-}
-.membre .left {
-  top: 0;
-  right: -100%;
-  height: 100%;
-}
-.membre .social-icones {
-  display: inline-flex;
   position: relative;
 }
-.membre .social-icones .icon {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  background-color: #fff;
-  display: block;
-  text-align: center;
-  margin-right: 5px;
-  color: #000;
-}
-.membre .to-top {
-  bottom: 0;
-  transition: all 0.5s ease-in;
-}
-.membre:hover .overly {
+
+.member-image img {
+  width: 100%;
   height: 100%;
-  padding: 20px 10px;
+  transition: 1s;
 }
-.membre:hover .info {
+
+.member-image:hover img {
+  transform: scale(1.1);
+}
+
+.member-info {
+  width: 50%;
+  text-align: left;
+  padding: 15px;
+}
+
+.member-info h3{
+  font-size: 22px;
+  font-family: Philosopher-Bold;
+}
+
+.member-info p {
+  margin: 5px 0;
+}
+
+
+/* Membuat segitiga */
+.member-image::after {
+  content: '';
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 15px solid #ed6e11;
   position: absolute;
-  bottom: -80px;
-  padding: 0;
-  transition: all 0.5s ease-in;
-}
-.membre:hover .top {
-  top: 0;
-  bottom: 0px;
-}
-.membre:hover .bottom {
-  bottom: 0;
-}
-.membre:hover .left {
+  top: 50%;
   right: 0;
+  transform: translateY(-50%);
 }
-.membre:hover .to-top {
-  bottom: 100% !important;
-  transition: all 0.5s ease-in;
+.member-image2::after {
+\tborder-right: 15px solid #a0bb2e!important;
+}
+.social-teams{
+\twhite-space: nowrap!important; min-width: 400px; position: absolute; bottom: -30px; left: 10px; z-index: 10005;
+}
+
+
+/* Merubah posisi member-image dengan member-info */
+@media screen and (min-width: 771px) {
+  .member:nth-child(4n+3) .member-info,
+  .member:nth-child(4n+4) .member-info {
+    order: 1;
+  }
+  .member:nth-child(4n+3) .member-image,
+  .member:nth-child(4n+4) .member-image {
+    order: 2;
+  }
+
+  /* Merubah posisi sigitiga pada baris genap */
+  .member:nth-child(4n+3) .member-image::after,
+  .member:nth-child(4n+4) .member-image::after {
+    left: 0;
+    right: auto;
+    transform: translateY(-50%) rotateZ(180deg);
+  }
+}
+
+
+/* Mobile Styles */
+@media screen and (max-width: 770px) {
+  .list-members {
+    width: 95%;
+  }
+  .member {
+    flex-basis: 100%;
+    font-size: 14px;
+  }
+  .social-link .fa {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .member:nth-child(even) .member-info {
+    order: 1;
+  }
+  .member:nth-child(even) .member-image {
+    order: 2;
+  }
+  
+  /* Merubah posisi sigitiga elemen genap */
+  .member:nth-child(even) .member-image::after {
+    left: 0;
+    right: auto;
+    transform: translateY(-50%) rotateZ(180deg);
+  }
 }
 </style>
 
@@ -156,9 +172,9 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
 
 \t<div class=\"col-sm-12 col-md-8\">
 \t\t<div class=\"border-0\" style=\"padding:  0px 0px 50px 0px;\">
-\t\t\t<div class=\"shadow3\">
+\t\t\t<div class=\"shadow3\" style=\"border: 3px solid #9dba3d; border-radius: 5px;\">
 \t\t\t\t<div class=\"article-detail article-panel\">
-\t\t\t\t\t<h2>Le Challenge est grand</h2>
+\t\t\t\t\t<!-- h2>Le Challenge est grand</h2 -->
 \t\t\t\t\t<h4 style=\"margin-bottom: 20px;\">
 \t\t\t\t\t\t<span class=\"mic\" style=\"background: #98d3ce; color: #fff;\">AFHunt Group </span>\test un groupe  d'entreprises innovantes qui vise à opérer une véritable transformation numérique au Cameroun et en Afrique, pour faciliter le traitement des flux d'informations dans des entreprises et des organisations.
 \t\t\t\t\t</h4>
@@ -181,151 +197,238 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
 \t\t\t\t</h4>
 \t\t\t</div>
 
-\t\t\t<div class=\"row\" >
-\t\t\t\t<div class=\"col-md-6\">
-\t\t\t\t\t<!--membre 1-->
-\t\t\t\t\t<div class=\"membre\">
-\t\t\t\t\t\t<img src=\"https://i.imgur.com/jMtQiws.jpg\" alt=\"\" >
-\t\t\t\t\t
-\t\t\t\t\t\t<div class=\"info\">
-\t\t\t\t\t\t<h5 class=\"name\">Aya Smith</h5>
-\t\t\t\t\t\t<p class=\"job\">Web Designer</p>
-\t\t\t\t\t\t</div>
-\t\t\t
-\t\t\t\t\t<div class=\"overly top\">
-\t\t\t\t\t\t<div class=\"middle\">
-\t\t\t\t\t\t\t\t<h5 class=\"name\">Aya Smith</h5>
-\t\t\t\t\t\t<p class=\"job\"> Web Designer</p>
-\t\t\t\t\t\t<p class=\"text\">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-\t\t\t\t\t\t\tRepellat nobis perspiciatis molestiae tempora quasi. Nulla.
-\t\t\t\t\t\t</p>
-\t\t\t\t\t\t
-\t\t\t\t\t\t<div class=\"social-icones\">
-\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\"><i class=\"fa fa-facebook-f\"></i></a>
-\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
+\t\t\t<ul class=\"list-members\">
+\t\t\t\t<li class=\"member\">
+\t\t\t\t  <div class=\"member-image member-image2\">
+\t\t\t\t\t<img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/1.png\">
+\t\t\t\t  </div>
+\t\t\t\t  <div class=\"member-info member-info2\">
+\t\t\t\t\t<h3>Noel Kenfack</h3>
+\t\t\t\t\t<p>Dev Full-stack polyglotte & CEO</p>
+\t\t\t\t\t  <div class=\"social-teams\">
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Facebook</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-twitter\"></i>
-\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t<i class=\"fa fa-instagram\"></i>
-\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t<i class=\"fa fa-google-plus\"></i>
-\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-
-\t\t\t\t<div class=\"col-md-6\">
-\t\t\t\t\t<!--membre 2-->
-\t\t\t\t\t<div class=\"membre\">
-\t\t\t\t\t\t<div class=\"img\">
-\t\t\t\t\t\t\t<img src=\"https://i.imgur.com/jMtQiws.jpg\" alt=\"\" class=\"img\">
-\t\t\t\t\t\t</div>
-\t\t\t\t\t\t<div class=\"info\">
-\t\t\t\t\t\t\t<h5 class=\"name\">Aya Smith</h5>
-\t\t\t\t\t\t\t<p class=\"job\">Pro Web Designer</p>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t\t<div class=\"overly left\">
-\t\t\t\t\t\t\t<div class=\"middle\">
-\t\t\t\t\t\t\t\t<h5 class=\"name\">Aya Smith</h5>
-\t\t\t\t\t\t\t\t<p class=\"job\">Web Designer</p>
-\t\t\t\t\t\t\t\t<p class=\"text\">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nobis perspiciatis molestiae tempora quasi.
-\t\t\t\t\t\t\t\t\tNulla.
-\t\t\t\t\t\t\t\t</p>
-\t\t\t\t\t
-\t\t\t\t\t\t\t\t<div class=\"social-icones\">
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-twitter\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-instagram\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-google-plus\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-
-\t\t\t\t<div class=\"col-md-6\">
-\t\t\t\t\t<!--membre 3-->
-\t\t\t\t\t<div class=\"membre\">
-\t\t\t\t\t\t<img src=\"https://i.imgur.com/jMtQiws.jpg\" alt=\"\">
-\t\t\t\t\t\t
-\t\t\t\t\t\t<div class=\"info to-top\">
-\t\t\t\t\t\t\t<h5 class=\"name\">Aya Smith</h5>
-\t\t\t\t\t\t\t<p class=\"job\"> Web Designer</p>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t\t<div class=\"overly bottom\">
-\t\t\t\t\t\t\t<div class=\"middle\">
-\t\t\t\t\t\t\t\t<h5 class=\"name\">Aya Smith</h5>
-\t\t\t\t\t\t\t\t<p class=\"job\"> Web Designer</p>
-\t\t\t\t\t\t\t\t<p class=\"text\">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nobis perspiciatis molestiae tempora quasi.
-\t\t\t\t\t\t\t\t\tNulla.
-\t\t\t\t\t\t\t\t</p>
-\t\t\t\t\t
-\t\t\t\t\t\t\t\t<div class=\"social-icones\">
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-twitter\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-instagram\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-google-plus\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Twitter</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-linkedin\"></i>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div>
-
-\t\t\t\t<div class=\"col-md-6\">
-\t\t\t\t\t<!--membre 3-->
-\t\t\t\t\t<div class=\"membre\">
-\t\t\t\t\t\t<img src=\"https://i.imgur.com/jMtQiws.jpg\" alt=\"\">
-\t\t\t\t\t\t
-\t\t\t\t\t\t<div class=\"info to-top\">
-\t\t\t\t\t\t\t<h5 class=\"name\">Aya Smith</h5>
-\t\t\t\t\t\t\t<p class=\"job\"> Web Designer</p>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t\t<div class=\"overly bottom\">
-\t\t\t\t\t\t\t<div class=\"middle\">
-\t\t\t\t\t\t\t\t<h5 class=\"name\">Aya Smith</h5>
-\t\t\t\t\t\t\t\t<p class=\"job\"> Web Designer</p>
-\t\t\t\t\t\t\t\t<p class=\"text\">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat nobis perspiciatis molestiae tempora quasi.
-\t\t\t\t\t\t\t\t\tNulla.
-\t\t\t\t\t\t\t\t</p>
+\t\t\t\t\t\t\t<span>LinkedIn</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t\t </div>
+\t\t\t\t  </div>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"member\">
+\t\t\t\t  <div class=\"member-image member-image2\">
+\t\t\t\t\t<img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/2.png\">
+\t\t\t\t  </div>
+\t\t\t\t  <div class=\"member-info member-info2\">
+\t\t\t\t\t<h3>Gaiel Azambou</h3>
+\t\t\t\t\t<p>Stratège communication</p>
 \t\t\t\t\t
-\t\t\t\t\t\t\t\t<div class=\"social-icones\">
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-twitter\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-instagram\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"icon\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-google-plus\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t<div class=\"social-teams\">
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Facebook</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-twitter\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Twitter</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-linkedin\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>LinkedIn</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t\t </div>
+
+\t\t\t\t  </div>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"member\">
+\t\t\t\t  <div class=\"member-image member-image2\">
+\t\t\t\t\t<img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/3.png\">
+\t\t\t\t  </div>
+\t\t\t\t  <div class=\"member-info member-info2\">
+\t\t\t\t\t<h3>Ghislain Takam</h3>
+\t\t\t\t\t<p>UX/UI & graphic designer</p>
+\t\t\t\t\t
+\t\t\t\t\t<div class=\"social-teams\">
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Facebook</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-twitter\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Twitter</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-linkedin\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>LinkedIn</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t\t </div>
+
+\t\t\t\t  </div>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"member\">
+\t\t\t\t  <div class=\"member-image member-image2\">
+\t\t\t\t\t<img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/4.png\">
+\t\t\t\t  </div>
+\t\t\t\t  <div class=\"member-info member-info2\">
+\t\t\t\t\t<h3>Mariane Kazé</h3>
+\t\t\t\t\t<p>Content Manager</p>
+\t\t\t\t\t
+\t\t\t\t\t<div class=\"social-teams\">
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Facebook</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-twitter\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Twitter</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-linkedin\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>LinkedIn</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t\t </div>
+
+\t\t\t\t  </div>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"member\">
+\t\t\t\t\t<div class=\"member-image member-image2\">
+\t\t\t\t\t  <img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/4.png\">
 \t\t\t\t\t</div>
-\t\t\t\t</div>
-\t\t\t</div>
+\t\t\t\t\t<div class=\"member-info member-info2\">
+\t\t\t\t\t  <h3>Gaetan Nozawo</h3>
+\t\t\t\t\t  <p>Stratégique AFH Factory</p>
+\t\t\t\t\t  
+\t\t\t\t\t  <div class=\"social-teams\">
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Facebook</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-twitter\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Twitter</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-linkedin\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>LinkedIn</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t\t </div>
+\t\t\t\t\t</div>
+\t\t\t\t  </li>
+\t\t\t\t  <li class=\"member\">
+\t\t\t\t\t<div class=\"member-image member-image2\">
+\t\t\t\t\t  <img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/4.png\">
+\t\t\t\t\t</div>
+\t\t\t\t\t<div class=\"member-info member-info2\">
+\t\t\t\t\t  <h3>Guilou Tiaya</h3>
+\t\t\t\t\t  <p>Comptabilité & Fiscalité</p>
+\t\t\t\t\t  
+\t\t\t\t\t  <div class=\"social-teams\">
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Facebook</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-twitter\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Twitter</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-linkedin\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>LinkedIn</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t\t </div>
+\t\t\t\t\t</div>
+\t\t\t\t  </li>
+\t\t\t\t  <li class=\"member\">
+\t\t\t\t\t<div class=\"member-image member-image2\">
+\t\t\t\t\t  <img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/4.png\">
+\t\t\t\t\t</div>
+\t\t\t\t\t<div class=\"member-info member-info2\">
+\t\t\t\t\t  <h3>Rodrigue Ayemetio</h3>
+\t\t\t\t\t  <p>Affaires juridique</p>
+\t\t\t\t\t  
+\t\t\t\t\t  <div class=\"social-teams\">
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Facebook</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-twitter\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Twitter</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-linkedin\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>LinkedIn</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t\t </div>
+
+\t\t\t\t\t</div>
+\t\t\t\t  </li>
+\t\t\t\t  <li class=\"member\" style=\"background: #325ea9;\">
+\t\t\t\t\t
+\t\t\t\t  </li>
+\t\t\t  </ul>
 \t
 \t\t</div>
 \t
@@ -335,9 +438,9 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
 <div class=\"col-sm-12 col-md-4\">
 \t
 \t";
-        // line 319
+        // line 422
         $this->env->loadTemplate("ProduitServiceBundle:Service:menustruct.html.twig")->display($context);
-        // line 320
+        // line 423
         echo "\t\t\t
 </div>
 </div>
@@ -411,6 +514,6 @@ controlScrollPop();
 
     public function getDebugInfo()
     {
-        return array (  341 => 320,  339 => 319,  19 => 1,);
+        return array (  444 => 423,  442 => 422,  19 => 1,);
     }
 }

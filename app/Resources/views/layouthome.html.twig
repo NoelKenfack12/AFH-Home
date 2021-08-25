@@ -4811,7 +4811,7 @@ fill: #DB4437;
   margin-top: 5px;
 }
 
-  /* Fin Testimonial slide */
+/* Fin Testimonial slide */
 
 .rating-row ul{list-style:none;display:flex; padding:0 ; margin:0;}
 .rating-row ul li{color:#96d3cf;font-size:20px;margin:0px 3px;}
@@ -4823,6 +4823,7 @@ fill: #DB4437;
 <link rel="stylesheet" href="{{ asset('afhholding/js/notify/themes/alertify.default.css') }}" id="toggleCSS" />
 <script src="{{ asset('afhholding/js/onvisible.js') }}"></script>
 <script src="{{ asset('afhholding/js/notify/lib/alertify.min.js') }}"></script>
+
 <script>
 	function resetNotif(){
 		$("#toggleCSS").attr("href", "{{ asset('afhholding/js/notify/themes/alertify.default.css') }}");
@@ -4842,7 +4843,7 @@ fill: #DB4437;
 	{% endblock %}
 </head> 
 
-<body>
+<body style="width: 100%; overflow-x: hidden!important;">
 <div id="top-sidebar-popper">
 	<!-- div class="spinner"></div  -->
 	<div id="preloader-active">
@@ -4859,10 +4860,10 @@ fill: #DB4437;
 </div>
 
 <div class="preloader" style="display: none!important;">
-<!--div class="preloader-body">
-	<div class="cssload-container"><span></span><span></span><span></span><span></span>
-	</div>
-</div -->
+  <!--div class="preloader-body">
+    <div class="cssload-container"><span></span><span></span><span></span><span></span>
+    </div>
+  </div -->
 </div>
 
   {{ render(controller("GeneralTemplateBundle:Menu:menubare", {'position': 'home'})) }}

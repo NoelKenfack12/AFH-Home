@@ -4855,7 +4855,7 @@ fill: #DB4437;
   margin-top: 5px;
 }
 
-  /* Fin Testimonial slide */
+/* Fin Testimonial slide */
 
 .rating-row ul{list-style:none;display:flex; padding:0 ; margin:0;}
 .rating-row ul li{color:#96d3cf;font-size:20px;margin:0px 3px;}
@@ -4882,10 +4882,11 @@ fill: #DB4437;
         // line 4825
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/js/notify/lib/alertify.min.js"), "html", null, true);
         echo "\"></script>
+
 <script>
 \tfunction resetNotif(){
 \t\t\$(\"#toggleCSS\").attr(\"href\", \"";
-        // line 4828
+        // line 4829
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/js/notify/themes/alertify.default.css"), "html", null, true);
         echo "\");
 \t\talertify.set({
@@ -4900,12 +4901,12 @@ fill: #DB4437;
 \t}
 </script>
 \t";
-        // line 4840
+        // line 4841
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 4843
+        // line 4844
         echo "</head> 
 
-<body>
+<body style=\"width: 100%; overflow-x: hidden!important;\">
 <div id=\"top-sidebar-popper\">
 \t<!-- div class=\"spinner\"></div  -->
 \t<div id=\"preloader-active\">
@@ -4914,7 +4915,7 @@ fill: #DB4437;
 \t\t\t<div class=\"preloader-circle\"></div>
 \t\t\t<div class=\"preloader-img pere-text\">
 \t\t\t\t<img src=\"";
-        // line 4853
+        // line 4854
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/afh-logo2.png"), "html", null, true);
         echo "\" alt=\"\">
 \t\t\t</div>
@@ -4925,29 +4926,29 @@ fill: #DB4437;
 </div>
 
 <div class=\"preloader\" style=\"display: none!important;\">
-<!--div class=\"preloader-body\">
-\t<div class=\"cssload-container\"><span></span><span></span><span></span><span></span>
-\t</div>
-</div -->
+  <!--div class=\"preloader-body\">
+    <div class=\"cssload-container\"><span></span><span></span><span></span><span></span>
+    </div>
+  </div -->
 </div>
 
   ";
-        // line 4868
+        // line 4869
         echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("GeneralTemplateBundle:Menu:menubare", array("position" => "home")));
         echo "
   
   ";
-        // line 4870
+        // line 4871
         $this->displayBlock('body', $context, $blocks);
-        // line 4873
+        // line 4874
         echo "
   ";
-        // line 4874
+        // line 4875
         echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("GeneralTemplateBundle:Menu:footer", array("position" => "home")));
         echo "
 
   ";
-        // line 4876
+        // line 4877
         echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("GeneralTemplateBundle:Menu:menubareright", array("position" => "home")));
         echo "
 
@@ -4959,7 +4960,7 @@ fill: #DB4437;
 \t
 \t<div style=\"position: fixed; z-index: 3; bottom: 0px; width: 100%; left: 0px; background: #fff; padding: 7px 10px; border-top: 1px solid #ddd;\">
 \t\t<div style=\"font-size: 12px;\">© 2014 - ";
-        // line 4885
+        // line 4886
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y"), "html", null, true);
         echo " - ";
         echo twig_escape_filter($this->env, (isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "html", null, true);
@@ -4972,22 +4973,22 @@ fill: #DB4437;
   </div>
 </aside>
 <script src=\"";
-        // line 4893
+        // line 4894
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/js/script.js"), "html", null, true);
         echo "\"></script>
     <!--coded by Houdini-->
 
 ";
-        // line 4896
+        // line 4897
         $this->displayBlock('srcjavascript', $context, $blocks);
-        // line 4899
+        // line 4900
         echo "
 <script type=\"text/javascript\">
 \$(function(){\t
 ";
-        // line 4902
+        // line 4903
         $this->displayBlock('javascript', $context, $blocks);
-        // line 4905
+        // line 4906
         echo "});
 
 
@@ -5057,7 +5058,7 @@ function openCallBack(param)
 {
 \t\$.ajax({
        url : '";
-        // line 4973
+        // line 4974
         echo $this->env->getExtension('routing')->getPath("produit_service_callback_homepage");
         echo "',
        type : 'POST',
@@ -5144,34 +5145,34 @@ var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         echo twig_escape_filter($this->env, (isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "html", null, true);
     }
 
-    // line 4840
+    // line 4841
     public function block_stylesheets($context, array $blocks = array())
     {
-        // line 4841
+        // line 4842
         echo "\t
 \t";
     }
 
-    // line 4870
+    // line 4871
     public function block_body($context, array $blocks = array())
     {
-        // line 4871
+        // line 4872
         echo "        
   ";
     }
 
-    // line 4896
+    // line 4897
     public function block_srcjavascript($context, array $blocks = array())
     {
-        // line 4897
+        // line 4898
         echo "
 ";
     }
 
-    // line 4902
+    // line 4903
     public function block_javascript($context, array $blocks = array())
     {
-        // line 4903
+        // line 4904
         echo "
 ";
     }
@@ -5188,6 +5189,6 @@ var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 
     public function getDebugInfo()
     {
-        return array (  5175 => 4903,  5172 => 4902,  5167 => 4897,  5164 => 4896,  5159 => 4871,  5156 => 4870,  5151 => 4841,  5148 => 4840,  5142 => 12,  5136 => 9,  5061 => 4973,  4991 => 4905,  4989 => 4902,  4984 => 4899,  4982 => 4896,  4976 => 4893,  4963 => 4885,  4951 => 4876,  4946 => 4874,  4943 => 4873,  4941 => 4870,  4936 => 4868,  4918 => 4853,  4906 => 4843,  4904 => 4840,  4889 => 4828,  4883 => 4825,  4879 => 4824,  4875 => 4823,  4871 => 4822,  4867 => 4821,  60 => 17,  56 => 16,  52 => 15,  48 => 14,  43 => 12,  37 => 10,  35 => 9,  25 => 1,);
+        return array (  5176 => 4904,  5173 => 4903,  5168 => 4898,  5165 => 4897,  5160 => 4872,  5157 => 4871,  5152 => 4842,  5149 => 4841,  5143 => 12,  5137 => 9,  5062 => 4974,  4992 => 4906,  4990 => 4903,  4985 => 4900,  4983 => 4897,  4977 => 4894,  4964 => 4886,  4952 => 4877,  4947 => 4875,  4944 => 4874,  4942 => 4871,  4937 => 4869,  4919 => 4854,  4907 => 4844,  4905 => 4841,  4890 => 4829,  4883 => 4825,  4879 => 4824,  4875 => 4823,  4871 => 4822,  4867 => 4821,  60 => 17,  56 => 16,  52 => 15,  48 => 14,  43 => 12,  37 => 10,  35 => 9,  25 => 1,);
     }
 }

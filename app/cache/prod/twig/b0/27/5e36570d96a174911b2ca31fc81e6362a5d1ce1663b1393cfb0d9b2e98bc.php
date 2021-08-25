@@ -42,6 +42,116 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
         color: #f39c12;
         transition:all .001s;
     }
+
+\t/* Link Style 5 */
+.link5 a {
+\tcolor: #325da8;
+\tbackground-image: linear-gradient(to bottom, transparent 65%, #9ebb3d 0);
+\tbackground-size: 0% 100%;
+\tbackground-repeat: no-repeat;
+\ttext-decoration: none;
+\ttransition: background-size .4s ease;
+\ttext-decoration: none;
+\tbox-shadow: none;
+\tfont-family: Philosopher-Bold;
+}
+
+.link5 a:hover {
+\tbackground-size: 100% 100%;
+\tcursor: pointer;
+}
+
+
+.buttonrs {
+\tfloat: left;
+\twidth: 40px;
+\theight: 40px;
+\tcursor: pointer;
+\tbackground: #fff;
+\toverflow: hidden;
+\tborder-radius: 40px;
+\ttransition: all 0.3s ease-in-out;
+}
+
+.buttonrs span {
+\tfont-size: 12px;
+\tfont-weight: 200;
+\tline-height: 20px;
+\tmargin-left: 0px;
+\tfont-family: OpenSans-SemiBold;
+}
+
+.buttonrs:hover {
+\twidth: 120px;
+}
+
+.buttonrs:nth-child(1):hover .icon {
+\tbackground: #e1306c;
+}
+
+.buttonrs:nth-child(2):hover .icon {
+\tbackground: #4267b2;
+}
+
+.buttonrs:nth-child(3):hover .icon {
+\tbackground: #1da1f2;
+}
+
+.buttonrs:nth-child(4):hover .icon {
+\tbackground: #0e76a8;
+}
+
+.buttonrs:nth-child(5):hover .icon {
+\tbackground: #ff0000;
+}
+
+.buttonrs:nth-child(6):hover .icon {
+\tbackground: #333;
+}
+
+.buttonrs:nth-child(1) span {
+\tcolor: #e1306c;
+}
+
+.buttonrs:nth-child(2) span {
+\tcolor: #4267b2;
+}
+
+.buttonrs:nth-child(3) span {
+\tcolor: #1da1f2;
+}
+
+.buttonrs:nth-child(4) span {
+\tcolor: #0e76a8;
+}
+
+.buttonrs:nth-child(5) span {
+\tcolor: #ff0000;
+}
+
+.buttonrs:nth-child(6) span {
+\tcolor: #333;
+}
+
+.buttonrs .icon {
+\twidth: 40px;
+\theight: 40px;
+\ttext-align: center;
+\tborder-radius: 50px;
+\tdisplay: inline-block;
+\ttransition: all 0.3s ease-in-out;
+}
+
+.buttonrs .icon i {
+\tfont-size: 15px;
+\tline-height: 40px;
+\ttransition: all 0.3s ease-in-out;
+}
+
+.buttonrs:hover i {
+\tcolor: #fff;
+}
+
 </style>
 
 <footer style=\"min-height: 100px; border-top: 1px solid #ddd;\">
@@ -51,8 +161,8 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
             <div class=\"row\">
                 <div class=\"col-xs-12 col-sm-6 col-md-4 footers-one\">
                      <div class=\"footers-logo\">
-                        <h3><img src=\"";
-            // line 33
+                        <h3 style=\"font-family: Philosopher-Bold;\"><img src=\"";
+            // line 143
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logo-sm-afh.png"), "html", null, true);
             echo "\" alt=\"";
             echo twig_escape_filter($this->env, (isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "html", null, true);
@@ -60,22 +170,21 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
                      </div>
                      <div class=\"footers-info mt-3\">
                          <p>
-                            
-\t\t\t\t            Des services et produits incontournables pour le développement de votre activité numérique.
+\t\t\t\t            Engagé dans les services intelligeant sur mesure et l’intégration socio-professionnelle des jeunes depuis 2014.
                             <div style=\"color: #fff;\">
                               <ul class=\"list-unstyled\">
-                                <li><a href=\"#!\">";
-            // line 41
+                                <li class=\"link5\"><a href=\"#!\">";
+            // line 150
             echo twig_escape_filter($this->env, (isset($context["localisation"]) ? $context["localisation"] : $this->getContext($context, "localisation")), "html", null, true);
             echo "</a></li>
-                                <li><a href=\"https://api.whatsapp.com/send?phone=";
-            // line 42
+                                <li class=\"link5\"><a href=\"https://api.whatsapp.com/send?phone=";
+            // line 151
             echo twig_escape_filter($this->env, (isset($context["telephone"]) ? $context["telephone"] : $this->getContext($context, "telephone")), "html", null, true);
             echo "\" target=\"_blank\">Whatsapp: +";
             echo twig_escape_filter($this->env, (isset($context["telephone"]) ? $context["telephone"] : $this->getContext($context, "telephone")), "html", null, true);
             echo "</a></li>
-                                <li><a href=\"tel:";
-            // line 43
+                                <li class=\"link5\"><a href=\"tel:";
+            // line 152
             echo twig_escape_filter($this->env, (isset($context["telephone2"]) ? $context["telephone2"] : $this->getContext($context, "telephone2")), "html", null, true);
             echo "\">MTN: +";
             echo twig_escape_filter($this->env, (isset($context["telephone2"]) ? $context["telephone2"] : $this->getContext($context, "telephone2")), "html", null, true);
@@ -84,40 +193,71 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
                             </div>
                          </p>
                      </div>
-                     <div class=\"social-icons\"> 
-                     <a href=\"";
-            // line 49
+
+\t\t\t\t\t <div style=\"white-space: nowrap!important; min-width: 500px;\">
+\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-instagram\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Instagram</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"";
+            // line 166
             echo twig_escape_filter($this->env, (isset($context["facebook"]) ? $context["facebook"] : $this->getContext($context, "facebook")), "html", null, true);
-            echo "\" target=\"_blank\"><i id=\"social-fb\" class=\"fa fa-facebook-square fa-2x social\"></i></a>
-                     <a href=\"";
-            // line 50
+            echo "\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Facebook</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"";
+            // line 173
             echo twig_escape_filter($this->env, (isset($context["twitter"]) ? $context["twitter"] : $this->getContext($context, "twitter")), "html", null, true);
-            echo "\" target=\"_blank\"><i id=\"social-tw\" class=\"fa fa-twitter-square fa-2x social\"></i></a>
-                     <a href=\"";
-            // line 51
-            echo twig_escape_filter($this->env, (isset($context["google"]) ? $context["google"] : $this->getContext($context, "google")), "html", null, true);
-            echo "\" target=\"_blank\"><i id=\"social-gp\" class=\"fa fa-youtube-square fa-2x social\"></i></a>
-                     <a href=\"";
-            // line 52
+            echo "\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-twitter\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>Twitter</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"";
+            // line 180
             echo twig_escape_filter($this->env, (isset($context["linkedin"]) ? $context["linkedin"] : $this->getContext($context, "linkedin")), "html", null, true);
-            echo "\" target=\"_blank\"><i id=\"social-em\" class=\"fa fa-linkedin-square fa-2x social\"></i></a>
-                 </div>
+            echo "\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-linkedin\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>LinkedIn</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t
+\t\t\t\t\t\t<a href=\"";
+            // line 187
+            echo twig_escape_filter($this->env, (isset($context["google"]) ? $context["google"] : $this->getContext($context, "google")), "html", null, true);
+            echo "\" class=\"buttonrs\">
+\t\t\t\t\t\t\t<div class=\"icon\">
+\t\t\t\t\t\t\t\t<i class=\"fa fa-youtube\"></i>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<span>YouTube</span>
+\t\t\t\t\t\t</a>
+\t\t\t\t\t </div>
                  </div>
                 <div class=\"col-xs-12 col-sm-6 col-md-2 footers-two\">
                      <h5> Technologie [";
-            // line 56
+            // line 196
             echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["appli_tech"]) ? $context["appli_tech"] : $this->getContext($context, "appli_tech"))), "html", null, true);
             echo "]</h5>
                      <p>CMS et solutions sur mesures</p>
                      <ul class=\"list-unstyled\">
                         ";
-            // line 59
+            // line 199
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable(twig_slice($this->env, (isset($context["appli_tech"]) ? $context["appli_tech"] : $this->getContext($context, "appli_tech")), 0, 4));
             $context['_iterated'] = false;
             foreach ($context['_seq'] as $context["_key"] => $context["app"]) {
-                // line 60
-                echo "                            <li><a href=\"";
+                // line 200
+                echo "                            <li class=\"link5\"><a href=\"";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "link"), "html", null, true);
                 echo "\" target=\"_blank\"> ";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "nom"), "html", null, true);
@@ -126,32 +266,32 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
                 $context['_iterated'] = true;
             }
             if (!$context['_iterated']) {
-                // line 62
-                echo "                            <li><a href=\"#!\">Vide</a></li>
+                // line 202
+                echo "                            <li class=\"link5\"><a href=\"#!\">Vide</a></li>
                         ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['app'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 64
-            echo "                        <li><a href=\"#!\"><span class=\"fa fa-plus-square\"></span> Afficher plus</a></li>
+            // line 204
+            echo "                        <li class=\"link5\"><a href=\"#!\"><span class=\"fa fa-plus\"></span> Afficher plus</a></li>
                      </ul>
                  </div>
                 <div class=\"col-xs-12 col-sm-6 col-md-2 footers-three\">
                      <h5>Marketing [";
-            // line 68
+            // line 208
             echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["appli_marketing"]) ? $context["appli_marketing"] : $this->getContext($context, "appli_marketing"))), "html", null, true);
             echo "] </h5>
                      <p>Communication et vente</p>
                      <ul class=\"list-unstyled\">
 \t\t\t\t\t\t";
-            // line 71
+            // line 211
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable(twig_slice($this->env, (isset($context["appli_marketing"]) ? $context["appli_marketing"] : $this->getContext($context, "appli_marketing")), 0, 4));
             $context['_iterated'] = false;
             foreach ($context['_seq'] as $context["_key"] => $context["app"]) {
-                // line 72
-                echo "\t\t\t\t\t\t\t<li><a href=\"";
+                // line 212
+                echo "\t\t\t\t\t\t\t<li class=\"link5\"><a href=\"";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "link"), "html", null, true);
                 echo "\" target=\"_blank\"> ";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "nom"), "html", null, true);
@@ -160,32 +300,32 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
                 $context['_iterated'] = true;
             }
             if (!$context['_iterated']) {
-                // line 74
-                echo "\t\t\t\t\t\t\t<li><a href=\"#!\">Vide</a></li>
+                // line 214
+                echo "\t\t\t\t\t\t\t<li class=\"link5\"><a href=\"#!\">Vide</a></li>
 \t\t\t\t\t\t";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['app'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 76
-            echo "                        <li><a href=\"#!\"><span class=\"fa fa-plus-square\"></span> Afficher plus</a></li>
+            // line 216
+            echo "                        <li class=\"link5\"><a href=\"#!\"><span class=\"fa fa-plus\"></span> Afficher plus</a></li>
                      </ul>
                  </div>
                 <div class=\"col-xs-12 col-sm-6 col-md-2 footers-four\">
                      <h5>Découverte [";
-            // line 80
+            // line 220
             echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["liste_pays"]) ? $context["liste_pays"] : $this->getContext($context, "liste_pays"))), "html", null, true);
             echo "] </h5>
                      <p>Référencement et géolocalisation</p>
                      <ul class=\"list-unstyled\">
 \t\t\t\t\t\t";
-            // line 83
+            // line 223
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable(twig_slice($this->env, (isset($context["liste_pays"]) ? $context["liste_pays"] : $this->getContext($context, "liste_pays")), 0, 4));
             $context['_iterated'] = false;
             foreach ($context['_seq'] as $context["_key"] => $context["pays"]) {
-                // line 84
-                echo "\t\t\t\t\t\t\t<li><a href=\"";
+                // line 224
+                echo "\t\t\t\t\t\t\t<li class=\"link5\"><a href=\"";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["pays"]) ? $context["pays"] : $this->getContext($context, "pays")), "siteweb"), "html", null, true);
                 echo "\" target=\"_blank\"> ";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["pays"]) ? $context["pays"] : $this->getContext($context, "pays")), "nom"), "html", null, true);
@@ -194,31 +334,33 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
                 $context['_iterated'] = true;
             }
             if (!$context['_iterated']) {
-                // line 86
-                echo "\t\t\t\t\t\t\t<li><a href=\"#!\">Vide</a></li>
+                // line 226
+                echo "\t\t\t\t\t\t\t<li class=\"link5\"><a href=\"#!\">Vide</a></li>
 \t\t\t\t\t\t";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pays'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 88
-            echo "                        <li><a href=\"#!\"><span class=\"fa fa-plus-square\"></span> Afficher plus</a></li>
+            // line 228
+            echo "                        <li class=\"link5\"><a href=\"#!\"><span class=\"fa fa-plus\"></span> Afficher plus</a></li>
                      </ul>
                  </div>
                 <div class=\"col-xs-12 col-sm-6 col-md-2 footers-five\">
-                     <h5>Company </h5>
+                     <h5>À propos </h5>
+\t\t\t\t\t <p>L'innovation au coeur des projets AFH</p>
                      <ul class=\"list-unstyled\">
-                      <li><a href=\"maintenance.html\">Career</a></li>
-                      <li><a href=\"about.html\">For Parters</a></li>
-                      <li><a href=\"about.html\">Terms</a></li>
-                      <li><a href=\"about.html\">Policy</a></li>
-                      <li><a href=\"contact.html\">Contact Us</a></li>
+                      <li class=\"link5\"><a href=\"#!\">L'entreprise</a></li>
+                      <li class=\"link5\"><a href=\"#!\">Les projets</a></li>
+                      <li class=\"link5\"><a href=\"#!\">Les statistiques</a></li>
+                      <li class=\"link5\"><a href=\"#!\">Contribuer</a></li>
+                      <li class=\"link5\"><a href=\"#!\">Investir</a></li>
                      </ul>
                  </div>
                  
             </div>
         </div>
      </section>
+\t 
      <section class=\"disclaimer bg-light\" style=\"border-bottom: 1px solid #dee2e6!important;\">
          <div class=\"container\">
              <div class=\"row \">
@@ -230,20 +372,23 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
              </div>
          </div>
      </section>
+
      <section class=\"copyright border\"  style=\"box-shadow:0px 0px 70px #888888;\">
          <div class=\"container\">
             <div class=\"row\">
                 <div class=\"col-md-6\">
-                      © 2014 - ";
-            // line 120
+                      <strong style=\"font-family: Philosopher-Bold;\">© 2014 - ";
+            // line 263
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y"), "html", null, true);
-            echo " A.F.H unt.com
+            echo " A.F.H unt.com</strong> 
+\t\t\t\t\t  Made width <span class=\"fa fa-heart-o\" style=\"color: red;\"></span> by <a href=\"http://code.afhunt.com\" target=\"_blank\">AFH Code</a>
                  </div>
-                <div class=\"col-md-6\">
-                    <a href=\"#!\" style=\"float: right; padding: 2px;\">
+                <div class=\"col-md-6 text-right\">
+                    <a href=\"#!\">
                        Conditions d'utilisations
                     </a>
-                    <a href=\"#!\" style=\"float: right; padding: 2px;\">
+\t\t\t\t\t<span style=\"font-size: 13px;\" class=\"fa fa-eercast\"></span>
+                    <a href=\"#!\">
                        Confidentialité
                     </a>
                 </div>
@@ -255,7 +400,7 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 
 ";
         } else {
-            // line 137
+            // line 282
             echo "<div class=\"clearfix\"></div>
 <footer id=\"colophon\" class=\"site-footer\" style=\"background-color:#005dff!important; position: absolute;  width: 100%; padding-bottom: 0px;\">
 \t<!-- Begin Annonce Accueil -->
@@ -270,7 +415,7 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 \t\t\t\t\t\t
 \t\t\t\t\t\t<div class=\"col-md-3 text-center\">
 \t\t\t\t\t\t\t<a href=\"#!\" title=\"\" style=\"display: block;\"><img src=\"";
-            // line 150
+            // line 295
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logooj.png"), "html", null, true);
             echo "\"  style=\"height: 50px;\"/></a>
 \t\t\t\t\t\t\t<div><strong>Omnijobber</strong></div>
@@ -278,7 +423,7 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 \t\t\t\t\t\t
 \t\t\t\t\t\t<div class=\"col-md-3 text-center\">
 \t\t\t\t\t\t\t<a href=\"#!\" title=\"\" style=\"display: block;\"><img src=\"";
-            // line 155
+            // line 300
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logoapme.jpg"), "html", null, true);
             echo "\"  style=\"height: 50px;\"/></a>
 \t\t\t\t\t\t\t<div><strong>A.P.M.E</strong></div>
@@ -286,7 +431,7 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 \t\t\t\t\t\t
 \t\t\t\t\t\t<div class=\"col-md-3 text-center\">
 \t\t\t\t\t\t\t<a href=\"#!\" title=\"\" style=\"display: block;\"><img src=\"";
-            // line 160
+            // line 305
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logoovh.jpg"), "html", null, true);
             echo "\"  style=\"height: 50px;\"/></a>
 \t\t\t\t\t\t\t<div><strong>OVH</strong></div>
@@ -294,7 +439,7 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 \t\t\t\t\t\t
 \t\t\t\t\t\t<div class=\"col-md-3 text-center\">
 \t\t\t\t\t\t\t<a href=\"#!\" title=\"\" style=\"display: block;\"><img src=\"";
-            // line 165
+            // line 310
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logoamazone.png"), "html", null, true);
             echo "\"  style=\"height: 50px;\"/> </a>
 \t\t\t\t\t\t\t<div><strong>Amazone</strong></div>
@@ -310,7 +455,7 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 \t\t\t\t\t\t<div class=\"col-md-3\">
 \t\t\t\t\t\t\t<a href=\"http://hbill.afhunt.com/\" target=\"_blank\" class=\"text-center\" style=\"display: block;\">
 \t\t\t\t\t\t\t<img src=\"";
-            // line 178
+            // line 323
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logohbill.png"), "html", null, true);
             echo "\"  style=\"height: 50px;\"/>
 \t\t\t\t\t\t\t<div ><strong>AFH HBill</strong></div>
@@ -319,7 +464,7 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 \t\t\t\t\t\t<div class=\"col-md-3\">
 \t\t\t\t\t\t\t<a href=\"http://mbill.afhunt.com/\" target=\"_blank\" class=\"text-center\" style=\"display: block;\">
 \t\t\t\t\t\t\t<img src=\"";
-            // line 184
+            // line 329
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logombill.png"), "html", null, true);
             echo "\"  style=\"height: 50px;\"/>
 \t\t\t\t\t\t\t<div><strong>AFH MBill</strong></div>
@@ -328,7 +473,7 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 \t\t\t\t\t\t<div class=\"col-md-3\">
 \t\t\t\t\t\t\t<a href=\"http://win.afhunt.com/\" target=\"_blank\" class=\"text-center\" style=\"display: block;\">
 \t\t\t\t\t\t\t<img src=\"";
-            // line 190
+            // line 335
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logowin.png"), "html", null, true);
             echo "\"  style=\"height: 50px;\"/>
 \t\t\t\t\t\t\t<div><strong>AFH Win</strong></div>
@@ -337,7 +482,7 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 \t\t\t\t\t\t<div class=\"col-md-3\">
 \t\t\t\t\t\t\t<a href=\"http://code.afhunt.com/\" class=\"text-center\" target=\"_blank\" style=\"display: block;\">
 \t\t\t\t\t\t\t<img src=\"";
-            // line 196
+            // line 341
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logocode.png"), "html", null, true);
             echo "\"  style=\"height: 50px;\"/>
 \t\t\t\t\t\t\t<div><strong>AFH Code</strong></div>
@@ -353,7 +498,7 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 \t\t<div class=\"container\">
 \t\t\t<div class=\"col-md-7\">
 \t\t\t\t<h3><img src=\"";
-            // line 209
+            // line 354
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logo-sm-afh.png"), "html", null, true);
             echo "\" alt=\"";
             echo twig_escape_filter($this->env, (isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "html", null, true);
@@ -376,36 +521,36 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 \t\t\t\t\t<div class=\"footer-about\">
 \t\t\t\t\t\t<div class=\"social-btns\">
 \t\t\t\t\t\t\t<a class=\"social-btn facebook\" href=\"";
-            // line 227
+            // line 372
             echo twig_escape_filter($this->env, (isset($context["facebook"]) ? $context["facebook"] : $this->getContext($context, "facebook")), "html", null, true);
             echo "\" target=\"_blank\"><i class=\"fa fa-facebook\"></i></a>
 \t\t\t\t\t\t\t<a class=\"social-btn linkedin\" href=\"";
-            // line 228
+            // line 373
             echo twig_escape_filter($this->env, (isset($context["twitter"]) ? $context["twitter"] : $this->getContext($context, "twitter")), "html", null, true);
             echo "\" target=\"_blank\"><i class=\"fa fa-twitter\"></i></a>
 \t\t\t\t\t\t\t<a class=\"social-btn instagram\" href=\"";
-            // line 229
+            // line 374
             echo twig_escape_filter($this->env, (isset($context["google"]) ? $context["google"] : $this->getContext($context, "google")), "html", null, true);
             echo "\" target=\"_blank\"><i class=\"fa fa-youtube\"></i></a>
 \t\t\t\t\t\t\t<a class=\"social-btn github\" href=\"";
-            // line 230
+            // line 375
             echo twig_escape_filter($this->env, (isset($context["linkedin"]) ? $context["linkedin"] : $this->getContext($context, "linkedin")), "html", null, true);
             echo "\" target=\"_blank\"><i class=\"fa fa-linkedin\"></i></a>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div style=\"color: #fff;\">
 \t\t\t\t\t\t  <ul class=\"list-unstyled\">
 \t\t\t\t\t\t\t<li><a href=\"#!\">";
-            // line 234
+            // line 379
             echo twig_escape_filter($this->env, (isset($context["localisation"]) ? $context["localisation"] : $this->getContext($context, "localisation")), "html", null, true);
             echo "</a></li>
 \t\t\t\t\t\t\t<li><a href=\"https://api.whatsapp.com/send?phone=";
-            // line 235
+            // line 380
             echo twig_escape_filter($this->env, (isset($context["telephone"]) ? $context["telephone"] : $this->getContext($context, "telephone")), "html", null, true);
             echo "\" target=\"_blank\">Whatsapp: +";
             echo twig_escape_filter($this->env, (isset($context["telephone"]) ? $context["telephone"] : $this->getContext($context, "telephone")), "html", null, true);
             echo "</a></li>
 \t\t\t\t\t\t\t<li><a href=\"tel:";
-            // line 236
+            // line 381
             echo twig_escape_filter($this->env, (isset($context["telephone2"]) ? $context["telephone2"] : $this->getContext($context, "telephone2")), "html", null, true);
             echo "\">MTN: +";
             echo twig_escape_filter($this->env, (isset($context["telephone2"]) ? $context["telephone2"] : $this->getContext($context, "telephone2")), "html", null, true);
@@ -417,16 +562,16 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 \t\t\t\t<div class=\"col-md-3\" style=\"border-left: 1px dashed  #ddd;\">
 \t\t\t\t\t<ul class=\"list-unstyled\">
 \t\t\t\t\t\t<li style=\"text-transform: capitalize;\"><a href=\"#!\" class=\"cd-bouncy-nav-trigger2\" style=\"font-size: 20px; color: #fff;\"><span class=\"fa fa-caret-down\"></span> Technologie [";
-            // line 243
+            // line 388
             echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["appli_tech"]) ? $context["appli_tech"] : $this->getContext($context, "appli_tech"))), "html", null, true);
             echo "] </a></li>
 \t\t\t\t\t\t";
-            // line 244
+            // line 389
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable(twig_slice($this->env, (isset($context["appli_tech"]) ? $context["appli_tech"] : $this->getContext($context, "appli_tech")), 0, 4));
             $context['_iterated'] = false;
             foreach ($context['_seq'] as $context["_key"] => $context["app"]) {
-                // line 245
+                // line 390
                 echo "\t\t\t\t\t\t\t<li><a href=\"";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "link"), "html", null, true);
                 echo "\" target=\"_blank\"><img src=\"";
@@ -442,29 +587,29 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
                 $context['_iterated'] = true;
             }
             if (!$context['_iterated']) {
-                // line 247
+                // line 392
                 echo "\t\t\t\t\t\t\t<li><a href=\"#!\">Vide</a></li>
 \t\t\t\t\t\t";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['app'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 249
+            // line 394
             echo "\t\t\t\t\t</ul>
 \t\t\t\t</div>
 \t\t\t\t<div class=\"col-md-3\" style=\"border-left: 1px dashed  #ddd;\">
 \t\t\t\t\t<ul class=\"list-unstyled\">
 \t\t\t\t\t\t<li style=\"text-transform: capitalize;\"><a href=\"#!\" class=\"cd-bouncy-nav-trigger2\" style=\"font-size: 20px; color: #fff;\"><span class=\"fa fa-caret-down\"></span> Marketing [";
-            // line 253
+            // line 398
             echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["appli_marketing"]) ? $context["appli_marketing"] : $this->getContext($context, "appli_marketing"))), "html", null, true);
             echo "] </a></li>
 \t\t\t\t\t\t";
-            // line 254
+            // line 399
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable(twig_slice($this->env, (isset($context["appli_marketing"]) ? $context["appli_marketing"] : $this->getContext($context, "appli_marketing")), 0, 4));
             $context['_iterated'] = false;
             foreach ($context['_seq'] as $context["_key"] => $context["app"]) {
-                // line 255
+                // line 400
                 echo "\t\t\t\t\t\t\t<li><a href=\"";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "link"), "html", null, true);
                 echo "\" target=\"_blank\"><img src=\"";
@@ -480,29 +625,29 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
                 $context['_iterated'] = true;
             }
             if (!$context['_iterated']) {
-                // line 257
+                // line 402
                 echo "\t\t\t\t\t\t\t<li><a href=\"#!\">Vide</a></li>
 \t\t\t\t\t\t";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['app'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 259
+            // line 404
             echo "\t\t\t\t\t</ul>
 \t\t\t\t</div>
 \t\t\t\t<div class=\"col-md-2\" style=\"border-left: 1px dashed  #ddd;\">
 \t\t\t\t\t<ul class=\"list-unstyled\"> 
 \t\t\t\t\t\t<li style=\"text-transform: capitalize;\"><a href=\"#!\" class=\"toggle-modal-right\" value=\"accueil\" style=\"font-size: 20px; color: #fff;\"><span class=\"fa fa-caret-down\"></span> Découverte [";
-            // line 263
+            // line 408
             echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["liste_pays"]) ? $context["liste_pays"] : $this->getContext($context, "liste_pays"))), "html", null, true);
             echo "]</a></li>
 \t\t\t\t\t\t";
-            // line 264
+            // line 409
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable(twig_slice($this->env, (isset($context["liste_pays"]) ? $context["liste_pays"] : $this->getContext($context, "liste_pays")), 0, 4));
             $context['_iterated'] = false;
             foreach ($context['_seq'] as $context["_key"] => $context["pays"]) {
-                // line 265
+                // line 410
                 echo "\t\t\t\t\t\t\t<li><a href=\"";
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["pays"]) ? $context["pays"] : $this->getContext($context, "pays")), "siteweb"), "html", null, true);
                 echo "\" target=\"_blank\"><img src=\"";
@@ -518,14 +663,14 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
                 $context['_iterated'] = true;
             }
             if (!$context['_iterated']) {
-                // line 267
+                // line 412
                 echo "\t\t\t\t\t\t\t<li><a href=\"#!\">Vide</a></li>
 \t\t\t\t\t\t";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['pays'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 269
+            // line 414
             echo "\t\t\t\t\t</ul>
 \t\t\t\t</div>
 \t\t</div>
@@ -536,7 +681,7 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 \t  <div class=\"row\">
 \t\t  <div class=\"col-md-6\">
 \t\t\t\t© 2014 - ";
-            // line 278
+            // line 423
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "Y"), "html", null, true);
             echo " A.F.H unt.com
 \t\t   </div>
@@ -569,6 +714,6 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 
     public function getDebugInfo()
     {
-        return array (  540 => 278,  529 => 269,  522 => 267,  506 => 265,  501 => 264,  497 => 263,  491 => 259,  484 => 257,  468 => 255,  463 => 254,  459 => 253,  453 => 249,  446 => 247,  430 => 245,  425 => 244,  421 => 243,  409 => 236,  403 => 235,  399 => 234,  392 => 230,  388 => 229,  384 => 228,  380 => 227,  357 => 209,  341 => 196,  332 => 190,  323 => 184,  314 => 178,  298 => 165,  290 => 160,  282 => 155,  274 => 150,  259 => 137,  239 => 120,  205 => 88,  198 => 86,  188 => 84,  183 => 83,  177 => 80,  171 => 76,  164 => 74,  154 => 72,  149 => 71,  143 => 68,  137 => 64,  130 => 62,  120 => 60,  115 => 59,  109 => 56,  102 => 52,  98 => 51,  94 => 50,  90 => 49,  79 => 43,  73 => 42,  69 => 41,  56 => 33,  25 => 4,  23 => 3,  19 => 1,);
+        return array (  685 => 423,  674 => 414,  667 => 412,  651 => 410,  646 => 409,  642 => 408,  636 => 404,  629 => 402,  613 => 400,  608 => 399,  604 => 398,  598 => 394,  591 => 392,  575 => 390,  570 => 389,  566 => 388,  554 => 381,  548 => 380,  544 => 379,  537 => 375,  533 => 374,  529 => 373,  525 => 372,  502 => 354,  486 => 341,  477 => 335,  468 => 329,  459 => 323,  443 => 310,  435 => 305,  427 => 300,  419 => 295,  404 => 282,  382 => 263,  345 => 228,  338 => 226,  328 => 224,  323 => 223,  317 => 220,  311 => 216,  304 => 214,  294 => 212,  289 => 211,  283 => 208,  277 => 204,  270 => 202,  260 => 200,  255 => 199,  249 => 196,  237 => 187,  227 => 180,  217 => 173,  207 => 166,  188 => 152,  182 => 151,  178 => 150,  166 => 143,  25 => 4,  23 => 3,  19 => 1,);
     }
 }

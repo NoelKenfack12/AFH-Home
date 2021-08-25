@@ -21,6 +21,116 @@
         color: #f39c12;
         transition:all .001s;
     }
+
+	/* Link Style 5 */
+.link5 a {
+	color: #325da8;
+	background-image: linear-gradient(to bottom, transparent 65%, #9ebb3d 0);
+	background-size: 0% 100%;
+	background-repeat: no-repeat;
+	text-decoration: none;
+	transition: background-size .4s ease;
+	text-decoration: none;
+	box-shadow: none;
+	font-family: Philosopher-Bold;
+}
+
+.link5 a:hover {
+	background-size: 100% 100%;
+	cursor: pointer;
+}
+
+
+.buttonrs {
+	float: left;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	background: #fff;
+	overflow: hidden;
+	border-radius: 40px;
+	transition: all 0.3s ease-in-out;
+}
+
+.buttonrs span {
+	font-size: 12px;
+	font-weight: 200;
+	line-height: 20px;
+	margin-left: 0px;
+	font-family: OpenSans-SemiBold;
+}
+
+.buttonrs:hover {
+	width: 120px;
+}
+
+.buttonrs:nth-child(1):hover .icon {
+	background: #e1306c;
+}
+
+.buttonrs:nth-child(2):hover .icon {
+	background: #4267b2;
+}
+
+.buttonrs:nth-child(3):hover .icon {
+	background: #1da1f2;
+}
+
+.buttonrs:nth-child(4):hover .icon {
+	background: #0e76a8;
+}
+
+.buttonrs:nth-child(5):hover .icon {
+	background: #ff0000;
+}
+
+.buttonrs:nth-child(6):hover .icon {
+	background: #333;
+}
+
+.buttonrs:nth-child(1) span {
+	color: #e1306c;
+}
+
+.buttonrs:nth-child(2) span {
+	color: #4267b2;
+}
+
+.buttonrs:nth-child(3) span {
+	color: #1da1f2;
+}
+
+.buttonrs:nth-child(4) span {
+	color: #0e76a8;
+}
+
+.buttonrs:nth-child(5) span {
+	color: #ff0000;
+}
+
+.buttonrs:nth-child(6) span {
+	color: #333;
+}
+
+.buttonrs .icon {
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	border-radius: 50px;
+	display: inline-block;
+	transition: all 0.3s ease-in-out;
+}
+
+.buttonrs .icon i {
+	font-size: 15px;
+	line-height: 40px;
+	transition: all 0.3s ease-in-out;
+}
+
+.buttonrs:hover i {
+	color: #fff;
+}
+
 </style>
 
 <footer style="min-height: 100px; border-top: 1px solid #ddd;">
@@ -30,38 +140,68 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-4 footers-one">
                      <div class="footers-logo">
-                        <h3><img src="{{ asset('template/images/logo-sm-afh.png') }}" alt="{{ site }}" style="width: 50px; height: 50px; float: left;  margin-right: 20px;"/> A.F.H unt.com</h3>
+                        <h3 style="font-family: Philosopher-Bold;"><img src="{{ asset('template/images/logo-sm-afh.png') }}" alt="{{ site }}" style="width: 50px; height: 50px; float: left;  margin-right: 20px;"/> A.F.H unt.com</h3>
                      </div>
                      <div class="footers-info mt-3">
                          <p>
-                            
-				            Des services et produits incontournables pour le développement de votre activité numérique.
+				            Engagé dans les services intelligeant sur mesure et l’intégration socio-professionnelle des jeunes depuis 2014.
                             <div style="color: #fff;">
                               <ul class="list-unstyled">
-                                <li><a href="#!">{{ localisation }}</a></li>
-                                <li><a href="https://api.whatsapp.com/send?phone={{ telephone }}" target="_blank">Whatsapp: +{{ telephone }}</a></li>
-                                <li><a href="tel:{{ telephone2 }}">MTN: +{{ telephone2 }}</a></li>
+                                <li class="link5"><a href="#!">{{ localisation }}</a></li>
+                                <li class="link5"><a href="https://api.whatsapp.com/send?phone={{ telephone }}" target="_blank">Whatsapp: +{{ telephone }}</a></li>
+                                <li class="link5"><a href="tel:{{ telephone2 }}">MTN: +{{ telephone2 }}</a></li>
                               </ul>
                             </div>
                          </p>
                      </div>
-                     <div class="social-icons"> 
-                     <a href="{{ facebook }}" target="_blank"><i id="social-fb" class="fa fa-facebook-square fa-2x social"></i></a>
-                     <a href="{{ twitter }}" target="_blank"><i id="social-tw" class="fa fa-twitter-square fa-2x social"></i></a>
-                     <a href="{{ google }}" target="_blank"><i id="social-gp" class="fa fa-youtube-square fa-2x social"></i></a>
-                     <a href="{{ linkedin }}" target="_blank"><i id="social-em" class="fa fa-linkedin-square fa-2x social"></i></a>
-                 </div>
+
+					 <div style="white-space: nowrap!important; min-width: 500px;">
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-instagram"></i>
+							</div>
+							<span>Instagram</span>
+						</a>
+				
+						<a href="{{ facebook }}" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="{{ twitter }}" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="{{ linkedin }}" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+				
+						<a href="{{ google }}" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-youtube"></i>
+							</div>
+							<span>YouTube</span>
+						</a>
+					 </div>
                  </div>
                 <div class="col-xs-12 col-sm-6 col-md-2 footers-two">
                      <h5> Technologie [{{ appli_tech|length }}]</h5>
                      <p>CMS et solutions sur mesures</p>
                      <ul class="list-unstyled">
                         {% for app in appli_tech|slice(0,4) %}
-                            <li><a href="{{ app.link }}" target="_blank"> {{ app.nom }}</a></li>
+                            <li class="link5"><a href="{{ app.link }}" target="_blank"> {{ app.nom }}</a></li>
                         {% else %}
-                            <li><a href="#!">Vide</a></li>
+                            <li class="link5"><a href="#!">Vide</a></li>
                         {% endfor %}
-                        <li><a href="#!"><span class="fa fa-plus-square"></span> Afficher plus</a></li>
+                        <li class="link5"><a href="#!"><span class="fa fa-plus"></span> Afficher plus</a></li>
                      </ul>
                  </div>
                 <div class="col-xs-12 col-sm-6 col-md-2 footers-three">
@@ -69,11 +209,11 @@
                      <p>Communication et vente</p>
                      <ul class="list-unstyled">
 						{% for app in appli_marketing|slice(0,4) %}
-							<li><a href="{{ app.link }}" target="_blank"> {{ app.nom }}</a></li>
+							<li class="link5"><a href="{{ app.link }}" target="_blank"> {{ app.nom }}</a></li>
 						{% else %}
-							<li><a href="#!">Vide</a></li>
+							<li class="link5"><a href="#!">Vide</a></li>
 						{% endfor %}
-                        <li><a href="#!"><span class="fa fa-plus-square"></span> Afficher plus</a></li>
+                        <li class="link5"><a href="#!"><span class="fa fa-plus"></span> Afficher plus</a></li>
                      </ul>
                  </div>
                 <div class="col-xs-12 col-sm-6 col-md-2 footers-four">
@@ -81,21 +221,22 @@
                      <p>Référencement et géolocalisation</p>
                      <ul class="list-unstyled">
 						{% for pays in liste_pays|slice(0,4) %}
-							<li><a href="{{ pays.siteweb }}" target="_blank"> {{ pays.nom }}</a></li>
+							<li class="link5"><a href="{{ pays.siteweb }}" target="_blank"> {{ pays.nom }}</a></li>
 						{% else %}
-							<li><a href="#!">Vide</a></li>
+							<li class="link5"><a href="#!">Vide</a></li>
 						{% endfor %}
-                        <li><a href="#!"><span class="fa fa-plus-square"></span> Afficher plus</a></li>
+                        <li class="link5"><a href="#!"><span class="fa fa-plus"></span> Afficher plus</a></li>
                      </ul>
                  </div>
                 <div class="col-xs-12 col-sm-6 col-md-2 footers-five">
-                     <h5>Company </h5>
+                     <h5>À propos </h5>
+					 <p>L'innovation au coeur des projets AFH</p>
                      <ul class="list-unstyled">
-                      <li><a href="maintenance.html">Career</a></li>
-                      <li><a href="about.html">For Parters</a></li>
-                      <li><a href="about.html">Terms</a></li>
-                      <li><a href="about.html">Policy</a></li>
-                      <li><a href="contact.html">Contact Us</a></li>
+                      <li class="link5"><a href="#!">L'entreprise</a></li>
+                      <li class="link5"><a href="#!">Les projets</a></li>
+                      <li class="link5"><a href="#!">Les statistiques</a></li>
+                      <li class="link5"><a href="#!">Contribuer</a></li>
+                      <li class="link5"><a href="#!">Investir</a></li>
                      </ul>
                  </div>
                  
@@ -119,13 +260,15 @@
          <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                      © 2014 - {{ 'now'|date('Y') }} A.F.H unt.com
+                      <strong style="font-family: Philosopher-Bold;">© 2014 - {{ 'now'|date('Y') }} A.F.H unt.com</strong> 
+					  Made width <span class="fa fa-heart-o" style="color: red;"></span> by <a href="http://code.afhunt.com" target="_blank">AFH Code</a>
                  </div>
-                <div class="col-md-6">
-                    <a href="#!" style="float: right; padding: 2px;">
+                <div class="col-md-6 text-right">
+                    <a href="#!">
                        Conditions d'utilisations
                     </a>
-                    <a href="#!" style="float: right; padding: 2px;">
+					<span style="font-size: 13px;" class="fa fa-eercast"></span>
+                    <a href="#!">
                        Confidentialité
                     </a>
                 </div>

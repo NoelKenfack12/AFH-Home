@@ -16,14 +16,19 @@ class __TwigTemplate_b636cf9262d7587a9b395c57ff8010a43ab2cfe05170196885537580c76
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "<div class=\"toutleblock-popup\">
+        echo "<style>
+\t.icon-circle-panel{
+\t\tposition: absolute; top: 0px; right: 0px; height: 120px; width: 120px; background: #9dba3d; border-radius: 0px 0px 0px 50%; padding: 15px;
+\t}
+</style>
+<div class=\"toutleblock-popup\">
 \t<div class=\"shadow3\" style=\"padding: 15px;\">
 \t\t<div class=\"card-body\">
 
 \t\t<div class=\"single_variation_wrap\">
 \t\t\t<div class=\"single_variation\">
 \t\t\t\t<img src=\"";
-        // line 7
+        // line 12
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("templateafh/images/logo-lg-afh.png"), "html", null, true);
         echo "\" alt=\"\" style=\"border-radius: 10px; border: 1px dashed #ddd;\"/>
 \t\t\t</div>
@@ -68,20 +73,26 @@ class __TwigTemplate_b636cf9262d7587a9b395c57ff8010a43ab2cfe05170196885537580c76
 \t\t</div>
 \t</div>
 
-\t<div class=\"shadow3\" style=\"padding: 15px; margin-top: 15px;\">
+\t<div class=\"shadow3\" style=\"padding: 15px; margin-top: 15px; position: sticky;\">
+\t\t<div class=\"icon-circle-panel\">
+
+\t\t</div>
 \t\t<div class=\"article-detail article-panel\">
 \t\t\t<h2>Vision</h2>
 \t\t\t<h4 style=\"margin-bottom: 20px;\">
-\t\t\t\t dffdfdfd
+\t\t\t\tÊtre un groupe de référence en matière de nouvelles technologies en Afrique dans les Années à venir.
 \t\t\t</h4>
 \t\t</div>
 \t</div>
 
-\t<div class=\"shadow3\" style=\"padding: 15px; margin-top: 15px;\">
+\t<div class=\"shadow3\" style=\"padding: 15px; margin-top: 15px; position: sticky;\">
+\t\t<div class=\"icon-circle-panel\">
+
+\t\t</div>
 \t\t<div class=\"article-detail article-panel\">
 \t\t\t<h2>Mission</h2>
 \t\t\t<h4 style=\"margin-bottom: 20px;\">
-\t\t\t\t dffdfdfd
+\t\t\t\tFédérer les forces financière et technique autour des problématiques precises dans le but d'apporter des solutions adaptées.
 \t\t\t</h4>
 \t\t</div>
 \t</div>
@@ -103,6 +114,6 @@ class __TwigTemplate_b636cf9262d7587a9b395c57ff8010a43ab2cfe05170196885537580c76
 
     public function getDebugInfo()
     {
-        return array (  27 => 7,  341 => 320,  339 => 319,  19 => 1,);
+        return array (  32 => 12,  19 => 1,);
     }
 }

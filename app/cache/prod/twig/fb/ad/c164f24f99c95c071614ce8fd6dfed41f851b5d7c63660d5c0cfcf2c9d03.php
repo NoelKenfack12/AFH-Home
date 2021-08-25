@@ -32,48 +32,51 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
     public function block_meta($context, array $blocks = array())
     {
         // line 3
+        echo "
+  ";
+        // line 4
         $this->displayParentBlock("meta", $context, $blocks);
         echo "
-<meta name=\"keywords\" content=\"";
-        // line 4
+  <meta name=\"keywords\" content=\"";
+        // line 5
         echo twig_escape_filter($this->env, (isset($context["site"]) ? $context["site"] : $this->getContext($context, "site")), "html", null, true);
         echo ", start-up, applications,référencement,annuaire, annonces,technologie, hébergement web,e-commerce,stratégie marketing,annonces, annonce afrique,études, bonnes affaires, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, visite guidée, cameroun, site cameroun,hébergement web cameroun,site moins cher, vente en ligne, commerce en afrique, afrique Explorer, web marketing, référencement SEO, développement web sur mesure, ";
         echo twig_escape_filter($this->env, (isset($context["keywords"]) ? $context["keywords"] : $this->getContext($context, "keywords")), "html", null, true);
         echo "\"/>
-<meta name=\"author\" content=\"Noel Kenfack\"/>
-<meta name=\"description\" content=\"AFHunt est une entreprise Camerounaise qui vise à opérer une véritable transformation numérique au Cameroun et en Afrique, pour faciliter les opérations digitales des particuliers et des entreprises. \"/>
+  <meta name=\"author\" content=\"Noel Kenfack\"/>
+  <meta name=\"description\" content=\"AFHunt est une entreprise Camerounaise qui vise à opérer une véritable transformation numérique au Cameroun et en Afrique, pour faciliter les opérations digitales des particuliers et des entreprises. \"/>
 
 ";
     }
 
-    // line 10
+    // line 11
     public function block_title($context, array $blocks = array())
     {
-        // line 11
+        // line 12
         echo "  ";
         $this->displayParentBlock("title", $context, $blocks);
         echo " - Solutions et services intelligents prêt à l'emploi
 ";
     }
 
-    // line 14
+    // line 15
     public function block_stylesheets($context, array $blocks = array())
     {
-        // line 15
+        // line 16
         echo "  ";
         $this->displayParentBlock("stylesheets", $context, $blocks);
         echo "
 ";
     }
 
-    // line 18
+    // line 19
     public function block_userblog_body($context, array $blocks = array())
     {
-        // line 19
+        // line 20
         echo "
     <div class=\"\" style=\"position: absolute; z-index: 1; top: 0px; width: 100%;\">
       <img src=\"";
-        // line 21
+        // line 22
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/vector-top.png"), "html", null, true);
         echo "\" alt=\"\" style=\"height: 500px;\">
     </div>
@@ -87,7 +90,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
     \t\t\t\t</a>
             <a href=\"#\">
                 <img src=\"";
-        // line 32
+        // line 33
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/afh-logo2.png"), "html", null, true);
         echo "\" alt=\"\" style=\"width: 300px;\">
             </a>
@@ -104,7 +107,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
             <div class=\"col-xl-6 col-xxl-5\">
               <div class=\"\">
                 <img src=\"";
-        // line 46
+        // line 47
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/home-image.png"), "html", null, true);
         echo "\" alt=\"\" style=\"height: 350px;\"/>
               </div>
@@ -332,7 +335,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
                       <div class=\"text-left\">
                         <img src=\"";
-        // line 271
+        // line 272
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_01.png"), "html", null, true);
         echo "\" alt=\"\" style=\"\">
                       </div>
@@ -342,7 +345,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
                       <div class=\"help-content\">
                         Pendant ";
-        // line 278
+        // line 279
         echo twig_escape_filter($this->env, (twig_date_format_filter($this->env, "now", "Y") - 2013), "html", null, true);
         echo " années d’exercices, nous avons réalisé un nombre important de projets pour les entreprises, les organisations, les gouvernements et les particuliers ! </br>Découvrez quelques un ci-dessous.
                       </div>
@@ -367,7 +370,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
                       <div class=\"text-left\">
                         <img src=\"";
-        // line 300
+        // line 301
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_01.png"), "html", null, true);
         echo "\" alt=\"\" style=\"\">
                       </div>
@@ -399,7 +402,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
                       <div class=\"text-left\">
                         <img src=\"";
-        // line 329
+        // line 330
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_14.png"), "html", null, true);
         echo "\" alt=\"\" style=\"\">
                       </div>
@@ -431,7 +434,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
                       <div class=\"text-left\">
                         <img src=\"";
-        // line 358
+        // line 359
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_16.png"), "html", null, true);
         echo "\" alt=\"\" style=\"\">
                       </div>
@@ -471,7 +474,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                   <div class=\"inner\" style=\"margin-top: -40px;\">
                 
                     <figure class=\"top top1\">
-                      <figure class=\"cube-face cubeface1\">45</figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -485,7 +490,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top3\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -499,7 +506,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top5\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -513,7 +522,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top7\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -527,7 +538,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top9\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -548,7 +561,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top12\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -562,7 +577,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top14\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -576,7 +593,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top16\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -590,7 +609,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top18\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -604,14 +625,18 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top20\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top21\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -625,7 +650,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top23\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -639,7 +666,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top25\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -653,7 +682,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top27\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -667,7 +698,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top29\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -688,7 +721,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top32\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -702,7 +737,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top34\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -716,7 +753,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top36\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -730,7 +769,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top38\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -744,14 +785,19 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top40\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
+                    
                     <figure class=\"top top41\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -765,7 +811,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top43\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -779,21 +827,27 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top45\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
+                        <span style=\"color: #fff; font-size: 20px; display: inline-block; padding: 7px 15px; font-family: Montserrat-ExtraBold;\">A</span>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top46\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
+                        <span style=\"color: #fff; font-size: 20px; display: inline-block; padding: 7px 15px; font-family: Montserrat-ExtraBold;\">F</span>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top47\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -807,7 +861,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top49\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -828,7 +884,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top52\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -842,21 +900,27 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top54\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top55\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
+                        <span style=\"color: #fff; font-size: 20px; display: inline-block; padding: 7px 15px; font-family: Montserrat-ExtraBold;\">H</span>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top56\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
+                        <span style=\"color: #fff; font-size: 15px; display: inline-block; padding: 15px 10px;\">Unt</span>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -870,7 +934,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top58\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -884,14 +950,18 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top60\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top61\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -905,7 +975,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top63\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -919,7 +991,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top65\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -933,7 +1007,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top67\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -947,7 +1023,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top69\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -968,7 +1046,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top72\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -982,7 +1062,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top74\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -996,7 +1078,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top76\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -1010,7 +1094,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top78\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -1024,14 +1110,18 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top80\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top81\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -1045,7 +1135,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top83\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -1059,7 +1151,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top85\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -1073,7 +1167,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top87\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -1087,7 +1183,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top89\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -1108,7 +1206,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top92\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -1122,23 +1222,25 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top94\">
-                      <figure class=\"cube-face cubeface1\">jkjk</figure>
-                      <figure class=\"cube-face cubeface2\"></figure>
-                      <figure class=\"cube-face cubeface3\"></figure>
-                      <figure class=\"cube-face cubeface4\"></figure>
-                      <figure class=\"cube-face cubeface5\"></figure>
-                    </figure>
-                    <figure class=\"top top95\">
-                      <figure class=\"cube-face cubeface1\" style=\"background: green;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">Afex Win</a>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
-                    <figure class=\"top top96\">
+                    <figure class=\"top top95\">
                       <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface2\"></figure>
+                      <figure class=\"cube-face cubeface3\"></figure>
+                      <figure class=\"cube-face cubeface4\"></figure>
+                      <figure class=\"cube-face cubeface5\"></figure>
+                    </figure>
+                    <figure class=\"top top96\">
+                      <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -1146,13 +1248,15 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top97\">
                       <figure class=\"cube-face cubeface1\"></figure>
-                      <figure class=\"cube-face cubeface2\">45</figure>
+                      <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top98\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
                       <figure class=\"cube-face cubeface4\"></figure>
@@ -1166,17 +1270,17 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                     <figure class=\"top top100\">
-                      <figure class=\"cube-face cubeface1\"></figure>
+                      <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
+                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                      </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
-                      <figure class=\"cube-face cubeface4\">45</figure>
-                      <figure class=\"cube-face cubeface5\">12</figure>
+                      <figure class=\"cube-face cubeface4\"></figure>
+                      <figure class=\"cube-face cubeface5\"></figure>
                     </figure>
                 
                   </div>
                 </div>
-
-
               </div>
 
               <div class=\"col-md-6\" style=\"padding-top: 50px;\">
@@ -1204,7 +1308,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                   transform: translateX(-5px);
                   font-family: var(--font-display);
                   margin-bottom: 0;
-                  line-height: 80px;
+                  line-height: 60px;
                   font-family: Quicksand-Bold;
                   text-transform: capitalize;
                 }
@@ -1313,6 +1417,35 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
   margin-top: 25px;
 }
 
+.btn-afh {
+  color: yellow;
+  padding: 5px 15px;
+  background-color: red;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgba(51, 51, 51, 0.4);
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  font-family: Raleway-Medium;
+  font-size: 14px;
+}
+.btn-afh::before {
+  content: \"\";
+  width: 0%;
+  height: 0%;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  
+  transform: translate(-50%, -50%);
+  transition: all 0.3s;
+}
+.btn-afh:hover::before {
+  width: 100%;
+  padding-top: 100%;
+}
+.btn-afh span {
+  position: relative;
+}
+
 
                 </style>
 
@@ -1323,21 +1456,22 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                 font-family: var(--font-family);\">
 
                   <h2>Contributions</h2>
-                  <h4 style=\"margin-bottom: 20px;\">Notre coeur bat au rythme des projets que nous portons depuis les années avec vous !</h4>
+                  <h4 style=\"margin-bottom: 20px;\">Notre coeur bat au rythme des projets que nous portons depuis des années avec vous !</h4>
 
-                  <div class=\"cardcomponent cardcomponent-1\" style=\"border-top: 2px solid #ec6e11; background-image: url(https://ionicframework.com/img/getting-started/ionic-native-card.png);\">
+                  <div class=\"cardcomponent cardcomponent-1\" style=\"border-top: 2px solid #99d3ce; background-image: url(https://ionicframework.com/img/getting-started/ionic-native-card.png);\">
                     <h4>Communauté d'experts volontaire</h4>
-                    <p>Pour en savoir plus sur nous et nos travaux cmliequez sur le lien ci-dessous.</p>
-                    <a href=\"\" class=\"btn btn-raised btn-danger\" >
-                      À propos de nous
-                    </a>
+                    <p style=\"font-family: Muli-Regular; font-size: 12px; margin-bottom: 10px\">Les experts mettent leurs compétences au profit de la croissance des projets AFH et montent en puissance avec les projets sur lesquels ils interviennent.</p>
+                    
+                      <a href=\"#!\" class=\"btn-afh btn-raised btn-danger\" style=\"background: #9dba3d; color: #fff;\">
+                        <span>En savoir plus</span>
+                      </a>
                   </div>
 
-                  <div class=\"cardcomponent cardcomponent-2\" style=\"border-top: 2px solid #ec6e11;  background-image: url(https://ionicframework.com/img/getting-started/components-card.png);\">
-                    <h4>Investir sur un projet</h4>
-                    <p>Tabs, buttons, inputs, lists, cards, and more! A </p>
-                    <a href=\"\" class=\"btn btn-raised btn-danger\" >
-                      En savoir plus
+                  <div class=\"cardcomponent cardcomponent-2\" style=\"border-top: 2px soli #99d3ce;  background-image: url(https://ionicframework.com/img/getting-started/components-card.png);\">
+                    <h4>Communauté d'investisseurs</h4>
+                    <p style=\"font-family: Muli-Regular; font-size: 12px;\">Les vionnaires investissent sur les projets AFH dans le but de faire fructifier leurs investissements à cours et à long terme.</p>
+                    <a href=\"#!\" class=\"btn-afh btn-raised btn-danger\"  style=\"background: #9dba3d; color: #fff;\">
+                      <span>En savoir plus</span>
                     </a>
                   </div>
                   
@@ -1349,148 +1483,318 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
       </section>
 
       <style>
-.section-card {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.section-card + .section-card {
-  margin-top: 2.5em;
-}
+    .section-card {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-card + .section-card {
+      margin-top: 2.5em;
+    }
 
-.section-card h1 {
-  font-weight: 700;
-  line-height: 1.125;
-  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-}
+    .section-card h1 {
+      font-weight: 700;
+      line-height: 1.125;
+      font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    }
 
-.section-card h2 {
-  margin-top: 0.25em;
-  color: #999;
-  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
-}
-.section-card h2 + * {
-  margin-top: 1.5em;
-}
+    .section-card h2 {
+      margin-top: 0.25em;
+      color: #999;
+      font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+    }
+    .section-card h2 + * {
+      margin-top: 1.5em;
+    }
 
-summary {
-  background-color: #fff;
-  position: relative;
-  cursor: pointer;
-  padding: 1em 0.5em;
-  list-style: none;
-  padding-left: 50px;
-}
-summary::-webkit-details-marker {
-  display: none;
-}
-summary:hover {
-  background-color: #f2f5f9;
-}
-summary div {
-  display: flex;
-  align-items: center;
-}
-summary h3 {
-  display: flex;
-  flex-direction: column;
-}
-summary small {
-  color: #999;
-  font-size: 0.875em;
-}
-summary strong {
-  font-weight: 700;
-}
-summary span:first-child {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 10px;
-  background-color: #f3e1e1;
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  margin-right: 1.25em;
-}
-summary span:first-child svg {
-  width: 2.25rem;
-  height: 2.25rem;
-}
-summary span:last-child {
-  font-weight: 700;
-  margin-left: auto;
-}
-summary:focus {
-  outline: none;
-}
-summary .plus {
-  color: #289672;
-}
+    summary {
+      background-color: #fff;
+      position: relative;
+      cursor: pointer;
+      padding: 1em 0.5em;
+      list-style: none;
+      padding-left: 50px;
+      border: 2px solid #fff;
+      box-shadow: 0px 2px 8px 0px #b0bec5;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    summary:hover {
+      background-color: #f2f5f9;
+    }
+    summary div {
+      display: flex;
+      align-items: center;
+    }
+    summary h3 {
+      display: flex;
+      flex-direction: column;
+    }
+    summary small {
+      color: #333;
+      font-size: 16px;
+      font-family: OpenSans-Light;
+    }
+    summary strong {
+      font-weight: 700;
+    }
+    summary span:first-child {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 10px;
+      background-color: #f3e1e1;
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1.25em;
+    }
+    summary span:first-child svg {
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+    summary span:last-child {
+      font-weight: 700;
+      margin-left: auto;
+    }
+    summary:focus {
+      outline: none;
+    }
+    summary .plus {
+      color: #289672;
+    }
 
-details {
-  border-bottom: 1px solid #b5bfd9;
-}
-details[open] {
-  box-shadow: -3px 0 0 #b5bfd9;
-}
-details:first-of-type {
-  border-top: 1px solid #b5bfd9;
-}
-details > div {
-  padding: 2em 2em 0;
-  font-size: 0.875em;
-}
+    details {
+      border-bottom: 1px solid #b5bfd9;
+    }
+    details[open] {
+      box-shadow: -3px 0 0 #b5bfd9;
+    }
+    details:first-of-type {
+      border-top: 1px solid #b5bfd9;
+    }
+    details > div {
+      padding: 2em 2em 0;
+      font-size: 0.875em;
+    }
 
-dl {
-  display: flex;
-  flex-wrap: wrap;
-}
-dl dt {
-  font-weight: 700;
-}
-dl div {
-  margin-right: 4em;
-  margin-bottom: 2em;
-}
+    dl {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    dl dt {
+      font-weight: 700;
+    }
+    dl div {
+      margin-right: 4em;
+      margin-bottom: 2em;
+    }
+    .data-description{
+      background: #fff;
+    }
 
-@media (min-width: 576px){
-.box-side-left, .box-side-right{
-  background: #93d4cf!important;
-  height: 820px;
-}}
+    @media (min-width: 576px){
+    .box-side-left, .box-side-right{
+      background: #93d4cf!important;
+      height: 800px;
+    }}
+
+    .animated-progress {
+      width: 150px;
+      height: 20px;
+      border-radius: 5px;
+      margin: 20px 10px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 
+            inset 0px 11px 8px -10px #CCC,
+            inset 0px -11px 8px -10px #CCC; 
+    }
+
+    .animated-progress span {
+      height: 100%;
+      display: block;
+      width: 0;
+      color: rgb(255, 251, 251);
+      line-height: 20px;
+      position: absolute;
+      text-align: end;
+      padding-right: 5px;
+    }
+
+    .progress-blue span {
+      background-color: #325ea9!important;
+    }
+    .progress-green span {
+      background-color: #9ebb3d!important;
+    }
+    .progress-purple span {
+      background-color: #364a5e!important;
+    }
+    .progress-red span {
+      background-color: #eb6d11!important;
+    }
       </style>
 
 
-\t  <section class=\"small-screen section section-xxl bg-gradient-1\" style=\"position: relative!important;z-index: 1;\">
-        <div class=\"container\">
-          <div class=\"block-xl block-center text-center\">
-            <h2>Easily Build Your New Website with different pre-made pages</h2>
+<section class=\"small-screen section section-xxl bg-gradient-1\" style=\"position: relative!important;z-index: 1;\">
+  <div class=\"container\">
+      <div class=\"article-detail\" style=\"background: #fff; font-size: 21px; line-height: 2;
+          padding: var(--padding);
+          color: var(--text-color);
+          font-family: var(--font-family);\">
+          <h2>AFHunt en bref</h2>
+          <h4>5 minutes pour un aperçu des engagements AFHunt.</h4>
+       </div>
+  </div>
+  
+<div class=\"owl-carousel owl-style-1 owl-loaded owl-drag\" data-md-items=\"2\" data-nav=\"true\" data-margin=\"13\" style=\"\">
+
+  <div class=\"owl-stage-outer\">
+    <div class=\"owl-stage\" style=\"transform: translate3d(-1540px, 0px, 0px); transition: all 0.25s ease 0s;\">
+      <div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\">
+        <a href=\"#!\" class=\"inner-parad-card first-item collapse-gigamenu\"  value=\"about\" data-parallax-scroll=\"{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}\">
+  
+          <div class=\"text-left\">
+            <img src=\"";
+        // line 1580
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_01.png"), "html", null, true);
+        echo "\" alt=\"\">
           </div>
-        </div>
-        <div class=\"owl-carousel owl-style-1 owl-loaded owl-drag\" data-md-items=\"2\" data-nav=\"true\" data-margin=\"13\" style=\"\">
-
-
-
-
-      <div class=\"owl-stage-outer\">
-        <div class=\"owl-stage\" style=\"transform: translate3d(-1540px, 0px, 0px); transition: all 0.25s ease 0s; width: 3081px;\"><div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\"><div class=\"page-figure-wrap\"><a class=\"page-figure\" href=\"../cute-construction-company/grid-blog-2.html\"><img src=\"images/presset-3-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a><a class=\"page-figure\" href=\"../cute-construction-company/classic-blog.html\"><img src=\"images/presset-6-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a></div></div><div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\"><div class=\"page-figure-wrap\"><a class=\"page-figure\" href=\"../cute-creator/about-us.html\"><img src=\"images/presset-1-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a><a class=\"page-figure\" href=\"../cute-creator/our-team.html\"><img src=\"images/presset-4-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a></div></div><div class=\"owl-item\" style=\"width: 372.112px; margin-right: 13px;\"><div class=\"page-figure-wrap\"><a class=\"page-figure\" href=\"../cute-creator/single-project.html\"><img src=\"images/presset-2-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a><a class=\"page-figure\" href=\"../cute-software-company/pricing.html\"><img src=\"images/presset-5-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a></div></div><div class=\"owl-item\" style=\"width: 372.112px; margin-right: 13px;\"><div class=\"page-figure-wrap\"><a class=\"page-figure\" href=\"../cute-software-company/grid-gallery.html\"><img src=\"images/presset-8-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a><a class=\"page-figure\" href=\"../cute-software-company/services-2.html\"><img src=\"images/presset-7-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a></div></div><div class=\"owl-item active\" style=\"width: 372.112px; margin-right: 13px;\"><div class=\"page-figure-wrap\"><a class=\"page-figure\" href=\"../cute-construction-company/grid-blog-2.html\"><img src=\"images/presset-3-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a><a class=\"page-figure\" href=\"../cute-construction-company/classic-blog.html\"><img src=\"images/presset-6-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a></div></div><div class=\"owl-item\" style=\"width: 372.112px; margin-right: 13px;\"><div class=\"page-figure-wrap\"><a class=\"page-figure\" href=\"../cute-creator/about-us.html\"><img src=\"images/presset-1-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a><a class=\"page-figure\" href=\"../cute-creator/our-team.html\"><img src=\"images/presset-4-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a></div></div><div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\"><div class=\"page-figure-wrap\"><a class=\"page-figure\" href=\"../cute-creator/single-project.html\"><img src=\"images/presset-2-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a><a class=\"page-figure\" href=\"../cute-software-company/pricing.html\"><img src=\"images/presset-5-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a></div></div><div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\"><div class=\"page-figure-wrap\"><a class=\"page-figure\" href=\"../cute-software-company/grid-gallery.html\"><img src=\"images/presset-8-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a><a class=\"page-figure\" href=\"../cute-software-company/services-2.html\"><img src=\"images/presset-7-559x381.jpg\" alt=\"\" width=\"559\" height=\"381\"></a></div></div></div></div><div class=\"owl-nav\">
-          <button type=\"button\" role=\"presentation\" class=\"owl-prev\">
-            <svg width=\"57\" height=\"63\" viewBox=\"0 0 57 63\" fill=\"none\">
-              <path d=\"M22.5 2.4641C26.2128 0.320508 30.7872 0.320508 34.5 2.4641L50.6458 11.7859C54.3586 13.9295 56.6458 17.891 56.6458 22.1782V40.8218C56.6458 45.109 54.3586 49.0705 50.6458 51.2141L34.5 60.5359C30.7872 62.6795 26.2128 62.6795 22.5 60.5359L6.35417 51.2141C2.64136 49.0705 0.354174 45.109 0.354174 40.8218L0.354174 22.1782C0.354174 17.891 2.64136 13.9295 6.35417 11.7859L22.5 2.4641Z\" fill=\"#39BA82\"></path>
-            </svg>
-          </button>
-          <button type=\"button\" role=\"presentation\" class=\"owl-next\">
-            <svg width=\"57\" height=\"63\" viewBox=\"0 0 57 63\" fill=\"none\">
-              <path d=\"M22.5 2.4641C26.2128 0.320508 30.7872 0.320508 34.5 2.4641L50.6458 11.7859C54.3586 13.9295 56.6458 17.891 56.6458 22.1782V40.8218C56.6458 45.109 54.3586 49.0705 50.6458 51.2141L34.5 60.5359C30.7872 62.6795 26.2128 62.6795 22.5 60.5359L6.35417 51.2141C2.64136 49.0705 0.354174 45.109 0.354174 40.8218L0.354174 22.1782C0.354174 17.891 2.64136 13.9295 6.35417 11.7859L22.5 2.4641Z\" fill=\"#39BA82\"></path>
-            </svg>
-          </button>
-        </div>
-        <div class=\"owl-dots disabled\">
-        </div>
+          <div class=\"help-title\">
+              À propos de AFHunt
+          </div>
+  
+          <div class=\"help-content\">
+            Nous sommes un groupe d'ingénieurs en chasse des technologies à la pointe contribuant à la croissance et le contrôle automatisé du flux d’opérations des startups et PMEs Moderne.
+          </div>
+  
+          <ul class=\"tags-box\">
+            <li>Vision</li>
+            <li>Mission</li>
+            <li>Equipe</li>
+            <li>Conférences</li>
+          </ul>
+  
+          <div class=\"text-center mg-t-5\">
+              <button class=\"lg-btn-primary\">Consulter <span class=\"fa fa-arrow-right\"></span></button>
+          </div>
+        </a>
+        
+      </div>
+  
+      <div class=\"owl-item active\" style=\"width: 372.112px; margin-right: 13px;\">
+        <a href=\"#!\" class=\"inner-parad-card first-item collapse-gigamenu\"  value=\"projet\" data-parallax-scroll=\"{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}\">
+  
+          <div class=\"text-left\">
+            <img src=\"";
+        // line 1608
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_01.png"), "html", null, true);
+        echo "\" alt=\"\" style=\"\">
+          </div>
+          <div class=\"help-title\">
+              Les projets
+          </div>
+  
+          <div class=\"help-content\">
+            Pendant ";
+        // line 1615
+        echo twig_escape_filter($this->env, (twig_date_format_filter($this->env, "now", "Y") - 2013), "html", null, true);
+        echo " années d’exercices, nous avons réalisé un nombre important de projets pour les entreprises, les organisations, les gouvernements et les particuliers ! </br>Découvrez quelques un ci-dessous.
+          </div>
+  
+  
+          <ul class=\"tags-box\">
+            <li>Liste</li>
+            <li>Investir</li>
+            <li>Commander</li>
+          </ul>
+  
+          <div class=\"text-center mg-t-5\">
+            <button class=\"lg-btn-primary\">Consulter <span class=\"fa fa-arrow-right\"></span></button>
+          </div>
+        </a>
+      </div>
+  
+      <div class=\"owl-item \" style=\"width: 372.112px; margin-right: 13px;\">
+        
+        <a href=\"#!\" class=\"inner-parad-card second-item collapse-gigamenu\"  value=\"statistique\" data-parallax-scroll=\"{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}\">
+  
+          <div class=\"text-left\">
+            <img src=\"";
+        // line 1636
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_14.png"), "html", null, true);
+        echo "\" alt=\"\" style=\"\">
+          </div>
+          <div class=\"help-title\">
+              Les statistiques
+          </div>
+  
+          <div class=\"help-content\">
+            Nous avons connus quelques effets boule de neige qui ont contribués à la constitution des communautés intéressé et active autours des projets divers que nous représentons aujourd’hui ! 
+          </div>
+  
+          <ul class=\"tags-box\">
+            <li>Communautés</li>
+            <li>Investissements</li>
+            <li>RH</li>
+          </ul>
+          
+          <div class=\"text-center mg-t-5\">
+            <button class=\"lg-btn-primary\">Consulter <span class=\"fa fa-arrow-right\"></span></button>
+          </div>
+  
+        </a>
+  
+      </div>
+  
+      <div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\">
+        <a href=\"\" class=\"inner-parad-card third-item\" data-parallax-scroll=\"{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}\">
+  
+          <div class=\"text-left\">
+            <img src=\"";
+        // line 1664
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_16.png"), "html", null, true);
+        echo "\" alt=\"\" style=\"\">
+          </div>
+          <div class=\"help-title\">
+              Nos Offres d'emploi
+          </div>
+  
+          <div class=\"help-content\">
+            Outil mis à la disposition du personnel métier de la chaine de contrôle du régime de vignettes
+          </div>
+  
+          <div class=\"text-center mg-t-5\">
+            <button class=\"lg-btn-primary\">Consulter <span class=\"fa fa-arrow-right\"></span></button>
+          </div>
+  
+          <span class=\"btn-item-action\">Continuer <span class=\"fa fa-chevron-circle-right\"></span> </span>
+        </a>
       </div>
 
-      </section>
+    </div>
+  </div>
+
+    <div class=\"owl-nav\">
+    <button type=\"button\" role=\"presentation\" class=\"owl-prev\">
+      <svg width=\"57\" height=\"63\" viewBox=\"0 0 57 63\" fill=\"none\">
+        <path d=\"M22.5 2.4641C26.2128 0.320508 30.7872 0.320508 34.5 2.4641L50.6458 11.7859C54.3586 13.9295 56.6458 17.891 56.6458 22.1782V40.8218C56.6458 45.109 54.3586 49.0705 50.6458 51.2141L34.5 60.5359C30.7872 62.6795 26.2128 62.6795 22.5 60.5359L6.35417 51.2141C2.64136 49.0705 0.354174 45.109 0.354174 40.8218L0.354174 22.1782C0.354174 17.891 2.64136 13.9295 6.35417 11.7859L22.5 2.4641Z\" fill=\"#39BA82\"></path>
+      </svg>
+    </button>
+    <button type=\"button\" role=\"presentation\" class=\"owl-next\">
+      <svg width=\"57\" height=\"63\" viewBox=\"0 0 57 63\" fill=\"none\">
+        <path d=\"M22.5 2.4641C26.2128 0.320508 30.7872 0.320508 34.5 2.4641L50.6458 11.7859C54.3586 13.9295 56.6458 17.891 56.6458 22.1782V40.8218C56.6458 45.109 54.3586 49.0705 50.6458 51.2141L34.5 60.5359C30.7872 62.6795 26.2128 62.6795 22.5 60.5359L6.35417 51.2141C2.64136 49.0705 0.354174 45.109 0.354174 40.8218L0.354174 22.1782C0.354174 17.891 2.64136 13.9295 6.35417 11.7859L22.5 2.4641Z\" fill=\"#39BA82\"></path>
+      </svg>
+    </button>
+  </div>
+  <div class=\"owl-dots disabled\"></div>
+</div>
+
+</section>
+
+
 
       <section class=\"bg-default section-xxl position-relative\" style=\"position: relative!important;z-index: 1; padding-top: 0px!important; margin-bottom: -20px;\">
         <div class=\"box-side box-side-left bg-gradient-1\"></div>
@@ -1505,7 +1809,7 @@ dl div {
                 color: var(--text-color);
                 font-family: var(--font-family);\">
                 <h2>Programme et expertise IT</h2>
-                <h4>Nos partenaires et nous travaillons main dans la main pour le développement et l'innovation dans les secteurs ci-dessous:</h4>
+                <h4>Nous travaillons de façon stratégique avec nos partenaires main dans la main pour le développement et l'innovation dans les secteurs ci-dessous:</h4>
             </div>
           </div>
         </div>
@@ -1533,10 +1837,16 @@ dl div {
                         <strong>cloud Computing</strong>
                         <small>Une Infrastructure solide comme du rock</small>
                       </h3>
-                      <span>-39.99 USD</span>
+                      <span>
+
+                        <div class=\"animated-progress progress-blue\">
+                          <span data-progress=\"45\"></span>
+                        </div>
+
+                      </span>
                     </div>
                   </summary>
-                  <div style=\"background: #fff;;\">
+                  <div class=\"data-description\">
                     <dl>
                       <div>
                         <dt>Time</dt>
@@ -1572,10 +1882,14 @@ dl div {
                         <strong>Big Data et Référencement web</strong>
                         <small>Des données  gigantesque gérées sur des architectures moderne.</small>
                       </h3>
-                      <span class=\"plus\">+50.00 USD</span>
+                      <span class=\"plus\">
+                        <div class=\"animated-progress progress-green\">
+                          <span data-progress=\"60\"></span>
+                        </div>
+                      </span>
                     </div>
                   </summary>
-                  <div>
+                  <div class=\"data-description\">
                     <dl>
                       <div>
                         <dt>Time</dt>
@@ -1607,10 +1921,14 @@ dl div {
                         <strong>E-commerce et Marketing Automation</strong>
                         <small>Food & Beverage</small>
                       </h3>
-                      <span>-14.99 USD</span>
+                      <span>
+                        <div class=\"animated-progress progress-purple\">
+                          <span data-progress=\"70\"></span>
+                        </div>
+                      </span>
                     </div>
                   </summary>
-                  <div>
+                  <div class=\"data-description\">
                     <dl>
                       <div>
                         <dt>Time</dt>
@@ -1639,10 +1957,14 @@ dl div {
                         <strong>Robotique et Intelligence Artificielle</strong>
                         <small>Music & Entertainment</small>
                       </h3>
-                      <span>-9.99 USD</span>
+                      <span>
+                        <div class=\"animated-progress progress-red\">
+                          <span data-progress=\"20\"></span>
+                        </div>
+                      </span>
                     </div>
                   </summary>
-                  <div>
+                  <div class=\"data-description\">
                     <dl>
                       <div>
                         <dt>Time</dt>
@@ -1672,10 +1994,14 @@ dl div {
                         <strong>Génie logiciel: Applis sur mesure et réalité virtuelle</strong>
                         <small>Music & Entertainment</small>
                       </h3>
-                      <span>-9.99 USD</span>
+                      <span>
+                        <div class=\"animated-progress progress-blue\">
+                          <span data-progress=\"45\"></span>
+                        </div>
+                      </span>
                     </div>
                   </summary>
-                  <div>
+                  <div class=\"data-description\">
                     <dl>
                       <div>
                         <dt>Time</dt>
@@ -1705,10 +2031,14 @@ dl div {
                         <strong>Industrie: transformation de la production locale</strong>
                         <small>Music & Entertainment</small>
                       </h3>
-                      <span>-9.99 USD</span>
+                      <span>
+                        <div class=\"animated-progress progress-green\">
+                          <span data-progress=\"18\"></span>
+                        </div>
+                      </span>
                     </div>
                   </summary>
-                  <div>
+                  <div class=\"data-description\">
                     <dl>
                       <div>
                         <dt>Time</dt>
@@ -1738,167 +2068,159 @@ dl div {
       <div class=\"testimonials-clean\" style=\"position: relative!important; margin: -70px 0px 40px 0px; z-index: 5;\">
         <div class=\"container\">
           <div class=\"article-detail\">
-            <h2>Nous construisons avec eux</h2>
-            <h4>Nos partenaires et nous travaillons main dans la main pour le développement et l'innovation dans les secteurs ci-dessous:</h4>
+            <h2>Nos piliés de développement</h2>
+            <h4>Notre développement est basé sur un canal bien définit que nous déveleppons progressivement avec beaucoup de passion.</h4>
           </div>
             <div class=\"row people\">
                 <div class=\"col-md-6 col-lg-4 item\">
                     <div class=\"box\">
-                        <p class=\"description\">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
-                    </div>
-                    <div class=\"author\"><img class=\"rounded-circle\" src=\"https://i.imgur.com/nUNhspp.jpg\">
-                        <h5 class=\"name\">Ben Johnson</h5>
-                        <p class=\"title\">CEO of Company Inc.</p>
-                    </div>
-                </div>
-                <div class=\"col-md-6 col-lg-4 item\">
-                    <div class=\"box\">
-                        <p class=\"description\">Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id.</p>
+                        <p class=\"description\">
+                          Nous nous efforçons de toujours propulsé les produits et services formidables dans un environnement qui stimule la créativité !
+                          <br/>
+                          <span class=\"fa fa-quote-left\"></span> _Pour y arriver nous travaillons avec beaucoup de partenaires et d'experts.
+                        </p>
                     </div>
                     <div class=\"author\"><img class=\"rounded-circle\" src=\"https://i.imgur.com/o5uMfKo.jpg\">
-                        <h5 class=\"name\">Carl Kent</h5>
-                        <p class=\"title\">Founder of Style Co.</p>
+                        <h5 class=\"name\">Production</h5>
+                        <p class=\"title\">Infrastructure & Architecture</p>
                     </div>
                 </div>
                 <div class=\"col-md-6 col-lg-4 item\">
                     <div class=\"box\">
-                        <p class=\"description\">Aliquam varius finibus est, et interdum justo suscipit. Vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+                        <p class=\"description\">
+                          Nous intégrons l'acheminement de nos services et produits sur les circuits naturellement et ou automatiquement développés par les entités du groupe et nos services intelligeant.
+                        </p>
+                    </div>
+                    <div class=\"author\"><img class=\"rounded-circle\" src=\"https://i.imgur.com/o5uMfKo.jpg\">
+                        <h5 class=\"name\">Vulgarisation</h5>
+                        <p class=\"title\">La communication auto.</p>
+                    </div>
+                </div>
+                <div class=\"col-md-6 col-lg-4 item\">
+                    <div class=\"box\">
+                        <p class=\"description\">
+                          Nous développons des communautés aimables et aimées qui partagent nos produits et services pour rendre leurs tâches quotidiennes moins douloureuses.
+                          <br/>
+                          <span class=\"fa fa-quote-left\"></span> Experts, Investisseurs, Clients, etc..
+                        </p>
                     </div>
                     <div class=\"author\">
-                      <img class=\"rounded-circle\" src=\"https://i.imgur.com/At1IG6H.png\">
-                        <h5 class=\"name\">Emily Clark</h5>
-                        <p class=\"title\">Owner of Creative Ltd.</p>
+                      <img class=\"rounded-circle\" src=\"https://i.imgur.com/o5uMfKo.jpg\">
+                        <h5 class=\"name\">Consommation</h5>
+                        <p class=\"title\">Les communautés</p>
                     </div>
                 </div>
             </div>
         </div>
       </div>
 
+      <style>
+
+        .ressources-items{
+          position: absolute!important; z-index: 5!important; top: 10px!important; left: 15PX!important;
+        }
+        .ressources-items .libele-item{
+          color: white;
+          text-shadow: 2px 2px 4px #000000; font-size: 20px;
+        }
+
+      </style>
+
 
       <section class=\"section \" style=\" background-color: #fff;\">
         <div class=\"container\">
           <div class=\"article-detail\">
-            <h2>Nous construisons avec eux</h2>
-            <h4>Nos partenaires et nous travaillons main dans la main pour le développement et l'innovation dans les secteurs ci-dessous:</h4>
+            <h2>Nous nous mobilisons sur plusieurs fronts au quotidien</h2>
+            <h4>Nous organisons et participons aux séminaires, aux évènements et ateliers dans le but de former, d'orienter et de dénicher les talents pour les projets AFH de grande envergure.</h4>
           </div>
         </div>
         <div class=\"owl-carousel owl-style-1 owl-loaded owl-drag\" data-md-items=\"2\" data-autoplay=\"false\" data-nav=\"true\" data-margin=\"13\" style=\"\">
 
         <div class=\"owl-stage-outer\">
-          <div class=\"owl-stage\" style=\"transform: translate3d(-1540px, 0px, 0px); transition: all 0.25s ease 0s; width: 3081px;\">
+          <div class=\"owl-stage\" style=\"transform: translate3d(-1540px, 0px, 0px); transition: all 0.25s ease 0s; \">
             
-            <div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\">
+            <div class=\"owl-item cloned\" style=\"margin-right: 13px; position: sticky;\">
               <div class=\"page-figure-wrap\">
-                <a class=\"page-figure\" href=\"\">
+                <a class=\"page-figure\">
+                  <div class=\"ressources-items\">
+                    <div class=\"libele-item\">Une affaire</div>
+                  </div>
+
                   <img src=\"";
-        // line 1715
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/commerciaux.jpg"), "html", null, true);
-        echo "\" alt=\"\" width=\"559\" height=\"381\">
+        // line 2054
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/res01.jpeg"), "html", null, true);
+        echo "\" alt=\"\" width=\"381\" height=\"559\">
                 </a>
               </div>
             </div>
-            <div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\">
-              <div class=\"page-figure-wrap\">
-                <a class=\"page-figure\" href=\"\">
-                  <img src=\"";
-        // line 1722
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/commerciaux.jpg"), "html", null, true);
-        echo "\" alt=\"\" width=\"559\" height=\"381\">
-                </a>
-              </div>
-            </div>
-            <div class=\"owl-item\" style=\"width: 372.112px; margin-right: 13px;\">
-              <div class=\"page-figure-wrap\">
-                <a class=\"page-figure\" href=\"\">
-                  <img src=\"";
-        // line 1729
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/commerciaux.jpg"), "html", null, true);
-        echo "\" alt=\"\" width=\"559\" height=\"381\">
-                </a>
-              </div>
-            </div>
-            <div class=\"owl-item\" style=\"width: 372.112px; margin-right: 13px;\">
-              <div class=\"page-figure-wrap\">
-                <a class=\"page-figure\" href=\"\">
-                  <img src=\"";
-        // line 1736
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/commerciaux.jpg"), "html", null, true);
-        echo "\" alt=\"\" width=\"559\" height=\"381\">
-                </a>
-              </div>
-            </div>
+
             <div class=\"owl-item active\" style=\"width: 372.112px; margin-right: 13px;\">
               <div class=\"page-figure-wrap\">
                 <a class=\"page-figure\" href=\"\">
+                  <div class=\"ressources-items\">
+                    <div class=\"libele-item\">Une affaire</div>
+                  </div>
                   <img src=\"";
-        // line 1743
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/commerciaux.jpg"), "html", null, true);
-        echo "\" alt=\"\" width=\"559\" height=\"381\">
-                </a>
-              </div>
-            </div>
-            <div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\">
-              <div class=\"page-figure-wrap\">
-                <a class=\"page-figure\" href=\"\">
-                  <img src=\"";
-        // line 1750
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/commerciaux.jpg"), "html", null, true);
-        echo "\" alt=\"\" width=\"559\" height=\"381\">
-                </a>
-              </div>
-            </div>
-            <div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\">
-              <div class=\"page-figure-wrap\">
-                <a class=\"page-figure\" href=\"\">
-                  <img src=\"";
-        // line 1757
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/commerciaux.jpg"), "html", null, true);
+        // line 2065
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/seminaire.jpg"), "html", null, true);
         echo "\" alt=\"\" width=\"559\" height=\"381\">
                 </a>
               </div>
             </div>
 
             <div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\">
-              <div class=\"page-figure-wrap\">
-                <a class=\"page-figure\" href=\"\">
+              <div class=\"page-figure-wrap\"> 
+                <a class=\"page-figure\" href=\"\"> 
+                  <div class=\"ressources-items\"> 
+                    <div class=\"libele-item\">Une affaire</div> 
+                  </div>
                   <img src=\"";
-        // line 1765
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/commerciaux.jpg"), "html", null, true);
+        // line 2076
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/res03.jpg"), "html", null, true);
         echo "\" alt=\"\" width=\"559\" height=\"381\">
                 </a>
               </div>
             </div>
-            <div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\">
+
+            <div class=\"owl-item\" style=\"width: 372.112px; margin-right: 13px;\">
               <div class=\"page-figure-wrap\">
                 <a class=\"page-figure\" href=\"\">
+                  <div class=\"ressources-items\"> 
+                    <div class=\"libele-item\">Une affaire</div> 
+                  </div>
                   <img src=\"";
-        // line 1772
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/commerciaux.jpg"), "html", null, true);
+        // line 2087
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/res04.jpg"), "html", null, true);
         echo "\" alt=\"\" width=\"559\" height=\"381\">
                 </a>
               </div>
             </div>
-            <div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\">
+            
+            <div class=\"owl-item\" style=\"width: 372.112px; margin-right: 13px;\">
               <div class=\"page-figure-wrap\">
                 <a class=\"page-figure\" href=\"\">
+                  <div class=\"ressources-items\"> 
+                    <div class=\"libele-item\">Une affaire</div> 
+                  </div>
                   <img src=\"";
-        // line 1779
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/commerciaux.jpg"), "html", null, true);
+        // line 2098
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/res05.jpg"), "html", null, true);
         echo "\" alt=\"\" width=\"559\" height=\"381\">
                 </a>
               </div>
             </div>
+
           </div>
         </div>
         <div class=\"owl-nav\">
-            <button type=\"button\" role=\"presentation\" class=\"owl-prev\">
+            <button type=\"button\" role=\"presentation\" class=\"owl-prev\" styme=\"\">
               <svg width=\"57\" height=\"63\" viewBox=\"0 0 57 63\" fill=\"none\">
-                <path d=\"M22.5 2.4641C26.2128 0.320508 30.7872 0.320508 34.5 2.4641L50.6458 11.7859C54.3586 13.9295 56.6458 17.891 56.6458 22.1782V40.8218C56.6458 45.109 54.3586 49.0705 50.6458 51.2141L34.5 60.5359C30.7872 62.6795 26.2128 62.6795 22.5 60.5359L6.35417 51.2141C2.64136 49.0705 0.354174 45.109 0.354174 40.8218L0.354174 22.1782C0.354174 17.891 2.64136 13.9295 6.35417 11.7859L22.5 2.4641Z\" fill=\"#39BA82\"></path>
+                <path d=\"M22.5 2.4641C26.2128 0.320508 30.7872 0.320508 34.5 2.4641L50.6458 11.7859C54.3586 13.9295 56.6458 17.891 56.6458 22.1782V40.8218C56.6458 45.109 54.3586 49.0705 50.6458 51.2141L34.5 60.5359C30.7872 62.6795 26.2128 62.6795 22.5 60.5359L6.35417 51.2141C2.64136 49.0705 0.354174 45.109 0.354174 40.8218L0.354174 22.1782C0.354174 17.891 2.64136 13.9295 6.35417 11.7859L22.5 2.4641Z\" fill=\"#9EBB3C\"></path>
               </svg>
             </button>
             <button type=\"button\" role=\"presentation\" class=\"owl-next\">
               <svg width=\"57\" height=\"63\" viewBox=\"0 0 57 63\" fill=\"none\">
-                <path d=\"M22.5 2.4641C26.2128 0.320508 30.7872 0.320508 34.5 2.4641L50.6458 11.7859C54.3586 13.9295 56.6458 17.891 56.6458 22.1782V40.8218C56.6458 45.109 54.3586 49.0705 50.6458 51.2141L34.5 60.5359C30.7872 62.6795 26.2128 62.6795 22.5 60.5359L6.35417 51.2141C2.64136 49.0705 0.354174 45.109 0.354174 40.8218L0.354174 22.1782C0.354174 17.891 2.64136 13.9295 6.35417 11.7859L22.5 2.4641Z\" fill=\"#39BA82\"></path>
+                <path d=\"M22.5 2.4641C26.2128 0.320508 30.7872 0.320508 34.5 2.4641L50.6458 11.7859C54.3586 13.9295 56.6458 17.891 56.6458 22.1782V40.8218C56.6458 45.109 54.3586 49.0705 50.6458 51.2141L34.5 60.5359C30.7872 62.6795 26.2128 62.6795 22.5 60.5359L6.35417 51.2141C2.64136 49.0705 0.354174 45.109 0.354174 40.8218L0.354174 22.1782C0.354174 17.891 2.64136 13.9295 6.35417 11.7859L22.5 2.4641Z\" fill=\"#9EBB3C\"></path>
               </svg>
             </button>
           </div>
@@ -1908,24 +2230,64 @@ dl div {
       </section>
 
 
-
+<style>
+  .title-section-part {
+  font-size: 50px;
+  background-color: #565656;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
+}
+</style>
 
 <script src=\"";
-        // line 1805
+        // line 2135
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/js/slick.js"), "html", null, true);
         echo "\"></script>
-<section style=\"margin-bottom: 20px;\">
+<section style=\"margin-bottom: 20px; margin-top: 20px;\">
   <div class=\"container\">
-    <h2>Our  Partners</h2>
+    <div class=\"article-detail\">
+    <h2 class=\"title-section-part\" >Partenaires AFHunt Holding</h2>
+    </div>
     <section class=\"customer-logos slider\">
-        <div class=\"slide\"><img src=\"https://image.freepik.com/free-vector/luxury-letter-e-logo-design_1017-8903.jpg\"></div>
-        <div class=\"slide\"><img src=\"https://image.freepik.com/free-vector/3d-box-logo_1103-876.jpg\"></div>
-        <div class=\"slide\"><img src=\"https://image.freepik.com/free-vector/blue-tech-logo_1103-822.jpg\"></div>
-        <div class=\"slide\"><img src=\"https://image.freepik.com/free-vector/colors-curl-logo-template_23-2147536125.jpg\"></div>
-        <div class=\"slide\"><img src=\"https://image.freepik.com/free-vector/abstract-cross-logo_23-2147536124.jpg\"></div>
-        <div class=\"slide\"><img src=\"https://image.freepik.com/free-vector/football-logo-background_1195-244.jpg\"></div>
-        <div class=\"slide\"><img src=\"https://image.freepik.com/free-vector/background-of-spots-halftone_1035-3847.jpg\"></div>
-        <div class=\"slide\"><img src=\"https://image.freepik.com/free-vector/retro-label-on-rustic-background_82147503374.jpg\"></div>
+        <div class=\"slide\"><img src=\"";
+        // line 2142
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logooj.png"), "html", null, true);
+        echo "\" alt=\"Omnijobber\"></div>
+        <div class=\"slide\"><img src=\"";
+        // line 2143
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logoovh.jpg"), "html", null, true);
+        echo "\"></div>
+        <div class=\"slide\"><img src=\"";
+        // line 2144
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logoamazone.png"), "html", null, true);
+        echo "\"></div>
+        <div class=\"slide\"><img src=\"";
+        // line 2145
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/france-dns.png"), "html", null, true);
+        echo "\"></div>
+        <div class=\"slide\"><img src=\"";
+        // line 2146
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logo-factory.png"), "html", null, true);
+        echo "\"></div>
+        <div class=\"slide\"><img src=\"";
+        // line 2147
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logoapme.jpg"), "html", null, true);
+        echo "\"></div>
+        <div class=\"slide\"><img src=\"";
+        // line 2148
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/i-web.png"), "html", null, true);
+        echo "\"></div>
+        <div class=\"slide\"><img src=\"";
+        // line 2149
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/domainebox.png"), "html", null, true);
+        echo "\"></div>
+        <div class=\"slide\"><img src=\"";
+        // line 2150
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logo-symfony.png"), "html", null, true);
+        echo "\"></div>
     </section>
   </div>
 </section>
@@ -1953,6 +2315,16 @@ dl div {
       }]
   });
 });
+
+\$(\".animated-progress span\").each(function () {
+  \$(this).animate(
+    {
+      width: \$(this).attr(\"data-progress\") + \"%\",
+    },
+    1000
+  );
+  \$(this).text(\$(this).attr(\"data-progress\") + \"%\");
+});
 </script>
 
     </div>
@@ -1961,10 +2333,10 @@ dl div {
 ";
     }
 
-    // line 1852
+    // line 2195
     public function block_javascripttemplate($context, array $blocks = array())
     {
-        // line 1853
+        // line 2196
         echo "
 ";
     }
@@ -1981,6 +2353,6 @@ dl div {
 
     public function getDebugInfo()
     {
-        return array (  1968 => 1853,  1965 => 1852,  1915 => 1805,  1886 => 1779,  1876 => 1772,  1866 => 1765,  1855 => 1757,  1845 => 1750,  1835 => 1743,  1825 => 1736,  1815 => 1729,  1805 => 1722,  1795 => 1715,  435 => 358,  403 => 329,  371 => 300,  346 => 278,  336 => 271,  108 => 46,  91 => 32,  77 => 21,  73 => 19,  70 => 18,  63 => 15,  60 => 14,  53 => 11,  50 => 10,  39 => 4,  35 => 3,  32 => 2,);
+        return array (  2340 => 2196,  2337 => 2195,  2289 => 2150,  2285 => 2149,  2281 => 2148,  2277 => 2147,  2273 => 2146,  2269 => 2145,  2265 => 2144,  2261 => 2143,  2257 => 2142,  2247 => 2135,  2207 => 2098,  2193 => 2087,  2179 => 2076,  2165 => 2065,  2151 => 2054,  1758 => 1664,  1727 => 1636,  1703 => 1615,  1693 => 1608,  1662 => 1580,  438 => 359,  406 => 330,  374 => 301,  349 => 279,  339 => 272,  111 => 47,  94 => 33,  80 => 22,  76 => 20,  73 => 19,  66 => 16,  63 => 15,  56 => 12,  53 => 11,  42 => 5,  38 => 4,  35 => 3,  32 => 2,);
     }
 }
