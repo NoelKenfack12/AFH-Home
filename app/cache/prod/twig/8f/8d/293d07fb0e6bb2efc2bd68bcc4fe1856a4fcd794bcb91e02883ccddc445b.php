@@ -18,385 +18,385 @@ class __TwigTemplate_8f8d293d07fb0e6bb2efc2bd68bcc4fe1856a4fcd794bcb91e02883ccdd
         // line 1
         echo "
 <style>
-body {
-/* Colors */
-\t--color-blue-50: #0a84ff;
-\t--color-blue-60: #0060df;
-\t--color-blue-70: #003eaa;
-\t--color-blue-80: #002275;
-\t--color-gray-10: #f9f9fa;
-\t--color-gray-20: #ededf0;
-\t--color-gray-30: #d7d7db;
-\t--color-gray-40: #b1b1b3;
-\t--color-gray-50: #737373;
-\t--color-gray-60: #4a4a4f;
-\t--color-gray-70: #38383d;
-\t--color-gray-80: #2a2a2e;
-\t--color-gray-90: #0c0c0d;
-\t--color-green-70: #058b00;
-\t--color-teal-50: #00feff;
-\t--color-teal-60: #00c8d7;
-\t--color-teal-70: #008ea4;
+\tbody {
+\t/* Colors */
+\t\t--color-blue-50: #0a84ff;
+\t\t--color-blue-60: #0060df;
+\t\t--color-blue-70: #003eaa;
+\t\t--color-blue-80: #002275;
+\t\t--color-gray-10: #f9f9fa;
+\t\t--color-gray-20: #ededf0;
+\t\t--color-gray-30: #d7d7db;
+\t\t--color-gray-40: #b1b1b3;
+\t\t--color-gray-50: #737373;
+\t\t--color-gray-60: #4a4a4f;
+\t\t--color-gray-70: #38383d;
+\t\t--color-gray-80: #2a2a2e;
+\t\t--color-gray-90: #0c0c0d;
+\t\t--color-green-70: #058b00;
+\t\t--color-teal-50: #00feff;
+\t\t--color-teal-60: #00c8d7;
+\t\t--color-teal-70: #008ea4;
 
-/* Icons */
-\t--icon-context-menu: url(\"chrome://global/skin/icons/more.svg\");
-\t--icon-dismiss: url(\"chrome://global/skin/icons/close.svg\");
+\t/* Icons */
+\t\t--icon-context-menu: url(\"chrome://global/skin/icons/more.svg\");
+\t\t--icon-dismiss: url(\"chrome://global/skin/icons/close.svg\");
 
-  --background-color: #F9F9FA;
-  --border-primary-color: #B1B1B3;
+\t--background-color: #F9F9FA;
+\t--border-primary-color: #B1B1B3;
 
-/* Primary Action */
-  --primary-action-default: var(--color-blue-60);
-  --primary-action-hover: var(--color-blue-70);
-  --primary-action-active: var(--color-blue-80);
-  --primary-action-text-color: #fff;
+\t/* Primary Action */
+\t--primary-action-default: var(--color-blue-60);
+\t--primary-action-hover: var(--color-blue-70);
+\t--primary-action-active: var(--color-blue-80);
+\t--primary-action-text-color: #fff;
 
-/* Secondary Action */
-  --secondary-action-default: var(--color-gray-20);
-  --secondary-action-hover: var(--color-gray-30);
-  --secondary-action-active: var(--color-gray-40);
-  --secondary-action-text-color: var(--color-gray-80);
+\t/* Secondary Action */
+\t--secondary-action-default: var(--color-gray-20);
+\t--secondary-action-hover: var(--color-gray-30);
+\t--secondary-action-active: var(--color-gray-40);
+\t--secondary-action-text-color: var(--color-gray-80);
 
-/* Ghost Action */
-\t--ghost-action-hover: var(--color-gray-20);
-\t--ghost-action-active: var(--color-gray-30);
-\t--ghost-action-text-color: var(--color-gray-80);
+\t/* Ghost Action */
+\t\t--ghost-action-hover: var(--color-gray-20);
+\t\t--ghost-action-active: var(--color-gray-30);
+\t\t--ghost-action-text-color: var(--color-gray-80);
 
-/* Forms */
-\t--label-text-color: var(--text-secondary);
-\t--text-field-border-color: var(--color-gray-30);
-\t--text-field-hover-border-color: var(--color-gray-40);
-\t--text-field-focus-border-color: var(--color-gray-40);
-\t--text-field-bg-color: #fff;
-/* Focus */
-  --focus-box-shadow: 0 0 0 2px #fff, 0 0 0 5px rgba(10, 132, 255, 0.5);
+\t/* Forms */
+\t\t--label-text-color: var(--text-secondary);
+\t\t--text-field-border-color: var(--color-gray-30);
+\t\t--text-field-hover-border-color: var(--color-gray-40);
+\t\t--text-field-focus-border-color: var(--color-gray-40);
+\t\t--text-field-bg-color: #fff;
+\t/* Focus */
+\t--focus-box-shadow: 0 0 0 2px #fff, 0 0 0 5px rgba(10, 132, 255, 0.5);
 
-/* Cards */
-  --rasied-card-bg-color: #FFF;
-  --rasied-card-border-radius: 8px;
-  --box-shadow-10: 0px 0px 8px 0 rgba(12, 12, 13, 0.05);
-  --raised-card-hover: 0 0 0 4px var(--secondary-action-default);
-    
-  /* Typography */
-  --base-font-size: 15px;
-  --small-font-size: 13px;
-  --base-line-height: 24px;
-  
-  /* Text Colors */
-  --text-primary: var(--color-gray-90);
-  --text-secondary: var(--color-gray-50);
-}
-
-
-/* Primary Button */
-.btn--primary {
-\tbackground-color: var(--primary-action-default);
-\tcolor: var(--primary-action-text-color);
-\tfill: var(--primary-action-text-color);
-\t-moz-context-properties: fill;
-}
-
-.btn--primary:hover {
-\tbackground-color: var(--primary-action-hover);
-}
-
-.btn--primary:active {
-\tbackground-color: var(--primary-action-active);
-}
-
-.btn--primary:disabled,
-.btn--primary.disabled {
-\tbackground-color: var(--primary-action-default);
-\tcolor: var(--primary-action-text-color);
-\tfill: var(--primary-action-text-color);
-\t-moz-context-properties: fill;
-}
-
-/* Secondary Button */
-.btn--secondary {
-\tbackground-color: var(--secondary-action-default);
-\tcolor: var(--secondary-action-text-color);
-\tfill: var(--secondary-action-text-color);
-\t-moz-context-properties: fill;
-}
-
-.btn--secondary:hover {
-\tbackground-color: var(--secondary-action-hover);
-}
-
-.btn--secondary:active {
-\tbackground-color: var(--secondary-action-active);
-}
-
-.btn--secondary:disabled,
-.btn--secondary.disabled {
-\tbackground-color: var(--secondary-action-default);
-\tcolor: var(--secondary-action-text-color);
-\tfill: var(--secondary-action-text-color);
-\t-moz-context-properties: fill;
-}
-
-/* Pill Button */
-.btn--pill {
-\tborder-radius: 16px;
-\tline-height: 32px;
-\tmin-height: 32px;
-\tpadding: 0 16px;
-\tvertical-align: middle;
-}
-
-.btn--pill-icon-only {
-\tbackground-position: 50%;
-\tbackground-repeat: no-repeat;
-\tbackground-size: 16px;
-\twidth: 32px;
-}
-
-/* Form Button */
-.btn--form {
-\tborder-radius: 4px;
-\tmin-height: 40px;
-\tmin-width: 96px;
-\tpadding: 0 8px;
-}
-
-/* Ghost Button */
-.btn--ghost {
-\tbackground-color: transparent;
-\tcolor: var(--ghost-action-text-color);
-\tfill: var(--ghost-action-text-color);
-\t-moz-context-properties: fill;
-}
-
-.btn--ghost:hover {
-\tbackground-color: var(--ghost-action-hover);
-}
-
-.btn--ghost:active {
-\tbackground-color: var(--ghost-action-active);
-}
-
-.btn--ghost:disabled,
-.btn--ghost.disabled {
-\tbackground-color: transparent;
-\tcolor: var(--ghost-action-text-color);
-\tfill: var(--ghost-action-text-color);
-\t-moz-context-properties: fill;
-}
-
-.section-header {
-\tdisplay: flex;
-\tmargin-bottom: 12px;
-}
-
-.section-header > div {
-\tflex-grow: 1;
-}
-
-.title-card {
-\tcolor: var(--text-secondary);
-\tdisplay: inline-block;
-\tmargin-right: 12px;
-\tfont-family: Quicksand-Bold;
-\tfont-size: 14px;
-}
-
-.section-header .actions {
-\tflex-grow: 0;
-}
-
-.section-header .actions .btn {
-\tmargin-left: 8px;
-}
-
-/* Top Sites */
-.top-sites {
-\tpadding: 24px 0;
-}
-
-.tile-grid {
-\tdisplay: grid;
-\tgrid-row-gap: 24px;
-\tjustify-content: space-between;
-\tmargin-bottom: 24px;
-}
-
-@media (min-width: 0) {
-\t.tile-grid {\t\t
-\t\tgrid-template-columns: 82px 82px 82px;
+\t/* Cards */
+\t--rasied-card-bg-color: #FFF;
+\t--rasied-card-border-radius: 8px;
+\t--box-shadow-10: 0px 0px 8px 0 rgba(12, 12, 13, 0.05);
+\t--raised-card-hover: 0 0 0 4px var(--secondary-action-default);
+\t\t
+\t/* Typography */
+\t--base-font-size: 15px;
+\t--small-font-size: 13px;
+\t--base-line-height: 24px;
+\t
+\t/* Text Colors */
+\t--text-primary: var(--color-gray-90);
+\t--text-secondary: var(--color-gray-50);
 \t}
-}
 
-@media (min-width: 540px) {
+
+\t/* Primary Button */
+\t.btn--primary {
+\t\tbackground-color: var(--primary-action-default);
+\t\tcolor: var(--primary-action-text-color);
+\t\tfill: var(--primary-action-text-color);
+\t\t-moz-context-properties: fill;
+\t}
+
+\t.btn--primary:hover {
+\t\tbackground-color: var(--primary-action-hover);
+\t}
+
+\t.btn--primary:active {
+\t\tbackground-color: var(--primary-action-active);
+\t}
+
+\t.btn--primary:disabled,
+\t.btn--primary.disabled {
+\t\tbackground-color: var(--primary-action-default);
+\t\tcolor: var(--primary-action-text-color);
+\t\tfill: var(--primary-action-text-color);
+\t\t-moz-context-properties: fill;
+\t}
+
+\t/* Secondary Button */
+\t.btn--secondary {
+\t\tbackground-color: var(--secondary-action-default);
+\t\tcolor: var(--secondary-action-text-color);
+\t\tfill: var(--secondary-action-text-color);
+\t\t-moz-context-properties: fill;
+\t}
+
+\t.btn--secondary:hover {
+\t\tbackground-color: var(--secondary-action-hover);
+\t}
+
+\t.btn--secondary:active {
+\t\tbackground-color: var(--secondary-action-active);
+\t}
+
+\t.btn--secondary:disabled,
+\t.btn--secondary.disabled {
+\t\tbackground-color: var(--secondary-action-default);
+\t\tcolor: var(--secondary-action-text-color);
+\t\tfill: var(--secondary-action-text-color);
+\t\t-moz-context-properties: fill;
+\t}
+
+\t/* Pill Button */
+\t.btn--pill {
+\t\tborder-radius: 16px;
+\t\tline-height: 32px;
+\t\tmin-height: 32px;
+\t\tpadding: 0 16px;
+\t\tvertical-align: middle;
+\t}
+
+\t.btn--pill-icon-only {
+\t\tbackground-position: 50%;
+\t\tbackground-repeat: no-repeat;
+\t\tbackground-size: 16px;
+\t\twidth: 32px;
+\t}
+
+\t/* Form Button */
+\t.btn--form {
+\t\tborder-radius: 4px;
+\t\tmin-height: 40px;
+\t\tmin-width: 96px;
+\t\tpadding: 0 8px;
+\t}
+
+\t/* Ghost Button */
+\t.btn--ghost {
+\t\tbackground-color: transparent;
+\t\tcolor: var(--ghost-action-text-color);
+\t\tfill: var(--ghost-action-text-color);
+\t\t-moz-context-properties: fill;
+\t}
+
+\t.btn--ghost:hover {
+\t\tbackground-color: var(--ghost-action-hover);
+\t}
+
+\t.btn--ghost:active {
+\t\tbackground-color: var(--ghost-action-active);
+\t}
+
+\t.btn--ghost:disabled,
+\t.btn--ghost.disabled {
+\t\tbackground-color: transparent;
+\t\tcolor: var(--ghost-action-text-color);
+\t\tfill: var(--ghost-action-text-color);
+\t\t-moz-context-properties: fill;
+\t}
+
+\t.section-header {
+\t\tdisplay: flex;
+\t\tmargin-bottom: 12px;
+\t}
+
+\t.section-header > div {
+\t\tflex-grow: 1;
+\t}
+
+\t.title-card {
+\t\tcolor: var(--text-secondary);
+\t\tdisplay: inline-block;
+\t\tmargin-right: 12px;
+\t\tfont-family: Quicksand-Bold;
+\t\tfont-size: 14px;
+\t}
+
+\t.section-header .actions {
+\t\tflex-grow: 0;
+\t}
+
+\t.section-header .actions .btn {
+\t\tmargin-left: 8px;
+\t}
+
+\t/* Top Sites */
+\t.top-sites {
+\t\tpadding: 24px 0;
+\t}
+
 \t.tile-grid {
-\t\tgrid-template-columns: 82px 82px 82px 82px;\t
+\t\tdisplay: grid;
+\t\tgrid-row-gap: 24px;
+\t\tjustify-content: space-between;
+\t\tmargin-bottom: 24px;
 \t}
-}
 
-@media (min-width: 720px) {
-\t.tile-grid {
-\t\tgrid-template-columns: 82px 82px 82px 82px 82px 82px;
+\t@media (min-width: 0) {
+\t\t.tile-grid {\t\t
+\t\t\tgrid-template-columns: 82px 82px 82px;
+\t\t}
 \t}
-}
 
-@media (min-width: 1024px) {
-\t.tile-grid {
-\t\tgrid-template-columns: 82px 82px 82px 82px 82px 82px 82px 82px 82px;
+\t@media (min-width: 540px) {
+\t\t.tile-grid {
+\t\t\tgrid-template-columns: 82px 82px 82px 82px;\t
+\t\t}
 \t}
-}
 
-/* Tiles */
-.tile {
-\theight: 126px;
-\twidth: 82px;
-}
-
-.tile .card-app {
-\theight: 82px;
-\tmargin-bottom: 4px;
-}
-
-.tile .site-updated-badge {
-\tbackground-color: var(--color-teal-60);
-\tborder-radius: 100%;
-\theight: 24px;
-\tposition: absolute;
-\tleft: -12px;
-\ttop: -12px;
-\twidth: 24px;
-}
-
-.tile.tile-wide {
-\twidth: auto;
-}
-
-.tile .title,
-.tile .meta {
-\ttext-align: center;
-}
-
-.suggestions-grid {\t
-\tdisplay: grid;
-\tgrid-column-gap: 24px;
-\tgrid-row-gap: 24px;
-}
-
-@media (min-width: 0px) {
-\t.suggestions-grid {
-\t\tgrid-template-columns: repeat(1, 1fr);
+\t@media (min-width: 720px) {
+\t\t.tile-grid {
+\t\t\tgrid-template-columns: 82px 82px 82px 82px 82px 82px;
+\t\t}
 \t}
-}
 
-@media (min-width: 760px) {
-\t.suggestions-grid {
-\t\tgrid-template-columns: repeat(2, 1fr);
+\t@media (min-width: 1024px) {
+\t\t.tile-grid {
+\t\t\tgrid-template-columns: 82px 82px 82px 82px 82px 82px 82px 82px 82px;
+\t\t}
 \t}
-}
 
-@media (min-width: 1024px) {
-\t.suggestions-grid {
-\t\tgrid-template-columns: repeat(3, 1fr);
+\t/* Tiles */
+\t.tile {
+\t\theight: 126px;
+\t\twidth: 82px;
 \t}
-}
 
-/* Pocket Stories */
-.pocket-stories {
-\tbackground-color: #fff;
-\tpadding: 24px 0;
-}
+\t.tile .card-app {
+\t\theight: 82px;
+\t\tmargin-bottom: 4px;
+\t}
 
-.collection {
-\tpadding: 24px;
-\tmargin: 0 -24px;
-}
+\t.tile .site-updated-badge {
+\t\tbackground-color: var(--color-teal-60);
+\t\tborder-radius: 100%;
+\t\theight: 24px;
+\t\tposition: absolute;
+\t\tleft: -12px;
+\t\ttop: -12px;
+\t\twidth: 24px;
+\t}
+
+\t.tile.tile-wide {
+\t\twidth: auto;
+\t}
+
+\t.tile .title,
+\t.tile .meta {
+\t\ttext-align: center;
+\t}
+
+\t.suggestions-grid {\t
+\t\tdisplay: grid;
+\t\tgrid-column-gap: 24px;
+\t\tgrid-row-gap: 24px;
+\t}
+
+\t@media (min-width: 0px) {
+\t\t.suggestions-grid {
+\t\t\tgrid-template-columns: repeat(1, 1fr);
+\t\t}
+\t}
+
+\t@media (min-width: 760px) {
+\t\t.suggestions-grid {
+\t\t\tgrid-template-columns: repeat(2, 1fr);
+\t\t}
+\t}
+
+\t@media (min-width: 1024px) {
+\t\t.suggestions-grid {
+\t\t\tgrid-template-columns: repeat(3, 1fr);
+\t\t}
+\t}
+
+\t/* Pocket Stories */
+\t.pocket-stories {
+\t\tbackground-color: #fff;
+\t\tpadding: 24px 0;
+\t}
+
+\t.collection {
+\t\tpadding: 24px;
+\t\tmargin: 0 -24px;
+\t}
 
 
-.collection.sponsored {
-/* \tbackground-color: var(--color-gray-10); */
-\tborder-radius: 8px;
-}
+\t.collection.sponsored {
+\t/* \tbackground-color: var(--color-gray-10); */
+\t\tborder-radius: 8px;
+\t}
 
-.collection-header {
-\tdisplay: flex;
-\tmargin: -8px 0 12px;
-}
+\t.collection-header {
+\t\tdisplay: flex;
+\t\tmargin: -8px 0 12px;
+\t}
 
-.collection-header .actions {
-\tflex-grow: 1;
-}
+\t.collection-header .actions {
+\t\tflex-grow: 1;
+\t}
 
-.collection-header .actions .btn {
-\tfloat: right;
-}
+\t.collection-header .actions .btn {
+\t\tfloat: right;
+\t}
 
 
-.card-app .context-menu-btn {
-\topacity: 0;
-\tposition: absolute;
-\tright: -16px;
-\ttop: -16px;
-\ttransform: scale(0.25);
-\ttransition-duration: 150ms;
-\ttransition-property: transform, opacity;\t
-}
+\t.card-app .context-menu-btn {
+\t\topacity: 0;
+\t\tposition: absolute;
+\t\tright: -16px;
+\t\ttop: -16px;
+\t\ttransform: scale(0.25);
+\t\ttransition-duration: 150ms;
+\t\ttransition-property: transform, opacity;\t
+\t}
 
-/* Cards */
-.card-raised {
-\tbackground: var(--rasied-card-bg-color);
-\tborder-radius: var(--rasied-card-border-radius);
-\tborder: 1px inset rgba(12, 12, 13, 0.07);
-\tbox-shadow: var(--box-shadow-10);
-\ttransition: box-shadow 250ms, transform 150ms;
-\tposition: relative;
-\tmargin-bottom: 15px;
-}
+\t/* Cards */
+\t.card-raised {
+\t\tbackground: var(--rasied-card-bg-color);
+\t\tborder-radius: var(--rasied-card-border-radius);
+\t\tborder: 1px inset rgba(12, 12, 13, 0.07);
+\t\tbox-shadow: var(--box-shadow-10);
+\t\ttransition: box-shadow 250ms, transform 150ms;
+\t\tposition: relative;
+\t\tmargin-bottom: 15px;
+\t}
 
-.card-raised:hover {
-\tbox-shadow: var(--box-shadow-10), var(--raised-card-hover);\t
-}
+\t.card-raised:hover {
+\t\tbox-shadow: var(--box-shadow-10), var(--raised-card-hover);\t
+\t}
 
-.card-raised:hover .context-menu-btn {
-    opacity: 1;
-    transform: scale(1);
-    transition-delay: 200ms;
-}
+\t.card-raised:hover .context-menu-btn {
+\t\topacity: 1;
+\t\ttransform: scale(1);
+\t\ttransition-delay: 200ms;
+\t}
 
-.card-raised:hover .title {
-\tcolor: var(--primary-action-default);
-\ttext-decoration: underline;
-\tfont-size: 16px;
-}
+\t.card-raised:hover .title {
+\t\tcolor: var(--primary-action-default);
+\t\ttext-decoration: underline;
+\t\tfont-size: 16px;
+\t}
 
-.card-raised:active {\t
-\ttransform: scale(0.97);
-}
+\t.card-raised:active {\t
+\t\ttransform: scale(0.97);
+\t}
 
-.card-raised:focus {
-\tbox-shadow: var(--box-shadow-10), 0 0 0 3px #fff, 0 0 0 6px rgba(10, 132, 255, 0.5);
-}
+\t.card-raised:focus {
+\t\tbox-shadow: var(--box-shadow-10), 0 0 0 3px #fff, 0 0 0 6px rgba(10, 132, 255, 0.5);
+\t}
 
-/*
-.card-img {
-\tborder: 1px inset rgba(0, 0, 0, 0.15);
-}
-*/
+\t/*
+\t.card-img {
+\t\tborder: 1px inset rgba(0, 0, 0, 0.15);
+\t}
+\t*/
 
-.card-raised .card-img-top {
-\tborder-top-left-radius: var(--rasied-card-border-radius);
-\tborder-top-right-radius: var(--rasied-card-border-radius);
-}
+\t.card-raised .card-img-top {
+\t\tborder-top-left-radius: var(--rasied-card-border-radius);
+\t\tborder-top-right-radius: var(--rasied-card-border-radius);
+\t}
 
-.card-body {
-\tpadding: 12px 16px;
-}
+\t.card-body {
+\t\tpadding: 12px 16px;
+\t}
 
-.card-footer {
-\tpadding: 12px 16px;
-}
+\t.card-footer {
+\t\tpadding: 12px 16px;
+\t}
 
-.tile-wide:hover .card-raised{
-\tbackground-color: #99d3ce;
-}
+\t.tile-wide:hover .card-raised{
+\t\tbackground-color: #99d3ce;
+\t}
 
 </style>
 
@@ -500,20 +500,25 @@ padding: 18px 15px; position: absolute; left: 0px; top: 0px; width: 100%;\">
 \t\t\t\t\t<span class=\"fa fa-check\" style=\"display: inline-block; margin-top: -7px; margin-left: -7px;\"></span>
 \t\t\t\t</button>
 \t\t\t\t<div class=\"card-body\">
-\t\t\t\t\t<div class=\"rating-row\" style=\"float: right;\">
-\t\t\t\t\t\t<ul>    
+
+\t\t\t\t\t<div class=\"rating-row\" style=\"float: right; margin-bottom: -15px;\">
+\t\t\t\t\t\t<ul>
 \t\t\t\t\t\t  <li class=\"\"><i class=\"fa fa-star\"></i></li>
 \t\t\t\t\t\t  <li class=\"\"><i class=\"fa fa-star\"></i></li>
 \t\t\t\t\t\t  <li class=\"\"><i class=\"fa fa-star\"></i></li>
 \t\t\t\t\t\t  <li class=\"\"><i class=\"fa fa-star-o\"></i></li>
 \t\t\t\t\t\t  <li class=\"\"><i class=\"fa fa-star-o\"></i></li>
 \t\t\t\t\t\t</ul>
-\t\t\t\t\t  </div>
-\t\t\t\t\t<div class=\"title title-card\" style=\"margin: 0px; padding: 0px;;\">
-\t\t\t\t\t\t
 
+\t\t\t\t\t\t<span class=\"btn btn-primary\" style=\"text-transform: capitalize; font-family: Raleway-Medium; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+\t\t\t\t\t\ttransition: all 0.3s cubic-bezier(.25,.8,.25,1);\">
+\t\t\t\t\t\t\tContinuer <span class=\"fa fa-angle-right\"></span>
+\t\t\t\t\t\t</span>
+\t\t\t\t\t</div>
+
+\t\t\t\t\t<div class=\"title title-card\" style=\"margin: 0px; padding: 0px;;\">
 \t\t\t\t\t\t<img src=\"";
-            // line 480
+            // line 485
             if (($this->getAttribute((isset($context["appli"]) ? $context["appli"] : $this->getContext($context, "appli")), "src") != null)) {
                 echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl($this->getAttribute((isset($context["appli"]) ? $context["appli"] : $this->getContext($context, "appli")), "getwebpath")), "html", null, true);
             } else {
@@ -521,17 +526,17 @@ padding: 18px 15px; position: absolute; left: 0px; top: 0px; width: 100%;\">
             }
             echo "\" alt=\"\" style=\"float: left; margin-right: 7px; height: 80px; width: 80px; border-radius: 20px;\">
 \t\t\t\t\t\tdécouvrez <strong style=\"color: #333; font-size: 18px;\">";
-            // line 481
+            // line 486
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["appli"]) ? $context["appli"] : $this->getContext($context, "appli")), "nom"), "html", null, true);
             echo "</strong>
 \t\t\t\t\t\t<div class=\"meta\"><i>";
-            // line 482
+            // line 487
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["appli"]) ? $context["appli"] : $this->getContext($context, "appli")), "souscategorie"), "nom"), "html", null, true);
             echo "</i> </div>
 \t\t\t\t\t</div>
 \t\t\t\t\t
-\t\t\t\t\t<p>";
-            // line 485
+\t\t\t\t\t<p style=\"margin-top: 0px;\">";
+            // line 490
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["appli"]) ? $context["appli"] : $this->getContext($context, "appli")), "contenu"), "html", null, true);
             echo "</p>
 \t\t\t\t</div>
@@ -542,7 +547,7 @@ padding: 18px 15px; position: absolute; left: 0px; top: 0px; width: 100%;\">
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['appli'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 490
+        // line 495
         echo "
 \t\t
 \t</div>
@@ -569,6 +574,6 @@ padding: 18px 15px; position: absolute; left: 0px; top: 0px; width: 100%;\">
 
     public function getDebugInfo()
     {
-        return array (  546 => 490,  535 => 485,  525 => 481,  517 => 480,  494 => 462,  490 => 461,  471 => 445,  451 => 428,  431 => 411,  540 => 278,  529 => 482,  522 => 267,  506 => 265,  501 => 264,  497 => 463,  491 => 259,  484 => 257,  468 => 255,  463 => 254,  459 => 253,  453 => 249,  446 => 247,  430 => 245,  425 => 244,  421 => 243,  409 => 236,  399 => 234,  392 => 230,  388 => 229,  384 => 228,  380 => 227,  357 => 209,  341 => 196,  332 => 190,  323 => 184,  314 => 178,  298 => 165,  290 => 160,  282 => 155,  274 => 150,  259 => 137,  239 => 120,  205 => 88,  198 => 86,  188 => 84,  183 => 83,  177 => 80,  171 => 76,  164 => 74,  154 => 72,  149 => 71,  143 => 68,  137 => 64,  130 => 62,  120 => 60,  115 => 59,  109 => 56,  102 => 52,  98 => 51,  94 => 50,  23 => 3,  162 => 99,  135 => 75,  126 => 69,  117 => 63,  99 => 51,  90 => 49,  81 => 39,  72 => 33,  47 => 16,  40 => 14,  24 => 3,  22 => 2,  19 => 1,  5175 => 4903,  5172 => 4902,  5167 => 4897,  5164 => 4896,  5159 => 4871,  5156 => 4870,  5151 => 4841,  5148 => 4840,  5142 => 12,  5136 => 9,  5061 => 4973,  4991 => 4905,  4989 => 4902,  4984 => 4899,  4982 => 4896,  4976 => 4893,  4963 => 4885,  4951 => 4876,  4946 => 4874,  4943 => 4873,  4941 => 4870,  4936 => 4868,  4918 => 4853,  4906 => 4843,  4904 => 4840,  4889 => 4828,  4883 => 4825,  4879 => 4824,  4875 => 4823,  4871 => 4822,  4867 => 4821,  56 => 33,  48 => 14,  25 => 4,  92 => 24,  87 => 26,  85 => 24,  82 => 23,  79 => 43,  74 => 15,  69 => 41,  67 => 15,  64 => 14,  61 => 13,  55 => 10,  52 => 15,  46 => 6,  43 => 15,  37 => 10,  34 => 2,  1968 => 1853,  1965 => 1852,  1915 => 1805,  1886 => 1779,  1876 => 1772,  1866 => 1765,  1855 => 1757,  1845 => 1750,  1835 => 1743,  1825 => 1736,  1815 => 1729,  1805 => 1722,  1795 => 1715,  435 => 358,  403 => 235,  371 => 300,  346 => 278,  336 => 271,  108 => 57,  91 => 32,  77 => 21,  73 => 42,  70 => 18,  63 => 27,  60 => 17,  53 => 11,  50 => 10,  39 => 4,  35 => 9,  32 => 9,);
+        return array (  551 => 495,  540 => 490,  534 => 487,  530 => 486,  522 => 485,  497 => 463,  494 => 462,  490 => 461,  471 => 445,  451 => 428,  431 => 411,  19 => 1,  2357 => 2192,  2354 => 2191,  2306 => 2146,  2302 => 2145,  2298 => 2144,  2294 => 2143,  2290 => 2142,  2286 => 2141,  2282 => 2140,  2278 => 2139,  2274 => 2138,  2270 => 2137,  2260 => 2130,  2220 => 2093,  2206 => 2082,  2189 => 2068,  2175 => 2057,  2161 => 2046,  2144 => 2032,  2097 => 1988,  2080 => 1974,  2066 => 1963,  2044 => 1944,  1769 => 1672,  1738 => 1644,  1714 => 1623,  1704 => 1616,  1673 => 1588,  1488 => 1406,  438 => 359,  406 => 330,  374 => 301,  349 => 279,  339 => 272,  111 => 47,  94 => 33,  80 => 22,  76 => 20,  73 => 19,  66 => 16,  63 => 15,  56 => 12,  53 => 11,  42 => 5,  38 => 4,  35 => 3,  32 => 2,);
     }
 }

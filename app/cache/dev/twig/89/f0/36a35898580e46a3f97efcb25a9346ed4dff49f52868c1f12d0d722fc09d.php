@@ -142,6 +142,8 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
     transform: translateY(-50%) rotateZ(180deg);
   }
 }
+
+
 </style>
 
 <div class=\"col-md-12\">
@@ -200,13 +202,16 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
 \t\t\t<ul class=\"list-members\">
 \t\t\t\t<li class=\"member\">
 \t\t\t\t  <div class=\"member-image member-image2\">
-\t\t\t\t\t<img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/1.png\">
+\t\t\t\t\t<img src=\"";
+        // line 187
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/noel-kenfack.jpg"), "html", null, true);
+        echo "\">
 \t\t\t\t  </div>
 \t\t\t\t  <div class=\"member-info member-info2\">
 \t\t\t\t\t<h3>Noel Kenfack</h3>
 \t\t\t\t\t<p>Dev Full-stack polyglotte & CEO</p>
 \t\t\t\t\t  <div class=\"social-teams\">
-\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t<a href=\"https://www.facebook.com/noel12.kenfack/\" class=\"buttonrs\" target=\"_blank\">
 \t\t\t\t\t\t\t<div class=\"icon\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
 \t\t\t\t\t\t\t</div>
@@ -231,14 +236,17 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
 \t\t\t\t</li>
 \t\t\t\t<li class=\"member\">
 \t\t\t\t  <div class=\"member-image member-image2\">
-\t\t\t\t\t<img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/2.png\">
+\t\t\t\t\t<img src=\"";
+        // line 218
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/gaeil-azambou.jpg"), "html", null, true);
+        echo "\">
 \t\t\t\t  </div>
 \t\t\t\t  <div class=\"member-info member-info2\">
 \t\t\t\t\t<h3>Gaiel Azambou</h3>
 \t\t\t\t\t<p>Stratège communication</p>
 \t\t\t\t\t
 \t\t\t\t\t<div class=\"social-teams\">
-\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t<a href=\"https://www.facebook.com/gaielbleriot.azambouzebaze\" class=\"buttonrs\" target=\"_blank\">
 \t\t\t\t\t\t\t<div class=\"icon\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
 \t\t\t\t\t\t\t</div>
@@ -264,14 +272,17 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
 \t\t\t\t</li>
 \t\t\t\t<li class=\"member\">
 \t\t\t\t  <div class=\"member-image member-image2\">
-\t\t\t\t\t<img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/3.png\">
+\t\t\t\t\t<img src=\"";
+        // line 251
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/ghislain-takam.jpg"), "html", null, true);
+        echo "\">
 \t\t\t\t  </div>
 \t\t\t\t  <div class=\"member-info member-info2\">
 \t\t\t\t\t<h3>Ghislain Takam</h3>
 \t\t\t\t\t<p>UX/UI & graphic designer</p>
 \t\t\t\t\t
 \t\t\t\t\t<div class=\"social-teams\">
-\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t<a href=\"https://www.facebook.com/ghis.takam\" class=\"buttonrs\" target=\"_blank\">
 \t\t\t\t\t\t\t<div class=\"icon\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
 \t\t\t\t\t\t\t</div>
@@ -297,14 +308,17 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
 \t\t\t\t</li>
 \t\t\t\t<li class=\"member\">
 \t\t\t\t  <div class=\"member-image member-image2\">
-\t\t\t\t\t<img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/4.png\">
+\t\t\t\t\t<img src=\"";
+        // line 284
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/mariane-kaze.jpg"), "html", null, true);
+        echo "\">
 \t\t\t\t  </div>
 \t\t\t\t  <div class=\"member-info member-info2\">
 \t\t\t\t\t<h3>Mariane Kazé</h3>
 \t\t\t\t\t<p>Content Manager</p>
 \t\t\t\t\t
 \t\t\t\t\t<div class=\"social-teams\">
-\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t<a href=\"https://www.facebook.com/Lontsie.kaze\" class=\"buttonrs\" target=\"_blank\">
 \t\t\t\t\t\t\t<div class=\"icon\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
 \t\t\t\t\t\t\t</div>
@@ -330,7 +344,10 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
 \t\t\t\t</li>
 \t\t\t\t<li class=\"member\">
 \t\t\t\t\t<div class=\"member-image member-image2\">
-\t\t\t\t\t  <img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/4.png\">
+\t\t\t\t\t  <img src=\"";
+        // line 317
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/gaetan-nozawo.jpeg"), "html", null, true);
+        echo "\">
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"member-info member-info2\">
 \t\t\t\t\t  <h3>Gaetan Nozawo</h3>
@@ -362,7 +379,10 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
 \t\t\t\t  </li>
 \t\t\t\t  <li class=\"member\">
 \t\t\t\t\t<div class=\"member-image member-image2\">
-\t\t\t\t\t  <img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/4.png\">
+\t\t\t\t\t  <img src=\"";
+        // line 349
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/guy-tiaya.jpg"), "html", null, true);
+        echo "\">
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"member-info member-info2\">
 \t\t\t\t\t  <h3>Guilou Tiaya</h3>
@@ -394,14 +414,17 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
 \t\t\t\t  </li>
 \t\t\t\t  <li class=\"member\">
 \t\t\t\t\t<div class=\"member-image member-image2\">
-\t\t\t\t\t  <img src=\"https://fadzrinmadu.github.io/hosted-assets/team-section-design-using-html-and-css/4.png\">
+\t\t\t\t\t  <img src=\"";
+        // line 381
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/ayemetio-rodrigue.jpg"), "html", null, true);
+        echo "\">
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"member-info member-info2\">
 \t\t\t\t\t  <h3>Rodrigue Ayemetio</h3>
 \t\t\t\t\t  <p>Affaires juridique</p>
 \t\t\t\t\t  
 \t\t\t\t\t  <div class=\"social-teams\">
-\t\t\t\t\t\t<a href=\"\" class=\"buttonrs\">
+\t\t\t\t\t\t<a href=\"https://www.facebook.com/roghess.ayemetio\" class=\"buttonrs\" target=\"_blank\">
 \t\t\t\t\t\t\t<div class=\"icon\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-facebook-f\"></i>
 \t\t\t\t\t\t\t</div>
@@ -426,7 +449,7 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
 \t\t\t\t\t</div>
 \t\t\t\t  </li>
 \t\t\t\t  <li class=\"member\" style=\"background: #325ea9;\">
-\t\t\t\t\t
+\t\t\t\t\t<h3 style=\"padding: 15px; color: #fff;\">Vers le panthéon AFHunt</h3>
 \t\t\t\t  </li>
 \t\t\t  </ul>
 \t
@@ -438,9 +461,9 @@ class __TwigTemplate_89f036a35898580e46a3f97efcb25a9346ed4dff49f52868c1f12d0d722
 <div class=\"col-sm-12 col-md-4\">
 \t
 \t";
-        // line 422
+        // line 424
         $this->env->loadTemplate("ProduitServiceBundle:Service:menustruct.html.twig")->display($context);
-        // line 423
+        // line 425
         echo "\t\t\t
 </div>
 </div>
@@ -514,6 +537,6 @@ controlScrollPop();
 
     public function getDebugInfo()
     {
-        return array (  444 => 423,  442 => 422,  19 => 1,);
+        return array (  467 => 425,  465 => 424,  419 => 381,  384 => 349,  349 => 317,  313 => 284,  277 => 251,  241 => 218,  207 => 187,  19 => 1,);
     }
 }

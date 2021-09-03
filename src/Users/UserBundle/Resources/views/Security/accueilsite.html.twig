@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block title %}
-  {{ parent() }} - Solutions et services intelligents prêt à l'emploi
+  {{ parent() }} - Solutions et services intelligents prêt à l'emplois
 {% endblock %}
 
 {% block stylesheets %}
@@ -34,7 +34,7 @@
             </a>
             <br/>
             <span style="padding-left: 20px; font-family: Quicksand-Bold; font-size: 20px;">
-              Solutions et services intelligents <span style="display: inline-block; border: 1px solid #ed6e11; padding: 3px 15px; border-radius: 15px; color: #fff; background: #9dba3d;">prêts à l'emploi</span> 🙌
+              Solutions et services intelligents <span style="display: inline-block; border: 1px solid #ed6e11; padding: 3px 15px; border-radius: 15px; color: #fff; background: #9dba3d;">prêts à l'emplois</span> 🙌
             </span>
     			</div>
     		</div>
@@ -56,7 +56,7 @@
 
               <div class="box-promo">
                 <div class="unit unit-spacing-md align-items-center justify-content-center justify-content-xl-start">
-                  <div class="unit-left wow fadeIn" data-wow-delay="1s"><a class="button button-primary button-shadow" href="#">Nous joindre</a></div>
+                  <div class="unit-left wow fadeIn" data-wow-delay="1s"><a class="button button-primary button-shadow activator" href="#!">Nous joindre</a></div>
                   <div class="unit-body wow fadeIn" data-wow-delay="1.1s"><a class="link-underline text-uppercase small collapse-gigamenu"  value="about" href="#!">En savoir plus <span class="fa fa-chevron-circle-right"></span> </a></div>
                 </div>
                 <div style="width: 700px; max-width: 100%;" class="box-divided block-sm wow fadeIn" data-wow-delay="1.3s"><span class="box-divided-line"></span>
@@ -80,8 +80,14 @@
 
               <div class="ribbon-wrapper ribbon-black ribbon-right" style="position: absolute; right: 0px; top: -30px; width: 290px;">
                 <div class="ribbon-front">
-                  <h2> Welcome</h2>
-                  <small>😉 heureux de vous recevoir aujourd’hui</small>
+                  <h2 style="
+                  background-color: #565656;
+                  color: transparent;
+                  text-shadow: 0px 2px 3px rgb(255 255 255 / 50%);
+                  -webkit-background-clip: text;
+                  -moz-background-clip: text;
+                  background-clip: text;"> Welcome</h2>
+                  <small style="font-size: 12px;;">😉 heureux de vous recevoir aujourd’hui</small>
                 </div>
                 <div class="ribbon-edge-topleft"></div>
                 <div class="ribbon-edge-topright"></div>
@@ -269,7 +275,7 @@
         						<a href="#!" class="inner-parad-card first-item collapse-gigamenu"  value="projet" data-parallax-scroll="{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}">
 
                       <div class="text-left">
-                        <img src="{{ asset('afhholding/images/img_box_01.png') }}" alt="" style="">
+                        <img src="{{ asset('template/images/projets.png') }}" alt="" style="">
                       </div>
                       <div class="help-title">
                           Les projets
@@ -298,7 +304,7 @@
         						<a href="#!" class="inner-parad-card first-item collapse-gigamenu"  value="about" data-parallax-scroll="{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}">
 
                       <div class="text-left">
-                        <img src="{{ asset('afhholding/images/img_box_01.png') }}" alt="" style="">
+                        <img src="{{ asset('template/images/about.png') }}" alt="" style="">
                       </div>
                       <div class="help-title">
                           À propos de AFHunt
@@ -327,7 +333,7 @@
         						<a href="#!" class="inner-parad-card second-item collapse-gigamenu"  value="statistique" data-parallax-scroll="{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}">
 
                       <div class="text-left">
-                        <img src="{{ asset('afhholding/images/img_box_14.png') }}" alt="" style="">
+                        <img src="{{ asset('template/images/statistique.png') }}" alt="" style="">
                       </div>
                       <div class="help-title">
                           Les statistiques
@@ -353,17 +359,17 @@
 
                 <div class="box-samples-img box-samples-img-3 wow fadeIn" data-wow-delay="2.2s">
                   <div class="img-classic">
-        						<a href="" class="inner-parad-card third-item" data-parallax-scroll="{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}">
+        						<a href="#!" class="inner-parad-card third-item collapse-gigamenu" value="emploi" data-parallax-scroll="{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}">
 
                       <div class="text-left">
-                        <img src="{{ asset('afhholding/images/img_box_16.png') }}" alt="" style="">
+                        <img src="{{ asset('template/images/emplois.png') }}" alt="" style="">
                       </div>
                       <div class="help-title">
                           Nos Offres d'emploi
                       </div>
 
                       <div class="help-content">
-                        Outil mis à la disposition du personnel métier de la chaine de contrôle du régime de vignettes
+                        Toi aussi, démarre une carrière chez AFH dans l'un des postes ci-dessous dès aujourd'hui. Nos portes d'entrée !
                       </div>
 
                       <div class="text-center mg-t-5">
@@ -395,7 +401,7 @@
                 
                     <figure class="top top1">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://ads.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -411,7 +417,7 @@
                     </figure>
                     <figure class="top top3">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
+                        <a href="http://code.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -427,7 +433,7 @@
                     </figure>
                     <figure class="top top5">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Fact</a>
+                        <a href="http://factory.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Fact.</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -443,7 +449,7 @@
                     </figure>
                     <figure class="top top7">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
+                        <a href="http://win.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -459,7 +465,7 @@
                     </figure>
                     <figure class="top top9">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Sol</a>
+                        <a href="http://mbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH MBill</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -482,7 +488,7 @@
                     </figure>
                     <figure class="top top12">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://hbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH HBill</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -498,7 +504,7 @@
                     </figure>
                     <figure class="top top14">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
+                        <a href="http://lbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH LBill</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -514,7 +520,7 @@
                     </figure>
                     <figure class="top top16">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Fact</a>
+                        <a href="http://box.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Box</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -530,7 +536,7 @@
                     </figure>
                     <figure class="top top18">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
+                        <a href="http://africexplorer.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Disc.</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -546,7 +552,7 @@
                     </figure>
                     <figure class="top top20">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Sol</a>
+                        <a href="http://messenger.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Mess.</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -555,7 +561,7 @@
                     </figure>
                     <figure class="top top21">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://wallet.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Wallet</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -571,7 +577,7 @@
                     </figure>
                     <figure class="top top23">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
+                        <a href="http://myaccount.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Oauth</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -587,7 +593,7 @@
                     </figure>
                     <figure class="top top25">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Fact</a>
+                        <a href="http://ads.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -603,7 +609,7 @@
                     </figure>
                     <figure class="top top27">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
+                        <a href="http://code.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -619,7 +625,7 @@
                     </figure>
                     <figure class="top top29">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Sol</a>
+                        <a href="http://factory.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Fact.</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -642,7 +648,7 @@
                     </figure>
                     <figure class="top top32">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://win.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -658,7 +664,7 @@
                     </figure>
                     <figure class="top top34">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
+                        <a href="http://mbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH MBill</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -674,7 +680,7 @@
                     </figure>
                     <figure class="top top36">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Fact</a>
+                        <a href="http://hbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH HBill</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -690,7 +696,7 @@
                     </figure>
                     <figure class="top top38">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
+                        <a href="http://lbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH LBill</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -706,7 +712,7 @@
                     </figure>
                     <figure class="top top40">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Sol</a>
+                        <a href="http://box.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Box</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -716,7 +722,7 @@
                     
                     <figure class="top top41">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://ads.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -732,7 +738,7 @@
                     </figure>
                     <figure class="top top43">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
+                        <a href="http://africexplorer.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Disc.</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -766,7 +772,7 @@
                     </figure>
                     <figure class="top top47">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
+                        <a href="http://messenger.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Mess.</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -782,7 +788,7 @@
                     </figure>
                     <figure class="top top49">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Sol</a>
+                        <a href="http://wallet.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Wallet</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -805,7 +811,7 @@
                     </figure>
                     <figure class="top top52">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://myaccount.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Oauth</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -821,7 +827,7 @@
                     </figure>
                     <figure class="top top54">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
+                        <a href="http://ads.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -855,7 +861,7 @@
                     </figure>
                     <figure class="top top58">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
+                        <a href="http://code.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -871,7 +877,7 @@
                     </figure>
                     <figure class="top top60">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Sol</a>
+                        <a href="http://factory.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Fact.</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -880,7 +886,7 @@
                     </figure>
                     <figure class="top top61">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://win.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -896,7 +902,7 @@
                     </figure>
                     <figure class="top top63">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
+                        <a href="http://mbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH MBill</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -912,7 +918,7 @@
                     </figure>
                     <figure class="top top65">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Fact</a>
+                        <a href="http://hbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH HBill</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -928,7 +934,7 @@
                     </figure>
                     <figure class="top top67">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
+                        <a href="http://lbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH LBill</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -944,7 +950,7 @@
                     </figure>
                     <figure class="top top69">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Sol</a>
+                        <a href="http://box.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Box</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -967,7 +973,7 @@
                     </figure>
                     <figure class="top top72">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://africexplorer.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Disc.</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -983,7 +989,7 @@
                     </figure>
                     <figure class="top top74">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
+                        <a href="http://messenger.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Mess.</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -999,7 +1005,7 @@
                     </figure>
                     <figure class="top top76">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Fact</a>
+                        <a href="http://wallet.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Wallet</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1015,7 +1021,7 @@
                     </figure>
                     <figure class="top top78">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
+                        <a href="http://myaccount.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Oauth</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1031,7 +1037,7 @@
                     </figure>
                     <figure class="top top80">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Sol</a>
+                        <a href="http://ads.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1040,7 +1046,7 @@
                     </figure>
                     <figure class="top top81">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://code.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1056,7 +1062,7 @@
                     </figure>
                     <figure class="top top83">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
+                        <a href="http://factory.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Fact.</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1072,7 +1078,7 @@
                     </figure>
                     <figure class="top top85">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Fact</a>
+                        <a href="http://win.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1088,7 +1094,7 @@
                     </figure>
                     <figure class="top top87">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
+                        <a href="http://mbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH MBill</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1104,7 +1110,7 @@
                     </figure>
                     <figure class="top top89">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Sol</a>
+                        <a href="http://hbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH HBill</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1127,7 +1133,7 @@
                     </figure>
                     <figure class="top top92">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://lbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH LBill</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1143,7 +1149,7 @@
                     </figure>
                     <figure class="top top94">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
+                        <a href="http://box.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Box</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1159,7 +1165,7 @@
                     </figure>
                     <figure class="top top96">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Fact</a>
+                        <a href="http://africexplorer.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Disc.</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1175,7 +1181,7 @@
                     </figure>
                     <figure class="top top98">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
+                        <a href="http://messenger.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Mess.</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1191,7 +1197,7 @@
                     </figure>
                     <figure class="top top100">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="" style=" padding: 3px; color: #fff; display: block;">AFH Sol</a>
+                        <a href="http://wallet.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Wallet</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1369,11 +1375,11 @@
 
                 </style>
 
-                <div class="article-detail " style="background: #fff; font-size: 21px; line-height: 2;
+                <div class="article-detail " style="font-size: 21px; line-height: 2;
                       
                 padding: var(--padding);
                 color: var(--text-color);
-                font-family: var(--font-family);">
+                font-family: var(--font-family); position: relative; z-index: 2;">
 
                   <h2>Contributions</h2>
                   <h4 style="margin-bottom: 20px;">Notre coeur bat au rythme des projets que nous portons depuis des années avec vous !</h4>
@@ -1382,7 +1388,7 @@
                     <h4>Communauté d'experts volontaire</h4>
                     <p style="font-family: Muli-Regular; font-size: 12px; margin-bottom: 10px">Les experts mettent leurs compétences au profit de la croissance des projets AFH et montent en puissance avec les projets sur lesquels ils interviennent.</p>
                     
-                      <a href="#!" class="btn-afh btn-raised btn-danger" style="background: #9dba3d; color: #fff;">
+                      <a href="http://factory.afhunt.com/experts" target="_blank" class="btn-afh btn-raised btn-danger" style="background: #9dba3d; color: #fff;">
                         <span>En savoir plus</span>
                       </a>
                   </div>
@@ -1390,7 +1396,7 @@
                   <div class="cardcomponent cardcomponent-2" style="border-top: 2px soli #99d3ce;  background-image: url(https://ionicframework.com/img/getting-started/components-card.png);">
                     <h4>Communauté d'investisseurs</h4>
                     <p style="font-family: Muli-Regular; font-size: 12px;">Les vionnaires investissent sur les projets AFH dans le but de faire fructifier leurs investissements à cours et à long terme.</p>
-                    <a href="#!" class="btn-afh btn-raised btn-danger"  style="background: #9dba3d; color: #fff;">
+                    <a href="http://factory.afhunt.com/investisseurs" target="_blank"  class="btn-afh btn-raised btn-danger"  style="background: #9dba3d; color: #fff;">
                       <span>En savoir plus</span>
                     </a>
                   </div>
@@ -1398,10 +1404,15 @@
                 </div>
 
               </div>
+
+              
           </div>
         </div>
+        <div style="position: sticky; z-index: 0;">
+          <img src="{{ asset('template/images/spider.png') }}" alt="" style="position: absolute;  right: 0px; height: 700px; top: -250px;">
+      </div>
       </section>
-
+      
       <style>
     .section-card {
       width: 100%;
@@ -1517,8 +1528,9 @@
     @media (min-width: 576px){
     .box-side-left, .box-side-right{
       background: #93d4cf!important;
-      height: 800px;
-    }}
+      height: 720px;
+    }
+  }
 
     .animated-progress {
       width: 150px;
@@ -1558,7 +1570,9 @@
       </style>
 
 
-<section class="small-screen section section-xxl bg-gradient-1" style="position: relative!important;z-index: 1;">
+<section class="small-screen section section-xxl bg-gradient-1" style="position: relative!important;z-index: 2;">
+  
+
   <div class="container">
       <div class="article-detail" style="background: #fff; font-size: 21px; line-height: 2;
           padding: var(--padding);
@@ -1577,7 +1591,7 @@
         <a href="#!" class="inner-parad-card first-item collapse-gigamenu"  value="about" data-parallax-scroll="{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}">
   
           <div class="text-left">
-            <img src="{{ asset('afhholding/images/img_box_01.png') }}" alt="">
+            <img src="{{ asset('template/images/about.png') }}" alt="">
           </div>
           <div class="help-title">
               À propos de AFHunt
@@ -1605,7 +1619,7 @@
         <a href="#!" class="inner-parad-card first-item collapse-gigamenu"  value="projet" data-parallax-scroll="{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}">
   
           <div class="text-left">
-            <img src="{{ asset('afhholding/images/img_box_01.png') }}" alt="" style="">
+            <img src="{{ asset('template/images/projets.png') }}" alt="" style="">
           </div>
           <div class="help-title">
               Les projets
@@ -1658,17 +1672,17 @@
       </div>
   
       <div class="owl-item cloned" style="width: 372.112px; margin-right: 13px;">
-        <a href="" class="inner-parad-card third-item" data-parallax-scroll="{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}">
+        <a href="#!" class="inner-parad-card third-item ollapse-gigamenu"  value="emploi" data-parallax-scroll="{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}">
   
           <div class="text-left">
-            <img src="{{ asset('afhholding/images/img_box_16.png') }}" alt="" style="">
+            <img src="{{ asset('template/images/emplois.png') }}" alt="" style="">
           </div>
           <div class="help-title">
               Nos Offres d'emploi
           </div>
   
           <div class="help-content">
-            Outil mis à la disposition du personnel métier de la chaine de contrôle du régime de vignettes
+            Toi aussi, démarre une carrière chez AFH dans l'un des postes ci-dessous dès aujourd'hui. Nos portes d'entrée !
           </div>
   
           <div class="text-center mg-t-5">
@@ -1701,14 +1715,14 @@
 
 
 
-      <section class="bg-default section-xxl position-relative" style="position: relative!important;z-index: 1; padding-top: 0px!important; margin-bottom: -20px;">
+      <section class="section-xxl position-relative" style="position: relative!important;z-index: 10; padding-top: 0px!important; margin-bottom: -20px;">
         <div class="box-side box-side-left bg-gradient-1"></div>
         <div class="box-side box-side-right bg-gradient-1-reverse"></div>
         
       <div>
         <div class="container position-relative">
           <div class=" wow fadeInUp">
-            <div class="article-detail" style="background: #fff; font-size: 21px; line-height: 2;
+            <div class="article-detail" style="background: transparent; font-size: 21px; line-height: 2;
                       
                 padding: var(--padding);
                 color: var(--text-color);
@@ -1725,22 +1739,18 @@
           <div class="row row-gutter-42" style="margin: 30px 0px 0px 0px;">
 
             <div class="col-md-12">
-              <section class="section-card">
+              <section class="section-card" style="margin-top: 30px;">
             
                 <details>
                   <summary>
                     <div>
-                      <span style="background-color: #f2dcbb; margin-right: 25px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="currentColor" viewBox="0 0 256 256">
-                          <rect width="256" height="256" fill="none"></rect>
-                          <path d="M192,120h27.05573a8,8,0,0,0,7.15542-4.42229l18.40439-36.80878a8,8,0,0,0-3.18631-10.52366L192,40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-                          <path d="M64,120H36.94427a8,8,0,0,1-7.15542-4.42229L11.38446,78.76893a8,8,0,0,1,3.18631-10.52366L64,40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-                          <path d="M160,40a32,32,0,0,1-64,0H64V208a8,8,0,0,0,8,8H184a8,8,0,0,0,8-8V40Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-                        </svg>
+                      <span style="background-color: #f2dcbb; margin-right: 25px; font-size: 20px;">
+                        <i class="fa fa-cloud-upload"></i>
                       </span>
+
                       <h3>
                         <strong>cloud Computing</strong>
-                        <small>Une Infrastructure solide comme du rock</small>
+                        <small>Une Infrastructure solide comme du rock basée sur trois continents: Europe, Amérique, Asie.</small>
                       </h3>
                       <span>
 
@@ -1754,18 +1764,20 @@
                   <div class="data-description">
                     <dl>
                       <div>
-                        <dt>Time</dt>
-                        <dd>4.27pm</dd>
+                        <dt>Serveurs Haut de game</dt>
+                        <dd> 
+                          Visitez <a href="http://host.afhunt.com/" style="" target="_blank">AFH Host</a>
+                        </dd>
                       </div>
               
                       <div>
-                        <dt>Card used</dt>
-                        <dd>•••• 6890</dd>
+                        <dt>Solution Revendeurs Serveurs</dt>
+                        <dd>Visitez <a href="http://hbill.afhunt.com/" style="" target="_blank">AFH HBill</a></dd>
                       </div>
               
                       <div>
-                        <dt>Reference ID</dt>
-                        <dd>3125-568911</dd>
+                        <dt>Solution d'archivage</dt>
+                        <dd>Visitez <a href="#!" style="" target="_blank">AFH Box</a></dd>
                       </div>
                     </dl>
                   </div>
@@ -1773,15 +1785,8 @@
                 <details>
                   <summary>
                     <div>
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="currentColor" viewBox="0 0 256 256">
-                          <rect width="256" height="256" fill="none"></rect>
-                          <rect x="32" y="80" width="192" height="48" rx="7.99999" stroke-width="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"></rect>
-                          <path d="M208,128v72a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8V128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-                          <line x1="128" y1="80" x2="128" y2="208" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-                          <path d="M173.25483,68.68629C161.94113,80,128,80,128,80s0-33.94113,11.31371-45.25483a24,24,0,0,1,33.94112,33.94112Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-                          <path d="M82.74517,68.68629C94.05887,80,128,80,128,80s0-33.94113-11.31371-45.25483A24,24,0,0,0,82.74517,68.68629Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-                        </svg>
+                      <span style="font-size: 20px;">
+                        <i class="fa fa-database"></i>
                       </span>
                       <h3>
                         <strong>Big Data et Référencement web</strong>
@@ -1797,34 +1802,22 @@
                   <div class="data-description">
                     <dl>
                       <div>
-                        <dt>Time</dt>
-                        <dd>8.14am</dd>
+                        <dt>Localisation et résotage des sociétés</dt>
+                        <dd>Visitez <a href="http://africexplorer.com/" style="" target="_blank">AFH Discovery</a></dd>
                       </div>
               
-                      <div>
-                        <dt>Reference ID</dt>
-                        <dd>3125-568912</dd>
-                      </div>
                     </dl>
                   </div>
                 </details>
                 <details>
                   <summary>
                     <div>
-                      <span style="background-color: #e0ece4;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#000000" viewBox="0 0 256 256">
-                          <rect width="256" height="256" fill="none"></rect>
-                          <line x1="88" y1="24" x2="88" y2="56" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-                          <line x1="120" y1="24" x2="120" y2="56" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-                          <line x1="152" y1="24" x2="152" y2="56" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-                          <line x1="32" y1="216" x2="208" y2="216" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-                          <path d="M83.29651,216.0038A88.01441,88.01441,0,0,1,32,136V88H208v48a88.0144,88.0144,0,0,1-51.29712,80.00408" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-                          <path d="M208,88h0a32,32,0,0,1,32,32V128a32,32,0,0,1-32,32h-3.37846" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path>
-                        </svg>
+                      <span style="background-color: #e0ece4; font-size: 20px;">
+                        <i class="fa fa-sellsy"></i>
                       </span>
                       <h3>
                         <strong>E-commerce et Marketing Automation</strong>
-                        <small>Food & Beverage</small>
+                        <small>Assurance de la visibilité de l'accroissement du chiffre d'affaire des entreprises du groupe.</small>
                       </h3>
                       <span>
                         <div class="animated-progress progress-purple">
@@ -1836,18 +1829,18 @@
                   <div class="data-description">
                     <dl>
                       <div>
-                        <dt>Time</dt>
-                        <dd>7.49am</dd>
+                        <dt>Commerce en ligne</dt>
+                        <dd>Visitez <a href="http://market.afhunt.com/"  target="_blank">AFH Market</a></dd>
                       </div>
               
                       <div>
-                        <dt>Card used</dt>
-                        <dd>•••• 6890</dd>
+                        <dt>Campagnes Planifiées</dt>
+                        <dd>Visitez <a href="http://ads.afhunt.com/"  target="_blank">AFH Ads</a></dd>
                       </div>
               
                       <div>
-                        <dt>Reference ID</dt>
-                        <dd>3125-568913</dd>
+                        <dt>Marketing d'affiliation et négoce</dt>
+                        <dd>Visitez <a href="http://market.afhunt.com/"  target="_blank">AFH Win</a></dd>
                       </div>
                     </dl>
                   </div>
@@ -1855,16 +1848,16 @@
                 <details>
                   <summary>
                     <div>
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><g><path d="M179.1333,108.32931a112.19069,112.19069,0,0,0-102.3584.04859" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M164.29541,136.71457a79.94058,79.94058,0,0,0-72.68359.04736" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M149.47217,165.07248a47.97816,47.97816,0,0,0-43.03662.04736" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></g></svg>
+                      <span style="font-size: 20px;">
+                        <i class="fa fa-microchip"></i>
                       </span>
                       <h3>
                         <strong>Robotique et Intelligence Artificielle</strong>
-                        <small>Music & Entertainment</small>
+                        <small>Réalisation des machines et programmes capables de simuler l'intelligence humaine</small>
                       </h3>
                       <span>
                         <div class="animated-progress progress-red">
-                          <span data-progress="20"></span>
+                          <span data-progress="30"></span>
                         </div>
                       </span>
                     </div>
@@ -1872,18 +1865,18 @@
                   <div class="data-description">
                     <dl>
                       <div>
-                        <dt>Time</dt>
-                        <dd>1.00am</dd>
+                        <dt>Arduino</dt>
+                        <dd>Visitez le <a href="#!"  target="_blank">Projet</a></dd>
                       </div>
               
                       <div>
-                        <dt>Card used</dt>
-                        <dd>•••• 6890</dd>
+                        <dt>Elastique Search</dt>
+                        <dd>Visitez le <a href="#!"  target="_blank">Projet</a></dd>
                       </div>
               
                       <div>
-                        <dt>Reference ID</dt>
-                        <dd>3125-568915</dd>
+                        <dt>Chatbots</dt>
+                        <dd>Visitez le <a href="#!"  target="_blank">Projet</a></dd>
                       </div>
                     </dl>
                   </div>
@@ -1892,12 +1885,12 @@
                 <details>
                   <summary>
                     <div>
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><g><path d="M179.1333,108.32931a112.19069,112.19069,0,0,0-102.3584.04859" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M164.29541,136.71457a79.94058,79.94058,0,0,0-72.68359.04736" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M149.47217,165.07248a47.97816,47.97816,0,0,0-43.03662.04736" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></g></svg>
+                      <span style="font-size: 20px;">
+                        <i class="fa fa-eercast"></i>
                       </span>
                       <h3>
-                        <strong>Génie logiciel: Applis sur mesure et réalité virtuelle</strong>
-                        <small>Music & Entertainment</small>
+                        <strong>Applications sur mesure et réalité virtuelle</strong>
+                        <small>Réalisation des projets évolutifs  sous des architectures et technologies moderne.</small>
                       </h3>
                       <span>
                         <div class="animated-progress progress-blue">
@@ -1909,19 +1902,10 @@
                   <div class="data-description">
                     <dl>
                       <div>
-                        <dt>Time</dt>
-                        <dd>1.00am</dd>
+                        <dt>Projets IT et formations</dt>
+                        <dd>Visitez <a href="http://code.afhunt.com/"  target="_blank">AFH Code</a></dd>
                       </div>
               
-                      <div>
-                        <dt>Card used</dt>
-                        <dd>•••• 6890</dd>
-                      </div>
-              
-                      <div>
-                        <dt>Reference ID</dt>
-                        <dd>3125-568915</dd>
-                      </div>
                     </dl>
                   </div>
                 </details>
@@ -1929,16 +1913,16 @@
                 <details>
                   <summary>
                     <div>
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="128" r="96" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></circle><g><path d="M179.1333,108.32931a112.19069,112.19069,0,0,0-102.3584.04859" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M164.29541,136.71457a79.94058,79.94058,0,0,0-72.68359.04736" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M149.47217,165.07248a47.97816,47.97816,0,0,0-43.03662.04736" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></g></svg>
+                      <span style="font-size: 20px;">
+                        <i class="fa fa-assistive-listening-systems"></i>
                       </span>
                       <h3>
-                        <strong>Industrie: transformation de la production locale</strong>
-                        <small>Music & Entertainment</small>
+                        <strong>Industrie </strong>
+                        <small>Transformation de la production locale</small>
                       </h3>
                       <span>
                         <div class="animated-progress progress-green">
-                          <span data-progress="18"></span>
+                          <span data-progress="25"></span>
                         </div>
                       </span>
                     </div>
@@ -1946,19 +1930,10 @@
                   <div class="data-description">
                     <dl>
                       <div>
-                        <dt>Time</dt>
-                        <dd>1.00am</dd>
+                        <dt>Production des produits à base du lait</dt>
+                        <dd>Visitez <a href="#!"  target="_blank">AFH Alt</a></dd>
                       </div>
               
-                      <div>
-                        <dt>Card used</dt>
-                        <dd>•••• 6890</dd>
-                      </div>
-              
-                      <div>
-                        <dt>Reference ID</dt>
-                        <dd>3125-568915</dd>
-                      </div>
                     </dl>
                   </div>
                 </details>
@@ -1968,10 +1943,16 @@
 
           </div>
         </div>
-      </section>
 
-      <div class="testimonials-clean" style="position: relative!important; margin: -70px 0px 40px 0px; z-index: 5;">
+        
+      </section>
+      <div style="position: sticky; z-index: 0; background: red;">
+        <img src="{{ asset('template/images/spider2.png') }}" alt="" style="position: absolute;  right: 0px; height: 700px; top: -300px;">
+    </div>
+      <div class="testimonials-clean" style="position: relative!important; margin: -70px 0px 40px 0px; z-index: 5; background: transparent;">
+        
         <div class="container">
+          
           <div class="article-detail">
             <h2>Nos piliés de développement</h2>
             <h4>Notre développement est basé sur un canal bien définit que nous déveleppons progressivement avec beaucoup de passion.</h4>
@@ -1985,7 +1966,7 @@
                           <span class="fa fa-quote-left"></span> _Pour y arriver nous travaillons avec beaucoup de partenaires et d'experts.
                         </p>
                     </div>
-                    <div class="author"><img class="rounded-circle" src="https://i.imgur.com/o5uMfKo.jpg">
+                    <div class="author"><img  src="{{ asset('template/images/image-conso.png') }}" />
                         <h5 class="name">Production</h5>
                         <p class="title">Infrastructure & Architecture</p>
                     </div>
@@ -1996,7 +1977,7 @@
                           Nous intégrons l'acheminement de nos services et produits sur les circuits naturellement et ou automatiquement développés par les entités du groupe et nos services intelligeant.
                         </p>
                     </div>
-                    <div class="author"><img class="rounded-circle" src="https://i.imgur.com/o5uMfKo.jpg">
+                    <div class="author"><img src="{{ asset('template/images/images-pan.png') }}" />
                         <h5 class="name">Vulgarisation</h5>
                         <p class="title">La communication auto.</p>
                     </div>
@@ -2010,7 +1991,7 @@
                         </p>
                     </div>
                     <div class="author">
-                      <img class="rounded-circle" src="https://i.imgur.com/o5uMfKo.jpg">
+                      <img src="{{ asset('template/images/images-games.png') }}" />
                         <h5 class="name">Consommation</h5>
                         <p class="title">Les communautés</p>
                     </div>
@@ -2048,7 +2029,10 @@
               <div class="page-figure-wrap">
                 <a class="page-figure">
                   <div class="ressources-items">
-                    <div class="libele-item">Une affaire</div>
+                    <div class="libele-item text-left">
+                      <span class="fa fa-ravelry"></span> Formation <br>
+                      #Génie Logiciel #Admin système #Ministère des Hydrocarbures Congo Brazza (MHC Congo)
+                    </div>
                   </div>
 
                   <img src="{{ asset('template/images/ressources/res01.jpeg') }}" alt="" width="381" height="559">
@@ -2060,7 +2044,10 @@
               <div class="page-figure-wrap">
                 <a class="page-figure" href="">
                   <div class="ressources-items">
-                    <div class="libele-item">Une affaire</div>
+                    <div class="libele-item text-left">
+                      <span class="fa fa-ravelry"></span> Conférence <br>
+                      #Economie Numérique #Les Métiers de l'informatique #Orientation des étudiant(e)s
+                    </div>
                   </div>
                   <img src="{{ asset('template/images/ressources/seminaire.jpg') }}" alt="" width="559" height="381">
                 </a>
@@ -2071,7 +2058,10 @@
               <div class="page-figure-wrap"> 
                 <a class="page-figure" href=""> 
                   <div class="ressources-items"> 
-                    <div class="libele-item">Une affaire</div> 
+                    <div class="libele-item text-left">
+                      <span class="fa fa-ravelry"></span> Point rapide <br>
+                      #Echange avec les responsables de AFH Market Yaoundé Biyem-Assi
+                    </div> 
                   </div>
                   <img src="{{ asset('template/images/ressources/res03.jpg') }}" alt="" width="559" height="381">
                 </a>
@@ -2082,7 +2072,10 @@
               <div class="page-figure-wrap">
                 <a class="page-figure" href="">
                   <div class="ressources-items"> 
-                    <div class="libele-item">Une affaire</div> 
+                    <div class="libele-item text-left">
+                      <span class="fa fa-ravelry"></span> Conférence <br>
+                      #Présentation du projet AFHunt et levée des fonds dans nos locaux de Yaoundé Biyem-assi.
+                    </div> 
                   </div>
                   <img src="{{ asset('template/images/ressources/res04.jpg') }}" alt="" width="559" height="381">
                 </a>
@@ -2093,7 +2086,10 @@
               <div class="page-figure-wrap">
                 <a class="page-figure" href="">
                   <div class="ressources-items"> 
-                    <div class="libele-item">Une affaire</div> 
+                    <div class="libele-item text-left">
+                      <span class="fa fa-ravelry"></span> Conférence <br>
+                      #Les produits laitiés #Chimie #Transformation
+                    </div> 
                   </div>
                   <img src="{{ asset('template/images/ressources/res06.jpg') }}" alt="" width="559" height="381">
                 </a>
@@ -2104,7 +2100,10 @@
               <div class="page-figure-wrap">
                 <a class="page-figure" href="">
                   <div class="ressources-items"> 
-                    <div class="libele-item">Une affaire</div> 
+                    <div class="libele-item text-left">
+                      <span class="fa fa-ravelry"></span> Conférence <br>
+                      #Présentation de la démarche AFH pour la conquête du marché du numérique.
+                    </div> 
                   </div>
                   <img src="{{ asset('template/images/ressources/res05.jpg') }}" alt="" width="559" height="381">
                 </a>
@@ -2116,7 +2115,7 @@
         <div class="owl-nav">
             <button type="button" role="presentation" class="owl-prev" styme="">
               <svg width="57" height="63" viewBox="0 0 57 63" fill="none">
-                <path d="M22.5 2.4641C26.2128 0.320508 30.7872 0.320508 34.5 2.4641L50.6458 11.7859C54.3586 13.9295 56.6458 17.891 56.6458 22.1782V40.8218C56.6458 45.109 54.3586 49.0705 50.6458 51.2141L34.5 60.5359C30.7872 62.6795 26.2128 62.6795 22.5 60.5359L6.35417 51.2141C2.64136 49.0705 0.354174 45.109 0.354174 40.8218L0.354174 22.1782C0.354174 17.891 2.64136 13.9295 6.35417 11.7859L22.5 2.4641Z" fill="#9EBB3C"></path>
+                <path d="M22.5 2.4641C26.2128 0.320508 30.7872 0.320508 34.5 2.4641L50.6458 11.7859C54.3586 13.9295 56.6458 17.891 56.6458 22.1782V40.8218C56.6458 45.109 54.3586 49.0705 50.6458 51.2141L34.5 60.5359C30.7872 62.6795 26.2128 62.6795 22.5 60.5359L6.35417 51.2141C2.64136 49.0705 0.354174 45.109 0.354174 40.8218L0.354174 22.1782C0.354174 17.891 2.64136 13.9295 6.35417 11.7859L22.5 2.4641Z" fill="#586598"></path>
               </svg>
             </button>
             <button type="button" role="presentation" class="owl-next">
@@ -2147,7 +2146,7 @@
 <section style="margin-bottom: 20px; margin-top: 20px;">
   <div class="container">
     <div class="article-detail">
-    <h2 class="title-section-part" >Partenaires AFHunt Holding</h2>
+      <h2 class="title-section-part" >Partenaires AFHunt Holding</h2>
     </div>
     <section class="customer-logos slider">
         <div class="slide"><img src="{{ asset('template/images/logooj.png') }}" alt="Omnijobber"></div>
@@ -2159,6 +2158,7 @@
         <div class="slide"><img src="{{ asset('template/images/i-web.png') }}"></div>
         <div class="slide"><img src="{{ asset('template/images/domainebox.png') }}"></div>
         <div class="slide"><img src="{{ asset('template/images/logo-symfony.png') }}"></div>
+        <div class="slide"><img src="{{ asset('template/images/logoaz.jpg') }}"></div>
     </section>
   </div>
 </section>
@@ -2198,7 +2198,7 @@ $(".animated-progress span").each(function () {
 });
 </script>
 
-    </div>
+</div>
     
 
 {% endblock %}

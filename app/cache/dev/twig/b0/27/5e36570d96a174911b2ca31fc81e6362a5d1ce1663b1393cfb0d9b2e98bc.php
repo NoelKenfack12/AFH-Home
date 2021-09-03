@@ -44,113 +44,113 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
     }
 
 \t/* Link Style 5 */
-.link5 a {
-\tcolor: #325da8;
-\tbackground-image: linear-gradient(to bottom, transparent 65%, #9ebb3d 0);
-\tbackground-size: 0% 100%;
-\tbackground-repeat: no-repeat;
-\ttext-decoration: none;
-\ttransition: background-size .4s ease;
-\ttext-decoration: none;
-\tbox-shadow: none;
-\tfont-family: Philosopher-Bold;
-}
+\t.link5 a {
+\t\tcolor: #325da8;
+\t\tbackground-image: linear-gradient(to bottom, transparent 65%, #9ebb3d 0);
+\t\tbackground-size: 0% 100%;
+\t\tbackground-repeat: no-repeat;
+\t\ttext-decoration: none;
+\t\ttransition: background-size .4s ease;
+\t\ttext-decoration: none;
+\t\tbox-shadow: none;
+\t\tfont-family: Philosopher-Bold;
+\t}
 
-.link5 a:hover {
-\tbackground-size: 100% 100%;
-\tcursor: pointer;
-}
+\t.link5 a:hover {
+\t\tbackground-size: 100% 100%;
+\t\tcursor: pointer;
+\t}
 
 
-.buttonrs {
-\tfloat: left;
-\twidth: 40px;
-\theight: 40px;
-\tcursor: pointer;
-\tbackground: #fff;
-\toverflow: hidden;
-\tborder-radius: 40px;
-\ttransition: all 0.3s ease-in-out;
-}
+\t.buttonrs {
+\t\tfloat: left;
+\t\twidth: 40px;
+\t\theight: 40px;
+\t\tcursor: pointer;
+\t\tbackground: #fff;
+\t\toverflow: hidden;
+\t\tborder-radius: 40px;
+\t\ttransition: all 0.3s ease-in-out;
+\t}
 
-.buttonrs span {
-\tfont-size: 12px;
-\tfont-weight: 200;
-\tline-height: 20px;
-\tmargin-left: 0px;
-\tfont-family: OpenSans-SemiBold;
-}
+\t.buttonrs span {
+\t\tfont-size: 12px;
+\t\tfont-weight: 200;
+\t\tline-height: 20px;
+\t\tmargin-left: 0px;
+\t\tfont-family: OpenSans-SemiBold;
+\t}
 
-.buttonrs:hover {
-\twidth: 120px;
-}
+\t.buttonrs:hover {
+\t\twidth: 120px;
+\t}
 
-.buttonrs:nth-child(1):hover .icon {
-\tbackground: #e1306c;
-}
+\t.buttonrs:nth-child(1):hover .icon {
+\t\tbackground: #e1306c;
+\t}
 
-.buttonrs:nth-child(2):hover .icon {
-\tbackground: #4267b2;
-}
+\t.buttonrs:nth-child(2):hover .icon {
+\t\tbackground: #4267b2;
+\t}
 
-.buttonrs:nth-child(3):hover .icon {
-\tbackground: #1da1f2;
-}
+\t.buttonrs:nth-child(3):hover .icon {
+\t\tbackground: #1da1f2;
+\t}
 
-.buttonrs:nth-child(4):hover .icon {
-\tbackground: #0e76a8;
-}
+\t.buttonrs:nth-child(4):hover .icon {
+\t\tbackground: #0e76a8;
+\t}
 
-.buttonrs:nth-child(5):hover .icon {
-\tbackground: #ff0000;
-}
+\t.buttonrs:nth-child(5):hover .icon {
+\t\tbackground: #ff0000;
+\t}
 
-.buttonrs:nth-child(6):hover .icon {
-\tbackground: #333;
-}
+\t.buttonrs:nth-child(6):hover .icon {
+\t\tbackground: #333;
+\t}
 
-.buttonrs:nth-child(1) span {
-\tcolor: #e1306c;
-}
+\t.buttonrs:nth-child(1) span {
+\t\tcolor: #e1306c;
+\t}
 
-.buttonrs:nth-child(2) span {
-\tcolor: #4267b2;
-}
+\t.buttonrs:nth-child(2) span {
+\t\tcolor: #4267b2;
+\t}
 
-.buttonrs:nth-child(3) span {
-\tcolor: #1da1f2;
-}
+\t.buttonrs:nth-child(3) span {
+\t\tcolor: #1da1f2;
+\t}
 
-.buttonrs:nth-child(4) span {
-\tcolor: #0e76a8;
-}
+\t.buttonrs:nth-child(4) span {
+\t\tcolor: #0e76a8;
+\t}
 
-.buttonrs:nth-child(5) span {
-\tcolor: #ff0000;
-}
+\t.buttonrs:nth-child(5) span {
+\t\tcolor: #ff0000;
+\t}
 
-.buttonrs:nth-child(6) span {
-\tcolor: #333;
-}
+\t.buttonrs:nth-child(6) span {
+\t\tcolor: #333;
+\t}
 
-.buttonrs .icon {
-\twidth: 40px;
-\theight: 40px;
-\ttext-align: center;
-\tborder-radius: 50px;
-\tdisplay: inline-block;
-\ttransition: all 0.3s ease-in-out;
-}
+\t.buttonrs .icon {
+\t\twidth: 40px;
+\t\theight: 40px;
+\t\ttext-align: center;
+\t\tborder-radius: 50px;
+\t\tdisplay: inline-block;
+\t\ttransition: all 0.3s ease-in-out;
+\t}
 
-.buttonrs .icon i {
-\tfont-size: 15px;
-\tline-height: 40px;
-\ttransition: all 0.3s ease-in-out;
-}
+\t.buttonrs .icon i {
+\t\tfont-size: 15px;
+\t\tline-height: 40px;
+\t\ttransition: all 0.3s ease-in-out;
+\t}
 
-.buttonrs:hover i {
-\tcolor: #fff;
-}
+\t.buttonrs:hover i {
+\t\tcolor: #fff;
+\t}
 
 </style>
 
@@ -364,9 +364,9 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
      <section class=\"disclaimer bg-light\" style=\"border-bottom: 1px solid #dee2e6!important;\">
          <div class=\"container\">
              <div class=\"row \">
-                 <div class=\"col-md-12 py-2\">
+                 <div class=\"col-md-12 py-2\" style=\"text-align: justify;\">
                      <small>
-                        Disclaimer: Element Limited is only an intermediary offering its platform to facilitate the transactions between Seller and Customer/Buyer/User and is not and cannot be a party to or control in any manner any transactions between the Seller and the Customer/Buyer/User. All the offers and discounts on this Website have been extended by various Builder(s)/Developer(s) who have advertised their products. Element is only communicating the offers and not selling or rendering any of those products or services. It neither warrants nor is it making any representations with respect to offer(s) made on the site. Element Limited shall neither be responsible nor liable to mediate or resolve any disputes or disagreements between the Customer/Buyer/User and the Seller and both Seller and Customer/Buyer/User shall settle all such disputes without involving Element Limited in any manner.
+\t\t\t\t\t\tBienvenue sur AFH Group, Nous avons lancé depuis 2013 le développement des projets AFHunt avec un réel désir de construire des services numériques stables de bout en bout ! Le parcours n’a pas été évident, nous avons tissé des partenariats techniques et commerciaux avec des entreprises et des particuliers dans le but de concrétiser ce rêve, mais avons été à plusieurs reprises abandonné au milieu de l’Océan par ceux-ci suite d’une part à leur faillite ou à leur méconnaissance de notre engagement dans ce secteur passionnant, Bien évidemment  ces échecs nous ont fragilisés à un moment donné, mais notre engagement nous a poussé à réviser nos processus de développement et de croissance adoptant ainsi des niveaux de sécurités diverses  garantissant l’aboutissement de nos projets sur le temps, et aujourd’hui nous sommes fier des résultats. Nous continuons à travaillons avec beaucoup d’amour sur nos services que nous voulons concurrentiels sur le plan international.
                     </small>
                  </div>
              </div>
@@ -714,6 +714,6 @@ class __TwigTemplate_b0275e36570d96a174911b2ca31fc81e6362a5d1ce1663b1393cfb0d9b2
 
     public function getDebugInfo()
     {
-        return array (  685 => 423,  674 => 414,  667 => 412,  651 => 410,  646 => 409,  642 => 408,  636 => 404,  629 => 402,  613 => 400,  608 => 399,  604 => 398,  598 => 394,  591 => 392,  575 => 390,  570 => 389,  566 => 388,  554 => 381,  548 => 380,  544 => 379,  537 => 375,  533 => 374,  529 => 373,  525 => 372,  502 => 354,  486 => 341,  477 => 335,  468 => 329,  459 => 323,  443 => 310,  435 => 305,  427 => 300,  419 => 295,  404 => 282,  382 => 263,  345 => 228,  338 => 226,  328 => 224,  323 => 223,  317 => 220,  311 => 216,  304 => 214,  294 => 212,  289 => 211,  283 => 208,  277 => 204,  270 => 202,  260 => 200,  255 => 199,  249 => 196,  237 => 187,  227 => 180,  217 => 173,  207 => 166,  188 => 152,  182 => 151,  178 => 150,  166 => 143,  25 => 4,  23 => 3,  19 => 1,);
+        return array (  685 => 423,  674 => 414,  667 => 412,  651 => 410,  646 => 409,  642 => 408,  636 => 404,  629 => 402,  613 => 400,  608 => 399,  604 => 398,  598 => 394,  591 => 392,  575 => 390,  570 => 389,  566 => 388,  554 => 381,  548 => 380,  544 => 379,  537 => 375,  533 => 374,  529 => 373,  525 => 372,  502 => 354,  486 => 341,  477 => 335,  468 => 329,  459 => 323,  443 => 310,  435 => 305,  427 => 300,  419 => 295,  404 => 282,  382 => 263,  345 => 228,  338 => 226,  328 => 224,  323 => 223,  317 => 220,  311 => 216,  304 => 214,  294 => 212,  289 => 211,  283 => 208,  277 => 204,  270 => 202,  260 => 200,  255 => 199,  249 => 196,  237 => 187,  227 => 180,  217 => 173,  207 => 166,  188 => 152,  182 => 151,  178 => 150,  166 => 143,  25 => 4,  23 => 3,  19 => 1,  2350 => 2191,  2347 => 2190,  2299 => 2145,  2295 => 2144,  2291 => 2143,  2287 => 2142,  2283 => 2141,  2279 => 2140,  2275 => 2139,  2271 => 2138,  2267 => 2137,  2257 => 2130,  2217 => 2093,  2203 => 2082,  2186 => 2068,  2172 => 2057,  2158 => 2046,  2141 => 2032,  2080 => 1974,  2066 => 1963,  2044 => 1944,  1769 => 1672,  1738 => 1644,  1714 => 1623,  1704 => 1616,  1673 => 1588,  1488 => 1406,  438 => 359,  406 => 330,  374 => 301,  349 => 279,  339 => 272,  111 => 47,  94 => 33,  80 => 22,  76 => 20,  73 => 19,  66 => 16,  63 => 15,  56 => 12,  53 => 11,  42 => 5,  38 => 4,  35 => 3,  32 => 2,);
     }
 }

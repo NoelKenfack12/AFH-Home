@@ -280,7 +280,13 @@ class ServiceController extends Controller
 				return $this->render('ProduitServiceBundle:Service:callbackprojetpage.html.twig', array('liste_appli'=>$liste_appli));
 			}else if($param == 'statistique')
 			{
-				return $this->render('ProduitServiceBundle:Service:callbackstatistiquepage.html.twig');
+				$liste_annee = $em->getRepository('ProduitServiceBundle:Service')
+	                      		  ->findBy(array('type'=>0), array('nom'=>'desc'));
+
+				return $this->render('ProduitServiceBundle:Service:callbackstatistiquepage.html.twig', 
+				array('liste_annee'=>$liste_annee));
+			}else if($param == 'emploi'){
+				return $this->render('ProduitServiceBundle:Service:callbackemploipage.html.twig');
 			}else{
 				echo 0;
 				exit;

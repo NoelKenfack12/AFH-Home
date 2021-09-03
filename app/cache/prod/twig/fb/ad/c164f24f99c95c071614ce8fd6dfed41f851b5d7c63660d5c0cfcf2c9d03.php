@@ -55,7 +55,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
         // line 12
         echo "  ";
         $this->displayParentBlock("title", $context, $blocks);
-        echo " - Solutions et services intelligents prêt à l'emploi
+        echo " - Solutions et services intelligents prêt à l'emplois
 ";
     }
 
@@ -96,7 +96,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
             </a>
             <br/>
             <span style=\"padding-left: 20px; font-family: Quicksand-Bold; font-size: 20px;\">
-              Solutions et services intelligents <span style=\"display: inline-block; border: 1px solid #ed6e11; padding: 3px 15px; border-radius: 15px; color: #fff; background: #9dba3d;\">prêts à l'emploi</span> 🙌
+              Solutions et services intelligents <span style=\"display: inline-block; border: 1px solid #ed6e11; padding: 3px 15px; border-radius: 15px; color: #fff; background: #9dba3d;\">prêts à l'emplois</span> 🙌
             </span>
     \t\t\t</div>
     \t\t</div>
@@ -121,7 +121,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
               <div class=\"box-promo\">
                 <div class=\"unit unit-spacing-md align-items-center justify-content-center justify-content-xl-start\">
-                  <div class=\"unit-left wow fadeIn\" data-wow-delay=\"1s\"><a class=\"button button-primary button-shadow\" href=\"#\">Nous joindre</a></div>
+                  <div class=\"unit-left wow fadeIn\" data-wow-delay=\"1s\"><a class=\"button button-primary button-shadow activator\" href=\"#!\">Nous joindre</a></div>
                   <div class=\"unit-body wow fadeIn\" data-wow-delay=\"1.1s\"><a class=\"link-underline text-uppercase small collapse-gigamenu\"  value=\"about\" href=\"#!\">En savoir plus <span class=\"fa fa-chevron-circle-right\"></span> </a></div>
                 </div>
                 <div style=\"width: 700px; max-width: 100%;\" class=\"box-divided block-sm wow fadeIn\" data-wow-delay=\"1.3s\"><span class=\"box-divided-line\"></span>
@@ -145,8 +145,14 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
               <div class=\"ribbon-wrapper ribbon-black ribbon-right\" style=\"position: absolute; right: 0px; top: -30px; width: 290px;\">
                 <div class=\"ribbon-front\">
-                  <h2> Welcome</h2>
-                  <small>😉 heureux de vous recevoir aujourd’hui</small>
+                  <h2 style=\"
+                  background-color: #565656;
+                  color: transparent;
+                  text-shadow: 0px 2px 3px rgb(255 255 255 / 50%);
+                  -webkit-background-clip: text;
+                  -moz-background-clip: text;
+                  background-clip: text;\"> Welcome</h2>
+                  <small style=\"font-size: 12px;;\">😉 heureux de vous recevoir aujourd’hui</small>
                 </div>
                 <div class=\"ribbon-edge-topleft\"></div>
                 <div class=\"ribbon-edge-topright\"></div>
@@ -335,8 +341,8 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
                       <div class=\"text-left\">
                         <img src=\"";
-        // line 272
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_01.png"), "html", null, true);
+        // line 278
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/projets.png"), "html", null, true);
         echo "\" alt=\"\" style=\"\">
                       </div>
                       <div class=\"help-title\">
@@ -345,7 +351,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
                       <div class=\"help-content\">
                         Pendant ";
-        // line 279
+        // line 285
         echo twig_escape_filter($this->env, (twig_date_format_filter($this->env, "now", "Y") - 2013), "html", null, true);
         echo " années d’exercices, nous avons réalisé un nombre important de projets pour les entreprises, les organisations, les gouvernements et les particuliers ! </br>Découvrez quelques un ci-dessous.
                       </div>
@@ -370,8 +376,8 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
                       <div class=\"text-left\">
                         <img src=\"";
-        // line 301
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_01.png"), "html", null, true);
+        // line 307
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/about.png"), "html", null, true);
         echo "\" alt=\"\" style=\"\">
                       </div>
                       <div class=\"help-title\">
@@ -402,8 +408,8 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
                       <div class=\"text-left\">
                         <img src=\"";
-        // line 330
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_14.png"), "html", null, true);
+        // line 336
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/statistique.png"), "html", null, true);
         echo "\" alt=\"\" style=\"\">
                       </div>
                       <div class=\"help-title\">
@@ -430,12 +436,12 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
                 <div class=\"box-samples-img box-samples-img-3 wow fadeIn\" data-wow-delay=\"2.2s\">
                   <div class=\"img-classic\">
-        \t\t\t\t\t\t<a href=\"\" class=\"inner-parad-card third-item\" data-parallax-scroll=\"{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}\">
+        \t\t\t\t\t\t<a href=\"#!\" class=\"inner-parad-card third-item collapse-gigamenu\" value=\"emploi\" data-parallax-scroll=\"{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}\">
 
                       <div class=\"text-left\">
                         <img src=\"";
-        // line 359
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_16.png"), "html", null, true);
+        // line 365
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/emplois.png"), "html", null, true);
         echo "\" alt=\"\" style=\"\">
                       </div>
                       <div class=\"help-title\">
@@ -443,7 +449,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                       </div>
 
                       <div class=\"help-content\">
-                        Outil mis à la disposition du personnel métier de la chaine de contrôle du régime de vignettes
+                        Toi aussi, démarre une carrière chez AFH dans l'un des postes ci-dessous dès aujourd'hui. Nos portes d'entrée !
                       </div>
 
                       <div class=\"text-center mg-t-5\">
@@ -475,7 +481,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                 
                     <figure class=\"top top1\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                        <a href=\"http://ads.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -491,7 +497,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top3\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                        <a href=\"http://code.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -507,7 +513,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top5\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                        <a href=\"http://factory.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact.</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -523,7 +529,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top7\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                        <a href=\"http://win.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -539,7 +545,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top9\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                        <a href=\"http://mbill.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH MBill</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -562,7 +568,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top12\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                        <a href=\"http://hbill.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH HBill</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -578,7 +584,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top14\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                        <a href=\"http://lbill.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH LBill</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -594,7 +600,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top16\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                        <a href=\"http://box.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Box</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -610,7 +616,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top18\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                        <a href=\"http://africexplorer.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Disc.</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -626,7 +632,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top20\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                        <a href=\"http://messenger.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Mess.</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -635,7 +641,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top21\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                        <a href=\"http://wallet.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Wallet</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -651,7 +657,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top23\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                        <a href=\"http://myaccount.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Oauth</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -667,7 +673,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top25\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                        <a href=\"http://ads.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -683,7 +689,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top27\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                        <a href=\"http://code.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -699,7 +705,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top29\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                        <a href=\"http://factory.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact.</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -722,7 +728,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top32\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                        <a href=\"http://win.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -738,7 +744,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top34\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                        <a href=\"http://mbill.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH MBill</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -754,7 +760,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top36\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                        <a href=\"http://hbill.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH HBill</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -770,7 +776,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top38\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                        <a href=\"http://lbill.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH LBill</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -786,7 +792,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top40\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                        <a href=\"http://box.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Box</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -796,7 +802,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     
                     <figure class=\"top top41\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                        <a href=\"http://ads.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -812,7 +818,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top43\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                        <a href=\"http://africexplorer.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Disc.</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -846,7 +852,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top47\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                        <a href=\"http://messenger.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Mess.</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -862,7 +868,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top49\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                        <a href=\"http://wallet.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Wallet</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -885,7 +891,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top52\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                        <a href=\"http://myaccount.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Oauth</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -901,7 +907,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top54\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                        <a href=\"http://ads.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -935,7 +941,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top58\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                        <a href=\"http://code.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -951,7 +957,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top60\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                        <a href=\"http://factory.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact.</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -960,7 +966,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top61\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                        <a href=\"http://win.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -976,7 +982,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top63\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                        <a href=\"http://mbill.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH MBill</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -992,7 +998,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top65\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                        <a href=\"http://hbill.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH HBill</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1008,7 +1014,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top67\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                        <a href=\"http://lbill.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH LBill</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1024,7 +1030,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top69\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                        <a href=\"http://box.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Box</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1047,7 +1053,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top72\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                        <a href=\"http://africexplorer.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Disc.</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1063,7 +1069,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top74\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                        <a href=\"http://messenger.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Mess.</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1079,7 +1085,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top76\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                        <a href=\"http://wallet.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Wallet</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1095,7 +1101,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top78\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                        <a href=\"http://myaccount.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Oauth</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1111,7 +1117,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top80\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                        <a href=\"http://ads.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1120,7 +1126,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top81\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                        <a href=\"http://code.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1136,7 +1142,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top83\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                        <a href=\"http://factory.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact.</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1152,7 +1158,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top85\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                        <a href=\"http://win.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1168,7 +1174,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top87\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                        <a href=\"http://mbill.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH MBill</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1184,7 +1190,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top89\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                        <a href=\"http://hbill.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH HBill</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1207,7 +1213,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top92\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #325ea9;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Ads</a>
+                        <a href=\"http://lbill.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH LBill</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1223,7 +1229,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top94\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #9ebb3d;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Code</a>
+                        <a href=\"http://box.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Box</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1239,7 +1245,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top96\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #364a5e;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Fact</a>
+                        <a href=\"http://africexplorer.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Disc.</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1255,7 +1261,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top98\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #92cac5;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Win</a>
+                        <a href=\"http://messenger.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Mess.</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1271,7 +1277,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     </figure>
                     <figure class=\"top top100\">
                       <figure class=\"cube-face cubeface1\" style=\"background: #ed6e11;\">
-                        <a href=\"\" style=\" padding: 3px; color: #fff; display: block;\">AFH Sol</a>
+                        <a href=\"http://wallet.afhunt.com/\" target=\"_blank\" style=\" padding: 3px; color: #fff; display: block;\">AFH Wallet</a>
                       </figure>
                       <figure class=\"cube-face cubeface2\"></figure>
                       <figure class=\"cube-face cubeface3\"></figure>
@@ -1449,11 +1455,11 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
                 </style>
 
-                <div class=\"article-detail \" style=\"background: #fff; font-size: 21px; line-height: 2;
+                <div class=\"article-detail \" style=\"font-size: 21px; line-height: 2;
                       
                 padding: var(--padding);
                 color: var(--text-color);
-                font-family: var(--font-family);\">
+                font-family: var(--font-family); position: relative; z-index: 2;\">
 
                   <h2>Contributions</h2>
                   <h4 style=\"margin-bottom: 20px;\">Notre coeur bat au rythme des projets que nous portons depuis des années avec vous !</h4>
@@ -1462,7 +1468,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                     <h4>Communauté d'experts volontaire</h4>
                     <p style=\"font-family: Muli-Regular; font-size: 12px; margin-bottom: 10px\">Les experts mettent leurs compétences au profit de la croissance des projets AFH et montent en puissance avec les projets sur lesquels ils interviennent.</p>
                     
-                      <a href=\"#!\" class=\"btn-afh btn-raised btn-danger\" style=\"background: #9dba3d; color: #fff;\">
+                      <a href=\"http://factory.afhunt.com/experts\" target=\"_blank\" class=\"btn-afh btn-raised btn-danger\" style=\"background: #9dba3d; color: #fff;\">
                         <span>En savoir plus</span>
                       </a>
                   </div>
@@ -1470,7 +1476,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                   <div class=\"cardcomponent cardcomponent-2\" style=\"border-top: 2px soli #99d3ce;  background-image: url(https://ionicframework.com/img/getting-started/components-card.png);\">
                     <h4>Communauté d'investisseurs</h4>
                     <p style=\"font-family: Muli-Regular; font-size: 12px;\">Les vionnaires investissent sur les projets AFH dans le but de faire fructifier leurs investissements à cours et à long terme.</p>
-                    <a href=\"#!\" class=\"btn-afh btn-raised btn-danger\"  style=\"background: #9dba3d; color: #fff;\">
+                    <a href=\"http://factory.afhunt.com/investisseurs\" target=\"_blank\"  class=\"btn-afh btn-raised btn-danger\"  style=\"background: #9dba3d; color: #fff;\">
                       <span>En savoir plus</span>
                     </a>
                   </div>
@@ -1478,10 +1484,18 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                 </div>
 
               </div>
+
+              
           </div>
         </div>
+        <div style=\"position: sticky; z-index: 0;\">
+          <img src=\"";
+        // line 1412
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/spider.png"), "html", null, true);
+        echo "\" alt=\"\" style=\"position: absolute;  right: 0px; height: 700px; top: -250px;\">
+      </div>
       </section>
-
+      
       <style>
     .section-card {
       width: 100%;
@@ -1597,8 +1611,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
     @media (min-width: 576px){
     .box-side-left, .box-side-right{
       background: #93d4cf!important;
-      height: 800px;
-    }}
+      height: 720px;
+    }
+  }
 
     .animated-progress {
       width: 150px;
@@ -1638,7 +1653,9 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
       </style>
 
 
-<section class=\"small-screen section section-xxl bg-gradient-1\" style=\"position: relative!important;z-index: 1;\">
+<section class=\"small-screen section section-xxl bg-gradient-1\" style=\"position: relative!important;z-index: 2;\">
+  
+
   <div class=\"container\">
       <div class=\"article-detail\" style=\"background: #fff; font-size: 21px; line-height: 2;
           padding: var(--padding);
@@ -1658,8 +1675,8 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
   
           <div class=\"text-left\">
             <img src=\"";
-        // line 1580
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_01.png"), "html", null, true);
+        // line 1594
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/about.png"), "html", null, true);
         echo "\" alt=\"\">
           </div>
           <div class=\"help-title\">
@@ -1689,8 +1706,8 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
   
           <div class=\"text-left\">
             <img src=\"";
-        // line 1608
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_01.png"), "html", null, true);
+        // line 1622
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/projets.png"), "html", null, true);
         echo "\" alt=\"\" style=\"\">
           </div>
           <div class=\"help-title\">
@@ -1699,7 +1716,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
   
           <div class=\"help-content\">
             Pendant ";
-        // line 1615
+        // line 1629
         echo twig_escape_filter($this->env, (twig_date_format_filter($this->env, "now", "Y") - 2013), "html", null, true);
         echo " années d’exercices, nous avons réalisé un nombre important de projets pour les entreprises, les organisations, les gouvernements et les particuliers ! </br>Découvrez quelques un ci-dessous.
           </div>
@@ -1723,7 +1740,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
   
           <div class=\"text-left\">
             <img src=\"";
-        // line 1636
+        // line 1650
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_14.png"), "html", null, true);
         echo "\" alt=\"\" style=\"\">
           </div>
@@ -1750,12 +1767,12 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
       </div>
   
       <div class=\"owl-item cloned\" style=\"width: 372.112px; margin-right: 13px;\">
-        <a href=\"\" class=\"inner-parad-card third-item\" data-parallax-scroll=\"{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}\">
+        <a href=\"#!\" class=\"inner-parad-card third-item ollapse-gigamenu\"  value=\"emploi\" data-parallax-scroll=\"{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}\">
   
           <div class=\"text-left\">
             <img src=\"";
-        // line 1664
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/images/img_box_16.png"), "html", null, true);
+        // line 1678
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/emplois.png"), "html", null, true);
         echo "\" alt=\"\" style=\"\">
           </div>
           <div class=\"help-title\">
@@ -1763,7 +1780,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
           </div>
   
           <div class=\"help-content\">
-            Outil mis à la disposition du personnel métier de la chaine de contrôle du régime de vignettes
+            Toi aussi, démarre une carrière chez AFH dans l'un des postes ci-dessous dès aujourd'hui. Nos portes d'entrée !
           </div>
   
           <div class=\"text-center mg-t-5\">
@@ -1796,14 +1813,14 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
 
 
-      <section class=\"bg-default section-xxl position-relative\" style=\"position: relative!important;z-index: 1; padding-top: 0px!important; margin-bottom: -20px;\">
+      <section class=\"section-xxl position-relative\" style=\"position: relative!important;z-index: 10; padding-top: 0px!important; margin-bottom: -20px;\">
         <div class=\"box-side box-side-left bg-gradient-1\"></div>
         <div class=\"box-side box-side-right bg-gradient-1-reverse\"></div>
         
       <div>
         <div class=\"container position-relative\">
           <div class=\" wow fadeInUp\">
-            <div class=\"article-detail\" style=\"background: #fff; font-size: 21px; line-height: 2;
+            <div class=\"article-detail\" style=\"background: transparent; font-size: 21px; line-height: 2;
                       
                 padding: var(--padding);
                 color: var(--text-color);
@@ -1820,22 +1837,18 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
           <div class=\"row row-gutter-42\" style=\"margin: 30px 0px 0px 0px;\">
 
             <div class=\"col-md-12\">
-              <section class=\"section-card\">
+              <section class=\"section-card\" style=\"margin-top: 30px;\">
             
                 <details>
                   <summary>
                     <div>
-                      <span style=\"background-color: #f2dcbb; margin-right: 25px;\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"192\" fill=\"currentColor\" viewBox=\"0 0 256 256\">
-                          <rect width=\"256\" height=\"256\" fill=\"none\"></rect>
-                          <path d=\"M192,120h27.05573a8,8,0,0,0,7.15542-4.42229l18.40439-36.80878a8,8,0,0,0-3.18631-10.52366L192,40\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path>
-                          <path d=\"M64,120H36.94427a8,8,0,0,1-7.15542-4.42229L11.38446,78.76893a8,8,0,0,1,3.18631-10.52366L64,40\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path>
-                          <path d=\"M160,40a32,32,0,0,1-64,0H64V208a8,8,0,0,0,8,8H184a8,8,0,0,0,8-8V40Z\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path>
-                        </svg>
+                      <span style=\"background-color: #f2dcbb; margin-right: 25px; font-size: 20px;\">
+                        <i class=\"fa fa-cloud-upload\"></i>
                       </span>
+
                       <h3>
                         <strong>cloud Computing</strong>
-                        <small>Une Infrastructure solide comme du rock</small>
+                        <small>Une Infrastructure solide comme du rock basée sur trois continents: Europe, Amérique, Asie.</small>
                       </h3>
                       <span>
 
@@ -1849,18 +1862,20 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                   <div class=\"data-description\">
                     <dl>
                       <div>
-                        <dt>Time</dt>
-                        <dd>4.27pm</dd>
+                        <dt>Serveurs Haut de game</dt>
+                        <dd> 
+                          Visitez <a href=\"http://host.afhunt.com/\" style=\"\" target=\"_blank\">AFH Host</a>
+                        </dd>
                       </div>
               
                       <div>
-                        <dt>Card used</dt>
-                        <dd>•••• 6890</dd>
+                        <dt>Solution Revendeurs Serveurs</dt>
+                        <dd>Visitez <a href=\"http://hbill.afhunt.com/\" style=\"\" target=\"_blank\">AFH HBill</a></dd>
                       </div>
               
                       <div>
-                        <dt>Reference ID</dt>
-                        <dd>3125-568911</dd>
+                        <dt>Solution d'archivage</dt>
+                        <dd>Visitez <a href=\"#!\" style=\"\" target=\"_blank\">AFH Box</a></dd>
                       </div>
                     </dl>
                   </div>
@@ -1868,15 +1883,8 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                 <details>
                   <summary>
                     <div>
-                      <span>
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"192\" fill=\"currentColor\" viewBox=\"0 0 256 256\">
-                          <rect width=\"256\" height=\"256\" fill=\"none\"></rect>
-                          <rect x=\"32\" y=\"80\" width=\"192\" height=\"48\" rx=\"7.99999\" stroke-width=\"16\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"></rect>
-                          <path d=\"M208,128v72a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8V128\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path>
-                          <line x1=\"128\" y1=\"80\" x2=\"128\" y2=\"208\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></line>
-                          <path d=\"M173.25483,68.68629C161.94113,80,128,80,128,80s0-33.94113,11.31371-45.25483a24,24,0,0,1,33.94112,33.94112Z\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path>
-                          <path d=\"M82.74517,68.68629C94.05887,80,128,80,128,80s0-33.94113-11.31371-45.25483A24,24,0,0,0,82.74517,68.68629Z\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path>
-                        </svg>
+                      <span style=\"font-size: 20px;\">
+                        <i class=\"fa fa-database\"></i>
                       </span>
                       <h3>
                         <strong>Big Data et Référencement web</strong>
@@ -1892,34 +1900,22 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                   <div class=\"data-description\">
                     <dl>
                       <div>
-                        <dt>Time</dt>
-                        <dd>8.14am</dd>
+                        <dt>Localisation et résotage des sociétés</dt>
+                        <dd>Visitez <a href=\"http://africexplorer.com/\" style=\"\" target=\"_blank\">AFH Discovery</a></dd>
                       </div>
               
-                      <div>
-                        <dt>Reference ID</dt>
-                        <dd>3125-568912</dd>
-                      </div>
                     </dl>
                   </div>
                 </details>
                 <details>
                   <summary>
                     <div>
-                      <span style=\"background-color: #e0ece4;\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"192\" fill=\"#000000\" viewBox=\"0 0 256 256\">
-                          <rect width=\"256\" height=\"256\" fill=\"none\"></rect>
-                          <line x1=\"88\" y1=\"24\" x2=\"88\" y2=\"56\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></line>
-                          <line x1=\"120\" y1=\"24\" x2=\"120\" y2=\"56\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></line>
-                          <line x1=\"152\" y1=\"24\" x2=\"152\" y2=\"56\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></line>
-                          <line x1=\"32\" y1=\"216\" x2=\"208\" y2=\"216\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></line>
-                          <path d=\"M83.29651,216.0038A88.01441,88.01441,0,0,1,32,136V88H208v48a88.0144,88.0144,0,0,1-51.29712,80.00408\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path>
-                          <path d=\"M208,88h0a32,32,0,0,1,32,32V128a32,32,0,0,1-32,32h-3.37846\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path>
-                        </svg>
+                      <span style=\"background-color: #e0ece4; font-size: 20px;\">
+                        <i class=\"fa fa-sellsy\"></i>
                       </span>
                       <h3>
                         <strong>E-commerce et Marketing Automation</strong>
-                        <small>Food & Beverage</small>
+                        <small>Assurance de la visibilité de l'accroissement du chiffre d'affaire des entreprises du groupe.</small>
                       </h3>
                       <span>
                         <div class=\"animated-progress progress-purple\">
@@ -1931,18 +1927,18 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                   <div class=\"data-description\">
                     <dl>
                       <div>
-                        <dt>Time</dt>
-                        <dd>7.49am</dd>
+                        <dt>Commerce en ligne</dt>
+                        <dd>Visitez <a href=\"http://market.afhunt.com/\"  target=\"_blank\">AFH Market</a></dd>
                       </div>
               
                       <div>
-                        <dt>Card used</dt>
-                        <dd>•••• 6890</dd>
+                        <dt>Campagnes Planifiées</dt>
+                        <dd>Visitez <a href=\"http://ads.afhunt.com/\"  target=\"_blank\">AFH Ads</a></dd>
                       </div>
               
                       <div>
-                        <dt>Reference ID</dt>
-                        <dd>3125-568913</dd>
+                        <dt>Marketing d'affiliation et négoce</dt>
+                        <dd>Visitez <a href=\"http://market.afhunt.com/\"  target=\"_blank\">AFH Win</a></dd>
                       </div>
                     </dl>
                   </div>
@@ -1950,16 +1946,16 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                 <details>
                   <summary>
                     <div>
-                      <span>
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"192\" fill=\"#000000\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"none\"></rect><circle cx=\"128\" cy=\"128\" r=\"96\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></circle><g><path d=\"M179.1333,108.32931a112.19069,112.19069,0,0,0-102.3584.04859\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path><path d=\"M164.29541,136.71457a79.94058,79.94058,0,0,0-72.68359.04736\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path><path d=\"M149.47217,165.07248a47.97816,47.97816,0,0,0-43.03662.04736\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path></g></svg>
+                      <span style=\"font-size: 20px;\">
+                        <i class=\"fa fa-microchip\"></i>
                       </span>
                       <h3>
                         <strong>Robotique et Intelligence Artificielle</strong>
-                        <small>Music & Entertainment</small>
+                        <small>Réalisation des machines et programmes capables de simuler l'intelligence humaine</small>
                       </h3>
                       <span>
                         <div class=\"animated-progress progress-red\">
-                          <span data-progress=\"20\"></span>
+                          <span data-progress=\"30\"></span>
                         </div>
                       </span>
                     </div>
@@ -1967,18 +1963,18 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                   <div class=\"data-description\">
                     <dl>
                       <div>
-                        <dt>Time</dt>
-                        <dd>1.00am</dd>
+                        <dt>Arduino</dt>
+                        <dd>Visitez le <a href=\"#!\"  target=\"_blank\">Projet</a></dd>
                       </div>
               
                       <div>
-                        <dt>Card used</dt>
-                        <dd>•••• 6890</dd>
+                        <dt>Elastique Search</dt>
+                        <dd>Visitez le <a href=\"#!\"  target=\"_blank\">Projet</a></dd>
                       </div>
               
                       <div>
-                        <dt>Reference ID</dt>
-                        <dd>3125-568915</dd>
+                        <dt>Chatbots</dt>
+                        <dd>Visitez le <a href=\"#!\"  target=\"_blank\">Projet</a></dd>
                       </div>
                     </dl>
                   </div>
@@ -1987,12 +1983,12 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                 <details>
                   <summary>
                     <div>
-                      <span>
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"192\" fill=\"#000000\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"none\"></rect><circle cx=\"128\" cy=\"128\" r=\"96\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></circle><g><path d=\"M179.1333,108.32931a112.19069,112.19069,0,0,0-102.3584.04859\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path><path d=\"M164.29541,136.71457a79.94058,79.94058,0,0,0-72.68359.04736\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path><path d=\"M149.47217,165.07248a47.97816,47.97816,0,0,0-43.03662.04736\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path></g></svg>
+                      <span style=\"font-size: 20px;\">
+                        <i class=\"fa fa-eercast\"></i>
                       </span>
                       <h3>
-                        <strong>Génie logiciel: Applis sur mesure et réalité virtuelle</strong>
-                        <small>Music & Entertainment</small>
+                        <strong>Applications sur mesure et réalité virtuelle</strong>
+                        <small>Réalisation des projets évolutifs  sous des architectures et technologies moderne.</small>
                       </h3>
                       <span>
                         <div class=\"animated-progress progress-blue\">
@@ -2004,19 +2000,10 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                   <div class=\"data-description\">
                     <dl>
                       <div>
-                        <dt>Time</dt>
-                        <dd>1.00am</dd>
+                        <dt>Projets IT et formations</dt>
+                        <dd>Visitez <a href=\"http://code.afhunt.com/\"  target=\"_blank\">AFH Code</a></dd>
                       </div>
               
-                      <div>
-                        <dt>Card used</dt>
-                        <dd>•••• 6890</dd>
-                      </div>
-              
-                      <div>
-                        <dt>Reference ID</dt>
-                        <dd>3125-568915</dd>
-                      </div>
                     </dl>
                   </div>
                 </details>
@@ -2024,16 +2011,16 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                 <details>
                   <summary>
                     <div>
-                      <span>
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"192\" fill=\"#000000\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"none\"></rect><circle cx=\"128\" cy=\"128\" r=\"96\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></circle><g><path d=\"M179.1333,108.32931a112.19069,112.19069,0,0,0-102.3584.04859\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path><path d=\"M164.29541,136.71457a79.94058,79.94058,0,0,0-72.68359.04736\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path><path d=\"M149.47217,165.07248a47.97816,47.97816,0,0,0-43.03662.04736\" fill=\"none\" stroke=\"#000000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"16\"></path></g></svg>
+                      <span style=\"font-size: 20px;\">
+                        <i class=\"fa fa-assistive-listening-systems\"></i>
                       </span>
                       <h3>
-                        <strong>Industrie: transformation de la production locale</strong>
-                        <small>Music & Entertainment</small>
+                        <strong>Industrie </strong>
+                        <small>Transformation de la production locale</small>
                       </h3>
                       <span>
                         <div class=\"animated-progress progress-green\">
-                          <span data-progress=\"18\"></span>
+                          <span data-progress=\"25\"></span>
                         </div>
                       </span>
                     </div>
@@ -2041,19 +2028,10 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                   <div class=\"data-description\">
                     <dl>
                       <div>
-                        <dt>Time</dt>
-                        <dd>1.00am</dd>
+                        <dt>Production des produits à base du lait</dt>
+                        <dd>Visitez <a href=\"#!\"  target=\"_blank\">AFH Alt</a></dd>
                       </div>
               
-                      <div>
-                        <dt>Card used</dt>
-                        <dd>•••• 6890</dd>
-                      </div>
-              
-                      <div>
-                        <dt>Reference ID</dt>
-                        <dd>3125-568915</dd>
-                      </div>
                     </dl>
                   </div>
                 </details>
@@ -2063,10 +2041,19 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
           </div>
         </div>
-      </section>
 
-      <div class=\"testimonials-clean\" style=\"position: relative!important; margin: -70px 0px 40px 0px; z-index: 5;\">
+        
+      </section>
+      <div style=\"position: sticky; z-index: 0; background: red;\">
+        <img src=\"";
+        // line 1950
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/spider2.png"), "html", null, true);
+        echo "\" alt=\"\" style=\"position: absolute;  right: 0px; height: 700px; top: -300px;\">
+    </div>
+      <div class=\"testimonials-clean\" style=\"position: relative!important; margin: -70px 0px 40px 0px; z-index: 5; background: transparent;\">
+        
         <div class=\"container\">
+          
           <div class=\"article-detail\">
             <h2>Nos piliés de développement</h2>
             <h4>Notre développement est basé sur un canal bien définit que nous déveleppons progressivement avec beaucoup de passion.</h4>
@@ -2080,7 +2067,10 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                           <span class=\"fa fa-quote-left\"></span> _Pour y arriver nous travaillons avec beaucoup de partenaires et d'experts.
                         </p>
                     </div>
-                    <div class=\"author\"><img class=\"rounded-circle\" src=\"https://i.imgur.com/o5uMfKo.jpg\">
+                    <div class=\"author\"><img  src=\"";
+        // line 1969
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/image-conso.png"), "html", null, true);
+        echo "\" />
                         <h5 class=\"name\">Production</h5>
                         <p class=\"title\">Infrastructure & Architecture</p>
                     </div>
@@ -2091,7 +2081,10 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                           Nous intégrons l'acheminement de nos services et produits sur les circuits naturellement et ou automatiquement développés par les entités du groupe et nos services intelligeant.
                         </p>
                     </div>
-                    <div class=\"author\"><img class=\"rounded-circle\" src=\"https://i.imgur.com/o5uMfKo.jpg\">
+                    <div class=\"author\"><img src=\"";
+        // line 1980
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/images-pan.png"), "html", null, true);
+        echo "\" />
                         <h5 class=\"name\">Vulgarisation</h5>
                         <p class=\"title\">La communication auto.</p>
                     </div>
@@ -2105,7 +2098,10 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
                         </p>
                     </div>
                     <div class=\"author\">
-                      <img class=\"rounded-circle\" src=\"https://i.imgur.com/o5uMfKo.jpg\">
+                      <img src=\"";
+        // line 1994
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/images-games.png"), "html", null, true);
+        echo "\" />
                         <h5 class=\"name\">Consommation</h5>
                         <p class=\"title\">Les communautés</p>
                     </div>
@@ -2143,11 +2139,14 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
               <div class=\"page-figure-wrap\">
                 <a class=\"page-figure\">
                   <div class=\"ressources-items\">
-                    <div class=\"libele-item\">Une affaire</div>
+                    <div class=\"libele-item text-left\">
+                      <span class=\"fa fa-ravelry\"></span> Formation <br>
+                      #Génie Logiciel #Admin système #Ministère des Hydrocarbures Congo Brazza (MHC Congo)
+                    </div>
                   </div>
 
                   <img src=\"";
-        // line 2054
+        // line 2038
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/res01.jpeg"), "html", null, true);
         echo "\" alt=\"\" width=\"381\" height=\"559\">
                 </a>
@@ -2158,10 +2157,13 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
               <div class=\"page-figure-wrap\">
                 <a class=\"page-figure\" href=\"\">
                   <div class=\"ressources-items\">
-                    <div class=\"libele-item\">Une affaire</div>
+                    <div class=\"libele-item text-left\">
+                      <span class=\"fa fa-ravelry\"></span> Conférence <br>
+                      #Economie Numérique #Les Métiers de l'informatique #Orientation des étudiant(e)s
+                    </div>
                   </div>
                   <img src=\"";
-        // line 2065
+        // line 2052
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/seminaire.jpg"), "html", null, true);
         echo "\" alt=\"\" width=\"559\" height=\"381\">
                 </a>
@@ -2172,10 +2174,13 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
               <div class=\"page-figure-wrap\"> 
                 <a class=\"page-figure\" href=\"\"> 
                   <div class=\"ressources-items\"> 
-                    <div class=\"libele-item\">Une affaire</div> 
+                    <div class=\"libele-item text-left\">
+                      <span class=\"fa fa-ravelry\"></span> Point rapide <br>
+                      #Echange avec les responsables de AFH Market Yaoundé Biyem-Assi
+                    </div> 
                   </div>
                   <img src=\"";
-        // line 2076
+        // line 2066
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/res03.jpg"), "html", null, true);
         echo "\" alt=\"\" width=\"559\" height=\"381\">
                 </a>
@@ -2186,11 +2191,31 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
               <div class=\"page-figure-wrap\">
                 <a class=\"page-figure\" href=\"\">
                   <div class=\"ressources-items\"> 
-                    <div class=\"libele-item\">Une affaire</div> 
+                    <div class=\"libele-item text-left\">
+                      <span class=\"fa fa-ravelry\"></span> Conférence <br>
+                      #Présentation du projet AFHunt et levée des fonds dans nos locaux de Yaoundé Biyem-assi.
+                    </div> 
                   </div>
                   <img src=\"";
-        // line 2087
+        // line 2080
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/res04.jpg"), "html", null, true);
+        echo "\" alt=\"\" width=\"559\" height=\"381\">
+                </a>
+              </div>
+            </div>
+
+            <div class=\"owl-item\" style=\"width: 372.112px; margin-right: 13px;\">
+              <div class=\"page-figure-wrap\">
+                <a class=\"page-figure\" href=\"\">
+                  <div class=\"ressources-items\"> 
+                    <div class=\"libele-item text-left\">
+                      <span class=\"fa fa-ravelry\"></span> Conférence <br>
+                      #Les produits laitiés #Chimie #Transformation
+                    </div> 
+                  </div>
+                  <img src=\"";
+        // line 2094
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/res06.jpg"), "html", null, true);
         echo "\" alt=\"\" width=\"559\" height=\"381\">
                 </a>
               </div>
@@ -2200,10 +2225,13 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
               <div class=\"page-figure-wrap\">
                 <a class=\"page-figure\" href=\"\">
                   <div class=\"ressources-items\"> 
-                    <div class=\"libele-item\">Une affaire</div> 
+                    <div class=\"libele-item text-left\">
+                      <span class=\"fa fa-ravelry\"></span> Conférence <br>
+                      #Présentation de la démarche AFH pour la conquête du marché du numérique.
+                    </div> 
                   </div>
                   <img src=\"";
-        // line 2098
+        // line 2108
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/ressources/res05.jpg"), "html", null, true);
         echo "\" alt=\"\" width=\"559\" height=\"381\">
                 </a>
@@ -2215,7 +2243,7 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
         <div class=\"owl-nav\">
             <button type=\"button\" role=\"presentation\" class=\"owl-prev\" styme=\"\">
               <svg width=\"57\" height=\"63\" viewBox=\"0 0 57 63\" fill=\"none\">
-                <path d=\"M22.5 2.4641C26.2128 0.320508 30.7872 0.320508 34.5 2.4641L50.6458 11.7859C54.3586 13.9295 56.6458 17.891 56.6458 22.1782V40.8218C56.6458 45.109 54.3586 49.0705 50.6458 51.2141L34.5 60.5359C30.7872 62.6795 26.2128 62.6795 22.5 60.5359L6.35417 51.2141C2.64136 49.0705 0.354174 45.109 0.354174 40.8218L0.354174 22.1782C0.354174 17.891 2.64136 13.9295 6.35417 11.7859L22.5 2.4641Z\" fill=\"#9EBB3C\"></path>
+                <path d=\"M22.5 2.4641C26.2128 0.320508 30.7872 0.320508 34.5 2.4641L50.6458 11.7859C54.3586 13.9295 56.6458 17.891 56.6458 22.1782V40.8218C56.6458 45.109 54.3586 49.0705 50.6458 51.2141L34.5 60.5359C30.7872 62.6795 26.2128 62.6795 22.5 60.5359L6.35417 51.2141C2.64136 49.0705 0.354174 45.109 0.354174 40.8218L0.354174 22.1782C0.354174 17.891 2.64136 13.9295 6.35417 11.7859L22.5 2.4641Z\" fill=\"#586598\"></path>
               </svg>
             </button>
             <button type=\"button\" role=\"presentation\" class=\"owl-next\">
@@ -2243,50 +2271,54 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 </style>
 
 <script src=\"";
-        // line 2135
+        // line 2145
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("afhholding/js/slick.js"), "html", null, true);
         echo "\"></script>
 <section style=\"margin-bottom: 20px; margin-top: 20px;\">
   <div class=\"container\">
     <div class=\"article-detail\">
-    <h2 class=\"title-section-part\" >Partenaires AFHunt Holding</h2>
+      <h2 class=\"title-section-part\" >Partenaires AFHunt Holding</h2>
     </div>
     <section class=\"customer-logos slider\">
         <div class=\"slide\"><img src=\"";
-        // line 2142
+        // line 2152
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logooj.png"), "html", null, true);
         echo "\" alt=\"Omnijobber\"></div>
         <div class=\"slide\"><img src=\"";
-        // line 2143
+        // line 2153
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logoovh.jpg"), "html", null, true);
         echo "\"></div>
         <div class=\"slide\"><img src=\"";
-        // line 2144
+        // line 2154
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logoamazone.png"), "html", null, true);
         echo "\"></div>
         <div class=\"slide\"><img src=\"";
-        // line 2145
+        // line 2155
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/france-dns.png"), "html", null, true);
         echo "\"></div>
         <div class=\"slide\"><img src=\"";
-        // line 2146
+        // line 2156
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logo-factory.png"), "html", null, true);
         echo "\"></div>
         <div class=\"slide\"><img src=\"";
-        // line 2147
+        // line 2157
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logoapme.jpg"), "html", null, true);
         echo "\"></div>
         <div class=\"slide\"><img src=\"";
-        // line 2148
+        // line 2158
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/i-web.png"), "html", null, true);
         echo "\"></div>
         <div class=\"slide\"><img src=\"";
-        // line 2149
+        // line 2159
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/domainebox.png"), "html", null, true);
         echo "\"></div>
         <div class=\"slide\"><img src=\"";
-        // line 2150
+        // line 2160
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logo-symfony.png"), "html", null, true);
+        echo "\"></div>
+        <div class=\"slide\"><img src=\"";
+        // line 2161
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("template/images/logoaz.jpg"), "html", null, true);
         echo "\"></div>
     </section>
   </div>
@@ -2327,16 +2359,16 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 });
 </script>
 
-    </div>
+</div>
     
 
 ";
     }
 
-    // line 2195
+    // line 2206
     public function block_javascripttemplate($context, array $blocks = array())
     {
-        // line 2196
+        // line 2207
         echo "
 ";
     }
@@ -2353,6 +2385,6 @@ class __TwigTemplate_fbadc164f24f99c95c071614ce8fd6dfed41f851b5d7c63660d5c0cfcf2
 
     public function getDebugInfo()
     {
-        return array (  2340 => 2196,  2337 => 2195,  2289 => 2150,  2285 => 2149,  2281 => 2148,  2277 => 2147,  2273 => 2146,  2269 => 2145,  2265 => 2144,  2261 => 2143,  2257 => 2142,  2247 => 2135,  2207 => 2098,  2193 => 2087,  2179 => 2076,  2165 => 2065,  2151 => 2054,  1758 => 1664,  1727 => 1636,  1703 => 1615,  1693 => 1608,  1662 => 1580,  438 => 359,  406 => 330,  374 => 301,  349 => 279,  339 => 272,  111 => 47,  94 => 33,  80 => 22,  76 => 20,  73 => 19,  66 => 16,  63 => 15,  56 => 12,  53 => 11,  42 => 5,  38 => 4,  35 => 3,  32 => 2,);
+        return array (  2372 => 2207,  2369 => 2206,  2321 => 2161,  2317 => 2160,  2313 => 2159,  2309 => 2158,  2305 => 2157,  2301 => 2156,  2297 => 2155,  2293 => 2154,  2289 => 2153,  2285 => 2152,  2275 => 2145,  2235 => 2108,  2218 => 2094,  2201 => 2080,  2184 => 2066,  2167 => 2052,  2150 => 2038,  2103 => 1994,  2086 => 1980,  2072 => 1969,  2050 => 1950,  1775 => 1678,  1744 => 1650,  1720 => 1629,  1710 => 1622,  1679 => 1594,  1494 => 1412,  444 => 365,  412 => 336,  380 => 307,  355 => 285,  345 => 278,  111 => 47,  94 => 33,  80 => 22,  76 => 20,  73 => 19,  66 => 16,  63 => 15,  56 => 12,  53 => 11,  42 => 5,  38 => 4,  35 => 3,  32 => 2,);
     }
 }

@@ -71,7 +71,7 @@ class __TwigTemplate_4b57ce5ffd619b7ffcf8bb6d94dd082af53e41b57bf06a9864fdc1c5b86
   <div class=\"shadow- bg-light1\"style=\"padding: 0px 0px 15px 0px; z-index: 1; position: relative!important; background: #fff;  box-shadow: 0px 1px 5px 0px #d4d8de;\">
 \t<!-- div style=\"height: 40px; background: #fff;\"></div -->
 \t  <div class=\"container\" style=\"padding-top: 5px;\">
-\t\t<h3>Les projets en cours chez AFHunt
+\t\t<h3>Parmis nos projets coeur de métier
 \t\t\t<span style=\"float: right;\">
 \t\t\t\t<a href=\"#!\">
 \t\t\t\t\t<span class=\"fa fa-heart\"></span>
@@ -97,18 +97,18 @@ class __TwigTemplate_4b57ce5ffd619b7ffcf8bb6d94dd082af53e41b57bf06a9864fdc1c5b86
 \t\t<div class=\"border-0\" style=\"padding:  0px 0px 50px 0px;\">
 \t\t\t<div class=\"shadow3\">
 \t\t\t\t<div class=\"article-detail article-panel\" style=\"padding: 0px;\">
-\t\t\t\t\t<h2>Parmis nos projets coeur de métier</h2>
+\t\t\t\t\t<h2>Applications de grande envergure</h2>
 \t\t\t\t\t<h4>
-\t\t\t\t\t\tQuelques figures qui font la fierté du groupe
+\t\t\t\t\t\tNous utilisons des technologies les plus stables pour le développement des applications modulaires sur tous les environnements. Mobile, desktop, web ...
 \t\t\t\t\t</h4>
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t
 
 \t\t\t<div class=\"alert alert-info\" role=\"alert\">
-\t\t\t\t<h4>Pour réussir ce challenge, AFHunt Group travail sans relâche avec une communauté dynamique qui grandi de jour en jour.</h4>
-\t\t\t\t<div>Cette communauté se mobilise sur plusieurs plans. <strong><a href=\"\">Sur le plan technoligique</a></strong>, en partageant leurs idées et compétences; <strong><a href=\"\">Sur le plan financié</a></strong> en investissant sur les projets porteurs; 
-\t\t\t\t\t<strong><a href=\"\">Sur le plan amicale</a></strong> en partageant nos produits.
+\t\t\t\t<h4>Nos applications prêt à l'emploi répondent aux besoins des Entreprises Africaine, et visent essentiellement à fluidifier les échanges d'informations, la transparence et l'archivage des informations des entreprises.</h4>
+\t\t\t\t<div>
+\t\t\t\t\tUne veuille stratégique est opérée pour le choix et l'orientation du développement des projets AFHunt. Nos projets retenu sont développés par <strong><a href=\"#!\">les experts</a></strong>, préfinancés par <strong><a href=\"#!\">nos investisseurs</a></strong> et vulgarisés par les <strong><a href=\"#!\">circuits naturels</a></strong> et automatiques développés
 \t\t\t\t</div>
 \t\t\t</div>
 
@@ -232,8 +232,13 @@ class __TwigTemplate_4b57ce5ffd619b7ffcf8bb6d94dd082af53e41b57bf06a9864fdc1c5b86
             $context = array_intersect_key($context, $_parent) + $_parent;
             // line 118
             echo "\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<a href=\"\" class=\"btn btn-primary\"><span class=\"fa fa-external-link\"></span> En savoir plus sur le projet</a>
-\t\t\t\t\t\t\t<a href=\"\" class=\"btn btn-primary\"><span class=\"fa fa-tint\"></span> Investir sur le projet</a>
+\t\t\t\t\t\t\t<a href=\"";
+            // line 119
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["appli"]) ? $context["appli"] : $this->getContext($context, "appli")), "link"), "html", null, true);
+            echo "\" target=\"_blank\" class=\"btn btn-primary\" style=\"text-transform: capitalize; font-family: Raleway-Medium; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+\t\t\t\t\t\t\ttransition: all 0.3s cubic-bezier(.25,.8,.25,1);background: #39BA82;\"><span class=\"fa fa-external-link\"></span> En savoir plus sur le projet</a>
+\t\t\t\t\t\t\t<a href=\"http://factory.afhunt.com/\" target=\"_blank\" class=\"btn btn-primary\" style=\"text-transform: capitalize; font-family: Raleway-Medium; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+\t\t\t\t\t\t\ttransition: all 0.3s cubic-bezier(.25,.8,.25,1);background: #39BA82;\"><span class=\"fa fa-tint\"></span> Investir sur le projet</a>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
@@ -242,7 +247,7 @@ class __TwigTemplate_4b57ce5ffd619b7ffcf8bb6d94dd082af53e41b57bf06a9864fdc1c5b86
 
 \t\t\t\t<script type=\"text/javascript\">
 \t\t\t\t\$(\".demo";
-            // line 128
+            // line 130
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["appli"]) ? $context["appli"] : $this->getContext($context, "appli")), "id"), "html", null, true);
             echo "\").justifiedGallery({rowHeight: 200});
 \t\t\t\t</script>
@@ -259,7 +264,7 @@ class __TwigTemplate_4b57ce5ffd619b7ffcf8bb6d94dd082af53e41b57bf06a9864fdc1c5b86
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['appli'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 131
+        // line 133
         echo "
 \t\t\t\t
 \t\t\t</div>
@@ -270,9 +275,9 @@ class __TwigTemplate_4b57ce5ffd619b7ffcf8bb6d94dd082af53e41b57bf06a9864fdc1c5b86
 <div class=\"col-sm-12 col-md-4\">
 \t
 \t";
-        // line 140
+        // line 142
         $this->env->loadTemplate("ProduitServiceBundle:Service:menustruct.html.twig")->display($context);
-        // line 141
+        // line 143
         echo "\t\t\t
 </div>
 
@@ -357,6 +362,6 @@ class __TwigTemplate_4b57ce5ffd619b7ffcf8bb6d94dd082af53e41b57bf06a9864fdc1c5b86
 
     public function getDebugInfo()
     {
-        return array (  276 => 141,  274 => 140,  263 => 131,  246 => 128,  234 => 118,  211 => 115,  200 => 114,  183 => 113,  179 => 112,  173 => 109,  167 => 106,  162 => 105,  156 => 103,  154 => 102,  138 => 91,  135 => 90,  118 => 89,  67 => 41,  63 => 40,  59 => 39,  19 => 1,);
+        return array (  281 => 143,  279 => 142,  268 => 133,  251 => 130,  237 => 119,  234 => 118,  211 => 115,  200 => 114,  183 => 113,  179 => 112,  173 => 109,  167 => 106,  162 => 105,  156 => 103,  154 => 102,  138 => 91,  135 => 90,  118 => 89,  67 => 41,  63 => 40,  59 => 39,  19 => 1,);
     }
 }
