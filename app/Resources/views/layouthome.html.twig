@@ -14,7 +14,10 @@
 	<link rel="stylesheet" href="{{ asset('afhholding/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('afhholding/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('afhholding/css/font-awesome.css') }}"/>
+  <link rel="stylesheet" href="{{ asset('afhholding/css/magnific-popup.css') }}"/>
 	<link rel="stylesheet" type="text/css" href="{{ asset('afhholding/css/fontsaps.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ asset('afhholding/css/stylevideo.css') }}" />
+  
     <style>
 		.img-classic{
 			box-shadow: none;
@@ -5057,14 +5060,14 @@ blockquote .apostrof+p{margin-top:0}blockquote+p{margin-top:50px}.skewed-bg{posi
 <div id="top-sidebar-popper">
 	<!-- div class="spinner"></div  -->
 	<div id="preloader-active">
-	<div class="preloader2 d-flex align-items-center justify-content-center">
-		<div class="preloader-inner position-relative">
-			<div class="preloader-circle"></div>
-			<div class="preloader-img pere-text">
-				<img src="{{ asset('afhholding/images/afh-logo2.png') }}" alt="">
-			</div>
-		</div>
-	</div>
+    <div class="preloader2 d-flex align-items-center justify-content-center">
+      <div class="preloader-inner position-relative">
+        <div class="preloader-circle"></div>
+        <div class="preloader-img pere-text">
+          <img src="{{ asset('afhholding/images/afh-logo2.png') }}" alt="">
+        </div>
+      </div>
+    </div>
 	</div>
 	<span id="loading-msg"></span>
 </div>
@@ -5114,7 +5117,8 @@ blockquote .apostrof+p{margin-top:0}blockquote+p{margin-top:50px}.skewed-bg{posi
 </div>
 
 <script src="{{ asset('afhholding/js/script.js') }}"></script>
-    <!--coded by Houdini-->
+<script src="{{ asset('afhholding/js/jquery.magnific-popup.min.js') }}"></script>
+<!--coded by Houdini-->
 
 {% block srcjavascript %}
 
@@ -5127,6 +5131,9 @@ $(function(){
 {% endblock %}
 });
 
+$('.video_btn').magnificPopup({
+		type: 'iframe'
+});
 
 var activator = $('.activator');
 var navBg = $('#fade-bg');
