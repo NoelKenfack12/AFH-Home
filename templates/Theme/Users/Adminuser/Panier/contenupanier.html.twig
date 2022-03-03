@@ -1,0 +1,130 @@
+{% extends "UsersAdminuserBundle::layoutadmin.html.twig" %}
+{% block meta %}
+{{ parent() }}
+<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
+<meta name="author" content="Noel Kenfack"/>
+<meta name="description" content="{{ site }} | Administration | Cameroun | {{ metier }}"/>
+{% endblock %}
+{% block title %}
+{{ parent() }} | Accueil Admin
+{% endblock %}
+
+{% block userblog_body %}
+
+<!-- START CONTENT -->
+      <section id="content" class="variation-contenu" value="">
+	  {% include 'GeneralTemplateBundle:Menu:menusearch.html.twig' %}
+			<!--card stats start-->
+		  <!--start container-->
+        <div class="container" >
+          <div class="section">
+			<!-- profile-page-content -->
+            <div id="profile-page-content" class="row">
+			<div id="profile-page-sidebar" class="col s12 m12">
+			
+			<div class="card-panel" style="margin-top: -10px; padding: 0px;">
+			<h4 style="padding: 3px; margin-bottom: 0px;  background: #95a5a6; color: #fff;">Liste des produits du panier N° {{ panier.date|date('d') }}_{{ panier.id }}_{{ panier.date|date('m') }}_{{ panier.date|date('y') }} de {{ panier.user.name(20) }}.</h4>
+			<div style="background: #7f8c8d; padding: 10px; color: #fff;">Ajouter de nouveau les produits de cette commande dans le panier <span class="new badge right" style="margin-right: 15px;">{{ liste_produit|length }}</span></div>
+			</div>
+			<div class="row">
+			<section class="plans-container" id="plans">
+			{% set total = 0 %}
+			{% for prodpan in liste_produit %}
+			{% set produit = prodpan.produit %}
+				<article class="col s12 m6 l4 ">
+                  <div class="card z-depth-1">
+                    <div class="card-image green waves-effect">
+                      <div class="card-title">
+					  
+					  {% set nbre = random() % produit.imgproduits|length %}
+					  {% for img in produit.imgproduits %}
+				      {% if loop.index0 == nbre %}
+				      <img src="{{ asset(img.getWebpath) }}" alt="" class="left" style="height: 18px; width: 25px; margin-top: 7px;"/>
+				      {% endif %}
+				      {% endfor %}
+					  
+					  {{ produit.nom }} ({{ prodpan.quantite }}) </div>
+                      <div class="price"><sup style="text-decoration: line-through;">{{ produit.ancienPrixProduit }}</sup> <sup>{{ devise }}</sup>{{ produit.newprise }}<sub>/an</sub></div>
+                      <div class="price-desc">{{ produit.description }}</div>
+                    </div>
+                    <div class="card-content">
+                      <ul class="collection">
+                        {{ produit.contenu|raw }}
+                      </ul>
+                    </div>
+                    <div class="card-action center-align">                      
+                      <a href="#a" class="waves-effect waves-light  btn like-produit-courant like-produit-courant-{{ produit.id }}" value="{{ produit.id }}" style="color: #fff; margin-bottom: 2px;">{{ produit.nblike }} J'aime</a>
+                      <a href="#a" class="btn waves-effect waves-light blue ajout-produit-panier ajout-produit-panier-{{ produit.id }}" value="{{ produit.id }}" style="color: #fff; margin-bottom: 2px;">Ajouter au panier</a>
+                    </div>
+                  </div>
+                </article>
+						{% set cout = prodpan.produit.newprise  * prodpan.quantite %}
+						{% set total = total + cout %}
+			{% endfor %}
+			</section>
+            </div>
+			
+			<div class="card-panel" style="margin-top: -10px; padding: 0px; margin-bottom: -10px;">
+			<h4 style="padding: 3px; margin-bottom: 0px;  background: #95a5a6; color: #fff;">Le coût du panier est de {{ total }} {{ devise }} : Payé!</h4>
+			<div style="background: #7f8c8d; padding: 10px; color: #fff;">Nb: Ce prix peux légérement différencié du côut total que vous aviez payé <span class="new badge right" style="margin-right: 15px;">{{ liste_produit|length }}</span></div>
+			</div>
+			
+			</div>
+			</div>
+		  </div>
+		</div>
+	  </section>
+{% endblock %}
+{% block javascripttemplate %}
+
+$('.like-produit-courant').click(function(){
+  var id = $(this).attr('value');
+  var link = '.like-produit-courant-'+id;
+  {% if app.user != null %}
+  if($('.variation-contenu').attr('value') == 0)
+  {
+  $('.variation-contenu').attr('value',1);
+  $(link).html('<span><img src="{{ asset('template/images/wait-user.gif') }}" alt=""/></span>'); //attente du résultat
+  $.get('{{ path('produit_produit_like_courant_product') }}',{ id: id }, function(data) {
+  $('.variation-contenu').attr('value',0);
+  if(data == 1)
+  {
+  Materialize.toast('<span>Votre mention a été prise en compte. </span>', 10000);
+  window.location.reload();
+  }else{
+  alert('Une Erreur rencontrée');
+  window.location.reload();
+  }
+  });
+  }
+  {% else %}
+  Materialize.toast('<span>Connexion nécessaire.</span><a href="{{ path('login') }}" class="waves-effect waves-light  btn"><i class="mdi-action-input right"></i> Connexion</a>', 15000);
+  {% endif %}
+});
+
+$('.ajout-produit-panier').click( function(){
+  var id = $(this).attr('value');
+  var link = '.ajout-produit-panier-'+id;
+  {% if app.user != null %}
+  if($('.variation-contenu').attr('value') == 0)
+  {
+  $('.variation-contenu').attr('value',1);
+  $(link).html('<span><img src="{{ asset('template/images/wait-user.gif') }}" alt=""/></span>'); //attente du résultat
+  $.get('{{ path('produit_produit_ajouter_product_panier') }}',{ id: id }, function(data) {
+  $('.variation-contenu').attr('value',0);
+  if(data == 1)
+  {
+  Materialize.toast('<span>Produit ajouté au panier avec succès. </span> <a href="#a" class="waves-effect waves-light  btn"><i class="mdi-communication-call-merge right"></i> Panier</a>', 10000);
+  window.location.reload();
+  }else{
+  alert('Une Erreur rencontrée');
+  window.location.reload();
+  }
+  });
+  }
+  {% else %}
+  Materialize.toast('<span>Connexion nécessaire.</span><a href="{{ path('login') }}" class="waves-effect waves-light  btn"><i class="mdi-action-input right"></i> Connexion</a>', 15000);
+  {% endif %}
+});
+
+{% endblock %}

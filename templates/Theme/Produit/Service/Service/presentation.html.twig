@@ -1,0 +1,136 @@
+{% extends "UsersUserBundle::layoutuser.html.twig" %}
+{% block meta %}
+{{ parent() }}
+<meta name="keywords" content="{{ site }}, Business, Innovation,Administration, blog {{  site }}"/>
+<meta name="author" content="Noel Kenfack"/>
+<meta name="description" content="{{ site }} | Inscription | Cameroun | {{ metier }} | service | blog {{  site }}" />
+{% endblock %}
+{% block title %}
+{{ parent() }} | Accueil
+{% endblock %}
+
+{% block userblog_body %}
+
+		<div class="index-banner">
+       	  <div class="wmuSlider example1" style="height: 560px;">
+			  <div class="wmuSliderWrapper">
+			  {% for serviceslide in liste_service %}
+				  <article style="position: relative; width: 100%; opacity: 1;"> 
+				   	<div class="banner-wrap">
+					   	<div class="slider-left">
+							<img src="{{ asset(serviceslide.imgservice.getWebpath) }}" alt="" style="height: 360px; width: 100%;"/> 
+						</div>
+						 <div class="slider-right">
+						    <h2>{{ serviceslide.type }}</h2>
+						    <h3>{{ serviceslide.nom }}</h3>
+						    <p>{{ serviceslide.description[:20] }}..</p>
+						    <div class="btn"><a href="{% if serviceslide == service %}#nosevenements{% else %}{{ path('users_user_presentation_service_even', {'id': serviceslide.id }) }}{% endif %} ">Plus d'infos</a></div>
+						 </div>
+						 <div class="clear"></div>
+					 </div>
+					</article>
+				{% endfor %}
+				</div>
+                <a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a>
+                  <ul class="wmuSliderPagination">
+                	{% for img in liste_service %}
+					<li><a href="#" class="{% if loop.index0 == 1 %}wmuActive{% endif %}">{{ loop.index0 }}</a></li>
+					{% endfor %}
+                  </ul>
+                 <a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a>
+				 <ul class="wmuSliderPagination">
+				    {% for img in liste_service %}
+					<li><a href="#" class="{% if loop.index0 == 0 %}wmuActive{% endif %}">{{ loop.index0 }}</a></li>
+					{% endfor %}
+				 </ul>
+				 </div>
+            	 <script src="{{ asset('template/web/js/jquery.wmuSlider.js') }}"></script> 
+				 <script type="text/javascript" src="{{ asset('template/web/js/modernizr.custom.min.js') }}"></script> 
+						<script>
+       						 $('.example1').wmuSlider();         
+   						</script> 	           	      
+             </div>
+			 <div class="main">
+                <div class="wrap">
+             	  <div class="content-top" id="nosevenements" >
+             		<div class="lsidebar span_1_of_c1">
+					  <p>Visitez nos pages sur les réseaux sociaux pour plus d'informations sur nos produits</p>
+					</div>
+					<div class="cont span_2_of_c1">
+					  <div class="social">	
+					     <ul>	
+						  <li class="facebook"><a href="http://facebook.com/{{ facebook }}" target="_blank"><span> </span></a><div class="radius"> <img src="{{ asset('template/web/images/radius.png') }}"><a href="#"> </a></div><div class="border hide"><p class="num">1.51K</p></div></li>
+						 </ul>
+			   		   </div>
+					   <div class="social">	
+						   <ul>	
+							  <li class="twitter"><a href="http://twitter.com/{{ twitter }}" target="_blank"><span> </span></a><div class="radius"> <img src="{{ asset('template/web/images/radius.png') }}"></div><div class="border hide"><p class="num">1.51K</p></div></li>
+						  </ul>
+			     		</div>
+						 <div class="social">	
+						   <ul>	
+							  <li class="google"><a href="http://plus.google.com/{{ google }}" target="_blank"><span> </span></a><div class="radius"> <img src="{{ asset('template/web/images/radius.png') }}"></div><div class="border hide"><p class="num">1.51K</p></div></li>
+						   </ul>
+			    		 </div>
+						 <div class="social">	
+						   <ul>	
+							  <li class="dot"><a href="http://myaconect.com/aplace/{{ myaconect }}" target="_blank" ><span><img src="{{ asset('template/web/images/myaconect.png') }}" alt="" style="margin-right: 10px; margin-top: 20px; width: 30px; height: 30px;"/> </span></a><div class="radius"> <img src="{{ asset('template/web/images/radius.png') }}"></div><div class="border hide"><p class="num">1.51K</p></div></li>
+						  </ul>
+			     		</div>
+						<div class="clear"> </div>
+					  </div>
+					  <div class="clear"></div>			
+				   </div>
+				  <div class="content-bottom">
+			  <div class="mens-toolbar" style="margin-bottom: 0px;">
+              <div class="sort" style="width: 100%;">
+               	<div class="sort-by" style="text-align: center;">
+		           <h2 style="color: green; font-size: 2em;"><a href="{{ asset('template/web/images/delivery.png') }}" target="_blank"> {{ service.nom }}
+				   </h2>
+				   <div>{{ service.description }}</div>
+                </div>
+    		  </div>
+	          </div>
+				{% if service.evenements|length % 3 == 0 %}
+			    {% set nbre = service.evenements|length//3 %}
+			    {% else %}
+			    {% set nbre = (service.evenements|length)//3 + 1 %}
+			    {% endif %}
+                {% set begin = 0 %}
+			    {% set end = 3 %}
+				{% for i in range(0,nbre-1) %}
+			    <div class="box1">
+				{% for even in service.evenements|slice(begin,end) %}
+				   <div class="col_1_of_single1 span_1_of_single1"><a href="#">
+				     <div class="view1 view-fifth1">
+				  	  <div class="top_box">
+					  	<h3 class="m_1">{{ even.nom }}</h3>
+					  	<p class="m_2">{{ even.service.nom }}</p>
+				         <div class="grid_img">
+						   <div class="css3">
+						   <img src="{{ asset(even.imgevenement.getWebpath) }}" alt="" style="height: 180px;"/>
+						   </div>
+					          <div class="mask1">
+	                       		<div class="info">{{ even.date|date('d/m/y')}}</div>
+			                  </div>
+	                    </div>
+					   </div>
+					   </div>
+					   <span class="rating1" style="width: 98%;">{{ even.description }}
+		    	      </span>
+			    	    <div class="clear"></div>
+			    	</a></div>			
+					{% endfor %}
+				<div class="clear"></div>
+			  </div>
+			  {% set begin = end %}
+			  {% set end = end + 3 %}
+			  {% endfor %}
+			  </div>
+			 </div>
+        </div>
+{% endblock %}
+
+{% block javascripttemplate %}
+
+{% endblock %}

@@ -1,0 +1,482 @@
+
+
+<style>
+	/* style member component */
+.list-members {
+  background: #ed6e11;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+.member-info2{
+	background: #a0bb2e!important;
+	position: sticky;
+}
+
+.member {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.member-image {
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.member-image img {
+  width: 100%;
+  height: 100%;
+  transition: 1s;
+}
+
+.member-image:hover img {
+  transform: scale(1.1);
+}
+
+.member-info {
+  width: 50%;
+  text-align: left;
+  padding: 15px;
+}
+
+.member-info h3{
+  font-size: 22px;
+  font-family: Philosopher-Bold;
+}
+
+.member-info p {
+  margin: 5px 0;
+}
+
+
+/* Membuat segitiga */
+.member-image::after {
+  content: '';
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 15px solid #ed6e11;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+.member-image2::after {
+	border-right: 15px solid #a0bb2e!important;
+}
+.social-teams{
+	white-space: nowrap!important; min-width: 400px; position: absolute; bottom: -30px; left: 10px; z-index: 10005;
+}
+
+
+/* Merubah posisi member-image dengan member-info */
+@media screen and (min-width: 771px) {
+  .member:nth-child(4n+3) .member-info,
+  .member:nth-child(4n+4) .member-info {
+    order: 1;
+  }
+  .member:nth-child(4n+3) .member-image,
+  .member:nth-child(4n+4) .member-image {
+    order: 2;
+  }
+
+  /* Merubah posisi sigitiga pada baris genap */
+  .member:nth-child(4n+3) .member-image::after,
+  .member:nth-child(4n+4) .member-image::after {
+    left: 0;
+    right: auto;
+    transform: translateY(-50%) rotateZ(180deg);
+  }
+}
+
+
+/* Mobile Styles */
+@media screen and (max-width: 770px) {
+  .list-members {
+    width: 95%;
+  }
+  .member {
+    flex-basis: 100%;
+    font-size: 14px;
+  }
+  .social-link .fa {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .member:nth-child(even) .member-info {
+    order: 1;
+  }
+  .member:nth-child(even) .member-image {
+    order: 2;
+  }
+  
+  /* Merubah posisi sigitiga elemen genap */
+  .member:nth-child(even) .member-image::after {
+    left: 0;
+    right: auto;
+    transform: translateY(-50%) rotateZ(180deg);
+  }
+}
+
+
+</style>
+
+<div class="col-md-12">
+  <div class="shadow- bg-light1"style="padding: 0px 0px 15px 0px; z-index: 1; position: relative!important; background: #fff;  box-shadow: 0px 1px 5px 0px #d4d8de;">
+	<!-- div style="height: 40px; background: #fff;"></div -->
+	  <div class="container" style="padding-top: 5px;">
+		<h3>À propos de nous
+			<span style="float: right;">
+				<a href="#!">
+					<span class="fa fa-heart"></span>
+				</a>
+			</span>
+		</h3>
+	  </div>
+  </div>
+</div>
+
+
+<section  class="silly_scrollbar" style="padding-top: 20px; width: 98%; margin: 0 auto;">
+<div class="container">
+<div class="row">
+
+<div class="col-md-12">
+	<div class="animecourant-panel-popup" style="display: block;">
+			
+	</div>
+</div>
+
+	<div class="col-sm-12 col-md-8">
+		<div class="border-0" style="padding:  0px 0px 50px 0px;">
+			<div class="shadow3" style="border: 3px solid #9dba3d; border-radius: 5px;">
+				<div class="article-detail article-panel">
+					<!-- h2>Le Challenge est grand</h2 -->
+					<h4 style="margin-bottom: 20px;">
+						<span class="mic" style="background: #98d3ce; color: #fff;">AFHunt Group </span>	est un groupe  d'entreprises innovantes qui vise à opérer une véritable transformation numérique au Cameroun et en Afrique, pour faciliter le traitement des flux d'informations dans des entreprises et des organisations.
+					</h4>
+				</div>
+			</div>
+		
+
+			<div class="alert alert-info" role="alert">
+				<h4>Pour réussir ce challenge, AFHunt Group travail sans relâche avec une communauté dynamique qui grandi de jour en jour.</h4>
+				<div>Cette communauté se mobilise sur plusieurs plans. <strong><a href="">Sur le plan technoligique</a></strong>, en partageant leurs idées et compétences; <strong><a href="">Sur le plan financié</a></strong> en investissant sur les projets porteurs; 
+					<strong><a href="">Sur le plan amicale</a></strong> en partageant nos produits.
+					
+				</div>
+			</div>
+
+			<div class="article-detail article-panel" style="padding: 0px;">
+				<h2>Notre Equipe</h2>
+				<h4>
+					Quelques figures qui font la fierté du groupe
+				</h4>
+			</div>
+
+			<ul class="list-members">
+				<li class="member">
+				  <div class="member-image member-image2">
+					<img src="{{ asset('template/images/ressources/noel-kenfack.jpg') }}">
+				  </div>
+				  <div class="member-info member-info2">
+					<h3>Noel Kenfack</h3>
+					<p>Dev Full-stack polyglotte & CEO</p>
+					  <div class="social-teams">
+						<a href="https://www.facebook.com/noel12.kenfack/" class="buttonrs" target="_blank">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+				  </div>
+				</li>
+				<li class="member">
+				  <div class="member-image member-image2">
+					<img src="{{ asset('template/images/ressources/gaeil-azambou.jpg') }}">
+				  </div>
+				  <div class="member-info member-info2">
+					<h3>Gaiel Azambou</h3>
+					<p>Stratège communication</p>
+					
+					<div class="social-teams">
+						<a href="https://www.facebook.com/gaielbleriot.azambouzebaze" class="buttonrs" target="_blank">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+
+				  </div>
+				</li>
+				<li class="member">
+				  <div class="member-image member-image2">
+					<img src="{{ asset('template/images/ressources/ghislain-takam.jpg') }}">
+				  </div>
+				  <div class="member-info member-info2">
+					<h3>Ghislain Takam</h3>
+					<p>UX/UI & graphic designer</p>
+					
+					<div class="social-teams">
+						<a href="https://www.facebook.com/ghis.takam" class="buttonrs" target="_blank">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+
+				  </div>
+				</li>
+				<li class="member">
+				  <div class="member-image member-image2">
+					<img src="{{ asset('template/images/ressources/mariane-kaze.jpg') }}">
+				  </div>
+				  <div class="member-info member-info2">
+					<h3>Mariane Kazé</h3>
+					<p>Content Manager</p>
+					
+					<div class="social-teams">
+						<a href="https://www.facebook.com/Lontsie.kaze" class="buttonrs" target="_blank">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+
+				  </div>
+				</li>
+				<li class="member">
+					<div class="member-image member-image2">
+					  <img src="{{ asset('template/images/ressources/gaetan-nozawo.jpeg') }}">
+					</div>
+					<div class="member-info member-info2">
+					  <h3>Gaetan Nozawo</h3>
+					  <p>Stratégique AFH Factory</p>
+					  
+					  <div class="social-teams">
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+					</div>
+				  </li>
+				  <li class="member">
+					<div class="member-image member-image2">
+					  <img src="{{ asset('template/images/ressources/guy-tiaya.jpg') }}">
+					</div>
+					<div class="member-info member-info2">
+					  <h3>Guilou Tiaya</h3>
+					  <p>Comptabilité & Fiscalité</p>
+					  
+					  <div class="social-teams">
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+					</div>
+				  </li>
+				  <li class="member">
+					<div class="member-image member-image2">
+					  <img src="{{ asset('template/images/ressources/ayemetio-rodrigue.jpg') }}">
+					</div>
+					<div class="member-info member-info2">
+					  <h3>Rodrigue Ayemetio</h3>
+					  <p>Affaires juridique</p>
+					  
+					  <div class="social-teams">
+						<a href="https://www.facebook.com/roghess.ayemetio" class="buttonrs" target="_blank">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+					 </div>
+
+					</div>
+				  </li>
+				  <li class="member" style="background: #325ea9;">
+					<h3 style="padding: 15px; color: #fff;">Vers le panthéon AFHunt</h3>
+				  </li>
+			  </ul>
+	
+		</div>
+	
+</div>
+
+
+<div class="col-sm-12 col-md-4">
+	
+	{% include 'ProduitServiceBundle:Service:menustruct.html.twig' %}
+			
+</div>
+</div>
+</div>
+</section>
+
+
+<script type="text/javascript">
+var bougepop = 1;
+var dimensionpop = 200;
+function activateelementPop()
+{
+var visibility = visibleElement('.animecourant-panel-popup');
+
+if(visibility && bougepop == 0){
+	bougepop = 1;
+	$('.toutleblock-popup').css('position','relative');
+	$('.toutleblock-popup').css('bottom','0px');
+	$('.toutleblock-popup').css('margin-bottom','0px');
+}
+}
+
+function stopelementPop()
+{
+var visibility = visibleElement('.stop-courant-panel-popup');
+
+if(visibility && bougepop == 1){
+	if(visibleElement('.animecourant-panel-popup') && visibleElement('.stop-courant-panel-popup'))
+	{
+	}else{
+	bougepop = 0;
+	$('.toutleblock-popup').css('position','fixed');
+	$('.toutleblock-popup').css('width',dimensionpop+'px');
+	$('.toutleblock-popup').css('bottom','30px');
+	$('.toutleblock-popup').css('margin-bottom','0px');
+	}
+}
+}
+
+function controlScrollPop()
+{
+	var largeur = ($(window).width());
+	dimensionpop = $('.toutleblock-popup').width();
+	if (largeur >= 768)
+	{
+		if(visibleElement('.animecourant-panel-popup') && visibleElement('.stop-courant-panel-popup'))
+		{
+		$('.toutleblock-popup').css('position','fixed');
+		$('.toutleblock-popup').css('width',dimensionpop+'px');
+		}else{
+		window.setInterval(function() { stopelementPop(); }, 100);
+		window.setInterval(function() { activateelementPop(); }, 100);
+		}
+		
+	}
+}
+controlScrollPop();
+</script>

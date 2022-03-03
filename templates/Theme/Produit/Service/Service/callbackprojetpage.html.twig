@@ -1,0 +1,212 @@
+<style>
+	.accordion__item {
+	padding: 20px;
+	margin-bottom: 20px;
+	border: 1px solid #f2f2f2;
+	border-radius: 4px;
+	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.06);
+	}
+	.accordion__body {
+	display: none;
+	padding-top: 10px;
+	}
+	.accordion__body p {
+	margin-bottom: 0;
+	}
+	.accordion__title {
+	font-size: 18px;
+	cursor: pointer;
+	margin-bottom: 0;
+	position: relative;
+	}
+	.accordion__title:after {
+	content: "";
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABlUlEQVRIS72V6zEEQRSFv81ABogAESADIiADRIAIEAEiQASIABmQgQyor+rerZ7enp71Y92qqZrpxznnPmfGim22YnyWITgGdoHteNT0Hs8j8NQT2SM4AK6AjQkvP4EzQLIFGyO4Bk7i9Bfg90uodllv9oBTYD3OeUaigbUISnAv+N0zSfRUuwnS+fmawLA8xO5OoXiqFvToLQ4dluGqCYynLi+jvCZNT8TYzM2SwGq5BYz5VGLHPEqBcy9KgjvgqFJ/ETn4HkFci2K4jP304h5Q8KAPrO0tIGMv+HnkYR+oSQR/joqSwPOZC7HEGRD8hIr0SgBLU1IvlCQl+EeUbAoY4JQhqgnka5G4nsprcPdGCeoQZdhrkmy0FniGyD3fByFqJblF4loL3PVukrPJBnVcVE964pJjolVZ3TL14lSjSaK1wFP9oI/+fVSorhx2qnKA9exPwy6BShLD5vdrNa79CQmeY2VhktZVVKs06QLnvB/zwphL9KcfTgkmkY91bVdnmdo3gjaBE2CZf/JECvrbKyf4BdpXaxkir2UhAAAAAElFTkSuQmCC") no-repeat;
+	background-size: 20px;
+	}
+	.accordion__title.active {
+	color: #2B9FDF;
+	}
+	.accordion__title.active:after {
+	transform: rotate(-180deg);
+	}
+</style>
+<script type='text/javascript' src="{{ asset('template/jgallery/jquery.justifiedGallery.min.js') }}"></script>
+<link href="{{ asset('template/jgallery/justifiedGallery.min.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
+<script type='text/javascript' src="{{ asset('template/jgallery/jquery.viewbox.min.js') }}"></script>
+
+<div class="col-md-12">
+  <div class="shadow- bg-light1"style="padding: 0px 0px 15px 0px; z-index: 1; position: relative!important; background: #fff;  box-shadow: 0px 1px 5px 0px #d4d8de;">
+	<!-- div style="height: 40px; background: #fff;"></div -->
+	  <div class="container" style="padding-top: 5px;">
+		<h3>Parmis nos projets coeur de métier
+			<span style="float: right;">
+				<a href="#!">
+					<span class="fa fa-heart"></span>
+				</a>
+			</span>
+		</h3>
+	  </div>
+  </div>
+</div>
+
+
+<section  class="silly_scrollbar" style="padding-top: 20px; width: 98%; margin: 0 auto;">
+<div class="container">
+<div class="row">
+
+<div class="col-md-12">
+	<div class="animecourant-panel-popup" style="display: block;">
+			
+	</div>
+</div>
+
+	<div class="col-sm-12 col-md-8">
+		<div class="border-0" style="padding:  0px 0px 50px 0px;">
+			<div class="shadow3">
+				<div class="article-detail article-panel" style="padding: 0px;">
+					<h2>Applications de grande envergure</h2>
+					<h4>
+						Nous utilisons des technologies les plus stables pour le développement des applications modulaires sur tous les environnements. Mobile, desktop, web ...
+					</h4>
+				</div>
+			</div>
+		
+
+			<div class="alert alert-info" role="alert">
+				<h4>Nos applications prêt à l'emploi répondent aux besoins des Entreprises Africaine, et visent essentiellement à fluidifier les échanges d'informations, la transparence et l'archivage des informations des entreprises.</h4>
+				<div>
+					Une veuille stratégique est opérée pour le choix et l'orientation du développement des projets AFHunt. Nos projets retenu sont développés par <strong><a href="#!">les experts</a></strong>, préfinancés par <strong><a href="#!">nos investisseurs</a></strong> et vulgarisés par les <strong><a href="#!">circuits naturels</a></strong> et automatiques développés
+				</div>
+			</div>
+
+			<div class="accordion">
+				{% for appli in liste_appli %}
+				<div class="accordion__item">
+					<h2 class="accordion__title {% if loop.first %}active{% endif %}">
+						<div class="rating-row" style="float: right; margin-right: 30px;">
+							<ul>    
+							  <li class=""><i class="fa fa-star"></i></li>
+							  <li class=""><i class="fa fa-star"></i></li>
+							  <li class=""><i class="fa fa-star"></i></li>
+							  <li class=""><i class="fa fa-star-o"></i></li>
+							  <li class=""><i class="fa fa-star-o"></i></li>
+							</ul>
+						  </div>
+
+						{% if appli.src != null %}
+						<img src="{{ asset(appli.getwebpath) }}" alt="" style="height: 50px; float: left; margin-right: 7px;"/>
+						{% endif %}
+						<strong style="font-family: Quicksand-Bold; font-size: 20px;">{{ appli.nom }}</strong><br/>
+						<div style="font-size: 12px; color: #CCC;">{{ appli.souscategorie.nom }}</div>
+					</h2>
+					<div class="accordion__body">
+						<p>{{ appli.contenu }}</p>
+
+						<div>
+							<div class="demo{{ appli.id }}" style="height: 100%; width: 100%; max-width: 700px; margin: 15px auto; ">
+								{% for img in appli.imgproduits %}
+								<a href="{% if img.src != null %}{{ asset(img.getwebpath) }}{% else %}{{ asset('template/jgallery/images/1.jpg') }}{% endif %}" title="Image {{ loop.index }}" class="thumbnail">
+									<img alt="Image {{ loop.index }}" src="{% if img.src != null %}{{ asset(img.getwebpath) }}{% else %}{{ asset('template/jgallery/images/1.jpg') }}{% endif %}" class="img-fluid"/>
+								</a>
+								{% endfor %}
+							</div>
+							<a href="{{ appli.link }}" target="_blank" class="btn btn-primary" style="text-transform: capitalize; font-family: Raleway-Medium; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+							transition: all 0.3s cubic-bezier(.25,.8,.25,1);background: #39BA82;"><span class="fa fa-external-link"></span> En savoir plus sur le projet</a>
+							<a href="http://factory.afhunt.com/" target="_blank" class="btn btn-primary" style="text-transform: capitalize; font-family: Raleway-Medium; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+							transition: all 0.3s cubic-bezier(.25,.8,.25,1);background: #39BA82;"><span class="fa fa-tint"></span> Investir sur le projet</a>
+						</div>
+					</div>
+				</div>
+				<!-- 	END Item -->
+
+
+				<script type="text/javascript">
+				$(".demo{{ appli.id }}").justifiedGallery({rowHeight: 200});
+				</script>
+				{% endfor %}
+
+				
+			</div>
+	</div>
+
+</div>
+
+<div class="col-sm-12 col-md-4">
+	
+	{% include 'ProduitServiceBundle:Service:menustruct.html.twig' %}
+			
+</div>
+
+</div>
+</div>
+</section>
+
+<script type="text/javascript">
+	$('.thumbnail').viewbox();
+
+	$(".accordion__title.active").next().slideDown();
+	$(".accordion__title").on("click", function () {
+	if( $(this).hasClass('active') ) {
+			$(this).removeClass("active").next().slideUp();
+		} else {
+			$(".accordion__title.active").removeClass("active").next(".accordion__body").slideUp();
+		$(this).addClass('active').next('.accordion__body').slideDown();
+		}
+	});
+
+	var bougepop = 1;
+	var dimensionpop = 200;
+	function activateelementPop()
+	{
+	var visibility = visibleElement('.animecourant-panel-popup');
+
+	if(visibility && bougepop == 0){
+		bougepop = 1;
+		$('.toutleblock-popup').css('position','relative');
+		$('.toutleblock-popup').css('bottom','0px');
+		$('.toutleblock-popup').css('margin-bottom','0px');
+	}
+	}
+
+	function stopelementPop()
+	{
+	var visibility = visibleElement('.stop-courant-panel-popup');
+
+	if(visibility && bougepop == 1){
+		if(visibleElement('.animecourant-panel-popup') && visibleElement('.stop-courant-panel-popup'))
+		{
+		}else{
+		bougepop = 0;
+		$('.toutleblock-popup').css('position','fixed');
+		$('.toutleblock-popup').css('width',dimensionpop+'px');
+		$('.toutleblock-popup').css('bottom','30px');
+		$('.toutleblock-popup').css('margin-bottom','0px');
+		}
+	}
+	}
+
+	function controlScrollPop()
+	{
+		var largeur = ($(window).width());
+		dimensionpop = $('.toutleblock-popup').width();
+		if (largeur >= 768)
+		{
+			if(visibleElement('.animecourant-panel-popup') && visibleElement('.stop-courant-panel-popup'))
+			{
+			$('.toutleblock-popup').css('position','fixed');
+			$('.toutleblock-popup').css('width',dimensionpop+'px');
+			}else{
+			window.setInterval(function() { stopelementPop(); }, 100);
+			window.setInterval(function() { activateelementPop(); }, 100);
+			}
+			
+		}
+	}
+	controlScrollPop();
+</script>

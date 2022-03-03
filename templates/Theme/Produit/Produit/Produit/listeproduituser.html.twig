@@ -1,0 +1,199 @@
+{% extends "UsersUserBundle::layoutuser.html.twig" %}
+{% block meta %}
+{{ parent() }}
+<meta name="keywords" content="{{ site }}, Business, Innovation,Boutique,e-commerce,{{ souscategorie.nom }},{{ souscategorie.categorie.nom }},{{ site }},site web, hébergement heb Cameroun, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, cameroun, site cameroun,hébergement web cameroun,site moins cher."/>
+<meta name="author" content="Noel Kenfack"/>
+<meta name="description" content="{{ site }} | {{ souscategorie.nom }} | {{ souscategorie.categorie.nom }} | Cameroun | {{ metier }} ,{{ site }},site web, hébergement heb Cameroun, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, cameroun, site cameroun,hébergement web cameroun,site moins cher." />
+{% endblock %}
+{% block title %}
+{{ parent() }} | {{ souscategorie.categorie.nom }} | {{ souscategorie.nom }} 
+{% endblock %}
+
+{% block userblog_body %}
+<!-- START CONTENT -->
+      <section id="content" class="variation-contenu" value="">
+	  {% include 'GeneralTemplateBundle:Menu:menusearch.html.twig' %}
+			<!--card stats start-->
+			
+			<!--breadcrumbs start-->
+        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+            <!-- Search for small screen -->
+            <div class="header-search-wrapper grey hide-on-large-only">
+                <i class="mdi-action-search active"></i>
+                <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+            </div>
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="breadcrumbs-title">{{ souscategorie.nom }}</h5>
+                <ol class="breadcrumb">
+                  <li><a href="{{ path('users_user_acces_plateforme') }}">Accueil</a>
+                  </li>
+                  <li class="active">{{ souscategorie.nom }} <span class="new badge right" style="margin-right: 15px;">{{ liste_produit|length }}</span></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->
+         <!--start container-->
+        <div class="container">
+          <p class="caption" style="text-align: justify;">{{ souscategorie.texttop|raw }}</p>
+ 
+          <div class="divider"></div>
+          </div>
+          
+		  <!--start container-->
+        <div class="container" >
+          <div class="section">
+			<!-- profile-page-content -->
+            <div id="profile-page-content" class="row">
+			<div id="profile-page-sidebar" class="col s12 m12">
+
+        
+			<div class="row">
+			<section class="plans-container" id="plans">
+			{% for produit in liste_produit  %}
+				{% if produit.choixauteur == true %}
+				<article class="col s12 m6 l4 ">
+                  <div class="card z-depth-1">
+                    <div class="card-image cyan waves-effect">
+                      <div class="card-title">
+					  
+					  {% set nbre = random() % produit.imgproduits|length %}
+					  {% for img in produit.imgproduits %}
+				      {% if loop.index0 == nbre %}
+				      <img src="{{ asset(img.getWebpath) }}" alt="" class="left" style="height: 18px; width: 25px; margin-top: 7px;"/>
+				      {% endif %}
+				      {% endfor %}
+					  
+					  {{ produit.nom }}</div>
+                      <div class="price"><sup style="text-decoration: line-through;">{{ produit.ancienPrixProduit }}</sup> <sup>{{ devise }}</sup>{{ produit.newprise }}{% if produit.souscategorie.nom != "Site Web" %}<sub>/an</sub>{% endif %}</div>
+                      <div class="price-desc">{{ produit.description }}</div>
+                    </div>
+                    <div class="card-content">
+                      <ul class="collection">
+                        {{ produit.contenu|raw }}
+                      </ul>
+                    </div>
+                    <div class="card-action center-align">                      
+                      <a href="#a" class="waves-effect waves-light  btn like-produit-courant like-produit-courant-{{ produit.id }}" value="{{ produit.id }}" style="color: #fff; margin-bottom: 2px;">{{ produit.nblike }} J'aime</a>
+                      <a href="#a" class="btn waves-effect waves-light blue ajout-produit-panier ajout-produit-panier-{{ produit.id }}" value="{{ produit.id }}" style="color: #fff; margin-bottom: 2px;">Ajouter au panier</a>
+                    </div>
+                  </div>
+                </article>
+				{% endif %}
+			{% endfor %}
+			</section>
+            </div>
+			
+			</div>
+			</div>
+			
+			
+			<!-- profile-page-content -->
+            <div id="profile-page-content" class="row">
+			<div id="profile-page-sidebar" class="col s12 m12">
+			<div class="card-panel" style="margin-top: -10px; padding: 0px; margin-bottom: -10px;">
+			<h4 style="padding: 3px; margin-bottom: 0px;  background: #95a5a6; color: #fff;">{{ souscategorie.nom }} </h4>
+			<div style="background: #7f8c8d; padding: 10px; color: #fff;">{{ souscategorie.textbottom|raw }} <span class="new badge right" style="margin-right: 15px;">{{ liste_produit|length }}</span></div>
+			</div>
+			<div class="row">
+			<section class="plans-container" id="plans">
+			{% for produit in liste_produit  %}
+				{% if produit.choixauteur != true %}
+				<article class="col s12 m6 l4 " style="margin-top: 20px;">
+                  <div class="card z-depth-1">
+                    <div class="card-image green waves-effect">
+                      <div class="card-title">
+					  
+					  {% set nbre = random() % produit.imgproduits|length %}
+					  {% for img in produit.imgproduits %}
+				      {% if loop.index0 == nbre %}
+				      <img src="{{ asset(img.getWebpath) }}" alt="" class="left" style="height: 18px; width: 25px; margin-top: 7px;"/>
+				      {% endif %}
+				      {% endfor %}
+					  
+					  {{ produit.nom }}</div>
+                      <div class="price"><sup style="text-decoration: line-through;">{{ produit.ancienPrixProduit }}</sup> <sup>{{ devise }}</sup>{{ produit.newprise }}<sub>/an</sub></div>
+                      <div class="price-desc">{{ produit.description }}</div>
+                    </div>
+                    <div class="card-content">
+                      <ul class="collection">
+                        {{ produit.contenu|raw }}
+                      </ul>
+                    </div>
+                    <div class="card-action center-align">                    
+                      <a href="#a" class="waves-effect waves-light  btn like-produit-courant like-produit-courant-{{ produit.id }}" value="{{ produit.id }}" style="color: #fff; margin-bottom: 2px;">{{ produit.nblike }} J'aime</a>
+                      <a href="#a" class="btn waves-effect waves-light blue ajout-produit-panier ajout-produit-panier-{{ produit.id }}" value="{{ produit.id }}" style="color: #fff; margin-bottom: 2px;">Ajouter au panier</a>
+                    </div>
+                  </div>
+                </article>
+				{% endif %}
+			{% endfor %}
+			</section>
+            </div>
+			
+			
+			
+			</div>
+			</div>
+		  </div>
+		</div>
+	  </section>
+{% endblock %}
+
+{% block javascripttemplate %}
+$('.menu-{{ souscategorie.id }}').addClass('active');
+
+$('.like-produit-courant').click(function(){
+  var id = $(this).attr('value');
+  var link = '.like-produit-courant-'+id;
+  {% if app.user != null %}
+  if($('.variation-contenu').attr('value') == 0)
+  {
+  $('.variation-contenu').attr('value',1);
+  $(link).html('<span><img src="{{ asset('template/images/wait-user.gif') }}" alt=""/></span>'); //attente du résultat
+  $.get('{{ path('produit_produit_like_courant_product') }}',{ id: id }, function(data) {
+  $('.variation-contenu').attr('value',0);
+  if(data == 1)
+  {
+  Materialize.toast('<span>Votre mention a été prise en compte. </span>', 10000);
+  window.location.reload();
+  }else{
+  alert('Une Erreur rencontrée');
+  window.location.reload();
+  }
+  });
+  }
+  {% else %}
+  Materialize.toast('<span>Connexion nécessaire.</span><a href="{{ path('login') }}" class="waves-effect waves-light  btn"><i class="mdi-action-input right"></i> Connexion</a>', 15000);
+  {% endif %}
+});
+
+$('.ajout-produit-panier').click( function(){
+  var id = $(this).attr('value');
+  var link = '.ajout-produit-panier-'+id;
+  {% if app.user != null %}
+  if($('.variation-contenu').attr('value') == 0)
+  {
+  $('.variation-contenu').attr('value',1);
+  $(link).html('<span><img src="{{ asset('template/images/wait-user.gif') }}" alt=""/></span>'); //attente du résultat
+  $.get('{{ path('produit_produit_ajouter_product_panier') }}',{ id: id }, function(data) {
+  $('.variation-contenu').attr('value',0);
+  if(data == 1)
+  {
+  Materialize.toast('<span>Produit ajouté au panier avec succès. </span> <a href="#a" class="waves-effect waves-light  btn"><i class="mdi-communication-call-merge right"></i> Panier</a>', 10000);
+  window.location.reload();
+  }else{
+  alert('Une Erreur rencontrée');
+  window.location.reload();
+  }
+  });
+  }
+  {% else %}
+  Materialize.toast('<span>Connexion nécessaire.</span><a href="{{ path('login') }}" class="waves-effect waves-light  btn"><i class="mdi-action-input right"></i> Connexion</a>', 15000);
+  {% endif %}
+});
+
+{% endblock %}

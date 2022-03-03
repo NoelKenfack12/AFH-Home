@@ -1,0 +1,9 @@
+general_template_stop_alert_takeaction:
+    path: /stop/alert/takeaction
+    defaults: { _controller: GeneralTemplateBundle:Menu:stopAlerttakeaction }
+general_template_open_map_local_country:
+    path: /open/map/local/country
+    defaults: { _controller: GeneralTemplateBundle:Menu:openmap }
+general_template_investir_chez_afh:
+    path: /investir/chez/afh
+    defaults: { _controller: GeneralTemplateBundle:Menu:investirchezafh }

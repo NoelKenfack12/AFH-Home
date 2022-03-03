@@ -1,0 +1,85 @@
+{% extends "UsersUserBundle::layoutuser.html.twig" %}
+{% block meta %}
+{{ parent() }}
+<meta name="keywords" content="{{ site }},site web, hébergement heb Cameroun, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, cameroun, site cameroun,hébergement web cameroun,site moins cher."/>
+<meta name="author" content="Noel Kenfack"/>
+<meta name="description" content="{{ site }} | Hébergement web, Site web, Hébergement revendeur pas cher, domaine à partir de 10000F." />
+{% endblock %}
+{% block title %}
+{{ parent() }} | Hébergement web, Site web, Hébergement revendeur pas cher, domaine à partir de 10000F.
+{% endblock %}
+
+{% block userblog_body %}
+
+<div class="row" style="background: #f2f2f2;">
+    <div class="col-md-6 col-md-offset-3 panel" style="height: 700px;">
+    <div class="col-md-6 panel" style="height: 700px;">
+	<div class="card-content">
+	  <img src="{% if app.user.imgprofil == null %}{{ asset('template/images/600.jpg') }}{% else %}{{ asset(user.imgprofil.getWebPath) }}{% endif %}" alt="" style="height: 50px; width: 50px; border-radius: 25px;">
+	  <strong style="font-size: 20px;">{{ user.name(20) }}</strong>
+	</div>
+	<div style="padding-left: 30px; margin-top: 20px;">
+	  <p>Tel: {{ user.tel }}</p>
+	  <p>Email: {{ user.username }}</p>
+	  <p>Pay: {% if user.pays != null %}{{ user.pays.nom }}{% else %}Aucun{% endif %}</p>
+	  {% if app.user == user %}
+	  <form action="{{ path('users_user_modifier_profil',{'id': user.id }) }}" method="post" {{ form_enctype(form) }}>
+		<span style="color:red;">{{ form_errors(form.file) }}</span>
+		<div style="margin-bottom: 7px; margin-top: 7px;">
+		{{ form_widget(form.file) }}
+		</div>
+		<div style=" margin-bottom: 7px; margin-top: 20px;"><button class="btn btn-primary">Modifier la photo</button></div>
+		{{ form_rest(form) }}
+	  </form>
+	  {% endif %}
+	  
+	  {# % if is_granted('ROLE_ADMIN') %  #}
+		<div>
+			<a href="{{ path('users_adminuser_accueil_administration') }}">Administration</a>
+		</div>
+	  {# % endif % #}
+	</div>
+  </div>
+  
+  <div class="col-md-6 panel" style="height: 700px;">
+  <form action="{{ path('users_user_save_account_infos', {'id': user.id}) }}" method="post">
+	<div class="form-group">
+		<input type="text" name="facebook" placeholder="Page facebook" value="{% if user.facebook != null %}{{ user.facebook }}{% endif %}" class="form-control">
+	</div>
+	<div class="form-group">
+		<input type="text" name="twitter" placeholder="Page twitter" value="{% if user.twitter != null %}{{ user.twitter }}{% endif %}" class="form-control">
+	</div>
+	<div class="form-group">
+		<input type="text" name="linkedin" placeholder="Page linkedin" value="{% if user.linkedin != null %}{{ user.linkedin }}{% endif %}" class="form-control">
+	</div>
+	<div class="form-group">
+		<input type="text" name="google" placeholder="Page google" value="{% if user.google != null %}{{ user.google }}{% endif %}" class="form-control">
+	</div>
+	<div class="form-group">
+		<input type="text" name="categorie" placeholder="Catégorie socioProfessionnelle" value="{% if user.categorie != null %}{{ user.categorie }}{% endif %}" class="form-control">
+	</div>
+	<div class="form-group">
+		<input type="text" name="specialite" placeholder="Domaine de spécialisation" value="{% if user.specialite != null %}{{ user.specialite }}{% endif %}" class="form-control">
+	</div>
+	<div class="form-group">
+		<input type="text" name="apropos" placeholder="À propos de moi" value="{% if user.apropos != null %}{{ user.apropos }}{% endif %}" class="form-control">
+	</div>
+	<div class="form-group">
+		<select name="teamyear" class="form-control">
+			<option value="0">Membre depuis</option>
+			{% for i in range("now"|date('Y'), 2014) %}
+			<option value="{{ i }}" {% if user.teamyear == i %}selected{% endif %}>{{ i }}</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div class="form-group">
+		<button class="btn btn-primary">Mettre à jour</button>
+	</div>
+  </form>
+  </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascripttemplate %}
+{% endblock %}

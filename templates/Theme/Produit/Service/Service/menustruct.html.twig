@@ -1,0 +1,275 @@
+<style>
+	.icon-circle-panel{
+		position: absolute; top: 0px; right: 0px; height: 120px; width: 120px; background: #9dba3d; border-radius: 0px 0px 0px 50%; padding: 15px;
+	}
+	
+	.tags {
+		width: 100%;
+		border-radius: 10px;
+		background-color: #fff;
+		padding: 10px 0px;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+
+	.tags h1 {
+		font-size: 20px;
+		font-weight: bold;
+		margin-bottom: 10px;
+		text-transform: capitalize!important;
+	}
+
+	.tags ul {
+		list-style: none;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+	}
+
+	.tags ul li {
+		border-radius: 5px;
+		border: 1px solid #1a1b38;
+	}
+
+	.tags ul li:first-child {
+		margin-right: 10px;
+		margin-top: 10px;
+	}
+
+	.tags ul li + li {
+		margin-right: 10px;
+		margin-top: 10px;
+	}
+
+	.tags ul li a {
+		display: block;
+		text-decoration: none;
+		padding: 10px 15px;
+		font-weight: bold;
+		color: black;
+	}
+
+	.tags ul li a:hover {
+		background-color: #f9eae3;
+		-webkit-transition-duration: 350ms;
+		transition-duration: 350ms;
+	}
+
+	.authors {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		margin-top: 10px;
+		background-color: #fff;
+		max-width: 500px;
+		width: 100%;
+		border-radius: 10px;
+		padding: 30px 40px;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+
+	.authors h1 {
+		font-size: 20px;
+		margin-bottom: 10px;
+		text-transform: capitalize!important;
+	}
+
+	.authors li {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+
+	.authors li + li {
+		margin-top: 30px;
+	}
+
+	.authors li .author_pic {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+	}
+
+	.authors li .author_pic img {
+		border-radius: 50%;
+		width: 83px;
+		height: 83px;
+		-o-object-fit: cover;
+		object-fit: cover;
+	}
+
+	.authors li .author_content {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		margin-left: 15px;
+	}
+
+	.authors li .author_content h2 {
+		font-size: 18px;
+		margin-bottom: 5px;
+	}
+
+	.authors li .author_content .adress {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: row;
+		flex-direction: row;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+
+	.authors li .author_content .adress_icon {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+	}
+
+	.authors li .author_content .adress span {
+		margin-left: 5px;
+	}
+
+	.authors li .follow {
+		margin-left: auto;
+	}
+
+	.authors li .follow a {
+		display: block;
+		padding: 10px 15px;
+		font-weight: bold;
+		color: black;
+		border-radius: 5px;
+		background-color: #ffc295;
+		text-decoration: none;
+	}
+</style>
+
+<div class="toutleblock-popup">
+	<div class="shadow3" style="padding: 15px;">
+		<div class="card-body">
+
+		<div class="single_variation_wrap">
+			<div class="single_variation">
+				<img src="{{ asset('templateafh/images/logo-lg-afh.png') }}" alt="" style="border-radius: 10px; border: 1px dashed #ddd;"/>
+			</div>
+			<div >
+				<span style="font-family: Quicksand-Bold; font-size: 20px;">
+					Solutions et services intelligents <span style="border-bottom: 1px solid #9dba3d; color: #9dba3d">prêts à l'emplois</span> 
+				  </span>
+			</div>
+			
+			<div class="list-group list-group-flush">
+				<a href=""  type="button" class="list-group-item list-group-item-action">
+					<strong style="color: #9dba3d;">
+						<span class="fa fa-phone"></span> Tel:
+					</strong>
+					<span class="float-right  badge badge-info">+237 658 87 58 98</span>
+				</a>
+				<a href=""  type="button" class="list-group-item list-group-item-action">
+					<strong style="color: #9dba3d;">
+						<span class="fa fa-whatsapp"></span> Wa: 
+					</strong>
+					<span class="float-right badge badge-info">+237 658 87 58 98</span>
+				</a>
+				<a href="mailto:support@afhunt.com"  type="button" class="list-group-item list-group-item-action">
+					<strong style="color: #9dba3d;">
+						<span class="fa fa-envelope-o"></span> Email:
+					</strong>
+				    <span class="float-right  badge badge-info">support@afhunt.com</span>
+				</a>
+			  </div>
+
+		</div>
+		<div class="woocommerce-variation single_variation" style="margin-top: 15px;">
+			<h6 style="border-bottom: 1px solid #ddd;">Réseaux Sociaux</h6>
+		</div>
+		
+		</div>
+	</div>
+
+	<div class="tags">
+		<h1>Projets récents</h1>
+	  
+		<ul>
+		  <li>
+			<a href="http://market.fahunt.com/">
+			  Afh Market
+			</a>
+		  </li>
+	  
+		  <li>
+			<a href="http://mbill.fahunt.com/">
+			  AFH Mbill
+			</a>
+		  </li>
+	  
+		  <li>
+			<a href="http://lbill.fahunt.com/">
+			  AFH LBill
+			</a>
+		  </li>
+	  
+		  <li>
+			<a href="http://hbill.fahunt.com/">
+			  AFH HBill
+			</a>
+		  </li>
+	  
+		  <li>
+			<a href="http://host.fahunt.com/">
+			  AFH Host
+			</a>
+		  </li>
+	  
+		</ul>
+	  </div>
+
+	<div class="shadow3" style="padding: 15px; margin-top: 15px; position: sticky;">
+		<div class="icon-circle-panel">
+
+		</div>
+		<div class="article-detail article-panel">
+			<h2>Vision</h2>
+			<h4 style="margin-bottom: 20px;">
+				Être un groupe de référence en matière de nouvelles technologies en Afrique dans les Années à venir.
+			</h4>
+		</div>
+	</div>
+
+	<div class="shadow3" style="padding: 15px; margin-top: 15px; position: sticky;">
+		<div class="icon-circle-panel">
+
+		</div>
+		<div class="article-detail article-panel">
+			<h2>Mission</h2>
+			<h4 style="margin-bottom: 20px;">
+				Fédérer les forces financière et technique autour des problématiques precises dans le but d'apporter des solutions adaptées.
+			</h4>
+		</div>
+	</div>
+	<div class="stop-courant-panel-popup">
+				
+	</div>
+	</div>

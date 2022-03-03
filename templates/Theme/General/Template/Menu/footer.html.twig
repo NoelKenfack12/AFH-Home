@@ -1,0 +1,438 @@
+
+
+{% if position == "home" %}
+<style>
+    .footers a {color:#696969;}
+    .footers p {color:#696969;}
+    .footers ul {line-height:30px;}
+    #social-fb:hover {
+        color: #3B5998;
+        transition:all .001s;
+    }
+    #social-tw:hover {
+        color: #4099FF;
+        transition:all .001s;
+    }
+    #social-gp:hover {
+        color: #d34836;
+        transition:all .001s;
+    }
+    #social-em:hover {
+        color: #f39c12;
+        transition:all .001s;
+    }
+
+	/* Link Style 5 */
+	.link5 a {
+		color: #325da8;
+		background-image: linear-gradient(to bottom, transparent 65%, #9ebb3d 0);
+		background-size: 0% 100%;
+		background-repeat: no-repeat;
+		text-decoration: none;
+		transition: background-size .4s ease;
+		text-decoration: none;
+		box-shadow: none;
+		font-family: Philosopher-Bold;
+	}
+
+	.link5 a:hover {
+		background-size: 100% 100%;
+		cursor: pointer;
+	}
+
+
+	.buttonrs {
+		float: left;
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		background: #fff;
+		overflow: hidden;
+		border-radius: 40px;
+		transition: all 0.3s ease-in-out;
+	}
+
+	.buttonrs span {
+		font-size: 12px;
+		font-weight: 200;
+		line-height: 20px;
+		margin-left: 0px;
+		font-family: OpenSans-SemiBold;
+	}
+
+	.buttonrs:hover {
+		width: 120px;
+	}
+
+	.buttonrs:nth-child(1):hover .icon {
+		background: #e1306c;
+	}
+
+	.buttonrs:nth-child(2):hover .icon {
+		background: #4267b2;
+	}
+
+	.buttonrs:nth-child(3):hover .icon {
+		background: #1da1f2;
+	}
+
+	.buttonrs:nth-child(4):hover .icon {
+		background: #0e76a8;
+	}
+
+	.buttonrs:nth-child(5):hover .icon {
+		background: #ff0000;
+	}
+
+	.buttonrs:nth-child(6):hover .icon {
+		background: #333;
+	}
+
+	.buttonrs:nth-child(1) span {
+		color: #e1306c;
+	}
+
+	.buttonrs:nth-child(2) span {
+		color: #4267b2;
+	}
+
+	.buttonrs:nth-child(3) span {
+		color: #1da1f2;
+	}
+
+	.buttonrs:nth-child(4) span {
+		color: #0e76a8;
+	}
+
+	.buttonrs:nth-child(5) span {
+		color: #ff0000;
+	}
+
+	.buttonrs:nth-child(6) span {
+		color: #333;
+	}
+
+	.buttonrs .icon {
+		width: 40px;
+		height: 40px;
+		text-align: center;
+		border-radius: 50px;
+		display: inline-block;
+		transition: all 0.3s ease-in-out;
+	}
+
+	.buttonrs .icon i {
+		font-size: 15px;
+		line-height: 40px;
+		transition: all 0.3s ease-in-out;
+	}
+
+	.buttonrs:hover i {
+		color: #fff;
+	}
+
+</style>
+
+<footer style="min-height: 100px; border-top: 1px solid #ddd;">
+
+    <section class="footers  pt-5 pb-3">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4 footers-one">
+                     <div class="footers-logo">
+                        <h3 style="font-family: Philosopher-Bold;"><img src="{{ asset('template/images/logo-sm-afh.png') }}" alt="{{ site }}" style="width: 50px; height: 50px; float: left;  margin-right: 20px;"/> A.F.H unt.com</h3>
+                     </div>
+                     <div class="footers-info mt-3">
+                         <p>
+				            Engagé dans les services intelligeant sur mesure et l’intégration socio-professionnelle des jeunes depuis 2014.
+                            <div style="color: #fff;">
+                              <ul class="list-unstyled">
+                                <li class="link5"><a href="#!">{{ localisation }}</a></li>
+                                <li class="link5"><a href="https://api.whatsapp.com/send?phone={{ telephone }}" target="_blank">Whatsapp: +{{ telephone }}</a></li>
+                                <li class="link5"><a href="tel:{{ telephone2 }}">MTN: +{{ telephone2 }}</a></li>
+                              </ul>
+                            </div>
+                         </p>
+                     </div>
+
+					 <div style="white-space: nowrap!important; min-width: 500px;">
+						<a href="" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-instagram"></i>
+							</div>
+							<span>Instagram</span>
+						</a>
+				
+						<a href="{{ facebook }}" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-facebook-f"></i>
+							</div>
+							<span>Facebook</span>
+						</a>
+				
+						<a href="{{ twitter }}" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-twitter"></i>
+							</div>
+							<span>Twitter</span>
+						</a>
+				
+						<a href="{{ linkedin }}" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-linkedin"></i>
+							</div>
+							<span>LinkedIn</span>
+						</a>
+				
+						<a href="{{ google }}" class="buttonrs">
+							<div class="icon">
+								<i class="fa fa-youtube"></i>
+							</div>
+							<span>YouTube</span>
+						</a>
+					 </div>
+                 </div>
+                <div class="col-xs-12 col-sm-6 col-md-2 footers-two">
+                     <h5> Technologie [{{ appli_tech|length }}]</h5>
+                     <p>CMS et solutions sur mesures</p>
+                     <ul class="list-unstyled">
+                        {% for app in appli_tech|slice(0,4) %}
+                            <li class="link5"><a href="{{ app.link }}" target="_blank"> {{ app.nom }}</a></li>
+                        {% else %}
+                            <li class="link5"><a href="#!">Vide</a></li>
+                        {% endfor %}
+                        <li class="link5"><a href="#!"><span class="fa fa-plus"></span> Afficher plus</a></li>
+                     </ul>
+                 </div>
+                <div class="col-xs-12 col-sm-6 col-md-2 footers-three">
+                     <h5>Marketing [{{ appli_marketing|length }}] </h5>
+                     <p>Communication et vente</p>
+                     <ul class="list-unstyled">
+						{% for app in appli_marketing|slice(0,4) %}
+							<li class="link5"><a href="{{ app.link }}" target="_blank"> {{ app.nom }}</a></li>
+						{% else %}
+							<li class="link5"><a href="#!">Vide</a></li>
+						{% endfor %}
+                        <li class="link5"><a href="#!"><span class="fa fa-plus"></span> Afficher plus</a></li>
+                     </ul>
+                 </div>
+                <div class="col-xs-12 col-sm-6 col-md-2 footers-four">
+                     <h5>Découverte [{{ liste_pays|length }}] </h5>
+                     <p>Référencement et géolocalisation</p>
+                     <ul class="list-unstyled">
+						{% for pays in liste_pays|slice(0,4) %}
+							<li class="link5"><a href="{{ pays.siteweb }}" target="_blank"> {{ pays.nom }}</a></li>
+						{% else %}
+							<li class="link5"><a href="#!">Vide</a></li>
+						{% endfor %}
+                        <li class="link5"><a href="#!"><span class="fa fa-plus"></span> Afficher plus</a></li>
+                     </ul>
+                 </div>
+                <div class="col-xs-12 col-sm-6 col-md-2 footers-five">
+                     <h5>À propos </h5>
+					 <p>L'innovation au coeur des projets AFH</p>
+                     <ul class="list-unstyled">
+                      <li class="link5"><a href="#!">L'entreprise</a></li>
+                      <li class="link5"><a href="#!">Les projets</a></li>
+                      <li class="link5"><a href="#!">Les statistiques</a></li>
+                      <li class="link5"><a href="#!">Contribuer</a></li>
+                      <li class="link5"><a href="#!">Investir</a></li>
+                     </ul>
+                 </div>
+                 
+            </div>
+        </div>
+     </section>
+	 
+     <section class="disclaimer bg-light" style="border-bottom: 1px solid #dee2e6!important;">
+         <div class="container">
+             <div class="row ">
+                 <div class="col-md-12 py-2" style="text-align: justify;">
+                     <small>
+						Bienvenue sur les plateformes du groupe AFH, Nous avons lancé depuis 2013 le développement des projets AFHunt avec un réel désir de construire des services numériques stables de bout en bout ! Le parcours n’a pas été évident, nous avons tissé des partenariats techniques et commerciaux avec des entreprises et des particuliers dans le but de concrétiser ce rêve, mais avons été à plusieurs reprises abandonné au milieu de l’Océan par ceux-ci suite d’une part à leur faillite ou à leur méconnaissance de notre engagement dans ce secteur passionnant, Bien évidemment  ces échecs nous ont fragilisés à un moment donné, mais notre engagement nous a poussé à réviser nos processus de développement et de croissance adoptant ainsi des niveaux de sécurités diverses  garantissant l’aboutissement de nos projets sur le temps, et aujourd’hui nous sommes fier des résultats. Nous continuons à travaillons avec beaucoup d’amour sur nos services que nous voulons concurrentiels sur le plan international.
+                    </small>
+                 </div>
+             </div>
+         </div>
+     </section>
+
+     <section class="copyright border"  style="box-shadow:0px 0px 70px #888888;">
+         <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                      <strong style="font-family: Philosopher-Bold;">© 2014 - {{ 'now'|date('Y') }} A.F.H unt.com</strong> 
+					  Made with <span class="fa fa-heart-o" style="color: red;"></span> by <a href="http://code.afhunt.com" target="_blank">AFH Code</a>
+                 </div>
+                <div class="col-md-6 text-right">
+                    <a href="#!">
+                       Conditions d'utilisations
+                    </a>
+					<span style="font-size: 13px;" class="fa fa-eercast"></span>
+                    <a href="#!">
+                       Confidentialité
+                    </a>
+                </div>
+            </div>
+         </div>
+     </section>
+
+</footer>
+
+{% else %}
+<div class="clearfix"></div>
+<footer id="colophon" class="site-footer" style="background-color:#005dff!important; position: absolute;  width: 100%; padding-bottom: 0px;">
+	<!-- Begin Annonce Accueil -->
+	<div class="skewed-bg" style=""></div>
+	<div class="footer-offers">
+		<div class="container afd-footer-offers-left">
+				<div class="col-md-6">
+					<div class="offer afd-footer-height" style="padding-top: 0px;">
+						
+						<h3 style="margin-bottom: 2px;"><a href="#!" style="text-transform: capitalize; color: #005dff;">Ils nous font confiance</a></h3>
+						<p style="margin: 2px 0px 5px 2px; padding: 0px; border-bottom: 1px solid #ddd;">Nous travaillons ensemble pour vous offrir le meilleur du marché</p>
+						
+						<div class="col-md-3 text-center">
+							<a href="#!" title="" style="display: block;"><img src="{{ asset('template/images/logooj.png') }}"  style="height: 50px;"/></a>
+							<div><strong>Omnijobber</strong></div>
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<a href="#!" title="" style="display: block;"><img src="{{ asset('template/images/logoapme.jpg') }}"  style="height: 50px;"/></a>
+							<div><strong>A.P.M.E</strong></div>
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<a href="#!" title="" style="display: block;"><img src="{{ asset('template/images/logoovh.jpg') }}"  style="height: 50px;"/></a>
+							<div><strong>OVH</strong></div>
+						</div>
+						
+						<div class="col-md-3 text-center">
+							<a href="#!" title="" style="display: block;"><img src="{{ asset('template/images/logoamazone.png') }}"  style="height: 50px;"/> </a>
+							<div><strong>Amazone</strong></div>
+						</div>
+						
+						<div class="clearfix"></div>
+					</div> <!-- /.offer -->
+				</div>
+				<div class="col-md-6">
+					<div class="offer afd-footer-height" style="padding-top: 0px;">
+						<h3><a href="#!" class="green-text"><a href="#!" style="text-transform: capitalize; color: #005dff;">Devenir Partenaire AFH</a> </a></h3>
+						 <p style="margin: 2px 0px 5px 2px; padding: 0px; border-bottom: 1px solid #ddd;">Démarrez votre propre business en moins de 24H.</p>
+						<div class="col-md-3">
+							<a href="http://hbill.afhunt.com/" target="_blank" class="text-center" style="display: block;">
+							<img src="{{ asset('template/images/logohbill.png') }}"  style="height: 50px;"/>
+							<div ><strong>AFH HBill</strong></div>
+							</a>
+						</div>
+						<div class="col-md-3">
+							<a href="http://mbill.afhunt.com/" target="_blank" class="text-center" style="display: block;">
+							<img src="{{ asset('template/images/logombill.png') }}"  style="height: 50px;"/>
+							<div><strong>AFH MBill</strong></div>
+							</a>
+						</div>
+						<div class="col-md-3">
+							<a href="http://win.afhunt.com/" target="_blank" class="text-center" style="display: block;">
+							<img src="{{ asset('template/images/logowin.png') }}"  style="height: 50px;"/>
+							<div><strong>AFH Win</strong></div>
+							</a>
+						</div>
+						<div class="col-md-3">
+							<a href="http://code.afhunt.com/" class="text-center" target="_blank" style="display: block;">
+							<img src="{{ asset('template/images/logocode.png') }}"  style="height: 50px;"/>
+							<div><strong>AFH Code</strong></div>
+							</a>
+						</div>
+					</div><!-- /.offer -->
+				</div>
+		</div><!-- /.container -->
+	</div><!-- /.footer-offers -->
+
+	<!-- End Annonce Accueil -->
+	<div class="footer-ready" style="padding-top: 20px;">
+		<div class="container">
+			<div class="col-md-7">
+				<h3><img src="{{ asset('template/images/logo-sm-afh.png') }}" alt="{{ site }}" style="width: 50px; height: 50px; float: left;  margin-top: -10px; margin-right: 20px;"/> A.F.H unt.com</h3>
+				<p>Des services et produits incontournables pour le développement de votre activité numérique.</p>
+			</div>
+			<div class="col-md-5">
+				<a href="#!" class="btn btn-default pull-right share-icon cd-bouncy-nav-trigger2" style="line-height: 40px; background: #3498db; color: #fff; min-width: 130px; height: 50px; border-radius: 5px; margin-top: 20px;"><span></span> Démarrer</a>
+			</div>
+			<div class="col-md-12">
+				<div style="border-top: 1px solid #ddd; margin-top: 20px;"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div><!-- /.footer-ready -->
+
+	<div class="footer-links" style="padding-bottom: 7px;">
+		<div class="container">
+				<div class="col-md-4">
+					<div class="footer-about">
+						<div class="social-btns">
+							<a class="social-btn facebook" href="{{ facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>
+							<a class="social-btn linkedin" href="{{ twitter }}" target="_blank"><i class="fa fa-twitter"></i></a>
+							<a class="social-btn instagram" href="{{ google }}" target="_blank"><i class="fa fa-youtube"></i></a>
+							<a class="social-btn github" href="{{ linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+						</div>
+						<div style="color: #fff;">
+						  <ul class="list-unstyled">
+							<li><a href="#!">{{ localisation }}</a></li>
+							<li><a href="https://api.whatsapp.com/send?phone={{ telephone }}" target="_blank">Whatsapp: +{{ telephone }}</a></li>
+							<li><a href="tel:{{ telephone2 }}">MTN: +{{ telephone2 }}</a></li>
+						  </ul>
+						</div>
+					</div><!-- /.footer-about -->
+				</div>
+				<div class="col-md-3" style="border-left: 1px dashed  #ddd;">
+					<ul class="list-unstyled">
+						<li style="text-transform: capitalize;"><a href="#!" class="cd-bouncy-nav-trigger2" style="font-size: 20px; color: #fff;"><span class="fa fa-caret-down"></span> Technologie [{{ appli_tech|length }}] </a></li>
+						{% for app in appli_tech|slice(0,4) %}
+							<li><a href="{{ app.link }}" target="_blank"><img src="{% if app.src != null %}{{ asset(app.getwebpath) }}{% else %}{{ asset('templateafh/images/600.jpg') }}{% endif %}" alt="" style="width: 20px; height: 20px; margin-right: 7px; border-radius: 10px;"> {{ app.nom }}</a></li>
+						{% else %}
+							<li><a href="#!">Vide</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="col-md-3" style="border-left: 1px dashed  #ddd;">
+					<ul class="list-unstyled">
+						<li style="text-transform: capitalize;"><a href="#!" class="cd-bouncy-nav-trigger2" style="font-size: 20px; color: #fff;"><span class="fa fa-caret-down"></span> Marketing [{{ appli_marketing|length }}] </a></li>
+						{% for app in appli_marketing|slice(0,4) %}
+							<li><a href="{{ app.link }}" target="_blank"><img src="{% if app.src != null %}{{ asset(app.getwebpath) }}{% else %}{{ asset('templateafh/images/600.jpg') }}{% endif %}" alt="" style="width: 20px; height: 20px; margin-right: 7px; border-radius: 10px;"> {{ app.nom }}</a></li>
+						{% else %}
+							<li><a href="#!">Vide</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="col-md-2" style="border-left: 1px dashed  #ddd;">
+					<ul class="list-unstyled"> 
+						<li style="text-transform: capitalize;"><a href="#!" class="toggle-modal-right" value="accueil" style="font-size: 20px; color: #fff;"><span class="fa fa-caret-down"></span> Découverte [{{ liste_pays|length }}]</a></li>
+						{% for pays in liste_pays|slice(0,4) %}
+							<li><a href="{{ pays.siteweb }}" target="_blank"><img src="{% if pays.drapeau != null %}{{ asset(pays.drapeau.getwebpath) }}{% else %}{{ asset('templateafh/images/600.jpg') }}{% endif %}" style="width: 20px; height: 20px; margin-right: 7px; border-radius: 10px;"/> {{ pays.nom }}</a></li>
+						{% else %}
+							<li><a href="#!">Vide</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+		</div>
+	</div><!-- /.footer-links -->
+
+<div class="siteFooter-secondary-wrapper" style="background: #34495E!important;">
+<div class="container -footer">
+	  <div class="row">
+		  <div class="col-md-6">
+				© 2014 - {{ 'now'|date('Y') }} A.F.H unt.com
+		   </div>
+		  <div class="col-md-6">
+			  <a href="#!" style="float: right; color: #fff; padding: 2px;">
+				 Conditions d'utilisations
+			  </a>
+			  <a href="#!" style="float: right; color: #fff; padding: 2px;">
+				 Confidentialité
+			  </a>
+		  </div>
+	  </div>
+</div>
+</div>
+</footer>
+<div class="clearfix" style="padding: 7px; background: #fff;"></div>
+{% endif %}

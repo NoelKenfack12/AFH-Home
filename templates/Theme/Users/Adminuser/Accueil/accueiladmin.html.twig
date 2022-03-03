@@ -1,0 +1,365 @@
+{% extends "UsersAdminuserBundle::layoutadmin.html.twig" %}
+{% block meta %}
+{{ parent() }}
+<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
+<meta name="author" content="Noel Kenfack"/>
+<meta name="description" content="{{ site }} | Inscription | Cameroun | {{ metier }}" />
+
+{% endblock %}
+
+{% block title %}
+{{ parent() }} | Accueil Admin
+{% endblock %}
+
+{% block userblog_body %}
+<div class="row" style="background: #f2f2f2;">
+<div class="col-md-10 col-md-offset-1 col-xs-12 panel" style="min-height: 700px; padding-bottom: 50px;">    
+{{ render(controller("UsersAdminuserBundle:Accueil:menuadmin")) }}
+{% set id = '' %}
+{% for infos in app.session.flashbag.get('supprime_slide') %}
+{% if loop.last %}
+	<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
+	<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le slide {{ infos|lower }} </strong>
+	<form action="{{ path('users_adminuser_delete_courant_slide',{'id': id }) }}" method="post">
+	<input type="submit" value="Supprimer" style="background: red;"/>
+	{{ form_rest(formsupp) }}
+	</form>
+	</div>
+{% else %}
+{% set id = infos %}
+{% endif %}
+{% endfor %}
+
+
+{% for infos in app.session.flashbag.get('supprime_continent') %}
+{% if loop.last %}
+	<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
+	<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le continent {{ infos|lower }} </strong>
+	<form action="{{ path('users_adminuser_localisation_supprimer_continent', {'id': id }) }}" method="post">
+	<input type="submit" value="Supprimer" style="background: red;"/>
+	{{ form_rest(formsupp) }}
+	</form>
+	</div>
+{% else %}
+{% set id = infos %}
+{% endif %}
+{% endfor %}
+
+{% for infos in app.session.flashbag.get('pays_supp') %}
+{% if loop.last %}
+	<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
+	<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le pays {{ infos|lower }} </strong>
+	<form action="{{ path('users_adminuser_drop_country_user_local', {'id': id }) }}" method="post">
+	<input type="submit" value="Supprimer" style="background: red;"/>
+	{{ form_rest(formsupp) }}
+	</form>
+	</div>
+{% else %}
+{% set id = infos %}
+{% endif %}
+{% endfor %}
+
+
+<div>
+<div class="row">
+	<div class="col-lg-12 col-sm-12">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#liste-pays" data-toggle="tab">Liste pays</a></li>
+			<li class=""><a href="#liste-continent" data-toggle="tab">Liste continents</a></li>
+			<li class=""><a href="#liste-baniere" data-toggle="tab">Liste banière</a></li>
+			<li class=""><a href="#liste-investissement" data-toggle="tab">Investissement</a></li>
+		</ul>
+		
+		<div class="tab-content" style="min-height: 500px; margin-left: 1px;">
+			<div class="tab-pane active" id="liste-pays">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<form id= "form2" action="{{ path('users_adminuser_savenew_pays_localite_user') }}" method="post" {{ form_enctype(form2) }} >
+					{% include "UsersLocalisationuserBundle:Pays:formulairepays.html.twig" %}
+					</form>
+					</div>
+				</div>
+				
+				<div class="row">
+				{% for continent in liste_continent %}
+					<!-- blog card -->
+					<div class="col-md-12" style="border-bottom: 2px solid #ddd; margin-bottom: 7px;">
+						{{ continent.nom }}
+					</div>
+					
+					{% for pays in continent.pays %}
+					<div class="col-md-3">
+						<div class="panel" style="border: 1px solid #ddd;">
+						<div style="margin: 2px;">
+							<a href="#!" class="open-pays-localisation-user" value="{{ pays.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
+							<a href="{{ path('users_adminuser_drop_country_user_local', {'id': pays.id}) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
+								
+							<div>
+							<div style="height: 25px;">
+							</div>
+								<img src="{% if pays.drapeau != null %}{{ asset(pays.drapeau.getWebpath) }}{% else %}{{ asset('template/images/logo.png') }}{% endif %}" alt=".." style="width: 100%; height: 100px;"/>
+							</div>
+							
+							<span class="left"><a href="{{ pays.siteweb }}" target="_blank">{{ pays.nom }}</a></span></br>
+							<div>Indicatif: {{ pays.code }}</div>
+							<div>{{ pays.citoyen }}</div>
+							<div>{{ pays.citoyenne }}</div>
+							<div>Extension: {{ pays.domaine }}</div>
+						</div>
+						</div>
+					</div>
+					{% endfor %}
+				{% endfor %}
+				</div>
+			</div>
+			<div class="tab-pane" id="liste-continent">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<form id= "form" action="{{ path('users_adminuser_addnew_continent_localite_user') }}" method="post" {{ form_enctype(form) }} >
+					{% include "UsersLocalisationuserBundle:Pays:formulairecontinent.html.twig" %}
+					</form>
+					</div>
+				</div>
+				
+				<div class="row" style="margin-top: 10px;">
+				{% for continent in liste_continent %}
+				<!-- blog card -->
+				<div class="col-md-3">
+					<div class="panel" style="border: 1px solid #ddd;">
+					<div style="margin: 2px;">
+						<a href="#!" class="open-content-continent-reponse" value="{{ continent.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
+						<a href="{{ path('users_adminuser_localisation_supprimer_continent', {'id': continent.id }) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
+							
+						<div>
+						<div style="height: 25px;">
+						</div>
+							<img src="{% if continent.src != null %}{{ asset(continent.getWebpath) }}{% else %}{{ asset('template/images/logo.png') }}{% endif %}" alt=".." style="width: 100%; height: 100px;"/>
+						</div>
+						<span class="left"><a href="#!">{{ continent.nom }}</a></span></br>
+						<div>{{ continent.pays|length }} Pays</div>
+					</div>
+					</div>
+				</div>
+				{% endfor %}
+				</div>
+			</div>
+			<div class="tab-pane" id="liste-baniere">
+				<div>Préparer vos images pour les slides</div>
+				<div style="color: red;">
+				{% for infos in app.session.flashbag.get('imgslide') %}
+				{% if loop.first %}
+				{{ infos|raw }}
+				{% endif %}
+				{% endfor %}
+				</div>
+				  <form action="{{ path('users_adminuser_add_new_slide') }}" method="post" {{ form_enctype(formslide) }}>
+					<div class="row">
+					<span style="color:red;">{{ form_errors(formslide) }}</span>
+					<span style="color:red;">{{ form_errors(formslide.titre) }}</span>
+					  <div  class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+						{{ form_label(formslide.titre,'Titre du slide') }}
+						{{ form_widget(formslide.titre,{'attr': {'class': 'form-control'}}) }}
+					  </div>
+					  <span style="color:red;">{{ form_errors(formslide.description) }}</span>
+					  <div  class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+						{{ form_label(formslide.description,'Description du slide') }}
+						{{ form_widget(formslide.description,{'attr': {'class': 'form-control'}}) }}
+					  </div>
+					</div>
+					<div class="row">
+					  <span style="color:red;">{{ form_errors(formslide.file) }}</span>
+					  <div  class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+						<div class="form-group">
+						  <span>Slide</span>
+						  {{ form_widget(formslide.file) }}
+						</div>
+						</div>
+					</div>
+				  <div class="row">
+					<div  class="form-group col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+					  <button class="btn btn-primary" type="submit" name="action">
+					  Enregister
+					  </button>
+					</div>
+				  </div>
+				{{ form_rest(formslide) }}
+				</form>
+
+				<div class="row">
+			   {% for slide in allslide %}
+			   <!-- blog card -->
+				<div class="col-md-3">
+					<div class="panel" style="border: 1px solid #ddd;">
+					<div style="margin: 2px;">
+						<a href="{{ path('users_adminuser_delete_courant_slide',{'id': slide.id }) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
+							
+						<div>
+							<img src="{{ asset(slide.getWebpath) }}" alt=".." style="width: 100%; height: 100px;">
+						</div>
+						<span class="left"><a href="">{{ slide.titre }}</a></span></br>
+						<span class="right">{{ slide.date|date('d/m/y') }}</span>
+						<div>{{ slide.description }}</div>
+						<div class="col s9"> Par <a href="#">{{ slide.user.name(25) }}</a></div>
+					</div>
+					</div>
+				</div>
+				{% endfor %}
+				</div>
+			</div>
+			<div class="tab-pane" id="liste-investissement">
+				<h2>Liste des investissements</h2>
+				{% for invest in liste_investissement %}
+				<div class="row" style="border-bottom: 1px solid #ddd;">
+					<div class="col-md-3">
+				    Id: #{{ invest.investid }}</br>
+					Ville: {{ invest.villetext }} Le {{ invest.date|date('d') }}/{{ invest.date|date('m') }}/{{ invest.date|date('Y') }}
+					</div>
+					<div class="col-md-3">
+				    Type: {{ invest.type }}</br>
+					Montant: {{ invest.montant }} {{ devise }}
+					</div>
+					<div class="col-md-3">
+				    Nom: {{ invest.nom }}</br>
+					Prenom: {{ invest.prenom }}
+					</div>
+					<div class="col-md-3">
+				    Tel: {{ invest.tel }}</br>
+					Email: {{ invest.email }}
+					</div>
+				</div>
+				{% endfor %}
+				
+			</div>
+		</div>
+</div>
+</div>
+</div> 
+
+</div>
+</div>
+<div class="modal" data-backdrop="static" id="modalArticlesDetail">
+<div class="modal-dialog modal-md">
+<div class="modal-content">
+<div class="modal-header color-bottom" style="border-bottom: 4px solid #37c0fb; display: block;">
+	<button type="button" class="close" data-dismiss="modal" style="float: right;">&times;</button>
+	<h3 class="modal-title" style="text-transform: capitalize;">Modification article</h3>
+</div>
+<div class="modal-body null-bottom null-bottom-in">
+	<div class="row">
+	  <div class="input-field col s12">
+		<div class="wait-chargement-content-module-article" style="text-align: center;">
+			Patientez un moment pendant le chargement de l'article</br>
+			<img src="{{ asset('template/images/loader1.gif') }}" alt="image" style="height: 40px; width: 40px;">
+		</div>
+
+		<div class="content-module-loading-article" style="display: none;">
+		
+		</div>
+	  </div>
+	</div>
+</div>
+<div class="modal-footer color-top" style="text-align: right; border-top: 4px solid #37c0fb; display: block;">
+{% include "GeneralTemplateBundle:Menu:social.html.twig" %}
+</div>
+</div>
+</div>
+</div>
+
+{% for infos in app.session.flashbag.get('information') %}
+{% if loop.first %}
+
+<div class="modal" data-backdrop="static" id="modal-information-pays">
+<div class="modal-dialog modal-md">
+<div class="modal-content">
+<div class="modal-header color-bottom" style="border-bottom: 4px solid #37c0fb;">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">Résultat de l'action effectuée </h4>
+</div>
+<div class="modal-body null-bottom null-bottom-in">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top: 30px; padding-bottom: 10px;">
+{{ infos|raw }}
+</div>
+</div>
+</div>
+<div class="modal-footer color-top" style="text-align: right; border-top: 4px solid #37c0fb;">
+{% include "GeneralTemplateBundle:Menu:social.html.twig" %}
+</div>
+</div>
+</div>
+</div>
+
+{% endif %}
+{% endfor %}
+{% endblock %}
+
+{% block javascripttemplate %}
+
+$('section h4').click(function(event) {
+  event.preventDefault();
+  $(this).addClass('active');
+  $(this).siblings().removeClass('active');
+
+  var ph = $(this).parent().height();
+  var ch = $(this).next().height();
+
+  if (ch > ph) {
+    $(this).parent().css({
+      'min-height': ch + 'px'
+    });
+  } else {
+    $(this).parent().css({
+      'height': 'auto'
+    });
+  }
+});
+
+function tabParentHeight() {
+  var ph = $('section').height();
+  var ch = $('section ul').height();
+  if (ch > ph) {
+    $('section').css({
+      'height': ch + 'px'
+    });
+  } else {
+    $(this).parent().css({
+      'height': 'auto'
+    });
+  }
+}
+
+$(window).resize(function() {
+  tabParentHeight();
+});
+
+$(document).resize(function() {
+  tabParentHeight();
+});
+tabParentHeight();
+
+$('#modal-information-pays').modal('show');
+
+$('.open-content-continent-reponse').click(function(){
+	var id = $(this).attr('value');
+	$('#modalArticlesDetail').modal('show');
+	$('.wait-chargement-content-module-article').show();
+	$('.content-module-loading-article').hide();
+	$.get('{{ path('users_adminuser_update_content_continent') }}',{ id: id }, function(data){
+		$('.wait-chargement-content-module-article').hide();
+		$('.content-module-loading-article').show();
+		$('.content-module-loading-article').html(data);
+	});
+});	
+
+$('.open-pays-localisation-user').click(function(){
+	var id = $(this).attr('value');
+	$('#modalArticlesDetail').modal('show');
+	$('.wait-chargement-content-module-article').show();
+	$('.content-module-loading-article').hide();
+	$.get('{{ path('users_adminuser_modif_pays_localisation_user') }}',{ id: id }, function(data){
+		$('.wait-chargement-content-module-article').hide();
+		$('.content-module-loading-article').show();
+		$('.content-module-loading-article').html(data);
+	});
+});	
+{% endblock %}

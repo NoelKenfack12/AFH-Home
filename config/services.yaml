@@ -4,6 +4,17 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    nbcategorie: 10
+    nbsouscategorie: 7
+    nbslide: 7
+    nbproduitsouscat: 10
+    nbimgparproduit: 5
+    username: africexplorer
+    password: 91122219
+    siteweb: http://afhunt.com/
+    sitename: AFHunt
+    emailadmin: support@afhunt.com
+    url_single_email: http://sendapi.afhunt.com/
 
 services:
     # default configuration for services in *this* file

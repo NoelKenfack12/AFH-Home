@@ -1,0 +1,175 @@
+{% if user == null %}
+	<div style="background: red; color: #fff; padding: 10px;">Une erreur a été rencontrée lors de l'agrandissement de cette image.</div>
+{% else %}
+<style>
+.wrap {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  min-width: 100%;
+  max-width: 31%;
+  overflow: hidden;
+  border-radius: 0;
+  background: #fff;
+  margin: 0px;
+  box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.03);
+}
+@media (max-width: 68em) {
+  .card {
+    min-width: 48%;
+  }
+}
+@media (max-width: 48em) {
+  .card {
+    min-width: 98%;
+  }
+}
+.card .head {
+  background: url({% if user.imgprofil == null %}{{ asset('template/images/team1.jpg') }}{% else %}{{ asset(user.imgprofil.getWebPath) }}{% endif %}) -59% 51.5%;
+  min-height: 500px;
+  color: #fff;
+  position: relative;
+  display: flex;
+  transition: all 1.5s ease-in-out;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.card .head:hover {
+  background-position: -79% 21.5%;
+}
+.card .head h3 {
+  margin: 0;
+  padding: 1em 1.5em;
+  align-self: flex-end;
+  display: block;
+  width: 100%;
+  font-weight: 400;
+  text-shadow: 0px 1px 0px #000;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background-size: 100%;
+  background-image: linear-gradient(to top, #000000, rgba(0, 0, 0, 0));
+}
+.card .head h3 i.fa {
+  font-size: 120%;
+  position: relative;
+  top: 2px;
+}
+.card .head h3 span.time {
+  float: right;
+  font-weight: 200;
+}
+.card article {
+  padding: .5em 1.5em;
+}
+.card article h2:nth-of-type(1) {
+  margin-top: .5em;
+  font-weight: 400;
+  font-size: 205%;
+  line-height: 1.2em;
+  margin-bottom: .45em;
+}
+.card article p {
+  line-height: 1.55em;
+  text-align: justify;
+}
+.card article p:nth-of-type(1) {
+  margin-top: 0;
+}
+.card .foo1t {
+  border-top: 3px solid rgba(0, 0, 0, 0.1);
+  margin: 0 1.5em;
+  padding: 2em 0;
+}
+.card .foo1t .profile-pic {
+  max-width: 52px;
+  height: auto;
+  border-radius: 50%;
+  margin: 0 1em 0 0;
+  display: inline-block;
+}
+.card .foo1t .author1 {
+  font-weight: bold;
+}
+.card .foo1t .author1 a {
+  text-decoration: none;
+  color: tomato;
+  position: relative;
+  top: -.95em;
+  font-size: 1.25em;
+}
+.card .foo1t .social1 {
+  display: inline-block;
+  float: right;
+  font-size: 2.5em;
+}
+.card .foo1t .social1 a {
+  margin-left: .5em;
+  color: rgba(0, 0, 0, 0.3);
+}
+.card .foo1t .social1 a:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+</style>
+
+<div class="wrap">
+<div class="card" style="background-image:'{% if user.imgprofil == null %}{{ asset('template/images/team1.jpg') }}{% else %}{{ asset(user.imgprofil.getWebPath) }}{% endif %}';">
+  
+  <header class="head" style="">
+  <h3>
+  <i class="fa fa-user"></i> {{ user.name(40) }} <span class="time" style="color: #fff; font-size: 15px;"><i class="fa fa-clock-o"></i> {{ user.teamyear }} - En poste</span>
+  </h3>
+  </header>
+  <article>
+	<h2>{% if user.categorie != null %}{{ user.categorie }}{% else %}Cadre{% endif %}</h2>
+	<h4>
+	{% set j = 'now'|date('Y') - user.teamyear + 1  %}
+	<div style="color: green; cursor: pointer;" title="En poste depuis {{ j }} {% if j > 1 %}ans{% else %}an{% endif %}">
+	
+	{% for i in range(user.teamyear, "now"|date('Y')) %}
+		<i class="fa fa-star"></i>
+	{% endfor %}
+	
+	({{ j }} {% if j > 1 %}ans{% else %}an{% endif %})
+	</div>
+	</h4>
+	<p>{% if user.apropos != null %}{{ user.apropos }}{% else %}...{% endif %}</p>
+			
+  </article>
+</div>
+</div>
+<footer class="foo1t" style="background: #f4f4f4; padding: 10px; text-align: center;">
+	<div><strong style="color: green;">Me suivre sur les réseaux sociaux.</strong></div>
+	<div class="social-btns">
+		{% if user.facebook != null %}
+		<a class="social-btn facebook" href="{{ user.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>
+		{% else %}
+		<a class="social-btn facebook" href="#!" title="Lien Indisponible"><i class="fa fa-facebook"></i></a>
+		{% endif %}
+		{% if user.twitter != null %}
+		<a class="social-btn linkedin" href="{{ user.twitter }}" target="_blank"><i class="fa fa-twitter"></i></a>
+		{% else %}
+		<a class="social-btn linkedin" href="#!" title="Lien Indisponible"><i class="fa fa-twitter"></i></a>
+		{% endif %}
+		{% if user.google != null %}
+		<a class="social-btn instagram" href="{{ user.google }}" target="_blank"><i class="fa fa-google-plus"></i></a>
+		{% else %}
+		<a class="social-btn instagram" href="#!" title="Lien Indisponible"><i class="fa fa-google-plus"></i></a>
+		{% endif %}
+		{% if user.linkedin != null %}
+		<a class="social-btn github" href="{{ user.linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+		{% else %}
+		<a class="social-btn instagram" href="#!" title="Lien Indisponible"><i class="fa fa-linkedin"></i></a>
+		{% endif %}
+	</div>
+  </footer>
+{% endif %}
+
+<script type="text/javascript">
+$('a').tooltip();
+</script>

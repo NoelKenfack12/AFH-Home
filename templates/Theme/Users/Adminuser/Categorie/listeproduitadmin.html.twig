@@ -1,0 +1,280 @@
+{% extends "UsersAdminuserBundle::layoutadmin.html.twig" %}
+{% block meta %}
+{{ parent() }}
+<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
+<meta name="author" content="Noel Kenfack"/>
+<meta name="description" content="{{ site }} | Administration | Cameroun | {{ metier }}"/>
+{% endblock %}
+{% block title %}
+{{ parent() }} | Accueil Admin
+{% endblock %}
+
+{% block userblog_body %}
+
+
+<!-- START CONTENT -->
+      <section id="content">
+			<!--card stats start-->
+		  <!--start container-->
+        <div class="container" >
+          <div class="section">
+			<!-- profile-page-content -->
+            <div id="profile-page-content" class="row">
+              <!-- profile-page-sidebar-->
+              <div id="profile-page-sidebar" class="col s12 m4">
+			  {{ render(controller("UsersAdminuserBundle:Accueil:menuadmin")) }}
+			  </div>
+              <!-- profile-page-sidebar-->
+
+              <!-- profile-page-wall -->
+              <div id="profile-page-wall" class="col s12 m8">
+			  
+			  {% set id = '' %}
+				{% for infos in app.session.flashbag.get('supprime_prod') %}
+				{% if loop.last %}
+				<div class="card-panel" style="margin-top: 0px;">
+				<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer produit {{ infos|lower }} </strong>
+				<form action="{{ path('users_adminuser_supprimer_courant_produit',{'id': id }) }}" method="post">
+				<input type="submit" value="Supprimer" style="background: red;"/>
+				{{ form_rest(formsupp) }}
+				</form>
+				</div>
+				{% else %}
+				{% set id = infos %}
+				{% endif %}
+				{% endfor %}
+				
+			  
+			  <div class="card-panel" style="margin-top: 0px;">
+                    <h4 class="header2">Ajout de nouveaux produits</h4>
+					<span style="color: red;">
+					{% for infos in app.session.flashbag.get('information') %}
+					{% if loop.first %}
+					{{ infos|raw }}
+					{% endif %}
+					{% endfor %}
+					</span>
+                    <div class="row">
+					  <form class="col s12" action="{{ path('users_adminuser_liste_produit_souscategorie',{'id': souscategorie.id }) }}" method="post" {{ form_enctype(formpro) }}>
+                        <div class="row">
+						<span style="color:red;">{{ form_errors(formpro) }}</span>
+						<span style="color:red;">{{ form_errors(formpro.nom) }}</span>
+                          <div class="input-field col s6">
+							{{ form_widget(formpro.nom) }}
+							{{ form_label(formpro.nom,'Nom du produit') }}
+                          </div>
+						  {{ form_errors(formpro.description) }}
+                          <div class="input-field col s6">
+							{{ form_widget(formpro.description) }}
+							{{ form_label(formpro.description,'Description du produit') }}
+                          </div>
+                        </div>
+                        <div class="row">
+						  {{ form_errors(formpro.newprise) }}
+                          <div class="input-field col s6">
+							
+							<div class="input-field col s8">
+							  {{ form_widget(formpro.newprise) }}
+							  {{ form_label(formpro.newprise,'Nouveau prix') }}
+							</div>
+							<div class="input-field col s4" title="concerne les noms de domaine">
+							  {{ form_widget(formpro.bestplan) }}
+							  {{ form_label(formpro.bestplan,'Bon Plan') }}
+							</div>
+                          </div>
+						  <div class="file-field input-field col s6">
+							<input class="file-path validate" type="text"/>
+							<div class="btn">
+							  <span>Image</span>
+							  {{ form_widget(formpro.imgpro) }}
+							</div>
+							</div>
+                        </div>
+						<div class="row">
+						  {{ form_errors(formpro.prixlivraison) }}
+                          <div class="input-field col s6">
+							{{ form_widget(formpro.prixlivraison) }}
+							{{ form_label(formpro.prixlivraison,'Prix livraison') }}
+                          </div>
+						  <div class="input-field col s6">
+							{{ form_widget(formpro.souscategorie) }}
+							{{ form_label(formpro.souscategorie,'Sous catégorie') }}
+                          </div>
+                        </div>
+                          <div class="row">
+							  {{ form_errors(formpro.contenu) }}
+							  <div class="input-field col s6">
+							  {{ form_widget(formpro.contenu) }}
+							  {{ form_label(formpro.contenu,'À propos de du produit') }}
+							  </div>
+                            <div class="input-field col s6">
+							<div class="input-field col s4">
+							  {{ form_widget(formpro.choixauteur) }}
+							  {{ form_label(formpro.choixauteur,'Important') }}
+							</div>
+							<div class="input-field col s8">
+                              <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Enregister
+                                <i class="mdi-content-send right"></i>
+                              </button>
+							 </div>
+                            </div>
+                          </div>
+                        {{ form_rest(formpro) }}
+					    </form> 
+                    </div>
+                </div>
+				
+				
+				<div class="card-panel">
+                <div class="row">
+                <form class="col s12" action="{{ path('users_adminuser_modifier_courant_categorie', {'id': souscategorie.categorie.id,'scat': souscategorie.id }) }}" method="post" {{ form_enctype(formcat) }}>
+                  <h4 class="header2">Modification de la catégorie {{ souscategorie.categorie.nom }}</h4>
+				  <span style="color: red;">
+					{% for infos in app.session.flashbag.get('information') %}
+					{% if loop.first %}
+					{{ infos|raw }}
+					{% endif %}
+					{% endfor %}
+				   </span>
+                  <div class="row">
+				  <span style="color:red;">{{ form_errors(formcat) }}</span>
+				  <span style="color:red;">{{ form_errors(formcat.nom) }}</span>
+				  
+                  <div class="row">
+                    <div class="input-field col s4">
+                      <i class="mdi-action-assignment prefix"></i>
+					  {{ form_widget(formcat.nom) }}
+					  {{ form_label(formcat.nom,'Nom de la catégorie') }}
+                    </div>
+                      <div class="file-field input-field col s4">
+						<input class="file-path validate" type="text"/>
+						<div class="btn">
+						  <span>Image</span>
+						  {{ form_widget(formcat.file) }}
+						</div>
+					  </div>
+                    <div class="input-field col s4">
+                      <div class="input-field col s12">
+                        <button class="btn cyan waves-effect waves-light" type="submit" name="action"> Enregistrez</button>
+                      </div>
+                    </div>
+                  </div>
+				  </div>
+				  {{ form_rest(formcat) }}
+                </form>
+                
+              </div>
+			  </div>
+			  
+			  
+			  <div class="card-panel">
+                <div class="row">
+                  <form class="col s12" action="{{ path('users_adminuser_alter_courant_souscategorie', {'id': souscategorie.id}) }}" method="post" {{ form_enctype(formsouscat) }}>
+				  <h4 class="header2">Modification de sous-catégorie {{ souscategorie.nom }}</h4>
+				  <span style="color: red;">
+					{% for infos in app.session.flashbag.get('informationscat') %}
+					{% if loop.first %}
+					{{ infos|raw }}
+					{% endif %}
+					{% endfor %}
+				   </span>
+                  <div class="row">
+				  <span style="color:red;">{{ form_errors(formsouscat) }}</span>
+				  <span style="color:red;">{{ form_errors(formsouscat.nom) }}</span>
+				  
+                  <div class="row">
+                    <div class="input-field col s6">
+                      <i class="mdi-action-description prefix"></i>
+					  {{ form_widget(formsouscat.nom) }}
+					  {{ form_label(formsouscat.nom,'Nom') }}
+                    </div>
+					<div class="input-field col s6">
+					  
+					  {{ form_widget(formsouscat.categorie) }}
+					  {{ form_label(formsouscat.categorie,'Catégorie') }}
+                    </div>
+                    </div>
+					<div class="row">
+                    <div class="input-field col s6">
+					<i class="mdi-action-perm-contact-cal prefix"></i>
+					  {{ form_widget(formsouscat.faicon) }}
+					  {{ form_label(formsouscat.faicon,'Une icone') }}
+                    </div>
+					<div class="input-field col s6">
+					  {{ form_widget(formsouscat.rang) }}
+					  {{ form_label(formsouscat.rang,'Rang') }}
+                    </div>
+                    </div>
+					<div class="row">
+                    <div class="input-field col s6">
+					<i class="mdi-communication-chat prefix"></i>
+					  {{ form_widget(formsouscat.texttop) }}
+					  {{ form_label(formsouscat.texttop,'Message Top Produit') }}
+                    </div>
+					<div class="input-field col s6">
+					  {{ form_widget(formsouscat.textbottom) }}
+					  {{ form_label(formsouscat.textbottom,'Message Bottom Produit') }}
+                    </div>
+                    </div>
+					<div class="row">
+                      <div class="input-field col s12">
+                        <button class="btn cyan waves-effect waves-light right" type="submit" name="action"> Enregistrez</button>
+                      </div>
+                  </div>
+				  </div>
+				  {{ form_rest(formsouscat) }}
+                </form>
+                
+              </div>
+			  </div>
+			  
+			  
+			  </div>
+		    </div>
+			
+			<div class="row">
+			<section class="plans-container" id="plans">
+			   {% for produit in liste_produit %}
+			  
+				<article class="col s12 m6 l4 ">
+                  <div class="card z-depth-4">
+                    <div class="card-image cyan waves-effect">
+                      <div class="card-title">
+					  
+					  {% set nbre = random() % produit.imgproduits|length %}
+					  {% for img in produit.imgproduits %}
+				      {% if loop.index0 == nbre %}
+				      <img src="{{ asset(img.getWebpath) }}" alt="" class="left" style="height: 18px; width: 25px; margin-top: 7px;"/>
+				      {% endif %}
+				      {% endfor %}
+					  
+					  {{ produit.nom }}</div>
+                      <div class="price"><sup style="text-decoration: line-through;">{{ produit.ancienPrixProduit }}</sup> <sup>{{ devise }}</sup>{{ produit.newprise }}<sub>/an</sub></div>
+                      <div class="price-desc">{{ produit.description }}</div>
+                    </div>
+                    <div class="card-content">
+                      <ul class="collection">
+                        {{ produit.contenu|raw }}
+                      </ul>
+                    </div>
+                    <div class="card-action center-align">                      
+                      <a href="{{ path('users_adminuser_supprimer_courant_produit', {'id': produit.id }) }}" class="waves-effect waves-light  btn">Supprimer</a>
+                      <a href="{{ path('users_adminuser_update_courant_produit', {'id': produit.id }) }}" class="waves-effect waves-light  btn">Modifier</a>
+                    </div>
+                  </div>
+                </article>
+				
+				{% endfor %}
+			</section>
+            </div>
+                
+			
+		</div>
+		</div>
+	</section>
+			  
+	
+{% endblock %}
+
+{% block javascripttemplate %}
+{% endblock %}

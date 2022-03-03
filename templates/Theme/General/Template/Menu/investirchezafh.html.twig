@@ -1,0 +1,459 @@
+
+{% if investissement == null %}
+<style>
+	.accordion-item {
+	  margin-bottom: 10px;
+	}
+
+	.accordion-header {
+	  cursor: pointer;
+	  display: block;
+	  line-height: 40px;
+	  font-size: 20px;
+	  position: relative;
+	  background-color: #ffffff;
+	  color: #373737;
+	  padding: 0 55px 0 20px;
+	  border-bottom: 1px solid;
+	}
+
+	.accordion-header > span {
+	  position: absolute;
+	  border: 2px solid #000;
+	  border-radius: 50%;
+	  padding: 12px;
+	  right: 20px;
+	  top: 50%;
+	  height: 25px;
+	  width: 25px;
+	  transform: translateY(-50%);
+	  cursor: pointer;
+	}
+
+	.accordion-header > span::before {
+	  position: absolute;
+	  content: "";
+	  left: 50%;
+	  top: 50%;
+	  height: 14px;
+	  width: 2px;
+	  background-color: #000000;
+	  transform: translate(-50%, -50%);
+	  transition: transform cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s;
+	}
+
+	.accordion-header > span::after {
+	  position: absolute;
+	  content: "";
+	  left: 50%;
+	  top: 50%;
+	  height: 14px;
+	  width: 2px;
+	  background-color: #000000;
+	  transform: translate(-50%, -50%) rotate(90deg);
+	}
+
+	.accordion-open .accordion-header > span::before {
+	  transform: translate(-50%, -50%) rotate(90deg);
+	}
+
+	.accordion-body {
+	  padding: 20px;
+	  background-color: #000000;
+	  font-size: 18px;
+	  text-align: justify;
+	  display: none;
+	}
+
+	.acc-btn {
+	  margin: 30px 0;
+	  text-align: center;
+	}
+
+	.acc-btn > a {
+	  text-decoration: none;
+	  display: inline-block;
+	  height: 40px;
+	  line-height: 40px;
+	  background-color: #ffffff;
+	  color: #373737;
+	  box-shadow: 5px 5px 0px 0 #000000;
+	  padding: 0 20px;
+	  margin: 0 10px 10px 10px;
+	  font-size: 18px;
+	}
+</style>
+
+<section style="background: #fff; padding: 10px; margin-bottom: 7px;">
+<div class="row">
+	<div class="col-md-12">
+		<div>
+		 <h2 style="font-size: 20px; margin: 0px;">
+		 Faites travailler votre argent à votre place !
+		 </h2>
+		</div>
+	</div>
+</div>
+</section>
+
+<section style="background: #fff; padding: 10px; margin-bottom: 7px;">
+<div class="row">
+	<div class="col-md-12">
+		<div>
+		 <h2 style="font-size: 20px; margin: 0px;">
+		 <strong>Phase 1:</strong> Capital d'amorçage
+		 </h2>
+		 
+		 <div>Après près de 5ans (15/07/2014) de recherche, d'étude du marché et de développement des produits sur fond propre, <strong>{{ site }}</strong> prépare le lancement de la phase suivante et celle-ci se fera avec vous sur le principe <strong style="green;">gagnant-gagnant.</strong>
+		 </br>
+		 </br>
+		 <div><strong>Au programme:</strong></div>
+		 <ul>
+			<li>✔ Lancement officiel des produits AFH. (plus de 10 produits)</li>
+			<li>✔ Recherche et développement</li>
+			<li>✔ Location des bureaux</li>
+			<li>✔ Conseil juridique et financier</li>
+			<li>✔ Formation des techniciens</li>
+		 </ul>
+		 </div>
+		</div>
+	</div>
+</div>
+</section>
+
+<section style="background: #fff; padding: 10px; margin-bottom: 7px;">
+<div class="row">
+	<div class="col-md-12">
+		<div>
+		 <h2 style="font-size: 20px; margin: 0px;">
+		 <strong>Notes importantes</strong>
+		 </h2>
+		 
+		 <div><strong>{{ site }}</strong>, c'est une suite des produits qui ont déjà fait leur preuve
+		 </br>
+		 </br>
+		 <div><strong>Quelques Statistiques</strong></div>
+		 <ul>
+			<li>✔ Consommateurs des offres renouvelées (mensuellement ou annuellement): 100 clients</li>
+			<li>✔ Utilisateurs inscrits: 5000 personnes</li>
+			<li>✔ Visiteurs uniques: 500/jour</li>
+		 </ul>
+		 </div>
+		</div>
+	</div>
+</div>
+</section>
+
+<section style="background: #fff; padding: 10px; margin-bottom: 7px;">
+<div class="row">
+	<div class="col-md-12">
+		<div>
+		 <h2 style="font-size: 20px; margin: 0px;">
+		 <strong>Notre objectif</strong>
+		 </h2>
+		 
+		 <div>Atteindre le minimum nécessaire de 2.000.000F pour réaliser les objectifs de cette étape.</div>
+		 <ul>
+			<li>✔ Nous reversons à chaque investisseur 10% de sa mise chaque mois</li>
+		 </ul>
+		</div>
+	</div>
+</div>
+</section>
+
+<section style="background: #fff; padding: 10px; margin-bottom: 7px;">
+<div class="row">
+	<div class="col-md-12">
+		<div>
+		 <h2 style="font-size: 20px;">
+		 <strong>Demande d'investissement</strong>
+		 </h2>
+		 
+		 <div>
+			 <form method="post" action="#!" class="form-submit-demande-invest">
+				<div class="form-group type_invest">
+					<select name="typeinvestissement" id="type_investissement" class="form-control">
+						<option value="0">Sélectionez le type d'investissement</option>
+						<option value="Capital d'amorçage">Capital d'amorçage</option>
+						<option value="Don">Don</option>
+					</select>
+					<div class="alert alerttype-bottom alert-block alert-danger" style="margin: 0px; display:none; line-height: 16px; padding: 7px;">
+		
+					</div>
+				</div>
+				
+				<div class="form-group montant_invest">
+					<select name="montantinvestissement" id="montant_investissement" class="form-control">
+						<option value="0">Sélectionez le montant à investir</option>
+						{% for i in range(10000, 1500000,5000) %}
+						<option value="{{ i }}">{{ i }} {{ devise }}</option>
+						{% endfor %}
+					</select>
+					<div class="alert alertmontant-bottom alert-block alert-danger" style="margin: 0px; display:none; line-height: 16px; padding: 7px;">
+		
+					</div>
+				</div>
+				<div class="form-group nom_invest">
+					<input type="text" name="nominvestissement" id="nom_investissement" class="form-control" placeholder="Rentrez votre nom" required>
+					
+					<div class="alert alertnom-bottom alert-block alert-danger" style="margin: 0px; display:none; line-height: 16px; padding: 7px;">
+		
+					</div>
+				</div>
+
+				<div class="form-group prenom_invest">
+					<input type="text" name="prenominvestissement" id="prenom_investissement" class="form-control" placeholder="Rentrez votre prenom" required>
+					
+					<div class="alert alertprenom-bottom alert-block alert-danger" style="margin: 0px; display:none; line-height: 16px; padding: 7px;">
+		
+					</div>
+				</div>
+				
+				<div class="form-group tel_invest">
+					<input type="text" name="telinvestissement" id="tel_investissement" class="form-control" placeholder="Rentrez votre Téphone" required>
+					
+					<div class="alert alerttel-bottom alert-block alert-danger" style="margin: 0px; display:none; line-height: 16px; padding: 7px;">
+		
+					</div>
+				</div>
+				
+				<div class="form-group email_invest">
+					<input type="text" name="emailinvestissement" id="email_investissement" class="form-control" placeholder="Rentrez votre Email">
+					
+					<div class="alert alertemail-bottom alert-block alert-danger" style="margin: 0px; display:none; line-height: 16px; padding: 7px;">
+		
+					</div>
+				</div>
+				
+				<div class="form-group ville_invest">
+					<input type="text" name="villeinvestissement" id="ville_investissement" class="form-control" placeholder="Votre Ville actuelle">
+					
+					<div class="alert alertville-bottom alert-block alert-danger" style="margin: 0px; display:none; line-height: 16px; padding: 7px;">
+		
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="alert alert-warning reglement-check-warning" style="border-left: 3px solid green;">
+					 <span class="fa fa-warning"></span> Attention !!! Vous devez accepter les conditions d'investissement avant d'enregistrer votre demande.
+					 Pour cela, cliquez sur le lien "Règlement de l'investissement" ci-dessous, scrollez jusqu'en bas puis cliquez sur "j'accepte les conditions d'investissement".
+					</div>
+					<div class="alert alert-success reglement-check-success" style="border-left: 3px solid green; display: none;">
+					 <span class="fa fa-check"></span> Vous avez accepté les règlements de l'investissement chez {{ site }}
+					</div>
+				</div>
+				
+				<div class="form-group">
+				<!-- Accordion Starts Here -->
+				<section id="accordion-sec">
+				  <div class="accordion">
+					<div class="accordion-item animated slideInRight">
+					  <label class="accordion-header" style="padding: 0px;"><i class="fa fa-angle-double-right"></i> Règlements de l'investissement <span style="right: 0px;"></span></label>
+					  <div class="accordion-body" style="max-height: 500px; overflow: scroll;">
+						  <p style="color: #fff;">
+							<a href="http://afhunt.com/Symfony/web/template/fonts/Contrat-d-investissement.pdf" target="_blank" style="color: #fff;">Cliquez ici pour télécharger le Contrat-d-investissement.pdf</a>
+						  </p>
+						 <div class="alert alert-info">
+						 <input type="checkbox" name="conditioninvestissement" id="condition_investissement" style="margin-right: 7px; cursor: pointer;">
+						 <label for="condition_investissement" style="cursor: pointer;">j'accepte les conditions d'investissement</label>
+						  </div>
+					  </div>
+					</div>
+				  </div>
+				</section>
+				</div>
+				
+				<div class="alert alertcondition-bottom alert-block alert-danger" style="margin: 0px; display:none; line-height: 16px; padding: 7px;">
+					<h4 style="margin: 3px 0px;">Echec !</h4> Vous devez accepter les règlements de l'investissement avant de continuer 
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary submit-demande-investissement" value="0">Enregistrer ma demande</button>
+				</div>
+				
+			 </form>
+		 </div>
+		 
+		</div>
+	</div>
+</div>
+</section>
+
+
+<script type="text/javascript">
+$('#condition_investissement').change(function(){
+	if($(this).prop('checked'))
+	{
+		$('.submit-demande-investissement').attr('value', 1);
+		$('.reglement-check-warning').hide();
+		$('.reglement-check-success').show();
+	}else{
+		$('.submit-demande-investissement').attr('value', 0);
+		$('.reglement-check-warning').show();
+		$('.reglement-check-success').hide();
+	}
+});
+
+$('form.form-submit-demande-invest').on('submit', function(){
+	if($('#type_investissement').val() == 0){
+		$("div.alerttype-bottom").show("slow").delay(6000).hide("slow");
+		$("div.alerttype-bottom").html('<h4 style="margin: 3px 0px;">Erreur !</h4> Aucun type d\'investissement spécifié !');
+		$('#type_investissement').focus();
+		$("div.type_invest").addClass("has-error");
+	}else if($('#type_investissement').val() == 0){
+		$("div.alertmontant-bottom").show("slow").delay(6000).hide("slow");
+		$("div.alertmontant-bottom").html('<h4 style="margin: 3px 0px;">Erreur !</h4> Aucun type d\'investissement spécifié !');
+		$('#montant_investissement').focus();
+		$("div.montant_invest").addClass("has-error");
+	}else if($('#nom_investissement').val().length < 3 || $('#nom_investissement').val().length > 50){
+		$("div.alertnom-bottom").show("slow").delay(6000).hide("slow");
+		$("div.alertnom-bottom").html('<h4 style="margin: 3px 0px;">Erreur !</h4> Le champ nom est invalide entre 3 et 50 caractères !');
+		$('#nom_investissement').focus();
+		$("div.nom_invest").addClass("has-error");
+	}else if($('#prenom_investissement').val().length < 3 || $('#prenom_investissement').val().length > 50) {
+		$("div.alertprenom-bottom").show("slow").delay(6000).hide("slow");
+		$("div.alertprenom-bottom").html('<h4 style="margin: 3px 0px;">Erreur !</h4> Le champ prenom est invalide entre 3 et 50 caractères !');
+		$('#prenom_investissement').focus();
+		$("div.prenom_invest").addClass("has-error");
+	}else if(!{{ mailregex }}.test($('#email_investissement').val())) {
+		$("div.alertemail-bottom").show("slow").delay(6000).hide("slow");
+		$("div.alertemail-bottom").html('<h4 style="margin: 3px 0px;">Erreur !</h4> Email invalide ! Ex: nom.prenom@yahoo.fr ');
+		$('#email_investissement').focus();
+		$("div.email_invest").addClass("has-error");
+	}else if(!{{ number }}.test($('#tel_investissement').val())) {
+		$("div.alerttel-bottom").show("slow").delay(6000).hide("slow");
+		$("div.alerttel-bottom").html('<h4 style="margin: 3px 0px;">Erreur !</h4> Téléphone invalide ! Ex: 655869352 ');
+		$('#tel_investissement').focus();
+		$("div.tel_invest").addClass("has-error");
+	}else if($('#ville_investissement').val().length < 3 || $('#ville_investissement').val().length > 50){
+		$("div.alertville-bottom").show("slow").delay(6000).hide("slow");
+		$("div.alertville-bottom").html('<h4 style="margin: 3px 0px;">Erreur !</h4> Le champ prenom est invalide entre 3 et 50 caractères !');
+		$('#ville_investissement').focus();
+		$("div.ville_invest").addClass("has-error");
+	}else{
+		if($(".submit-demande-investissement").attr('value') == 0)
+		{
+			$("div.alertcondition-bottom").show("slow").delay(6000).hide("slow");
+		}else{
+			var typeinves = $('#type_investissement').val();
+			var montant = $('#montant_investissement').val();
+			var nom = $('#nom_investissement').val();
+			var prenom = $('#prenom_investissement').val();
+			var tel = $('#tel_investissement').val();
+			var email = $('#email_investissement').val();
+			var ville = $('#ville_investissement').val();
+			
+			$('.resultat-subcription-offer-jobber').hide();
+			$('.wait-account-verification-projet').show();
+		
+			$.post('{{ path('general_template_investir_chez_afh') }}',{ typeinves: typeinves, montant: montant, nom: nom, prenom: prenom, tel: tel, email: email, ville: ville }, function(data){
+			  $('.wait-account-verification-projet').hide();
+			  $('.resultat-subcription-offer-jobber').show();
+			  $('.resultat-subcription-offer-jobber').html(data);
+		  });
+		}
+	}
+	return false;
+});
+
+$(document).ready(function() {
+  accordion();
+});
+
+$(document).resize(function() {
+  accordion();
+});
+
+// Accordion
+
+function accordion() {
+  $(".accordion-header").click(function() {
+    if (
+      $(this)
+      .next()
+      .is(":visible")
+    ) {
+      $(this)
+        .next()
+        .slideUp();
+      $(this)
+        .parent()
+        .addClass("accordion-close");
+      $(this)
+        .parent()
+        .removeClass("accordion-open");
+    } else {
+      $(".accordion-body").slideUp();
+      $(".accordion-item").removeClass("accordion-open");
+      $(this)
+        .next()
+        .slideDown();
+      $(this)
+        .parent()
+        .addClass("accordion-open");
+      $(this)
+        .parent()
+        .removeClass("accordion-close");
+    }
+  });
+
+  $("#expand").click(function() {
+    $(".accordion-body").slideDown();
+    $(".accordion-item").addClass("accordion-open");
+  });
+
+  $("#collapse").click(function() {
+    $(".accordion-body").slideUp();
+    $(".accordion-item").removeClass("accordion-open");
+  });
+}
+</script>
+
+{% else %}
+<section style="background: #fff; padding: 10px; margin-bottom: 7px;">
+<div class="row">
+	<div class="col-md-12">
+		<div class="text-center">
+		 <h2 style="font-size: 20px; margin: 0px; color: green;">
+			Votre demande d'investissement a été enregistrée avec succès. Nous vous en remercions !!!
+		 </h2>
+		 <div>Nous allons vous contacter sous peu !</div>
+		</div>
+	</div>
+</div>
+</section>
+
+<section style="background: #fff; padding: 10px; margin-bottom: 7px;">
+<div class="row">
+	<div class="col-md-12">
+		<div class="text-center">
+		 <h2 style="font-size: 20px; margin: 0px;">
+			Investissement Id: #<span style="color: green;">{{ investissement.investid }}</span>
+		 </h2>
+		 <div>Montant: {{ investissement.montant }}{{ devise }}</div>
+		 <div>Type: {{ investissement.type }}</div>
+		</div>
+	</div>
+</div>
+</section>
+
+<section style="background: #fff; padding: 10px; margin-bottom: 7px;">
+<div class="row">
+	<div class="col-md-12">
+		<div>
+		 <h2 style="font-size: 20px; margin: 0px;">
+		 Modes de paiement
+		 </h2>
+		</div>
+		<div>
+		 <strong>Orange Money:</strong> 693839823
+		</div>
+		<div>
+		 <strong>MTN Mobile Money:</strong> 680288416
+		</div>
+		<div>
+		 <strong>Nom du compte:</strong> Noel Kenfack
+		</div>
+	</div>
+</div>
+</section>
+{% endif %}

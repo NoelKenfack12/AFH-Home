@@ -1,0 +1,362 @@
+{% extends "UsersUserBundle::layoutafex.html.twig" %}
+{% block meta %}
+{{ parent() }}
+<meta name="keywords" content="{{ site }},Votre guide sur la toile, site web, hébergement web,conseils, coaching,expertise,accompagnement, start-up,technologie, audits,e-commerce,stratégie,marketing,annonces, annonce afrique,études, bonnes affaires, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, visite guidée, cameroun, site cameroun,hébergement web cameroun,site moins cher, vente en ligne, commerce en afrique, afrique Explorer,"/>
+<meta name="author" content="Noel Kenfack"/>
+<meta name="description" content="{{ site }} | Agence technologique d'innovation des méthodes d'information sur l'Afrique. #1 dans la localisation d'entreprise et le développement numérique en Afrique"/>
+{% endblock %}
+{% block title %}
+{{ parent() }} | Votre guide sur la toile.
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+.box{
+background-color:#fff;border-top:1px solid #f0f0f0;-webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,0.1);box-shadow:0 1px 2px 0 rgba(0,0,0,0.1);padding:10px;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;
+}
+</style>
+{% endblock %}
+
+{% block userblog_body %}
+
+	<section class="five-inch-display nos-services" style="height: 820px; background: url({{ asset('newtemplate/images/gradient_squares.png') }});  display: block!important; position: relative;">
+		
+		{% include 'GeneralTemplateBundle:Menu:submenu.html.twig' %}
+		
+		<div class="container">
+			<div class="row">
+				{% include 'GeneralTemplateBundle:Menu:submenustruct.html.twig' %}
+				<script style="text/javascript">
+				$(window).load(function() {	
+					$('.ourservice').addClass('active');
+				});
+				</script>
+
+				<div class="col-md-10">
+					<div class="feature-spec-text" style="padding: 0px; margin: 0px;">
+						<div style="display: block;">
+							<h2 style="text-align: left; padding: 15px 0px ;"><span class="fa fa-certificate"></span> Développer le <span class="fa fa-quote-left" style="font-size: 13px;"></span> Web <sup><span class="fa fa-quote-right" style="font-size: 13px;"></span></sup>. Ce que nous savons faire le mieux !</h2>
+						</div>
+						<div style="margin-top: -10px;"><i style="font-size: 13px;">[Nos techniciens sont expérientés et travaillent en équipe depuis 2014]</i></div>
+						<div class="btn-group" style="margin-top: 15px;">
+							<a href="{{ path('produit_produit_application_references') }}" class="btn btn-info" style="background: #34b1e7; -webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,0.1); box-shadow:0 2px 2px 0 rgba(0,0,0,0.8);">Quelques réalisations ces dernières années</a>
+							<a href="{{ path('produit_produit_application_references') }}" class="btn btn-info dropdown-toggle" data-toggle="dropdown" style="background: #34b1e7; -webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,0.1); box-shadow:0 2px 2px 0 rgba(0,0,0,0.8);"><span class="fa fa-chevron-right"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2" style="text-align: right;">
+					<a href="{{ path('produit_service_contact_us') }}"><img src="{{ asset('newtemplate/images/icons/telservice.png') }}" alt="" style="height: 120px; "/></a>
+				</div>
+				
+				<div class="col-md-12" style="margin-bottom: 15px; margin-top: 15px;"><div style="border-bottom: 2px solid #34b1e7;; "> </div></div>
+				
+				<div class="col-md-5">
+					<div class="row">
+						<div class="col-md-6">
+						<div class="box text-left" style="margin-bottom: 15px;">
+							<h5 style="margin-top: 0px;">
+							<a href="#!">
+								<img src="{{ asset('newtemplate/images/icons/help.png') }}" alt="Logo" style="width: 30px; height: 30px; border-radius: 15px;"/>
+								<strong>Développement web</strong>
+							</a>
+							</h5>
+							<p class="text-center"><img src="{{ asset('newtemplate/images/icons/web.png') }}" alt="" style="width: 90%; height: 150px;"/></p>
+							<p style="height: 200px; overflow: hidden; text-align: justify;">Nous sommes une agence spécialisée aux développements d'applications web à forte contrainte technique dans tous les secteurs d'activité. Sites web, Applications mobile multiplateforme.
+							<a class="btn pull-right" href="#!" style="position: absolute; bottom: 10px; right: 10px;" target="_blank" title="En savoir plus"><i class="fa fa-plus-square"></i> En savoir plus</a> 
+							</p>
+						</div>
+						</div>
+						
+						<div class="col-md-6">
+						<div class="box text-left" style="margin-bottom: 15px;">
+							<h5 style="margin-top: 0px;">
+							<a href="#!">
+								<img src="{{ asset('newtemplate/images/icons/help.png') }}" alt="Logo" style="width: 30px; height: 30px; border-radius: 15px;"/>
+								<strong>Hébergement web</strong>
+							</a>
+							</h5>
+							<p><img src="{{ asset('newtemplate/images/icons/iphosting.png') }}" alt="" style="width: 100%; height: 150px;"/></p>
+							<p style="height: 200px; overflow: hidden; text-align: justify;">Quand vous débutez avec votre affaire sur le web, rien de plus important qu'un partenaire qui va assurer la sécurité de vos données et veuiller à la disponibilité de vos services.</br>Nous vous offrons l'illimité et les serveurs hyper puissant à moindre coût !
+							<a class="btn pull-right" href="http://hosting.africexplorer.com/" style="position: absolute; bottom: 10px; right: 10px;" target="_blank" title="En savoir plus"><i class="fa fa-plus-square"></i> Site dédié</a> 
+							</p>
+						</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-7">
+					<div class="row">
+						<div class="col-md-4">
+						<div class="box text-left" style="margin-bottom: 15px;">
+							<h5 style="margin-top: 0px;">
+							<a href="#!">
+								<img src="{{ asset('newtemplate/images/icons/help.png') }}" alt="Logo" style="width: 30px; height: 30px; border-radius: 15px;"/>
+								<strong>Audit & Conseil</strong>
+							</a>
+							</h5>
+							<p><img src="{{ asset('newtemplate/images/icons/audi.png') }}" alt="" style="width: 100%; height: 150px;"/></p>
+							<p style="height: 200px; overflow: hidden; text-align: justify;">Votre site web est là pour vendre votre image, votre marque ou vos produits, si tel n'est pas le cas, il ya un/des éléments qui jouent en votre défaveur. Nous les identifions et les éliminons.
+							<a class="btn pull-right" href="#!" style="position: absolute; bottom: 10px; right: 10px;" target="_blank" title="En savoir plus"><i class="fa fa-plus-square"></i> En savoir plus</a> 
+							</p>
+						</div>
+						</div>
+						<div class="col-md-4">
+						<div class="box text-left" style="margin-bottom: 15px;">
+							<h5 style="margin-top: 0px;">
+							<a href="#!">
+								<img src="{{ asset('newtemplate/images/icons/help.png') }}" alt="Logo" style="width: 30px; height: 30px; border-radius: 15px;"/>
+								<strong>Coaching & Expertise</strong>
+							</a>
+							</h5>
+							<p><img src="{{ asset('newtemplate/images/icons/mentor.png') }}" alt="" style="width: 100%; height: 150px;"/></p>
+							<p style="height: 200px; overflow: hidden; text-align: justify;"> Votre équipe de développeurs web devrait être productif, mais aussi et surtout efficace. L'expérience est un élément important pour cet atout: nous partageons la notre avec vous.
+							<a class="btn pull-right" href="#!" style="position: absolute; bottom: 10px; right: 10px;" target="_blank" title="En savoir plus"><i class="fa fa-plus-square"></i> En savoir plus</a> 
+							</p>
+						</div>
+						</div>
+						<div class="col-md-4">
+						<div class="box text-left" style="margin-bottom: 15px;">
+							<h5 style="margin-top: 0px;">
+							<a href="#!">
+								<img src="{{ asset('newtemplate/images/icons/help.png') }}" alt="Logo" style="width: 30px; height: 30px; border-radius: 15px;"/>
+								<strong>Accomp. Start-up</strong>
+							</a>
+							</h5>
+							<p><img src="{{ asset('newtemplate/images/icons/start-up.png') }}" alt="" style="width: 100%; height: 150px;"/></p>
+							<p style="height: 200px; overflow: hidden; text-align: justify;"> Démarrer son projet, se développer, éviter les erreurs techniques cruciales, s'organiser ... voilà quelques défit à relever par une start-up. Nous sommes spécialisés dans l'assistance technique des strat-up.
+							<a class="btn pull-right" href="#!" style="position: absolute; bottom: 10px; right: 10px;" target="_blank" title="En savoir plus"><i class="fa fa-plus-square"></i> En savoir plus</a> 
+							</p>
+						</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	
+	<section class="five-inch-display" style="height: 450px; background: #16a085;  display: block!important; position: relative;">
+	<div class="pallete-item">
+		<dl class="palette palette-clouds" style="background: #ddd; padding: 20px;">
+		  <img src="{{ asset('newtemplate/images/icons/logo-lg.png') }}" alt="" style="width: 100%; height: 50px;"/>
+		</dl>
+    </div>
+		<div class="container">
+		<h2 style="color: #fff; margin-bottom: 20px;"><span class="fa fa-building-o"></span> Parmi les clients qui nous ont fait confiance</h2>
+			<div class="row">
+				<div class="slider1" style="padding: 0px; margin: 0px;">
+				<div class="arrival-grids" style="padding: 0px; margin: 0px;">			 
+					<ul id="flexiselDemo1">
+					
+					<li>
+					<div class="item" style="margin-right: 5px; margin-left: 5px;">
+						<div class="col-lg-12">
+							<img class="img-circle1 img-thumbnail1" src="{{ asset('newtemplate/images/icons/logobellargus.png') }}" style="margin-top: 20px; width: 100px; height: 100px;"  alt=""/>
+							<h4 style="margin-top: 20px;"><a href="http://BELLARGUS.COM/" target="_blank">Bellargus</a></h4>
+							<p>BELLARGUS.COM</p>
+							<p><i class="mdi-av-subtitles"></i> <i class="mdi-notification-phone-forwarded"></i> <i class="mdi-social-public"></i></p>
+						</div><!--/col-lg-4 -->
+					</div>
+					</li>
+					
+					<li>
+					<div class="item" style="margin-right: 5px; margin-left: 5px;">
+						<div class="col-lg-12">
+							<img class="img-circle1 img-thumbnail1" src="{{ asset('newtemplate/images/icons/logocua.png') }}" style="margin-top: 0px; width: 140px; height: 140px;"  alt="">
+							<h4 style="margin-top: 0px;"><a href="http://CHINESEUNIVERSITIESAGENCY.COM/" target="blank">Chinese Universities Agency</a></h4>
+							<p>CHINESEUNIVERSITIESAGENCY.COM</p>
+							<p><i class="mdi-av-subtitles"></i> <i class="mdi-notification-phone-forwarded"></i> <i class="mdi-social-public"></i></p>
+						</div><!--/col-lg-4 -->
+					</div>
+					</li>
+					<li>
+					<div class="item" style="margin-right: 5px; margin-left: 5px;">
+						<div class="col-lg-12">
+							<img class="img-circle1 img-thumbnail1" src="{{ asset('newtemplate/images/icons/logoigna.png') }}" style="margin-top: 0px; width: 140px; height: 140px;"  alt="">
+							<h4 style="margin-top: 0px;"><a href="http://IGNACIOCLOTHING.COM/" target="_blank">Igacio Clothing</a></h4>
+							<p>IGNACIOCLOTHING.COM</p>
+							<p><i class="mdi-av-subtitles"></i> <i class="mdi-notification-phone-forwarded"></i> <i class="mdi-social-public"></i></p>
+						</div><!--/col-lg-4 -->
+					</div>
+					</li>
+					<li>
+					<div class="item" style="margin-right: 5px; margin-left: 5px;">
+						<div class="col-lg-12">
+							<img class="img-circle1 img-thumbnail1" src="{{ asset('newtemplate/images/icons/OmniJobberlogo.png') }}" style="margin-top: 0px; width: 140px; height: 140px;"  alt="">
+							<h4 style="margin-top: 0px;"><a href="http://OMNIJOBBER.COM/" target="_blank">OmNiJobber</a></h4>
+							<p>OMNIJOBBER.COM</p>
+							<p><i class="mdi-av-subtitles"></i> <i class="mdi-notification-phone-forwarded"></i> <i class="mdi-social-public"></i></p>
+						</div><!--/col-lg-4 -->
+					</div>
+					</li>
+					<li>
+					<div class="item" style="margin-right: 5px; margin-left: 5px;">
+						<div class="col-lg-12">
+							<img class="img-circle1 img-thumbnail1" src="{{ asset('newtemplate/images/icons/logomcs.png') }}" style="margin-top: 20px; width: 100px; height: 100px;"  alt="">
+							<h4 style="margin-top: 20px;"><a href="http://TERRAINMAISON.CM/" target="_blank">Maisons Cameroun</a></h4>
+							<p>TERRAINMAISON.CM</p>
+							<p><i class="mdi-av-subtitles"></i> <i class="mdi-notification-phone-forwarded"></i> <i class="mdi-social-public"></i></p>
+						</div><!--/col-lg-4 -->
+					</div>
+					</li>
+					<li>
+					<div class="item" style="margin-right: 5px; margin-left: 5px;">
+						<div class="col-lg-12">
+							<img class="img-circle img-thumbnail1" src="{{ asset('newtemplate/images/icons/logo-min.png') }}" style="margin-top: 20px; width: 100px; height: 100px;"  alt="">
+							<h4 style="margin-top: 20px;"><a href="http://AZCORPORATION.NET/" target="_blank">Az Corporation</a></h4>
+							<p>AZCORPORATION.NET</p>
+							<p><i class="mdi-av-subtitles"></i> <i class="mdi-notification-phone-forwarded"></i> <i class="mdi-social-public"></i></p>
+						</div><!--/col-lg-4 -->
+					</div>
+					</li>
+					<li>
+					<div class="item" style="margin-right: 5px; margin-left: 5px;">
+						<div class="col-lg-12">
+							<img class="img-circle img-thumbnail1" src="{{ asset('newtemplate/images/icons/mbgame.png') }}" style="width: 140px; height: 140px;"  alt="">
+							<h4><a href="http://MOBILEGAMES.CM/" target="_blank">Mobile Games</a></h4>
+							<p>MOBILEGAMES.CM</p>
+							<p><i class="mdi-av-subtitles"></i> <i class="mdi-notification-phone-forwarded"></i> <i class="mdi-social-public"></i></p>
+						</div><!--/col-lg-4 -->
+					</div>
+					</li>
+					<li>
+					<div class="item" style="margin-right: 5px; margin-left: 5px;">
+						<div class="col-lg-12">
+							<img class="img-circle1 img-thumbnail1" src="{{ asset('newtemplate/images/icons/logoalto.png') }}" style="width: 140px; height: 140px;"  alt="">
+							<h4><a href="http://ALTOMOBILEGROUP.COM/" target="_blank">Alto Mobile</a></h4>
+							<p>ALTOMOBILEGROUP.COM</p>
+							<p><i class="mdi-av-subtitles"></i> <i class="mdi-notification-phone-forwarded"></i> <i class="mdi-social-public"></i></p>
+						</div><!--/col-lg-4 -->
+					</div>
+					</li>
+					</ul>
+			   </div>
+			   </div>
+				<div class="col-md-12" style="text-align: right;">
+				<div class="btn-group" style="margin: 20px;">
+					<a href="{{ path('produit_service_contact_us') }}" class="btn btn-info" style="background: #34b1e7; -webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,0.1); box-shadow:0 2px 2px 0 rgba(0,0,0,0.8);">Prennez contact avec nous</a>
+					<a href="{{ path('produit_service_contact_us') }}" class="btn btn-info dropdown-toggle" data-toggle="dropdown" style="background: #34b1e7; -webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,0.1); box-shadow:0 2px 2px 0 rgba(0,0,0,0.8);"><span class="fa fa-chevron-right"></span></a>
+				</div>
+				</div>
+			</div>
+		</div>
+	<script src="{{ asset('newtemplate/js/svgafrica.js') }}"></script>	
+	<script type="text/javascript">
+	 $(window).load(function() {			
+	  $("#flexiselDemo1").flexisel({
+		visibleItems: 4,
+		animationSpeed: 1000,
+		autoPlay: true,
+		autoPlaySpeed: 5000,    		
+		pauseOnHover:true,
+		enableResponsiveBreakpoints: true,
+		responsiveBreakpoints: { 
+			portrait: { 
+				changePoint:480,
+				visibleItems: 1
+			}, 
+			landscape: { 
+				changePoint: 640,
+				visibleItems: 2
+			},
+			tablet: { 
+				changePoint: 900,
+				visibleItems: 4
+			}
+		}
+	});
+	
+	var largeur = ($(window).width());
+	if (largeur < 768)
+	{
+		$('.nos-services').css('height','2850px');
+		$('.autres-applications').css('height','2500px');
+	}else{
+		$('.nos-services').css('height','820px');
+		$('.autres-applications').css('height','750px');
+	}
+	
+	});
+	</script>
+
+	<script type="text/javascript" src="{{ asset('newtemplate/js/jquery.flexisel.js') }}"></script>
+	</section>
+	
+	<section class="five-inch-display autres-applications" style="height: 750px; margin-top: 50px; padding-top: 20px;background: #efefef;  display: block!important; position: relative;">
+		<div class="container">
+		<h2 style="margin-bottom: 0px;"><span class="fa fa-dashboard"></span> Quelques réalisations</h2>
+			<div class="row">
+				<div class="col-md-12" style="margin-bottom: 15px; margin-top: 15px;"><div style="border-bottom: 2px solid #34b1e7;; "> </div></div>
+				<div class="col-md-3">
+					<div class="box text-left" style="margin-bottom: 15px;">
+						<h5 style="margin-top: 0px;">
+						<a href="#!">
+							<img src="{{ asset('newtemplate/images/icons/logomcs.png') }}" alt="Logo" style="width: 30px; height: 30px; border-radius: 15px;"/>
+							<strong>Maisons Cameroun</strong>
+						</a>
+						</h5>
+						<p><img src="{{ asset('newtemplate/images/icons/ipmcs.png') }}" alt="" style="width: 100%; height: 150px;"/></p>
+						<p style="height: 375px; overflow: hidden; text-align: justify; background: #ddd; margin: 10px -10px -10px -10px; padding: 10px;">Maisons Cameroun est une agence spécialisée dans la vente de biens immobiliers de luxe et de prestige notamment présente en région yaoundé ène, et qui grandit dans tout le Cameroun. </br>Entièrement développée avec le framework Symfony, la plateforme est  maintenue par africexplorer pour répondre aux hautes exigences que le milieu concurrentiel de l'immobilier de prestige impose.
+						<a class="btn pull-right" href="http://terrainmaison.cm" style="position: absolute; bottom: 10px; right: 10px;" target="_blank" title="En savoir plus"><i class="fa fa-plus-square"></i> Allez sur Maisons Cameroun</a> 
+						</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="box text-left" style="margin-bottom: 15px;">
+						<h5 style="margin-top: 0px;">
+						<a href="#!">
+							<img src="{{ asset('newtemplate/images/icons/bin-min.png') }}" alt="Logo" style="width: 30px; height: 30px; border-radius: 15px;"/>
+							<strong>Business Innovation</strong>
+						</a>
+						</h5>
+						<p><img src="{{ asset('newtemplate/images/icons/ipbin.png') }}" alt="" style="width: 100%; height: 150px;"/></p>
+						<p style="height: 375px; overflow: hidden; text-align: justify; background: #ddd; margin: 10px -10px -10px -10px; padding: 10px;">Le marketing est un élément important pour la croissance des start-up et même des entreprises bien installées.</br>Business Innovation avec son concept innovant, retient chaque semaine, les tops 12 des Binplaces dont le business est le plus innovant, et utilise les moyens de marketing web les plus populaires de l'heure pour atteindre le max de personnes avec ces projets.</br>Créez une Binplace pour présenter une entreprise ou un service n'est qu'un jeu d'enfant. 
+						<a class="btn pull-right" href="http://bin.africexplorer.com/" style="position: absolute; bottom: 10px; right: 10px;" target="_blank" title="En savoir plus"><i class="fa fa-plus-square"></i> Allez sur BIn</a> 
+						</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="box text-left" style="margin-bottom: 15px;">
+						<h5 style="margin-top: 0px;">
+						<a href="#!">
+							<img src="{{ asset('newtemplate/images/icons/logogk.png') }}" alt="Logo" style="width: 30px; height: 30px; border-radius: 15px;"/>
+							<strong>Ghetto Klan</strong>
+						</a>
+						</h5>
+						<p><img src="{{ asset('newtemplate/images/icons/ipgk.png') }}" alt="" style="width: 100%; height: 150px;"/></p>
+						<p style="height: 375px; overflow: hidden; text-align: justify; background: #ddd; margin: 10px -10px -10px -10px; padding: 10px;">GHETTO KLAN entertaiment est non seulement un label de Production Musicale mais aussi une Marque de Vêtements convoité par les jeunes artistes Camerounais actuellement. </br>Entièrement développée avec le framework Symfony, la plateforme est maintenue pour répondre particulièrement au professionnalisme qu'exige le milieu artistique au Cameroun.
+						<a class="btn pull-right" href="http://ghettoklan.com/" style="position: absolute; bottom: 10px; right: 10px;" target="_blank" title="En savoir plus"><i class="fa fa-plus-square"></i> Allez sur Ghetto Klan</a> 
+						</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="box text-left" style="margin-bottom: 15px;">
+						<h5 style="margin-top: 0px;">
+						<a href="#!">
+							<img src="{{ asset('newtemplate/images/icons/logo-min.png') }}" alt="Logo" style="width: 30px; height: 30px; border-radius: 15px;"/>
+							<strong>Az Corporation</strong>
+						</a>
+						</h5>
+						<p><img src="{{ asset('newtemplate/images/icons/ipaz.png') }}" alt="" style="width: 100%; height: 150px;"/></p>
+						<p style="height: 375px; overflow: hidden; text-align: justify; background: #ddd; margin: 10px -10px -10px -10px; padding: 10px;">AZ Corporation, spécialisée dans les solutions informatiques pour entreprises et particuliers. </br></br>Africexplorer travaille en collaboration avec les entreprises It, sur la sécurité des données, la disponibilité des services It et surtout l'expension de ces services pour le développement du secteur IT en Afrique. </br>Az Corporation est un exemple pour illustrer cette collaboration avec les entreprises proposant les services It.
+						<a class="btn pull-right" href="http://e-learning.azcorporation.net/" style="position: absolute; bottom: 10px; right: 10px;" target="_blank" title="En savoir plus"><i class="fa fa-plus-square"></i> Allez sur Az Corporation</a> 
+						</p>
+					</div>
+				</div>
+				<div class="col-md-12">
+				<div class="btn-group pull-right" style="margin-top: 15px;">
+					<a href="{{ path('produit_produit_application_references') }}" class="btn btn-info" style="background: #34b1e7; -webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,0.1); box-shadow:0 2px 2px 0 rgba(0,0,0,0.8);">Plus de réalisations</a>
+					<a href="{{ path('produit_produit_application_references') }}" class="btn btn-info dropdown-toggle" data-toggle="dropdown" style="background: #34b1e7; -webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,0.1); box-shadow:0 2px 2px 0 rgba(0,0,0,0.8);"><span class="fa fa-chevron-right"></span></a>
+				</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+{% endblock %}
+
+{% block javascripttemplate %}
+
+{% endblock %}

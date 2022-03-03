@@ -1,0 +1,51 @@
+users_user_inscription_user:
+    path: /inscription/user
+    defaults: { _controller: UsersUserBundle:User:inscriptionuser }
+users_user_user_accueil:
+    path: /accueil/user/{id}
+    defaults: { _controller: UsersUserBundle:User:accueiluser }
+    requirements:
+        id: \d+
+users_user_connexion_user:
+    path: /login
+    defaults: { _controller: UsersUserBundle:Security:login }
+users_user_acces_plateforme:
+    path: /{position}
+    defaults: { _controller: UsersUserBundle:Security:accueilsite, position: '' }
+users_user_save_transaction:
+    path: /save/transaction
+    defaults: { _controller: UsersUserBundle:Security:savetransaction }
+users_user_modifier_profil:
+    path: /modifier/profil/user/{id}
+    defaults: { _controller: UsersUserBundle:User:modifierprofil }
+    requirements:
+        id: \d+
+users_user_detail_panier_user:
+    path: /detail/user/panier/{id}
+    defaults: { _controller: ProduitProduitBundle:Panier:detailpanieruser }
+    requirements:
+        id: \d+
+users_user_ajout_super_admin:
+    path: /ajouter/super/admin
+    defaults: { _controller: UsersUserBundle:User:ajouteradmin }
+    requirements:
+        id: \d+
+users_user_presentation_service_even:
+    path: /presentation/service/evenement/{id}
+    defaults: { _controller: ProduitServiceBundle:Service:presentation, id: 0 }
+    requirements:
+        id: \d+
+users_user_inscription_programme_afiliation:
+    path: /inscription/programme/afiliation
+    defaults: { _controller: UsersUserBundle:User:programmeafilier }
+users_user_create_newsletter_account:
+    path: /create/newsletter/account
+    defaults: { _controller: UsersUserBundle:Newsletter:createaccount }
+users_user_save_account_infos:
+    path: /save/account/infos/{id}
+    defaults: { _controller: UsersUserBundle:User:saveaccountinfos }
+    requirements:
+        id: \d+
+users_user_large_vue_user:
+    path: /large/vue/user
+    defaults: { _controller: UsersUserBundle:User:largevueuser }

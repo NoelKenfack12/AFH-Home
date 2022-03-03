@@ -1,0 +1,286 @@
+{% extends "UsersUserBundle::layoutuser.html.twig" %}
+{% block meta %}
+{{ parent() }}
+<meta name="keywords" content="{{ site }}, hébergement web,hébergement  revendeur, site Cameroun, Innovation,offre d'emploi, affiliation,Super affilié, travail, emploi,emploi sur internet, travail en ligne"/>
+<meta name="author" content="Noel Kenfack"/>
+<meta name="description" content="Inscrivez vous à notre programme super affilié et gagnez jusqu'à 30% par vente. Site web, hébergement web, nom de domaine, hébergement revendeur." />
+{% endblock %}
+{% block title %}
+{{ parent() }} | Inscrivez vous à notre programme super affilié et gagnez jusqu'à 30% par vente. Site web, hébergement web, nom de domaine, hébergement revendeur.
+{% endblock %}
+
+{% block userblog_body %}
+<!-- START CONTENT -->
+      <section id="content">
+
+        <!--breadcrumbs start-->
+        <div id="breadcrumbs-wrapper" class=" grey lighten-3">
+            <!-- Search for small screen -->
+            <div class="header-search-wrapper grey hide-on-large-only">
+                <i class="mdi-action-search active"></i>
+                <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+            </div>
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="breadcrumbs-title">Africexplorer Affiliation</h5>
+                <ol class="breadcrumb">
+                  <li><a href="{{ path('users_user_acces_plateforme') }}">Accueil</a>
+                  </li>
+                  <li><a href="#">Applications</a>
+                  </li>
+                  <li class="active">Programmes Super Affiliés</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->
+		
+		 <!--start container-->
+        <div class="container">
+          <p class="caption" style="text-align: justify;">Afrique Explorer partage les bénéfices de ses produits avec ses Super affiliés depuis Novembre 2015. Il s'agit d'un programme que nous avons lancé pour permettre aux blogueurs, aux webmasters et même aux vendeurs 2.0 de tirer le meilleur de leur expérience internet. Le principe est simple, Vous demandez votre lien super affilié que vous allez partager sur les réseaux sociaux et/ou sur votre site web. À chaque fois qu'un client qui arrive sur notre site à l'aide de votre lien super affilié enregistre une commande, vous obtenez automatiquement sur votre compte 10% du coût de cette commande après sa validation(payement).</p>
+ 
+          <div class="divider"></div>
+		  
+		  <div class="section">
+			<!-- profile-page-content -->
+            <div id="profile-page-content" class="row">
+              <!-- profile-page-sidebar-->
+              <div id="profile-page-sidebar" class="col s12 m6">
+			  <h4 class="hearder"><img src="{{ asset('template/images/icons/hosting.png') }}" alt="Afex Hosting" style="height: 25px; width: 35px;"/> Super Affiliation <a href="www.hosting.africexplorer.com/" target="_blank">Afex Hosting</a></h4>
+			  
+			  <div>Votre lien d'affiliation au programme est:
+			  {% if app.user != null %}
+			  <div class="input-field">
+				<i class="mdi-action-add-shopping-cart prefix"></i>
+				<input type="text" value="http://hosting.africexplorer.com/?spaf={{ app.user.id }}host{{ app.user.datebeg }}" name="affiliationhosting" id="affiliationhosting"/>
+			  </div>
+			  {% else %}
+			  <div><a href="#!" class="btn waves-effect waves-light blue connexion-necessaire"><i class="mdi-action-trending-up"></i> Demandez votre lien d'affiliation</a></div>
+			  {% endif %}
+			  </div>
+			  
+			  </div>
+			  <div id="profile-page-sidebar" class="col s12 m6">
+			  <h4 class="hearder"><img src="{{ asset('template/images/icons/logoafexmarket.png') }}" alt="Afex Hosting" style="height: 25px; width: 35px;"/> Super Affiliation <a href="www.market.africexplorer" target="_blank">Afex Market</a></h4>
+			
+			  <div>Votre lien d'affiliation au programme est: 
+			  {% if app.user != null %}
+			  <div class="input-field">
+				<i class="mdi-action-add-shopping-cart prefix"></i>
+				<input type="text" value="" name="affiliationmarket" id="affiliationmarket"/>
+				<label for="affiliationmarket">Ce service n'est pas encore disponible...</label>
+			  </div>
+			  {% else %}
+			  <div><a href="#!" class="btn waves-effect waves-light blue connexion-necessaire"><i class="mdi-action-trending-up"></i> Demandez votre lien d'affiliation</a></div>
+			  {% endif %}
+			  </div>
+			  </div>
+			</div>
+			
+			<div class="row">
+              <div class="col s12 m12 l12" style="background: #f2f2f2; margin-top: 30px">
+                <h5 class="breadcrumbs-title">Maximisez les retombés de votre lien d'affiliation en intégrant nos bannières dans vos contenus. (Disponible en plusieurs formats)</h5>
+                <ol class="breadcrumb">
+                  <li class="active">Nos affiliés reçoivent leur rémunération via: <img src="{{ asset('template/images/projets/mtnmobile.jpg') }}" alt="" style="width: 30px; height: 30px;" title="Mtn Mobile Money"/> <img src="{{ asset('template/images/projets/expressunion.jpg') }}" alt="" style="width: 30px; height: 30px;" title="Express Union"/> <img src="{{ asset('template/images/projets/orangemonnaie.png') }}" alt="" style="width: 30px; height: 30px;" title="Orange Money"/> <img src="{{ asset('template/images/projets/paypal.png') }}" alt="" style="width: 30px; height: 30px;" title="PayPal"/></li>
+                </ol>
+              </div>
+            </div>
+			<!-- profile-page-content -->
+            <div id="profile-page-content" class="row">
+			
+		  <!-- profile-page-sidebar-->
+		  <div id="profile-page-sidebar" class="col s12 m2">
+		  -
+		  </div>
+		  <div id="profile-page-sidebar" class="col s12 m8">
+			  
+			  
+			<div class="section">
+            <div id="blog-post-full">
+					  
+			  
+              <!-- small size post-->
+              <div class="card small">
+                    <div class="card-image">
+                      <a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/4"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/siteweb.gif" alt="sample" style="height: 100%;"></a>
+                      <span class="card-title">Bannière 728x90</span>
+					</div>
+                    <div class="card-content">
+                      <div>Copiez votre code d'integration de la bannière: <span class="right orange" style="padding: 2Px; color: #fff;">10% de bénéfice par commande</span>
+					  {% if app.user != null %}
+					  <div class="input-field">
+						<i class="mdi-action-add-shopping-cart prefix"></i>
+						<input type="text" value='<a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/4?spaf={{ app.user.id }}host{{ app.user.datebeg }}"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/siteweb.gif" alt="Your Web Site"/></a>' name="affiliationhosting" id="affiliationhosting"/>
+					  </div>
+					  {% else %}
+					  <div><a href="#!" class="btn waves-effect waves-light blue connexion-necessaire"><i class="mdi-action-trending-up"></i> Demandez votre lien d'affiliation</a></div>
+					  {% endif %}
+					  </div>
+                    </div>
+              </div>
+			  <div class="row">
+			  <div id="profile-page-sidebar" class="col s12 m6">
+			   <!-- small size post-->
+              <div class="card small" style="margin: 15px 0px;">
+                    <div class="card-image">
+                      <a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/4"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/sitewebsm.gif" alt="sample" style="height: 100%;"></a>
+                      <span class="card-title">Bannière 320x100</span>
+					</div>
+                    <div class="card-content">
+                      <div>Copiez votre code d'integration de la bannière: <span class="right orange" style="padding: 2Px; color: #fff;">Bénéficiez 10%</span>
+					  {% if app.user != null %}
+					  <div class="input-field">
+						<i class="mdi-action-add-shopping-cart prefix"></i>
+						<input type="text" value='<a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/4?spaf={{ app.user.id }}host{{ app.user.datebeg }}"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/sitewebsm.gif" alt="Your Web Site"/></a>' name="affiliationhosting" id="affiliationhosting"/>
+					  </div>
+					  {% else %}
+					  <div><a href="#!" class="btn waves-effect waves-light blue connexion-necessaire"><i class="mdi-action-trending-up"></i> Demandez votre lien d'affiliation</a></div>
+					  {% endif %}
+					  </div>
+                    </div>
+              </div>
+			  </div>
+			  <div id="profile-page-sidebar" class="col s12 m6">
+			   <!-- small size post-->
+              <div class="card small" style="margin: 15px 0px;">
+                    <div class="card-image">
+                      <a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/3"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/domainesm.gif" alt="sample" style="height: 100%;"></a>
+                      <span class="card-title">Bannière 320x100</span>
+					</div>
+                    <div class="card-content">
+                      <div>Copiez votre code d'integration de la bannière: <span class="right orange" style="padding: 2Px; color: #fff;">Bénéficiez 10%</span>
+					  {% if app.user != null %}
+					  <div class="input-field">
+						<i class="mdi-action-add-shopping-cart prefix"></i>
+						<input type="text" value='http://hosting.africexplorer.com/market/liste/produit/souscategorie/3?spaf={{ app.user.id }}host{{ app.user.datebeg }}"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/domainesm.gif" alt="Your Web Site"/></a>' name="affiliationhosting" id="affiliationhosting"/>
+					  </div>
+					  {% else %}
+					  <div><a href="#!" class="btn waves-effect waves-light blue connexion-necessaire"><i class="mdi-action-trending-up"></i> Demandez votre lien d'affiliation</a></div>
+					  {% endif %}
+					  </div>
+                    </div>
+              </div>
+			  </div>
+			  </div>
+			  
+			  <!-- small size post-->
+              <div class="card small">
+                    <div class="card-image">
+                      <a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/3"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/domaine.gif" alt="sample" style="height: 100%;"></a>
+                      <span class="card-title">Bannière 728x90</span>
+					</div>
+                    <div class="card-content">
+                      <div>Copiez votre code d'integration de la bannière: <span class="right orange" style="padding: 2Px; color: #fff;">10% de bénéfice par commande</span>
+					  {% if app.user != null %}
+					  <div class="input-field">
+						<i class="mdi-action-add-shopping-cart prefix"></i>
+						<input type="text" value='<a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/3?spaf={{ app.user.id }}host{{ app.user.datebeg }}"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/domaine.gif" alt="Your Web Site"/></a>' name="affiliationhosting" id="affiliationhosting"/>
+					  </div>
+					  {% else %}
+					  <div><a href="#!" class="btn waves-effect waves-light blue connexion-necessaire"><i class="mdi-action-trending-up"></i> Demandez votre lien d'affiliation</a></div>
+					  {% endif %}
+					  </div>
+                    </div>
+              </div>
+			  
+			  <div class="row">
+			  <div id="profile-page-sidebar" class="col s12 m6">
+			   <!-- small size post-->
+              <div class="card small" style="margin: 15px 0px;">
+                    <div class="card-image">
+                      <a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/2"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/hebergementrevendeursm.gif" alt="sample" style="height: 100%;"></a>
+                      <span class="card-title">Bannière 320x100</span>
+					</div>
+                    <div class="card-content">
+                      <div>Copiez votre code d'integration de la bannière: <span class="right orange" style="padding: 2Px; color: #fff;">Bénéficiez 10%</span>
+					  {% if app.user != null %}
+					  <div class="input-field">
+						<i class="mdi-action-add-shopping-cart prefix"></i>
+						<input type="text" value='<a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/2?spaf={{ app.user.id }}host{{ app.user.datebeg }}"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/hebergementrevendeursm.gif" alt="Your Web Site"/></a>' name="affiliationhosting" id="affiliationhosting"/>
+					  </div>
+					  {% else %}
+					  <div><a href="#!" class="btn waves-effect waves-light blue connexion-necessaire"><i class="mdi-action-trending-up"></i> Demandez votre lien d'affiliation</a></div>
+					  {% endif %}
+					  </div>
+                    </div>
+              </div>
+			  </div>
+			  <div id="profile-page-sidebar" class="col s12 m6">
+			   <!-- small size post-->
+              <div class="card small" style="margin: 15px 0px;">
+                    <div class="card-image">
+                      <a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/1"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/hebergementwebsm.gif" alt="sample" style="height: 100%;"></a>
+                      <span class="card-title">Bannière 320x100</span>
+					</div>
+                    <div class="card-content">
+                      <div>Copiez votre code d'integration de la bannière: <span class="right orange" style="padding: 2Px; color: #fff;">Bénéficiez 10%</span>
+					  {% if app.user != null %}
+					  <div class="input-field">
+						<i class="mdi-action-add-shopping-cart prefix"></i>
+						<input type="text" value='<a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/1?spaf={{ app.user.id }}host{{ app.user.datebeg }}"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/hebergementwebsm.gif" alt="Your Web Site"/></a>' name="affiliationhosting" id="affiliationhosting"/>
+					  </div>
+					  {% else %}
+					  <div><a href="#!" class="btn waves-effect waves-light blue connexion-necessaire"><i class="mdi-action-trending-up"></i> Demandez votre lien d'affiliation</a></div>
+					  {% endif %}
+					  </div>
+                    </div>
+              </div>
+			  </div>
+			  </div>
+			  
+			  <!-- small size post-->
+              <div class="card small" style="margin-bottom: 15px;">
+                    <div class="card-image">
+                      <a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/2"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/hebergementrevendeur.gif" alt="sample" style="height: 100%;"></a>
+                      <span class="card-title">Bannière 728x90</span>
+					</div>
+                    <div class="card-content">
+                      <div>Copiez votre code d'integration de la bannière: <span class="right orange" style="padding: 2Px; color: #fff;">10% de bénéfice par commande</span>
+					  {% if app.user != null %}
+					  <div class="input-field">
+						<i class="mdi-action-add-shopping-cart prefix"></i>
+						<input type="text" value='http://hosting.africexplorer.com/market/liste/produit/souscategorie/2?spaf={{ app.user.id }}host{{ app.user.datebeg }}"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/hebergementrevendeur.gif" alt="Your Web Site"/></a>' name="affiliationhosting" id="affiliationhosting"/>
+					  </div>
+					  {% else %}
+					  <div><a href="#!" class="btn waves-effect waves-light blue connexion-necessaire"><i class="mdi-action-trending-up"></i> Demandez votre lien d'affiliation</a></div>
+					  {% endif %}
+					  </div>
+                    </div>
+              </div>
+			  
+			   <!-- small size post-->
+              <div class="card small">
+                    <div class="card-image">
+                      <a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/1"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/hebergementweb.gif" alt="sample" style="height: 100%;"></a>
+                      <span class="card-title">Bannière 728x90</span>
+					</div>
+                    <div class="card-content">
+                      <div>Copiez votre code d'integration de la bannière: <span class="right orange" style="padding: 2Px; color: #fff;">10% de bénéfice par commande</span>
+					  {% if app.user != null %}
+					  <div class="input-field">
+						<i class="mdi-action-add-shopping-cart prefix"></i>
+						<input type="text" value='<a href="http://hosting.africexplorer.com/market/liste/produit/souscategorie/1?spaf={{ app.user.id }}host{{ app.user.datebeg }}"><img src="http://hosting.africexplorer.com/Symfony/web/template/images/projets/hebergementweb.gif" alt="Your Web Site"/></a>' name="affiliationhosting" id="affiliationhosting"/>
+					  </div>
+					  {% else %}
+					  <div><a href="#!" class="btn waves-effect waves-light blue connexion-necessaire"><i class="mdi-action-trending-up"></i> Demandez votre lien d'affiliation</a></div>
+					  {% endif %}
+					  </div>
+                    </div>
+              </div>
+			  
+            </div>
+          </div>
+		  
+			  </div>
+			</div>
+		   </div>
+		  <!--Accordion-->
+		  
+		</div>
+	  </section>
+{% endblock %}
+
+{% block javascripttemplate %}
+{% endblock %}
