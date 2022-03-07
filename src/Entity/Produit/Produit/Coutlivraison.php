@@ -1,15 +1,19 @@
 <?php
 
-namespace Produit\ProduitBundle\Entity;
+namespace App\Entity\Produit\Produit;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
+use App\Service\Servicetext\GeneralServicetext;
+use App\Repository\Produit\Produit\CoutlivraisonRepository;
+use App\Entity\Users\User\User;
+use App\Entity\Produit\Service\Ville;
+use App\Entity\Produit\Produit\Produit;
 
 /**
  * Coutlivraison
  *
  * @ORM\Table("coutlivraison")
- * @ORM\Entity(repositoryClass="Produit\ProduitBundle\Entity\CoutlivraisonRepository")
+ * @ORM\Entity(repositoryClass=CoutlivraisonRepository::class)
  */
 class Coutlivraison
 {
@@ -37,21 +41,21 @@ class Coutlivraison
     private $date;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+       * @ORM\ManyToOne(targetEntity=User::class)
        * @ORM\JoinColumn(nullable=false)
         */
 	private $user;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Produit\ServiceBundle\Entity\Ville", inversedBy="coutlivraisons")
+       * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="coutlivraisons")
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $ville;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Produit\ProduitBundle\Entity\Produit", inversedBy="coutlivraisons")
+       * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="coutlivraisons")
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $produit;
 	
 	// variable du service de normalisation des noms des pays.
@@ -131,11 +135,9 @@ class Coutlivraison
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Coutlivraison
      */
-    public function setUser(\Users\UserBundle\Entity\User $user)
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
@@ -144,21 +146,17 @@ class Coutlivraison
 
     /**
      * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
     /**
      * Set ville
-     *
-     * @param \Produit\ServiceBundle\Entity\Ville $ville
      * @return Coutlivraison
      */
-    public function setVille(\Produit\ServiceBundle\Entity\Ville $ville)
+    public function setVille(Ville $ville): self
     {
         $this->ville = $ville;
 		$ville->addCoutlivraison($this);
@@ -168,21 +166,17 @@ class Coutlivraison
 
     /**
      * Get ville
-     *
-     * @return \Produit\ServiceBundle\Entity\Ville 
      */
-    public function getVille()
+    public function getVille(): ?Ville
     {
         return $this->ville;
     }
 
     /**
      * Set produit
-     *
-     * @param \Produit\ProduitBundle\Entity\Produit $produit
      * @return Coutlivraison
      */
-    public function setProduit(\Produit\ProduitBundle\Entity\Produit $produit)
+    public function setProduit(Produit $produit): self
     {
         $this->produit = $produit;
 		$produit->addCoutlivraison($this);
@@ -192,10 +186,8 @@ class Coutlivraison
 
     /**
      * Get produit
-     *
-     * @return \Produit\ProduitBundle\Entity\Produit 
      */
-    public function getProduit()
+    public function getProduit(): ?Produit
     {
         return $this->produit;
     }

@@ -1,16 +1,18 @@
 <?php
 
-namespace Produit\ServiceBundle\Entity;
+namespace App\Entity\Produit\Service;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Repository\Produit\Service\MessemailRepository;
+use App\Entity\Users\User\User;
 
 /**
  * Messemail
  *
  * @ORM\Table("messemail")
- * @ORM\Entity(repositoryClass="Produit\ServiceBundle\Entity\MessemailRepository")
+ * @ORM\Entity(repositoryClass=MessemailRepository::class)
  */
 class Messemail
 {
@@ -58,9 +60,9 @@ class Messemail
     private $date;
 	
 	/**
-      * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+      * @ORM\ManyToOne(targetEntity=User::class)
       * @ORM\JoinColumn(nullable=true)
-      */
+    */
     private $user;
 	
 	public function __construct()
@@ -150,11 +152,9 @@ class Messemail
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Messemail
      */
-    public function setUser(\Users\UserBundle\Entity\User $user = null)
+    public function setUser(User $user = null): self
     {
         $this->user = $user;
 
@@ -163,10 +163,8 @@ class Messemail
 
     /**
      * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }

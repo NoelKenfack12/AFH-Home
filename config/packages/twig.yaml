@@ -1,6 +1,26 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
-
+    globals:
+        site: AFHunt
+        metier: Technologies Web
+        devise: FCFA
+        ville: Douala
+        telephone: +237693839823
+        telephone2: +237680288416
+        twitter: https://twitter.com/afhunt12/
+        facebook: https://www.facebook.com/afhunt12/
+        google: https://www.youtube.com/channel/UCqz6fuN3Da8Q1fXn4wwKYeg/
+        linkedin: https://www.linkedin.com/company/afhunt12/
+        myaconect: http://myaconect.com/afexhosting
+        slogan: Votre guide sur la toile.
+        description: Localisation des entreprises Afrique
+        localisation: P.O Box. 30020 Yaoundé, Obili, Carrefour Kameni. 
+        keywords: Innovation, développement, it,etc. 
+        email: infos@africexplorer.com
+        number: /^[0-9][0-9]{7,12}$/
+        mailregex: /[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}/i
+        siteweb: http://www.afhunt.com
+        oauthloginUrl: http://localhost:4200/public/oauth2?clientid=sZjGlfwhpQsAa5o5EWfx96PVSJpilSDlC6t5P6A1CBvCKhcVMDsUBHkI7y6S2zXaSkPV+CziIu0cXSGbFIde6PxD2Jtw7iVoffC+Xg==]z12U[MQHdVvulzDnBeJ/vt4OrWdbRnjuk9musXv967qUHKPEKY994nH34zQhP7Zf8fHJIs7Kpac+V8CXGSnkHrKTEEcmGm4ruhkNwux5cmbnvLXo6A9jS7fpMd/02Pup9ev/i4cSu0AwthOZyAKvvUuaRCReeYpcCW+7i80ZJI7b3AvMWLzU93pMlLUNP+9+Vjg==
 when@test:
     twig:
         strict_variables: true

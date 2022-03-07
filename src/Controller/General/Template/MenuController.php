@@ -2,7 +2,7 @@
 /*(c) Noel Kenfack <noel.kenfack@yahoo.fr>
 */
 namespace App\Controller\General\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\General\Template\Recherche;
 use App\Entity\Users\User\Newsletter;
@@ -17,20 +17,47 @@ use App\Entity\Users\Localisationuser\Pays;
 use App\Service\Servicetext\GeneralServicetext;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use App\Service\Email\Singleemail;
+use App\Security\TokenAuthenticator;
+use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 
-class MenuController extends Controller
+class MenuController extends AbstractController
 {
+private $_generalServicetext;
 private $params;
+private $authenticator;
+private $guardHandler;
 private $_servicemail;
 
-public function __construct(ParameterBagInterface $params, Singleemail $servicemail)
+public function __construct(TokenAuthenticator $authenticator, GuardAuthenticatorHandler $guardHandler, ParameterBagInterface $params, GeneralServicetext $generalServicetext, Singleemail $servicemail)
 {
+	$this->authenticator = $authenticator;
+	$this->guardHandler = $guardHandler;
+	$this->_generalServicetext = $generalServicetext;
 	$this->params = $params;
 	$this->_servicemail = $servicemail;
 }
+
 public function menubare($position="afhunt")
 {
 	$em = $this->getDoctrine()->getManager();
+	if($this->getUser() == null and isset($_COOKIE["PIDSESSREM"]) and $_COOKIE["PIDSESSREM"] != 'delete')
+	{
+		$cookies = $_COOKIE["PIDSESSREM"];
+		$username = trim($this->_generalServicetext->decrypt($cookies, $this->params->get('saltcookies')));
+		
+		$repository = $em->getRepository(User::class);
+		$user = $repository->findOneBy(array('username'=>$username));
+		
+		if($user != null)
+		{
+			$response = $this->guardHandler->authenticateUserAndHandleSuccess(
+				$user,          // the User object you just created
+				$request,
+				$this->authenticator, // authenticator whose onAuthenticationSuccess you want to use
+				'main'          // the name of your firewall in security.yaml
+			);
+		}
+	}
 	return $this->render('Theme/General/Template/Menu/menubare.html.twig',array('position'=>$position));
 }
 

@@ -1,12 +1,87 @@
-{% extends "UsersUserBundle::layoutuser.html.twig" %}
+{% extends "Theme/Users/User/layoutuser.html.twig" %}
 {% block meta %}
-{{ parent() }}
-<meta name="keywords" content="{{ site }}, Hébergement web Cameroun, Vente de nom de domaine,Site web, hébergement revendeur, travail en ligne, affiliation"/>
-<meta name="author" content="Noel Kenfack"/>
-<meta name="description" content="{{ site }}, Hébergement web Cameroun, Vente de nom de domaine,Site web, hébergement revendeur, travail en ligne, affiliation" />
+  {{ parent() }}
+  <meta name="keywords" content="{{ site }}, Hébergement web Cameroun, Vente de nom de domaine,Site web, hébergement revendeur, travail en ligne, affiliation"/>
+  <meta name="author" content="Noel Kenfack"/>
+  <meta name="description" content="{{ site }}, Hébergement web Cameroun, Vente de nom de domaine,Site web, hébergement revendeur, travail en ligne, affiliation" />
 {% endblock %}
+
+{% block stylesheets %}
+  <style>
+    .preloader {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: white;
+            z-index: 99999999;
+        }
+
+        #preloader-logo {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .loading-msg {
+            width: 100%;
+            font-size: 0.75em;
+            color: #555;
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            text-align: center;
+        }
+
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #f3f3f3;
+            border-top: 3px solid #2489CE;
+            border-radius: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            animation: spin 1s infinite ease;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        #loading-msg {
+            width: 100%;
+            position: fixed;
+            left: 0;
+            bottom: 25px;
+            text-align: center;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #333;
+            font-size: 0.8em;
+        }
+
+        body {
+            overflow: hidden;
+        }
+  </style>
+  <script type="text/javascript" src="{{ asset('template/js/platforms.min.js') }}"></script>
+{% endblock %}
+
 {% block title %}
-{{ parent() }} | {{ site }}, Hébergement web Cameroun, Vente de nom de domaine,Site web, hébergement revendeur, travail en ligne, affiliation
+  {{ parent() }} | {{ site }}, Hébergement web Cameroun, Vente de nom de domaine,Site web, hébergement revendeur, travail en ligne, affiliation
 {% endblock %}
 
 {% block userblog_body %}
@@ -58,9 +133,59 @@
       </form>
     </div>
   </div>
-	
+<div class="preloader">
+    <div class="spinner"></div>
+    <span id="loading-msg"></span>
+</div>
 {% endblock %}
 
 {% block javascripttemplate %}
-$('#username').focus();
+  $('#username').focus();
+
+  AFH.init({"clientSecret": "q173il4fh8yem1lv", "onSuccess": onSuccess, "onFailure": onFailure, "method": "POST"});
+
+  function onSuccess(data)
+  {
+      console.log(data);
+
+      $.ajax({
+        url : '{{ path('users_user_security_open_session') }}',
+        type : 'POST',
+        contentType: 'application/json',
+        dataType: 'json',
+        data : JSON.stringify( { "user": data.user, "authcode": "Noel" } ),
+        success : function(data, statut){
+            //alert(data);
+
+            document.location.href= '{{ path('users_user_acces_plateforme') }}';
+        },
+
+        error : function(resultat, statut, error){
+          alert("error");
+        }
+      });
+
+  }
+
+  function onFailure(error)
+  {
+      console.log(error);
+      $(".preloader").hide();
+  }
+
+    
+  (function(){
+      var loaderText = document.getElementById("loading-msg");
+      var refreshIntervalId = setInterval(function(){
+          loaderText.innerHTML = getLoadingText();
+      }, 2000);
+
+      function getLoadingText(){
+          var strLoadingText;
+          var arrLoadingText = ["Appel du serveur d'autorisation ...", "Appel du serveur d'authentification ...","Mise à jour de la session ..","Redirection en cours ...", "Mise à jour du jettons de sécurité .."];
+          var rand = Math.floor(Math.random() * arrLoadingText.length);
+          return arrLoadingText[rand];
+      }
+  })();
+
 {% endblock %}

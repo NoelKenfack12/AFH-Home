@@ -1,18 +1,22 @@
 <?php
 
-namespace Produit\ServiceBundle\Entity;
+namespace App\Entity\Produit\Service;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Service\Servicetext\GeneralServicetext;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Repository\Produit\Service\ServiceRepository;
+use App\Entity\Users\User\User;
+use App\Entity\Produit\Service\Imgservice;
+use App\Entity\Produit\Service\Evenement;
 
 /**
  * Service
  *
  * @ORM\Table("service")
- * @ORM\Entity(repositoryClass="Produit\ServiceBundle\Entity\ServiceRepository")
+ * @ORM\Entity(repositoryClass=ServiceRepository::class)
  */
 class Service
 {
@@ -29,8 +33,8 @@ class Service
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
-     *@Taillemin(valeur=3, message="Au moins 3 caractères")
-     *@Taillemax(valeur=50, message="Au plus 50 caractès")
+     * @Taillemin(valeur=3, message="Au moins 3 caractères")
+     * @Taillemax(valeur=50, message="Au plus 50 caractès")
      */
     private $nom;
 
@@ -38,8 +42,8 @@ class Service
      * @var string
      *
      * @ORM\Column(name="description", type="text")
-     *@Taillemin(valeur=3, message="Au moins 3 caractères")
-     *@Taillemax(valeur=200, message="Au plus 200 caractès")
+     * @Taillemin(valeur=3, message="Au moins 3 caractères")
+     * @Taillemax(valeur=200, message="Au plus 200 caractès")
      */
     private $description;
 
@@ -65,16 +69,16 @@ class Service
     private $rang; 
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+       * @ORM\ManyToOne(targetEntity=User::class)
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $user;
 	
 	/**
-           * @ORM\OneToOne(targetEntity="Produit\ServiceBundle\Entity\Imgservice",  cascade={"persist","remove"})
-           * @ORM\JoinColumn(nullable=false)
-	*@Assert\Valid()
-          */
+     * @ORM\OneToOne(targetEntity=Imgservice::class,  cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
+     *@Assert\Valid()
+    */
 	private $imgservice;
 	
 	// variable du service de normalisation des noms des pays.
@@ -212,11 +216,9 @@ class Service
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Service
      */
-    public function setUser(\Users\UserBundle\Entity\User $user)
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
@@ -225,21 +227,17 @@ class Service
 
     /**
      * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
     /**
      * Set imgservice
-     *
-     * @param \Produit\ServiceBundle\Entity\Imgservice $imgservice
      * @return Service
      */
-    public function setImgservice(\Produit\ServiceBundle\Entity\Imgservice $imgservice)
+    public function setImgservice(Imgservice $imgservice): self
     {
         $this->imgservice = $imgservice;
 
@@ -248,10 +246,8 @@ class Service
 
     /**
      * Get imgservice
-     *
-     * @return \Produit\ServiceBundle\Entity\Imgservice 
      */
-    public function getImgservice()
+    public function getImgservice(): ?Imgservice
     {
         return $this->imgservice;
     }
@@ -285,7 +281,7 @@ class Service
 	}
 	public function getvaleurAppli($idapp, $idannee)
 	{
-		$indicateur = $this->em->getRepository('ProduitServiceBundle:Evenement')
+		$indicateur = $this->em->getRepository(Evenement::class)
 							   ->getvaleurAppli($this->getId(),$idapp,$idannee);
 		
 		if($indicateur != null)

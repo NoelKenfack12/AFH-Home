@@ -2,32 +2,32 @@
 /*(c) Noel Kenfack <noel.kenfack@yahoo.fr>
 *ce fichier est une proprietéde Zentsoft, 16 février 2015 (01h04min)--debut du Module utilisateurs
 */
-namespace Users\LocalisationuserBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+namespace App\Controller\Users\Localisationuser;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Users\LocalisationuserBundle\Entity\Continent;
-use Users\LocalisationuserBundle\Entity\Pays;
-use Users\LocalisationuserBundle\Form\PaysType;
-use Users\LocalisationuserBundle\Form\ContinentType;
+use App\Entity\Users\Localisationuser\Continent;
+use App\Entity\Users\Localisationuser\Pays;
+use App\Form\Users\Localisationuser\PaysType;
+use App\Form\Users\Localisationuser\ContinentType;
+use App\Service\Servicetext\GeneralServicetext;
+use Symfony\Component\HttpFoundation\Request;
 
-class ContinentController extends Controller
+class ContinentController extends AbstractController
 {
-public function listecontinentAction()
+public function listecontinent(GeneralServicetext $service)
 {
-	$service = $this->container->get('general_service.servicefile');
 	$continent = new Continent($service);
-	$form = $this->createForm(new ContinentType, $continent);
+	$form = $this->createForm(ContinentType::class, $continent);
     $em = $this->getDoctrine()->getManager();
-    $liste_continent =$em->getRepository('UsersLocalisationuserBundle:Continent')
+    $liste_continent =$em->getRepository(Continent::class)
                       ->findAll();
-    return $this->render('UsersAdminuserBundle:Localisationuser:listecontinent.html.twig', 
+    return $this->render('Theme/Users/Adminuser/Localisationuser/listecontinent.html.twig', 
 	array('liste_continent'=>$liste_continent,'form' => $form->createView()));
 }
 
-public function updatecontinentAction($id)
+public function updatecontinent(GeneralServicetext $service, Request $request, $id)
 {
 	$em = $this->getDoctrine()->getManager();
-	$service = $this->container->get('general_service.servicetext');
 	if(isset($_GET['id']))
 	{
 		$id = $_GET['id'];
@@ -35,15 +35,15 @@ public function updatecontinentAction($id)
 		$id = $id;
 	}
 	
-	$continent = $em->getRepository('UsersLocalisationuserBundle:Continent')
+	$continent = $em->getRepository(Continent::class)
 					->find($id);
 
 	if($continent != null)
 	{
-    $form = $this->createForm(new ContinentType, $continent);
-	$request = $this->get('request');
+    $form = $this->createForm(ContinentType::class, $continent);
+
 	if ($request->getMethod() == 'POST'){
-		$form->bind($request);
+		$form->handleRequest($request);
 		$continent->setServiceaccent($service);
 		if ($form->isValid()){
 			$em->flush();
@@ -53,21 +53,19 @@ public function updatecontinentAction($id)
 		}
 		return $this->redirect($this->generateUrl('users_adminuser_accueil_administration'));
 	}
-	return $this->render('UsersAdminuserBundle:Localisationuser:updatecontinent.html.twig',
+	return $this->render('Theme/Users/Adminuser/Localisationuser/updatecontinent.html.twig',
 	array('form'=>$form->createView(),'continent'=>$continent));
 	}else{
 		echo 'Echec ! Une erreur a été rencontrée.';
 		exit;
-	}
-	
+	}	
 }
-public function supprimercontinentAction(Continent $continent)
+public function supprimercontinent(Continent $continent, Request $request)
 {
 	$em = $this->getDoctrine()->getManager();
 	$formsupp = $this->createFormBuilder()->getForm(); 
-    $request = $this->get('request');
 	if ($request->getMethod() == 'POST') {
-    $formsupp->bind($request);
+    $formsupp->handleRequest($request);
     if ($formsupp->isValid()){
 		$liste_pays = $continent->getPays();
 		if(count($liste_pays) > 0){
@@ -84,33 +82,32 @@ public function supprimercontinentAction(Continent $continent)
 	$this->get('session')->getFlashBag()->add('supprime_continent',$continent->getNom());
 	return $this->redirect($this->generateUrl('users_adminuser_accueil_administration'));
 }
-public function payscontinentAction()
+public function payscontinent(Request $request, GeneralServicetext $service)
 {
-	$service = $this->container->get('general_service.servicefile');
     $continent = new Continent($service);
-	$form = $this->createForm(new ContinentType, $continent);
+	$form = $this->createForm(ContinentType::class, $continent);
 	$pays = new Pays();
-	$formpays = $this->createForm(new PaysType, $pays);
-	$request = $this->get('request');
+	$formpays = $this->createForm(PaysType::class, $pays);
+
 	if ($request->getMethod() == 'POST') {
-    $form->bind($request);
+    $form->handleRequest($request);
     if ($form->isValid()){
 	$em = $this->getDoctrine()->getManager();
-	$liste_cont = $em->getRepository('UsersLocalisationuserBundle:Continent')
+	$liste_cont = $em->getRepository(Continent::class)
 	                 ->findAll();
 	if(count($liste_cont) == 0)
 	{
-	$em->persist($continent);
-    $em->flush();
-	$this->get('session')->getFlashBag()->add('information','le continent a été bien enregistrée.');
+		$em->persist($continent);
+		$em->flush();
+		$this->get('session')->getFlashBag()->add('information','le continent a été bien enregistrée.');
 	}else{
 	$this->get('session')->getFlashBag()->add('information','Action réfusée!!, Les données issus de cette interface ne peuvent plus être validées');
 	}
-	return $this->render('GeneralServiceBundle:Adminplateforme:payscontinent.html.twig', 
+	return $this->render('Theme/General/Service/Adminplateforme/payscontinent.html.twig', 
 	array('form2'=>$formpays->createView(),'form' => $form->createView()));
 	}
 	}
-	return $this->render('GeneralServiceBundle:Adminplateforme:payscontinent.html.twig', 
+	return $this->render('Theme/General/Service/Adminplateforme/payscontinent.html.twig', 
 	array('form2'=>$formpays->createView(),'form' => $form->createView()));
 }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Produit\ServiceBundle\Entity;
+namespace App\Repository\Produit\Service;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -29,8 +29,8 @@ public function getSelectIndicateur()
 public function getSelectAnnee()
 {
     $qb = $this->createQueryBuilder('s')
-                  ->where('s.type = 0')
-                  ->orderBy('s.nom','ASC');
+                ->where('s.type = 0')
+                ->orderBy('s.nom','ASC');
 	return $qb;
 }
 }

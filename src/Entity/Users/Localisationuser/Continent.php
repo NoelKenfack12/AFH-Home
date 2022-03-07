@@ -1,22 +1,24 @@
 <?php
 
-namespace Users\LocalisationuserBundle\Entity;
+namespace App\Entity\Users\Localisationuser;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
-use General\ValidatorBundle\Validatorfile\Image;
+use App\Service\Servicetext\GeneralServicetext;
+use App\Validator\Validatorfile\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use General\ValidatorBundle\Validatortext\Siteweb;
-
+use App\Validator\Validatortext\Siteweb;
+use App\Repository\Users\Localisationuser\ContinentRepository;
+use Doctrine\Common\Collections\Collection;
+use App\Entity\Users\Localisationuser\Pays;
 
 /**
  * Continent
  *
  * @ORM\Table("continent")
- * @ORM\Entity(repositoryClass="Users\LocalisationuserBundle\Entity\ContinentRepository")
+ * @ORM\Entity(repositoryClass=ContinentRepository::class)
   * @UniqueEntity(fields="nom", message="Ce continent existe déjà.")
   * @UniqueEntity(fields="siteweb", message="Ce site est déjà enregistré.")
   * @UniqueEntity(fields="citoyen", message="Ce continent existe déjà.")
@@ -51,8 +53,8 @@ class Continent
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=100,unique=true)
-     *@Taillemin(valeur=4, message="Au moins 4 caractères")
-     *@Taillemax(valeur=60, message="Au plus 60 caractères")
+     * @Taillemin(valeur=4, message="Au moins 4 caractères")
+     * @Taillemax(valeur=60, message="Au plus 60 caractères")
      */
     private $nom;
 	
@@ -60,7 +62,7 @@ class Continent
      * @var string
      *
      * @ORM\Column(name="siteweb", type="string", length=255,unique=true,nullable=true)
-     *@Siteweb()
+     * @Siteweb()
      */
     private $siteweb;
 	
@@ -68,8 +70,8 @@ class Continent
      * @var string
      *
      * @ORM\Column(name="citoyen", type="string", length=100,unique=true, nullable=true)
-     *@Taillemin(valeur=4, message="Au moins 4 caractères")
-     *@Taillemax(valeur=60, message="Au plus 60 caractères")
+     * @Taillemin(valeur=4, message="Au moins 4 caractères")
+     * @Taillemax(valeur=60, message="Au plus 60 caractères")
      */
     private $citoyen;
 	
@@ -77,18 +79,18 @@ class Continent
      * @var string
      *
      * @ORM\Column(name="citoyenne", type="string", length=100,unique=true, nullable=true)
-     *@Taillemin(valeur=4, message="Au moins 4 caractères")
-     *@Taillemax(valeur=60, message="Au plus 60 caractères")
+     * @Taillemin(valeur=4, message="Au moins 4 caractères")
+     * @Taillemax(valeur=60, message="Au plus 60 caractères")
      */
     private $citoyenne;
 	
 	/**
-         * @ORM\OneToMany(targetEntity="Users\LocalisationuserBundle\Entity\Pays", mappedBy="continent")
-         */
+     * @ORM\OneToMany(targetEntity=Pays::class, mappedBy="continent")
+     */
     private $pays;
 	
 	/**
-	*@Image(taillemax=1500000, message="la taille de l'image  %string% est grande.")
+	* @Image(taillemax=1500000, message="la taille de l'image  %string% est grande.")
 	*/
 	private $file;
 	
@@ -99,10 +101,10 @@ class Continent
 	
 	public function __construct(GeneralServicetext $service)
 	{
-	$this->serviceaccent = $service ;
-	$this->pays = new \Doctrine\Common\Collections\ArrayCollection();
-	$this->src ="source";
-	$this->alt ="alternatif";
+        $this->serviceaccent = $service ;
+        $this->pays = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->src ="source";
+        $this->alt ="alternatif";
 	}
 	
 	public function getServiceaccent()
@@ -199,19 +201,17 @@ class Continent
      */
     public function premajuscule()
 	{
-	$text = $this->serviceaccent->retireAccent($this->nom);
-	$text2 = $this->serviceaccent->retireAccent($this->citoyen);
-	$this->nom = strtoupper($text);
-	$this->citoyen = strtoupper($text2);
+        $text = $this->serviceaccent->retireAccent($this->nom);
+        $text2 = $this->serviceaccent->retireAccent($this->citoyen);
+        $this->nom = strtoupper($text);
+        $this->citoyen = strtoupper($text2);
 	}
 
     /**
      * Add pays
-     *
-     * @param \Users\LocalisationuserBundle\Entity\Pays $pays
      * @return Continent
      */
-    public function addPay(\Users\LocalisationuserBundle\Entity\Pays $pays)
+    public function addPay(Pays $pays): self
     {
         $this->pays[] = $pays;
 
@@ -220,20 +220,16 @@ class Continent
 
     /**
      * Remove pays
-     *
-     * @param \Users\LocalisationuserBundle\Entity\Pays $pays
      */
-    public function removePay(\Users\LocalisationuserBundle\Entity\Pays $pays)
+    public function removePay(Pays $pays)
     {
         $this->pays->removeElement($pays);
     }
 
     /**
-     * Get pays
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * Get pays 
      */
-    public function getPays()
+    public function getPays(): ?Collection
     {
         return $this->pays;
     }
@@ -306,21 +302,23 @@ class Continent
 	// On retourne le chemin relatif vers l'image pour un navigateur
 	return 'bundles/users/localisation/images/continent';
 	}
+    
 	protected function getUploadRootDir()
 	{
 	// On retourne le chemin relatif vers l'image pour notre codePHP
 	return  __DIR__.'/../../../../web/'.$this->getUploadDir();
 	}
+
 	public function setFile(UploadedFile $file)
 	{
 	$this->file = $file;
 	// On vérifie si on avait déjà un fichier pour cette entité
 	if (null !== $this->src) {
-	// On sauvegarde l'extension du fichier pour le supprimer plus tard
-	$this->tempFilename = $this->src;
-	// On réinitialise les valeurs des attributs url et alt
-	$this->src = null;
-	$this->alt = null;
+        // On sauvegarde l'extension du fichier pour le supprimer plus tard
+        $this->tempFilename = $this->src;
+        // On réinitialise les valeurs des attributs url et alt
+        $this->src = null;
+        $this->alt = null;
 	}
 	}
 	

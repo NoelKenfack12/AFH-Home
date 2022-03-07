@@ -1,33 +1,46 @@
 <?php
 /*(c) Noel Kenfack <noel.kenfack@yahoo.fr> Février 2015
-*ce fichier est la proprieté de Zentsoft entreprise.
+* ce fichier est la proprieté de Zentsoft entreprise.
 */
-namespace Users\UserBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+namespace App\Controller\Users\User;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Users\UserBundle\Entity\User;
-use Users\UserBundle\Form\UserType;
-use Users\UserBundle\Entity\Imgprofil;
-use Users\UserBundle\Form\ImgprofilType;
+use App\Entity\Users\User\User;
+use App\Form\Users\User\UserType;
+use App\Entity\Users\User\Imgprofil;
+use App\Form\Users\User\ImgprofilType;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\SecurityContext;
+use App\Service\Servicetext\GeneralServicetext;
+use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Produit\Produit\Panier;
+use App\Entity\Produit\Produit\Souscategorie;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use App\Service\Email\Singleemail;
 
-class UserController extends Controller
+class UserController extends AbstractController
 {
-public function inscriptionuserAction()
+private $params;
+private $_servicemail;
+
+public function __construct(ParameterBagInterface $params, Singleemail $servicemail)
 {
-	$service = $this->container->get('general_service.servicetext');
+	$this->params = $params;
+	$this->_servicemail = $servicemail;
+}
+
+public function inscriptionuser(GeneralServicetext $service, Request $request)
+{
 	$em = $this->getDoctrine()->getManager();
-	$request = $this->getRequest();
 	// Si le visiteur est déjà identifié, on le redirige vers l'accueil
-	if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-    return $this->redirect($this->generateUrl('users_user_acces_plateforme'));
+	if ($this->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+    	return $this->redirect($this->generateUrl('users_user_acces_plateforme'));
 	}
 	$user = new User($service);
-	$form = $this->createForm(new UserType, $user);
+	$form = $this->createForm(UserType::class, $user);
 	
 	if ($request->getMethod() == 'POST' and $this->getUser() == null){
-    $form->bind($request);
+    $form->handleRequest($request);
 		if(isset($_POST['codepays']))
 		{
 			$user->setTel($_POST['codepays'].' '.$user->getTel());
@@ -35,17 +48,17 @@ public function inscriptionuserAction()
     if ($form->isValid()){
 	$em->persist($user);
     $em->flush();
-    $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+    //$token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
     // On passe le token crée au service security context afin que l'utilisateur soit authentifié
-    $this->get('security.context')->setToken($token);
+    //$this->get('security.context')->setToken($token);
 	return $this->redirect($this->generateUrl('users_user_user_accueil',array('id'=>$user->getId())));
 	}
 	$this->get('session')->getFlashBag()->add('information','Une erreur a été rencontrée !!!');
 	}
-	return $this->render('UsersUserBundle:User:inscriptionuser.html.twig',array('form'=>$form->createview()));
+	return $this->render('Theme/Users/User/User/inscriptionuser.html.twig',array('form'=>$form->createview()));
 }
 
-public function accueiluserAction(User $user)
+public function accueiluser(User $user, GeneralServicetext $service)
 {
 	if($this->getUser() == $user)
 	{
@@ -54,36 +67,33 @@ public function accueiluserAction(User $user)
 		$em->flush();
 		
 		$em = $this->getDoctrine()->getManager();
-	    $panier = $em->getRepository('ProduitProduitBundle:Panier')
+	    $panier = $em->getRepository(Panier::class)
 				     ->findOneBy(array('user'=>$user,'payer'=>0));
-		$panier_payer = $em->getRepository('ProduitProduitBundle:Panier')
+		$panier_payer = $em->getRepository(Panier::class)
 				           ->findBy(array('user'=>$user,'payer'=>1));
-		$service = $this->container->get('general_service.servicetext');
 		$profil = new Imgprofil($service);
-	    $form = $this->createForm(new ImgprofilType, $profil);
+	    $form = $this->createForm(ImgprofilType::class, $profil);
 		
-		$topcat = $em->getRepository('ProduitProduitBundle:Souscategorie')
+		$topcat = $em->getRepository(Souscategorie::class)
 	                 ->topsouscategorie(8);
 				
-		return $this->render('UsersUserBundle:User:accueiluser.html.twig',
+		return $this->render('Theme/Users/User/User/accueiluser.html.twig',
 		array('user'=>$user,'form'=>$form->createView(),'panier'=>$panier,'panier_payer'=>$panier_payer,'topcat'=>$topcat));
 	}else{
 	return $this->redirect($this->generateUrl('users_user_acces_plateforme'));
 	}
 }
 
-public function modifierprofilAction(User $user)
+public function modifierprofil(User $user, GeneralServicetext $service, Request $request)
 {
-	$service = $this->container->get('general_service.servicetext');
 	$em = $this->getDoctrine()->getManager();
-	$request = $this->getRequest();
 	$profil = new Imgprofil($service);
-	    $form = $this->createForm(new ImgprofilType, $profil);
+	    $form = $this->createForm(ImgprofilType::class, $profil);
 		if ($request->getMethod() == 'POST')
 		{
-			$form->bind($request);
+			$form->handleRequest($request);
 			if ($form->isValid()){
-				$oldprofil = $em->getRepository('UsersUserBundle:Imgprofil')
+				$oldprofil = $em->getRepository(Imgprofil::class)
 	                            ->FindOneBy(array('user'=>$user));
 				if ($oldprofil === null)
 				{
@@ -106,13 +116,12 @@ public function modifierprofilAction(User $user)
 		return $this->redirect($this->generateUrl('users_user_user_accueil',array('id'=>$user->getId())));
 }
 
-public function ajouteradminAction()
+public function ajouteradmin(Request $request)
 {
 	$em = $this->getDoctrine()->getManager();
-	$request = $this->getRequest();
 	if ($request->getMethod() == 'POST' and isset($_POST['_username']) and isset($_POST['_password'])){
-		$username = $this->container->getParameter('username');
-		$password = $this->container->getParameter('password');
+		$username = $this->params->get('username');
+		$password = $this->params->get('password');
 		if($_POST['_username'] == $username and $_POST['_password'] == $password and $this->getUser() != null)
 		{
 			$this->getUser()->addRole('ROLE_ADMIN');
@@ -121,9 +130,9 @@ public function ajouteradminAction()
 		}else{
 			$this->get('session')->getFlashBag()->add('information','Le mot de passe ou le nom d\'utilisateur est incorect.');
 		}
-		return $this->render('UsersUserBundle:User:ajouteradmin.html.twig');
+		return $this->render('Theme/Users/User/User/ajouteradmin.html.twig');
     }
-	$liste_user = $em->getRepository('UsersUserBundle:User')
+	$liste_user = $em->getRepository(User::class)
 	                 ->findAll();
 	$exist = false;
 	foreach($liste_user as $user)
@@ -137,18 +146,17 @@ public function ajouteradminAction()
 	{
 		return $this->redirect($this->generateUrl('users_user_acces_plateforme'));
 	}else{
-		return $this->render('UsersUserBundle:User:ajouteradmin.html.twig');
+		return $this->render('Theme/Users/User/User/ajouteradmin.html.twig');
 	}
 }
 
-public function nouveauadminAction()
+public function nouveauadmin(Request $request)
 {
 	$em = $this->getDoctrine()->getManager();
-	$request = $this->getRequest();
 	$formsupp = $this->createFormBuilder()->getForm(); 
 	if ($request->getMethod() == 'POST' and isset($_POST['username']) and isset($_POST['roleuser']))
 	{
-		$userrole = $em->getRepository('UsersUserBundle:User')
+		$userrole = $em->getRepository(User::class)
 	                 ->findOneBy(array('username'=>$_POST['username']));
 		if($userrole != null and !in_array($_POST['roleuser'], ($userrole->getRoles())))
 		{
@@ -157,7 +165,7 @@ public function nouveauadminAction()
 			$this->get('session')->getFlashBag()->add('information','Rôle '.$_POST['roleuser'].' ajouté avec succès à '.$userrole->name(20));
 		}
 	}
-	$liste_user = $em->getRepository('UsersUserBundle:User')
+	$liste_user = $em->getRepository(User::class)
 	                 ->findAll();
 	$newcollection = new \Doctrine\Common\Collections\ArrayCollection();
 	foreach($liste_user as $user)
@@ -166,16 +174,15 @@ public function nouveauadminAction()
             $newcollection[] = $user;
         }
 	}
-	return $this->render('UsersAdminuserBundle:User:nouveauadmin.html.twig',array('liste_user'=>$newcollection,'formsupp'=>$formsupp->createView()));
+	return $this->render('Theme/Users/Adminuser/User/nouveauadmin.html.twig',array('liste_user'=>$newcollection,'formsupp'=>$formsupp->createView()));
 }
 
-public function eleveroleAction(User $user)
+public function eleverole(User $user, Request $request)
 {
 	$formsupp = $this->createFormBuilder()->getForm();
-	$request = $this->getRequest();
 	$em = $this->getDoctrine()->getManager();
 	if ($request->getMethod() == 'POST'){
-	$formsupp->bind($request);
+	$formsupp->handleRequest($request);
 	if ($formsupp->isValid()){
 		$user->removeRole('ROLE_GESTION');
 		$em->flush();
@@ -188,20 +195,19 @@ public function eleveroleAction(User $user)
 	return $this->redirect($this->generateUrl('users_adminuser_ajout_nouveau_admin'));
 }
 
-public function programmeafilierAction()
+public function programmeafilier()
 {
-	return $this->render('UsersUserBundle:User:programmeafilier.html.twig');
+	return $this->render('Theme/Users/User/User/programmeafilier.html.twig');
 }
 
-public function retouracceuilAction($all)
+public function retouracceuil($all)
 {
 	$this->get('session')->getFlashBag()->add('retourningvisitor','<h3 class="alert alert-warning"><span class="fa fa-warning"></span> Il se peut que la ressource que vous demandez a été déplacée. </br><a href="'.$this->generateUrl("produit_produit_application_references").'" class="btn btn-info" style="margin-top: 15px;background: #34b1e7; -webkit-box-shadow:0 1px 2px 0 rgba(0,0,0,0.1); box-shadow:0 2px 2px 0 rgba(0,0,0,0.8);">Veuillez choisir un pays ici <span class=" fa fa-angle-double-right"></span></a></h3>');
 	return $this->redirect($this->generateUrl('users_user_acces_plateforme'));
 }
 
-public function saveaccountinfosAction(User $user)
+public function saveaccountinfos(User $user, GeneralServicetext $service)
 {
-	$service = $this->container->get('general_service.servicetext');
 	$em = $this->getDoctrine()->getManager();
 	if(isset($_POST['facebook']) and $service->siteweb($_POST['facebook']))
 	{
@@ -239,16 +245,16 @@ public function saveaccountinfosAction(User $user)
 	return $this->redirect($this->generateUrl('users_user_user_accueil', array('id'=>$user->getId())));
 }
 
-public function largevueuserAction()
+public function largevueuser()
 {
 	$user = null;
 	$em = $this->getDoctrine()->getManager();
 	if(isset($_POST['id']))
 	{
-		$user = $em->getRepository('UsersUserBundle:User')
+		$user = $em->getRepository(User::class)
 	               ->find($_POST['id']);
 	}
-	return $this->render('UsersUserBundle:User:largevueuser.html.twig', 
+	return $this->render('Theme/Users/User/User/largevueuser.html.twig', 
 	array('user'=>$user));
 }
 }

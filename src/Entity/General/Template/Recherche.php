@@ -1,13 +1,13 @@
 <?php
 
-namespace General\TemplateBundle\Entites;
+namespace App\Entity\General\Template;
 
 use General\ValidatorBundle\Validatortext\Taillemin;
 
 class Recherche
 {
    /**
-     *@Taillemin(valeur=3, message="Entrer au moins 3 caractès")
+     *@Taillemin(valeur=3, message="Entrer au moins 3 caractï¿½s")
      */
     private $donnee;
 	public function getDonnee()

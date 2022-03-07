@@ -1,28 +1,42 @@
 <?php
-/*(c) Noel Kenfack <noel.kenfack@yahoo.fr> Février 2016
+/*
+	(c) Noel Kenfack <noel.kenfack@yahoo.fr> Février 2016
 */
-namespace Produit\ServiceBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+namespace App\Controller\Produit\Service;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Produit\ServiceBundle\Form\MessemailType;
-use Produit\ServiceBundle\Entity\Messemail;
+use App\Form\Produit\Service\MessemailType;
+use App\Entity\Produit\Service\Messemail;
+use App\Service\Servicetext\GeneralServicetext;
+use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Users\User\User;
+use App\Entity\Users\User\Newsletter;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use App\Service\Email\Singleemail;
 
-class MessemailController extends Controller
+class MessemailController extends AbstractController
 {
-public function messageemailAction()
+private $params;
+private $_servicemail;
+
+public function __construct(ParameterBagInterface $params, Singleemail $servicemail)
+{
+	$this->params = $params;
+	$this->_servicemail = $servicemail;
+}
+public function messageemail(GeneralServicetext $service, Request $request)
 {
 	$em = $this->getDoctrine()->getManager();
-	$service = $this->container->get('general_service.servicetext');
 	$messemail = new Messemail();
-    $form = $this->createForm(new MessemailType, $messemail);
+    $form = $this->createForm(MessemailType::class, $messemail);
 	$formsupp = $this->createFormBuilder()->getForm();
-	$request = $this->get('request');
+
 	if ($request->getMethod() == 'POST'){
-	$form->bind($request);
+	$form->handleRequest($request);
 	$messemail->setUser($this->getUser());
     if ($form->isValid()){
 		
-		$liste_user = $em->getRepository('UsersUserBundle:User')
+		$liste_user = $em->getRepository(User::class)
 		                 ->findAll();
 		$liste_email = array();
 		$user_email = array();
@@ -38,7 +52,7 @@ public function messageemailAction()
 			}
 		}
 		
-		$liste_newsletter = $em->getRepository('UsersUserBundle:Newsletter')
+		$liste_newsletter = $em->getRepository(Newsletter::class)
 		                 ->findAll();
 		foreach($liste_newsletter as $news)
 		{
@@ -61,15 +75,20 @@ public function messageemailAction()
 			}
 		}
 		
+		$siteweb = $this->params->get('siteweb');
+		$sitename = $this->params->get('sitename');
+		$emailadmin = $this->params->get('emailadmin');
+
 		for($i = 0; $i < count($user_email); $i++)
 		{
-			$mailer = $this->get('mailer');
-			$message = \Swift_Message::newInstance()
-			->setSubject($messemail->getTitre())
-			->setFrom(array('support@hosting.africexplorer.com'=>'Support Afex Hosting'))
-			->setTo($user_email[$i][1])
-			->setBody($this->renderView('ProduitServiceBundle:Message:envoiemail.html.twig', array('link'=>$messemail->getLink(),'nom'=>$user_email[$i][0],'titre' => $messemail->getTitre(),'contenu'=>$messemail->getContenu())),'text/html');
-			$mailer->send($message);
+			$response = $this->_servicemail->sendNotifEmail(
+				$sitename, //Nom du destinataire
+				$emailadmin, //Email Destinataire
+				$messemail->getTitre(), //Objet de l'email
+				$messemail->getTitre(), //Grand Titre de l'email
+				$messemail->getContenu(),  //Contenu de l'email
+				$messemail->getLink() //Lien à suivre
+			);
 		}
 		}
 		
@@ -79,23 +98,24 @@ public function messageemailAction()
 	}else{
 		$this->get('session')->getFlashBag()->add('information','Une erreur a été rencontrée');
 	}
-	$liste_mess = $em->getRepository('ProduitServiceBundle:Messemail')
+	$liste_mess = $em->getRepository(Messemail::class)
 	                    ->findAll();
-	return $this->render('UsersAdminuserBundle:Messemail:messemail.html.twig',
+	return $this->render('Theme/Users/Adminuser/Messemail/messemail.html.twig',
 	array('form'=>$form->createView(),'liste_mess'=>$liste_mess,'formsupp'=>$formsupp->createView()));
 }
-public function supprimermessemailAction(Messemail $mess)
+
+public function supprimermessemail(Messemail $mess, Request $request)
 {
 	$em = $this->getDoctrine()->getManager();
 	$formsupp = $this->createFormBuilder()->getForm();
-	$request = $this->get('request');
+
 	if ($request->getMethod() == 'POST') {
-	$formsupp->bind($request);
-	if ($formsupp->isValid()){
-	$em->remove($mess);
-	$em->flush();
-	$this->get('session')->getFlashBag()->add('information','Suppression effectuée avec succès');
-	}
+	$formsupp->handleRequest($request);
+		if($formsupp->isValid()){
+			$em->remove($mess);
+			$em->flush();
+			$this->get('session')->getFlashBag()->add('information','Suppression effectuée avec succès');
+		}
 	}else{
 	$this->get('session')->getFlashBag()->add('supprime_mess',$mess->getId());
 	$this->get('session')->getFlashBag()->add('supprime_mess',$mess->getTitre());

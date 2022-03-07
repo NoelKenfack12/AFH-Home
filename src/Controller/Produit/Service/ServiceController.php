@@ -1,26 +1,28 @@
 <?php
 /*(c) Noel Kenfack <noel.kenfack@yahoo.fr> Février 2016
 */
-namespace Produit\ServiceBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+namespace App\Controller\Produit\Service;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Produit\ServiceBundle\Form\ServiceType;
-use Produit\ServiceBundle\Entity\Service;
-use Produit\ServiceBundle\Form\EvenementType;
-use Produit\ServiceBundle\Entity\Evenement;
+use App\Form\Produit\Service\ServiceType;
+use App\Entity\Produit\Service\Service;
+use App\Form\Produit\Service\EvenementType;
+use App\Entity\Produit\Service\Evenement;
+use App\Service\Servicetext\GeneralServicetext;
+use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Produit\Produit\Produit;
 
-class ServiceController extends Controller
+class ServiceController extends AbstractController
 {
-	public function nouveauserviceAction()
+	public function nouveauservice(GeneralServicetext $service, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$service = $this->container->get('general_service.servicetext');
 		$nosservice = new Service($service);
-		$form = $this->createForm(new ServiceType, $nosservice);
+		$form = $this->createForm(ServiceType::class, $nosservice);
 		$formsupp = $this->createFormBuilder()->getForm();
-		$request = $this->get('request');
+
 		if ($request->getMethod() == 'POST' and isset($_POST['type'])){
-			$form->bind($request);
+			$form->handleRequest($request);
 			$nosservice->setUser($this->getUser());
 			if($nosservice->getImgservice() !== null)
 			{
@@ -38,10 +40,9 @@ class ServiceController extends Controller
 		return $this->redirect($this->generateUrl('users_adminuser_save_categorie_product'));
 	}
 
-	public function modifierserviceAction($id)
+	public function modifierservice(GeneralServicetext $service, Request $request, $id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$service = $this->container->get('general_service.servicetext');
 		if(isset($_GET['id']))
 		{
 			$id = $_GET['id'];
@@ -49,15 +50,15 @@ class ServiceController extends Controller
 			$id = $id;
 		}
 		
-		$nosservice = $em->getRepository('ProduitServiceBundle:Service')
+		$nosservice = $em->getRepository(Service::class)
 						->find($id);
 
 		if($nosservice != null)
 		{
-		$form = $this->createForm(new ServiceType, $nosservice);
-		$request = $this->get('request');
+		$form = $this->createForm(ServiceType::class, $nosservice);
+
 		if ($request->getMethod() == 'POST' and isset($_POST['type'])){
-			$form->bind($request);
+			$form->handleRequest($request);
 			if($nosservice->getImgservice() !== null)
 			{
 			$nosservice->getImgservice()->setServicetext($service);
@@ -71,34 +72,32 @@ class ServiceController extends Controller
 			}
 			return $this->redirect($this->generateUrl('users_adminuser_save_categorie_product'));
 		}
-		return $this->render('UsersAdminuserBundle:Service:modifierservice.html.twig',
+		return $this->render('Theme/Users/Adminuser/Service/modifierservice.html.twig',
 		array('formservice'=>$form->createView(),'nosservice'=>$nosservice));
 		}else{
 			echo 'Echec ! Une erreur a été rencontrée.';
 			exit;
 		}
 	}
-
-	public function modifevolutionindicateurAction($id)
+	
+	public function modifevolutionindicateur(GeneralServicetext $service, Request $request, $id)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$service = $this->container->get('general_service.servicetext');
 		if(isset($_GET['id']))
 		{
 			$id = $_GET['id'];
 		}else{
 			$id = $id;
-		}
-		
-		$indicateur = $em->getRepository('ProduitServiceBundle:Evenement')
+		}		
+		$indicateur = $em->getRepository(Evenement::class)
 						->find($id);
 
 		if($indicateur != null)
 		{
-		$formevent = $this->createForm(new EvenementType, $indicateur);
-		$request = $this->get('request');
+		$formevent = $this->createForm(EvenementType::class, $indicateur);
+
 		if ($request->getMethod() == 'POST'){
-			$formevent->bind($request);
+			$formevent->handleRequest($request);
 			if ($formevent->isValid()){
 				$em->flush();
 				$this->get('session')->getFlashBag()->add('information','Modification effectuée avec succès');
@@ -107,7 +106,7 @@ class ServiceController extends Controller
 			}
 			return $this->redirect($this->generateUrl('users_adminuser_save_categorie_product'));
 		}
-		return $this->render('UsersAdminuserBundle:Service:modifevolutionindicateur.html.twig',
+		return $this->render('Theme/Users/Adminuser/Service/modifevolutionindicateur.html.twig',
 		array('formevent'=>$formevent->createView(),'indicateur'=>$indicateur));
 		}else{
 			echo 'Echec ! Une erreur a été rencontrée.';
@@ -115,18 +114,16 @@ class ServiceController extends Controller
 		}
 	}
 
-	public function addevenementAction()
+	public function addevenement(GeneralServicetext $service, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$service = $this->container->get('general_service.servicetext');
-		$request = $this->get('request');
 		$evenement = new Evenement($service);
-		$formevent = $this->createForm(new EvenementType, $evenement);
+		$formevent = $this->createForm(EvenementType::class, $evenement);
 		if ($request->getMethod() == 'POST'){
-			$formevent->bind($request);
+			$formevent->handleRequest($request);
 			$evenement->setUser($this->getUser());
 
-			$oldevolution = $em->getRepository('ProduitServiceBundle:Evenement')
+			$oldevolution = $em->getRepository(Evenement::class)
 							->findOneBy(array('indicateur'=>$evenement->getIndicateur(),'annee'=>$evenement->getAnnee(),'produit'=>$evenement->getProduit()));
 			if ($formevent->isValid() and $oldevolution == null){
 				$em->persist($evenement);
@@ -144,14 +141,13 @@ class ServiceController extends Controller
 		return $this->redirect($this->generateUrl('users_adminuser_save_categorie_product'));
 	}
 
-	public function supprimevenementAction(Evenement $even)
+	public function supprimevenement(Evenement $even, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
 		$formsupp = $this->createFormBuilder()->getForm();
 
-		$request = $this->get('request');
 		if ($request->getMethod() == 'POST'){
-			$formsupp->bind($request);
+			$formsupp->handleRequest($request);
 			if ($formsupp->isValid()){
 				$em->remove($even);
 				$em->flush();
@@ -164,17 +160,16 @@ class ServiceController extends Controller
 		return $this->redirect($this->generateUrl('users_adminuser_save_categorie_product'));
 	}
 
-	public function supprimerserviceAction(Service $service)
+	public function supprimerservice(Service $service, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
 		$formsupp = $this->createFormBuilder()->getForm();
-		$request = $this->get('request');
 		if($request->getMethod() == 'POST'){
-		$formsupp->bind($request);
+		$formsupp->handleRequest($request);
 		if ($formsupp->isValid()){
-			$liste_indicateur = $em->getRepository('ProduitServiceBundle:Evenement')
+			$liste_indicateur = $em->getRepository(Evenement::class)
 								->findBy(array('indicateur'=>$service));
-			$liste_annee = $em->getRepository('ProduitServiceBundle:Evenement')
+			$liste_annee = $em->getRepository(Evenement::class)
 								->findBy(array('annee'=>$service));
 			if((count($liste_indicateur) + count($liste_annee)) == 0)
 			{
@@ -192,14 +187,14 @@ class ServiceController extends Controller
 		return $this->redirect($this->generateUrl('users_adminuser_save_categorie_product'));
 	}
 
-	public function presentationAction($id = 0)
+	public function presentation($id = 0)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$liste_service = $em->getRepository('ProduitServiceBundle:Service')
+		$liste_service = $em->getRepository(Service::class)
 							->myfindAll();
 		if($id != 0)
 		{
-			$service = $em->getRepository('ProduitServiceBundle:Service')
+			$service = $em->getRepository(Service::class)
 						->find($id);
 			$newliste = new \Doctrine\Common\Collections\ArrayCollection();
 			if($service != null)
@@ -227,13 +222,13 @@ class ServiceController extends Controller
 		}
 		if($service != null)
 		{
-		return $this->render('ProduitServiceBundle:Service:presentation.html.twig', array('service'=>$service,'liste_service'=>$liste_service));
+		return $this->render('Theme/Produit/Service/Service/presentation.html.twig', array('service'=>$service,'liste_service'=>$liste_service));
 		}else{
 		return $this->redirect($this->generateUrl('users_user_acces_plateforme'));
 		}
 	}
 
-	public function applicationstatAction($anneeid, $position)
+	public function applicationstat($anneeid, $position)
 	{
 		if(isset($_POST['anneeid']))
 		{
@@ -241,23 +236,22 @@ class ServiceController extends Controller
 		}
 		
 		$em = $this->getDoctrine()->getManager();
-		$liste_indicateur = $em->getRepository('ProduitServiceBundle:Service')
+		$liste_indicateur = $em->getRepository(Service::class)
 							->findBy(array('type'=>1), array('rang'=>'asc'));
 		
-		$all_appli = $em->getRepository('ProduitProduitBundle:Produit')
+		$all_appli = $em->getRepository(Produit::class)
 							->findAppliType('');	
 		
 		foreach($liste_indicateur as $indicateur)
 		{
 			$indicateur->setEm($em);
 		}
-		return $this->render('ProduitServiceBundle:Service:applicationstat.html.twig', 
+		return $this->render('Theme/Produit/Service/Service/applicationstat.html.twig', 
 		array('anneeid'=>$anneeid, 'liste_indicateur'=>$liste_indicateur, 'all_appli'=>$all_appli, 'position'=>$position));
 	}
-
-	public function callbackhomepageAction()
+	
+	public function callbackhomepage(Request $request)
 	{
-		$request = $this->get('request');
 		$parameters = json_decode($request->getContent(), true);
 		$em = $this->getDoctrine()->getManager();
         if(count($parameters) == 1)
@@ -271,22 +265,22 @@ class ServiceController extends Controller
 		{
 			if($param == 'about')
 			{
-				return $this->render('ProduitServiceBundle:Service:callbackaboutpage.html.twig');
+				return $this->render('Theme/Produit/Service/Service/callbackaboutpage.html.twig');
 			}else if($param == 'projet')
 			{
-				$liste_appli = $em->getRepository('ProduitProduitBundle:Produit')
+				$liste_appli = $em->getRepository(Produit::class)
 	                      		  ->myfindAll();
 
-				return $this->render('ProduitServiceBundle:Service:callbackprojetpage.html.twig', array('liste_appli'=>$liste_appli));
+				return $this->render('Theme/Produit/Service/Service/callbackprojetpage.html.twig', array('liste_appli'=>$liste_appli));
 			}else if($param == 'statistique')
 			{
-				$liste_annee = $em->getRepository('ProduitServiceBundle:Service')
+				$liste_annee = $em->getRepository(Service::class)
 	                      		  ->findBy(array('type'=>0), array('nom'=>'desc'));
 
-				return $this->render('ProduitServiceBundle:Service:callbackstatistiquepage.html.twig', 
+				return $this->render('Theme/Produit/Service/Service/callbackstatistiquepage.html.twig', 
 				array('liste_annee'=>$liste_annee));
 			}else if($param == 'emploi'){
-				return $this->render('ProduitServiceBundle:Service:callbackemploipage.html.twig');
+				return $this->render('Theme/Produit/Service/Service/callbackemploipage.html.twig');
 			}else{
 				echo 0;
 				exit;

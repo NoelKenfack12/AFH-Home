@@ -1,22 +1,25 @@
 <?php
 
-namespace Users\UserBundle\Entity;
+namespace App\Entity\Users\User;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Email;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
-use General\ValidatorBundle\Validatortext\Password;
-use General\ValidatorBundle\Validatortext\Telephone;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
+use App\Validator\Validatortext\Email;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Validator\Validatortext\Password;
+use App\Validator\Validatortext\Telephone;
+use App\Service\Servicetext\GeneralServicetext;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use App\Repository\Users\User\UserRepository;
+use App\Entity\Users\Localisationuser\Pays;
+use App\Entity\Users\User\Imgprofil;
 
 /**
  * User
  *
  * @ORM\Table("user")
- * @ORM\Entity(repositoryClass="Users\UserBundle\Entity\UserRepository")
+ * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields="username", message="Ce  mail existe déjà.")
  * @UniqueEntity(fields="tel", message="Ce  numéro existe déjà.")
  ** @ORM\HasLifecycleCallbacks
@@ -61,7 +64,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
-     *@Password()
+     * @Password()
      */
     private $password;
 	
@@ -82,8 +85,8 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="tel", type="string", length=255, unique=true)
-     *@Telephone()
+     * @ORM\Column(name="tel", type="string", length=255, nullable=true)
+     * @Telephone()
      */
     private $tel;
 	
@@ -179,14 +182,29 @@ class User implements UserInterface
     private $telval;
 
     /**
-      * @ORM\ManyToOne(targetEntity="Users\LocalisationuserBundle\Entity\Pays", inversedBy="users")
+     * @var integer
+     *
+     * @ORM\Column(name="puui", type="integer",nullable=true)
+     */
+    private $puui;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     
+     */
+    private $email;
+
+    /**
+      * @ORM\ManyToOne(targetEntity=Pays::class, inversedBy="users")
       * @ORM\JoinColumn(nullable=true)
-      */
+    */
     private $pays;
 	
 	/**
-         * @ORM\OneToOne(targetEntity="Users\UserBundle\Entity\Imgprofil", mappedBy="user")
-         */
+     * @ORM\OneToOne(targetEntity=Imgprofil::class, mappedBy="user")
+    */
     private $imgprofil;
 
 	private $servicetext;
@@ -524,11 +542,9 @@ class User implements UserInterface
 
     /**
      * Set imgprofil
-     *
-     * @param \Users\UserBundle\Entity\Imgprofil $imgprofil
      * @return User
      */
-    public function setImgprofil(\Users\UserBundle\Entity\Imgprofil $imgprofil = null)
+    public function setImgprofil(Imgprofil $imgprofil = null): self
     {
         $this->imgprofil = $imgprofil;
 
@@ -537,21 +553,17 @@ class User implements UserInterface
 
     /**
      * Get imgprofil
-     *
-     * @return \Users\UserBundle\Entity\Imgprofil 
      */
-    public function getImgprofil()
+    public function getImgprofil(): ?Imgprofil
     {
         return $this->imgprofil;
     }
 
     /**
      * Set pays
-     *
-     * @param \Users\LocalisationuserBundle\Entity\Pays $pays
      * @return User
      */
-    public function setPays(\Users\LocalisationuserBundle\Entity\Pays $pays = null)
+    public function setPays(Pays $pays = null): self
     {
         $this->pays = $pays;
 		if($pays != null)
@@ -563,11 +575,9 @@ class User implements UserInterface
     }
 
     /**
-     * Get pays
-     *
-     * @return \Users\LocalisationuserBundle\Entity\Pays 
+     * Get pays 
      */
-    public function getPays()
+    public function getPays(): ?Pays
     {
         return $this->pays;
     }
@@ -777,5 +787,51 @@ class User implements UserInterface
     public function getPrenom()
     {
         return $this->prenom;
+    }
+
+    /**
+     * Set puui
+     *
+     * @param integer $puui
+     * @return User
+     */
+    public function setPuui($puui)
+    {
+        $this->puui = $puui;
+
+        return $this;
+    }
+
+    /**
+     * Get puui
+     *
+     * @return integer 
+     */
+    public function getPuui()
+    {
+        return $this->puui;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

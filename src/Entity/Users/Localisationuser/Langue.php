@@ -1,18 +1,21 @@
 <?php
 
-namespace Users\LocalisationuserBundle\Entity;
+namespace App\Entity\Users\Localisationuser;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
+use App\Service\Servicetext\GeneralServicetext;
+use App\Repository\Users\Localisationuser\LangueRepository;
+use App\Entity\Users\Localisationuser\Pays;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Langue
  *
  * @ORM\Table("langue")
- * @ORM\Entity(repositoryClass="Users\LocalisationuserBundle\Entity\LangueRepository")
+ * @ORM\Entity(repositoryClass=LangueRepository::class)
  * @UniqueEntity(fields="nom", message="Cette langue est déjà enregistrée.")
  ** @ORM\HasLifecycleCallbacks
  */
@@ -46,8 +49,8 @@ class Langue
     private $abbreviation;
 	
 	/**
-         * @ORM\ManyToMany(targetEntity="Users\LocalisationuserBundle\Entity\Pays", mappedBy="langues")
-         */
+     * @ORM\ManyToMany(targetEntity=Pays::class, mappedBy="langues")
+    */
     private $pays;
 	
 	private $serviceaccent;
@@ -55,8 +58,8 @@ class Langue
 	
 	public function __construct(GeneralServicetext $service)
 	{
-	$this->serviceaccent = $service;
-	$this->pays = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->serviceaccent = $service;
+        $this->pays = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 	
 	public function getServiceaccent()
@@ -130,40 +133,34 @@ class Langue
      */
     public function premajuscule()
 	{
-	$text1 = $this->serviceaccent->retireAccent($this->abbreviation);
-	$this->nom =  ucfirst($this->nom);
-	$this->abbreviation = strtolower($text1);
+        $text1 = $this->serviceaccent->retireAccent($this->abbreviation);
+        $this->nom =  ucfirst($this->nom);
+        $this->abbreviation = strtolower($text1);
 	}
 
     /**
      * Add pays
-     *
-     * @param \Users\LocalisationuserBundle\Entity\Pays $pays
      * @return Langue
      */
-    public function addPay(\Users\LocalisationuserBundle\Entity\Pays $pays)
+    public function addPay(Pays $pays): self
     {
         $this->pays[] = $pays;
 
         return $this;
     }
-
+    
     /**
      * Remove pays
-     *
-     * @param \Users\LocalisationuserBundle\Entity\Pays $pays
      */
-    public function removePay(\Users\LocalisationuserBundle\Entity\Pays $pays)
+    public function removePay(Pays $pays)
     {
         $this->pays->removeElement($pays);
     }
 
     /**
-     * Get pays
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * Get pays 
      */
-    public function getPays()
+    public function getPays(): ?Collection
     {
         return $this->pays;
     }

@@ -1,18 +1,19 @@
 <?php
 
-namespace Users\UserBundle\Entity;
+namespace App\Entity\Users\User;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Email;
+use App\Validator\Validatortext\Email;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Repository\Users\User\NewsletterRepository;
 
 /**
  * newsletter
  *
  * @ORM\Table("newsletter")
- * @ORM\Entity(repositoryClass="Users\UserBundle\Entity\NewsletterRepository")
+ * @ORM\Entity(repositoryClass=NewsletterRepository::class)
   * @UniqueEntity(fields="email", message="Cette adresse existe déjà.")
  */
 class Newsletter

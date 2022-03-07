@@ -1,14 +1,19 @@
 <?php
 
-namespace Produit\ProduitBundle\Entity;
+namespace App\Entity\Produit\Produit;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\Produit\Produit\PanierRepository;
+use App\Entity\Users\User\User;
+use App\Entity\Produit\Service\Ville;
+use App\Entity\Produit\Produit\Produitpanier;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Panier
  *
  * @ORM\Table("panier")
- * @ORM\Entity(repositoryClass="Produit\ProduitBundle\Entity\PanierRepository")
+ * @ORM\Entity(repositoryClass=PanierRepository::class)
  */
 class Panier
 {
@@ -57,21 +62,21 @@ class Panier
 	private $coastlivraison;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+       * @ORM\ManyToOne(targetEntity=User::class)
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $user;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+       * @ORM\ManyToOne(targetEntity=User::class)
        * @ORM\JoinColumn(nullable=true)
-        */
+    */
 	private $affilier;
 	
 	/**
-       * @ORM\OneToOne(targetEntity="Produit\ServiceBundle\Entity\Ville")
+       * @ORM\OneToOne(targetEntity=Ville::class)
        * @ORM\JoinColumn(nullable=true)
-        */
+    */
 	private $ville;
 	
 	/**
@@ -96,7 +101,7 @@ class Panier
     private $destination;
 	
 	/**
-         * @ORM\OneToMany(targetEntity="Produit\ProduitBundle\Entity\Produitpanier", mappedBy="panier")
+         * @ORM\OneToMany(targetEntity=Produitpanier::class, mappedBy="panier")
          */
     private $produitpaniers;
 	
@@ -192,11 +197,9 @@ class Panier
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Panier
      */
-    public function setUser(\Users\UserBundle\Entity\User $user)
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
@@ -205,21 +208,17 @@ class Panier
 
     /**
      * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
     /**
      * Add produitpaniers
-     *
-     * @param \Produit\ProduitBundle\Entity\Produitpanier $produitpaniers
      * @return Panier
      */
-    public function addProduitpanier(\Produit\ProduitBundle\Entity\Produitpanier $produitpaniers)
+    public function addProduitpanier(Produitpanier $produitpaniers): self
     {
         $this->produitpaniers[] = $produitpaniers;
 
@@ -228,20 +227,16 @@ class Panier
 
     /**
      * Remove produitpaniers
-     *
-     * @param \Produit\ProduitBundle\Entity\Produitpanier $produitpaniers
      */
-    public function removeProduitpanier(\Produit\ProduitBundle\Entity\Produitpanier $produitpaniers)
+    public function removeProduitpanier(Produitpanier $produitpaniers)
     {
         $this->produitpaniers->removeElement($produitpaniers);
     }
 
     /**
-     * Get produitpaniers
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * Get produitpaniers 
      */
-    public function getProduitpaniers()
+    public function getProduitpaniers(): ?Collection
     {
         return $this->produitpaniers;
     }
@@ -340,11 +335,9 @@ class Panier
 
     /**
      * Set ville
-     *
-     * @param \Produit\ServiceBundle\Entity\Ville $ville
      * @return Panier
      */
-    public function setVille(\Produit\ServiceBundle\Entity\Ville $ville = null)
+    public function setVille(Ville $ville = null): self
     {
         $this->ville = $ville;
 
@@ -353,10 +346,8 @@ class Panier
 
     /**
      * Get ville
-     *
-     * @return \Produit\ServiceBundle\Entity\Ville 
      */
-    public function getVille()
+    public function getVille(): ?Ville
     {
         return $this->ville;
     }
@@ -386,11 +377,9 @@ class Panier
 
     /**
      * Set affilier
-     *
-     * @param \Users\UserBundle\Entity\User $affilier
      * @return Panier
      */
-    public function setAffilier(\Users\UserBundle\Entity\User $affilier = null)
+    public function setAffilier(User $affilier = null): self
     {
         $this->affilier = $affilier;
 
@@ -399,10 +388,8 @@ class Panier
 
     /**
      * Get affilier
-     *
-     * @return \Users\UserBundle\Entity\User 
      */
-    public function getAffilier()
+    public function getAffilier(): ?User
     {
         return $this->affilier;
     }

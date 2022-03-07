@@ -1,25 +1,36 @@
 <?php
-/*(c) Noel Kenfack <noel.kenfack@yahoo.fr> Février 2016
+/*
+	(c) Noel Kenfack <noel.kenfack@yahoo.fr> Février 2016
 */
-namespace Produit\ServiceBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+namespace App\Controller\Produit\Service;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Produit\ServiceBundle\Form\MessageType;
-use Produit\ServiceBundle\Entity\Message;
-use General\ServiceBundle\AfMail\Afmail;
-use General\ServiceBundle\AfMail\fileAttachment;
+use App\Form\Produit\Service\MessageType;
+use App\Entity\Produit\Service\Message;
+use App\Service\Servicetext\GeneralServicetext;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use App\Service\Email\Singleemail;
 
-class MessageController extends Controller
+class MessageController extends AbstractController
 {
+private $params;
+private $_servicemail;
 
-public function contactusAction()
+public function __construct(ParameterBagInterface $params, Singleemail $servicemail)
+{
+	$this->params = $params;
+	$this->_servicemail = $servicemail;
+}
+
+public function contactus(Request $request)
 {
 	$em = $this->getDoctrine()->getManager();
 	$mess = new Message();
-    $form = $this->createForm(new MessageType, $mess);
-	$request = $this->get('request');
+    $form = $this->createForm(MessageType::class, $mess);
+
 	if ($request->getMethod() == 'POST'){
-	$form->bind($request);
+	$form->handleRequest($request);
 	if($this->getUser() != null)
 	{
 		$mess->setUser($this->getUser());
@@ -37,28 +48,34 @@ public function contactusAction()
 		$em->persist($mess);
 		$em->flush();
 		
-		$mail = new Afmail();                                    // Create the email object
-		$mail->setFrom($mess->getNom().' <'.$mess->getEmail().'>');     // Set the From: address
-		$mail->setCc('Support Afex Hosting <support@hosting.africexplorer.com>');               // Set the Cc: address (es)
-		$mail->setCc('Gmail Africexplorer <africexplorer@gmail.com>');               // Set the Cc: address (es)
-		$mail->setSubject($mess->getNom().'(Tel:'.$mess->getTel().')'.'vient d\'envoyé un message au support via Africexplorer !');                           // Set the subject
-		$mail->setHTML($mess->getTitre().'</br>'.$mess->getContenu()); // Set the HTML (optional)
-		$mail->setTextCharset('utf-8');
-		$mail->setHTMLCharset('utf-8');
-		$result = $mail->send(array('noel.kenfack@yahoo.fr'));      // Send the email
+		$siteweb = $this->params->get('siteweb');
+		$sitename = $this->params->get('sitename');
+		$emailadmin = $this->params->get('emailadmin');
+
+		if($service->email($emailadmin))
+		{
+			$response = $this->_servicemail->sendNotifEmail(
+				$sitename, //Nom du destinataire
+				$emailadmin, //Email Destinataire
+				$mess->getNom().'(Tel:'.$mess->getTel().')'.'vient d\'envoyé un message au support via Africexplorer !', //Objet de l'email
+				$mess->getNom().'(Tel:'.$mess->getTel().')'.'vient d\'envoyé un message au support via Africexplorer !', //Grand Titre de l'email
+				$mess->getTitre().'</br>'.$mess->getContenu(),  //Contenu de l'email
+				'' //Lien à suivre
+			);
+		}
 		
 		$this->get('session')->getFlashBag()->add('information','Votre message a été enregistré avec succès');
 	}else{
 		$this->get('session')->getFlashBag()->add('information','Une ereur a été rencontrée, Vérifier le formulaire !');
 	}
 	}
-	return $this->render('ProduitServiceBundle:Message:contactus.html.twig', array('form'=>$form->createView()));
+	return $this->render('Theme/Produit/Service/Message/contactus.html.twig', array('form'=>$form->createView()));
 }
 
-public function messagerecuAction()
+public function messagerecu()
 {
 	$em = $this->getDoctrine()->getManager();
-	$liste_mess = $em->getRepository('ProduitServiceBundle:Message')
+	$liste_mess = $em->getRepository(Message::class)
 	                 ->myfindAll();
 	foreach($liste_mess as $mess)
 	{
@@ -69,28 +86,28 @@ public function messagerecuAction()
 	}
 	$em->flush();
 	$formsupp = $this->createFormBuilder()->getForm();
-	return $this->render('ProduitServiceBundle:Message:messagerecu.html.twig', array('liste_mess'=>$liste_mess,'formsupp'=>$formsupp->createView()));
+	return $this->render('Theme/Produit/Service/Message/messagerecu.html.twig', array('liste_mess'=>$liste_mess,'formsupp'=>$formsupp->createView()));
 }
 
-public function supprimermessageAction(Message $message)
+public function supprimermessage(Message $message, Request $request)
 {
 	$em = $this->getDoctrine()->getManager();
-		$formsupp = $this->createFormBuilder()->getForm();
-		$request = $this->get('request');
-		if ($request->getMethod() == 'POST') {
-		$formsupp->bind($request);
+	$formsupp = $this->createFormBuilder()->getForm();
+
+	if ($request->getMethod() == 'POST') {
+		$formsupp->handleRequest($request);
 		if ($formsupp->isValid()){
-		$em->remove($message);
-		$em->flush();
-		$this->get('session')->getFlashBag()->add('information','Suppression effectuée avec succès');
+			$em->remove($message);
+			$em->flush();
+			$this->get('session')->getFlashBag()->add('information','Suppression effectuée avec succès');
 		}
-		}else{
+	}else{
 		$this->get('session')->getFlashBag()->add('supprime_mess',$message->getId());
 	    $this->get('session')->getFlashBag()->add('supprime_mess',$message->getTitre());
-		}
+	}
 	return $this->redirect($this->generateUrl('users_adminuser_liste_message_recu'));
 }
-public function validationmessageAction(Message $message)
+public function validationmessage(Message $message)
 {
 	$em = $this->getDoctrine()->getManager();
 	if($message->getValide() == true)

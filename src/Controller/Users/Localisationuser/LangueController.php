@@ -1,73 +1,72 @@
 <?php
-namespace Users\LocalisationuserBundle\Controller;
+namespace App\Controller\Users\Localisationuser;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Users\LocalisationuserBundle\Entity\Langue;
-use Users\LocalisationuserBundle\Form\LangueType;
+use App\Entity\Users\Localisationuser\Langue;
+use App\Form\Users\Localisationuser\LangueType;
+use App\Service\Servicetext\GeneralServicetext;
+use Symfony\Component\HttpFoundation\Request;
 
-class LangueController extends Controller
+class LangueController extends AbstractController
 {
-public function accueillangueAction()
+public function accueillangue(GeneralServicetext $service, Request $request)
 {
-	$service = $this->container->get('general_service.servicefile');
     $em = $this->getDoctrine()->getManager();
 	$lang = new Langue($service);
-	$form = $this->createForm(new LangueType, $lang); 
-    $request = $this->get('request');
+	$form = $this->createForm(LangueType::class, $lang); 
+
 	if ($request->getMethod() == 'POST') {
-    $form->bind($request);
+    $form->handleRequest($request);
     if ($form->isValid()){
-	$em->persist($lang);
-    $em->flush();
-	$this->get('session')->getFlashBag()->add('langue','Langue bien enregistrée.');
-	return $this->redirect($this->generateUrl('admin_user_langue_accueil'));
+		$em->persist($lang);
+		$em->flush();
+		$this->get('session')->getFlashBag()->add('langue','Langue bien enregistrée.');
+		return $this->redirect($this->generateUrl('admin_user_langue_accueil'));
 	}
 	}
-	return $this->render('UsersAdminuserBundle:Localisationuser:accueillangue.html.twig',
+	return $this->render('Theme/Users/Adminuser/Localisationuser/accueillangue.html.twig',
 	array('formlang'=>$form->createView()));
 }
-public function listelangueAction()
+public function listelangue()
 {
 	$em = $this->getDoctrine()->getManager();
-	$liste_lang = $em->getRepository('UsersLocalisationuserBundle:Langue')
+	$liste_lang = $em->getRepository(Langue::class)
 	                 ->findAll();
-	return $this->render('UsersAdminuserBundle:Localisationuser:listelangue.html.twig',
+	return $this->render('Theme/Users/Adminuser/Localisationuser/listelangue.html.twig',
 	array('liste_langue'=>$liste_lang));
 }
-public function modifierlangueAction(Langue $lang)
+public function modifierlangue(Langue $lang, GeneralServicetext $service, Request $request)
 {
-	$service = $this->container->get('general_service.servicefile');
     $em = $this->getDoctrine()->getManager();
-	$form = $this->createForm(new LangueType, $lang); 
-    $request = $this->get('request');
+	$form = $this->createForm(LangueType::class, $lang);
 	if ($request->getMethod() == 'POST') {
 	$lang->setServiceaccent($service);
-    $form->bind($request);
+    $form->handleRequest($request);
     if ($form->isValid()){
-    $em->flush();
-	$this->get('session')->getFlashBag()->add('langue','Modification effectuée.');
-	return $this->redirect($this->generateUrl('admin_user_langue_accueil'));
+		$em->flush();
+		$this->get('session')->getFlashBag()->add('langue','Modification effectuée.');
+		return $this->redirect($this->generateUrl('admin_user_langue_accueil'));
 	}
 	}
-    return $this->render('UsersAdminuserBundle:Localisationuser:modifierlangue.html.twig',
+    return $this->render('Theme/Users/Adminuser/Localisationuser/modifierlangue.html.twig',
 	array('formlang'=>$form->createview(), 'langue'=>$lang));
 }
-public function supprimerlangueAction(Langue $lang)
+public function supprimerlangue(Langue $lang, Request $request)
 {
     $em = $this->getDoctrine()->getManager();
 	$form = $this->createFormBuilder()->getForm(); 
-    $request = $this->get('request');
 	if ($request->getMethod() == 'POST') {
-    $form->bind($request);
+    $form->handleRequest($request);
     if ($form->isValid()){
-	//ici on vérifiera si la langue n'est pas pour les pays déjà enregistrés
-	$em->remove($lang);
-    $em->flush();
-	$this->get('session')->getFlashBag()->add('langue','Langue bien supprimer.');
-	return $this->redirect($this->generateUrl('admin_user_langue_accueil'));
+		//ici on vérifiera si la langue n'est pas pour les pays déjà enregistrés
+		$em->remove($lang);
+		$em->flush();
+		$this->get('session')->getFlashBag()->add('langue','Langue bien supprimer.');
+		return $this->redirect($this->generateUrl('admin_user_langue_accueil'));
 	}
 	}
-    return $this->render('UsersAdminuserBundle:Localisationuser:supprimerlangue.html.twig',
-	array('form'=>$form->createview(), 'langue'=>$lang));}
+    return $this->render('Theme/Users/Adminuser/Localisationuser/supprimerlangue.html.twig',
+	array('form'=>$form->createview(), 'langue'=>$lang));
+}
 }

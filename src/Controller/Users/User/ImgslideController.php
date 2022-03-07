@@ -1,29 +1,40 @@
 <?php
 /*(c) Noel Kenfack <noel.kenfack@yahoo.fr> Février 2015
 */
-namespace Users\UserBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+namespace App\Controller\Users\User;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Users\UserBundle\Entity\Imgslide;
-use Users\UserBundle\Form\ImgslideType;
+use App\Entity\Users\User\Imgslide;
+use App\Form\Users\User\ImgslideType;
+use App\Service\Servicetext\GeneralServicetext;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use App\Service\Email\Singleemail;
 
-class ImgslideController extends Controller
+class ImgslideController extends AbstractController
 {
-public function addnewslideAction()
+private $params;
+private $_servicemail;
+
+public function __construct(ParameterBagInterface $params, Singleemail $servicemail)
 {
-	$service = $this->container->get('general_service.servicetext');
+	$this->params = $params;
+	$this->_servicemail = $servicemail;
+}
+public function addnewslide(GeneralServicetext $service, Request $request)
+{
 	$em = $this->getDoctrine()->getManager();
 	$slide = new Imgslide($service);
-	$formslide = $this->createForm(new ImgslideType, $slide);
-	$request = $this->getRequest();
+	$formslide = $this->createForm(ImgslideType::class, $slide);
+
 	if($request->getMethod() == 'POST')
 	{
-		$formslide->bind($request);
+		$formslide->handleRequest($request);
 		$slide->setUser($this->getUser());
 		$slide->setServicetext($service);
-		$allslide = $em->getRepository('UsersUserBundle:Imgslide')
+		$allslide = $em->getRepository(Imgslide::class)
 	                      ->FindAll();
-		$nbslide = $this->container->getParameter('nbslide');
+		$nbslide = $this->params->get('nbslide');
 		if ($formslide->isValid() and count($allslide) <= $nbslide){
 			$em->persist($slide);
 			$em->flush();
@@ -38,13 +49,13 @@ public function addnewslideAction()
 	}
 	return $this->redirect($this->generateUrl('users_adminuser_accueil_administration'));
 }
-public function deleteslideAction(Imgslide $slide)
+
+public function deleteslide(Imgslide $slide, Request $request)
 {
 	$em = $this->getDoctrine()->getManager();
 	$formsupp = $this->createFormBuilder()->getForm(); 
-    $request = $this->get('request');
 	if ($request->getMethod() == 'POST') {
-    $formsupp->bind($request);
+    $formsupp->handleRequest($request);
     if ($formsupp->isValid()){
 	$em->remove($slide);
     $em->flush();

@@ -1,21 +1,26 @@
 <?php
-namespace Users\LocalisationuserBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-use Users\LocalisationuserBundle\Entity\Continent;
-use Users\LocalisationuserBundle\Entity\Pays;
-use Users\LocalisationuserBundle\Form\PaysType;
+namespace App\Controller\Users\Localisationuser;
 
-class PaysController extends Controller
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use App\Entity\Users\Localisationuser\Continent;
+use App\Entity\Users\Localisationuser\Pays;
+use App\Form\Users\Localisationuser\PaysType;
+use App\Service\Servicetext\GeneralServicetext;
+use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Administration\Superadmin\Icone;
+use App\Entity\Users\User\User;
+use App\Entity\Produit\Produit\Produit;
+
+class PaysController extends AbstractController
 {
-public function ajouterpaysAction()
+public function ajouterpays(GeneralServicetext $service, Request $request)
 {
-	$service = $this->container->get('general_service.servicetext');
 	$pays = new Pays();
-	$formpays = $this->createForm(new PaysType, $pays);
-	$request = $this->get('request');
-	if ($request->getMethod() == 'POST') {
-    $formpays->bind($request);
+	$formpays = $this->createForm(PaysType::class, $pays);
+
+	if($request->getMethod() == 'POST'){
+    $formpays->handleRequest($request);
     if ($formpays->isValid()){
 		if($pays->getDrapeau() !== null)
 		{
@@ -34,40 +39,38 @@ public function ajouterpaysAction()
 	return $this->redirect($this->generateUrl('users_adminuser_accueil_administration'));
 }
 
-public function listepayscontinentAction(Continent $continent,$page)
+public function listepayscontinent(Continent $continent,$page)
 {
 	if($page < 1){
 	return $this->redirect($this->generateUrl('admin_user_localisation'));
 	}
 	$form = $this->createFormBuilder()->getForm();
 	$em = $this->getDoctrine()->getManager();
-	$drapeau = $em->getRepository('AdministrationSuperadminBundle:Icone')
+	$drapeau = $em->getRepository(Icone::class)
 	             ->findOneBy(array('nom'=>'drapeau'));
-	$liste_pays = $em->getRepository('UsersLocalisationuserBundle:Pays')
+	$liste_pays = $em->getRepository(Pays::class)
 	                 ->myfindByContinent($continent->getId(),12, $page);
-	return $this->render('UsersAdminuserBundle:Localisationuser:listepayscontinent.html.twig',
+	return $this->render('Theme/Users/Adminuser/Localisationuser/listepayscontinent.html.twig',
 	array('nombrepage' => ceil(count($liste_pays)/12),'continent'=>$continent,'liste_pays'=>$liste_pays,
 	'page'=>$page,'drapeau'=>$drapeau,'formsupp'=>$form->createView()));
 }
 
-public function modificationpaysAction($id)
+public function modificationpays(GeneralServicetext $service, Request $request, $id)
 {
 	$em = $this->getDoctrine()->getManager();
-	$service = $this->container->get('general_service.servicetext');
 	if(isset($_GET['id']))
 	{
 		$id = $_GET['id'];
 	}else{
 		$id = $id;
 	}
-	$pays = $em->getRepository('UsersLocalisationuserBundle:Pays')
+	$pays = $em->getRepository(Pays::class)
 					->find($id);
 	if($pays != null)
 	{
-    $form2 = $this->createForm(new PaysType, $pays);
-	$request = $this->get('request');
+    $form2 = $this->createForm(PaysType::class, $pays);
 	if ($request->getMethod() == 'POST'){
-		$form2->bind($request);
+		$form2->handleRequest($request);
 		$pays->setServicefile($service);
 		if($pays->getDrapeau() != null)
 		{
@@ -81,7 +84,7 @@ public function modificationpaysAction($id)
 		}
 		return $this->redirect($this->generateUrl('users_adminuser_accueil_administration'));
 	}
-	return $this->render('UsersAdminuserBundle:Localisationuser:modificationpays.html.twig',
+	return $this->render('Theme/Users/Adminuser/Localisationuser/modificationpays.html.twig',
 	array('form2'=>$form2->createView(),'pays'=>$pays));
 	}else{
 		echo 'Echec ! Une erreur a été rencontrée.';
@@ -89,68 +92,65 @@ public function modificationpaysAction($id)
 	}
 }
 
-public function dropcountryuserAction(Pays $pays)
+public function dropcountryuser(Pays $pays, Request $request)
 {
 	$form = $this->createFormBuilder()->getForm();
-    $request = $this->get('request');
 	if ($request->getMethod() == 'POST') {
-    $form->bind($request);
+    $form->handleRequest($request);
     if ($form->isValid()){
-	$em = $this->getDoctrine()->getManager();
-	$liste_user = $em->getRepository('UsersUserBundle:User')
-	                 ->findBy(array('pays'=>$pays));
-	if(count($liste_user) == 0)
-	{
-		$em->remove($pays);
-		$em->flush();
-		$this->get('session')->getFlashBag()->add('information','Suppression effectuée avec succès.');
-	}else{
-		$this->get('session')->getFlashBag()->add('information','Action réfusée; ce pays est reservé par les utilisateurs');
-	}
-	return $this->redirect($this->generateUrl('users_adminuser_accueil_administration'));
+		$em = $this->getDoctrine()->getManager();
+		$liste_user = $em->getRepository(User::class)
+						->findBy(array('pays'=>$pays));
+		if(count($liste_user) == 0)
+		{
+			$em->remove($pays);
+			$em->flush();
+			$this->get('session')->getFlashBag()->add('information','Suppression effectuée avec succès.');
+		}else{
+			$this->get('session')->getFlashBag()->add('information','Action réfusée; ce pays est reservé par les utilisateurs');
+		}
+		return $this->redirect($this->generateUrl('users_adminuser_accueil_administration'));
 	}
 	}
 	$this->get('session')->getFlashBag()->add('pays_supp',''.$pays->getId().'');
 	$this->get('session')->getFlashBag()->add('pays_supp',''.$pays->getNom().'');
 	return $this->redirect($this->generateUrl('users_adminuser_accueil_administration'));
 }
-public function serviceaddpaysAction()
+public function serviceaddpays(GeneralServicetext $service, Request $request)
 {
-	$service = $this->container->get('general_service.servicefile');
 	$pays = new Pays();
-	$formpays = $this->createForm(new PaysType, $pays);
-	$request = $this->get('request');
+	$formpays = $this->createForm(PaysType::class, $pays);
 	if ($request->getMethod() == 'POST'){
-    $formpays->bind($request);
+    $formpays->handleRequest($request);
     if ($formpays->isValid()){
 	$pays->getDrapeau()->setServicefile($service);
 	$em = $this->getDoctrine()->getManager();
-	$liste_pays = $em->getRepository('UsersLocalisationuserBundle:Pays')
+	$liste_pays = $em->getRepository(Pays::class)
 	                 ->findAll();
 	if(count($liste_pays) == 0)
 	{
-	$em->persist($pays);
-    $em->flush();
-	$this->get('session')->getFlashBag()->add('information','le pays a été bien enregistrée.');
+		$em->persist($pays);
+		$em->flush();
+		$this->get('session')->getFlashBag()->add('information','le pays a été bien enregistrée.');
 	}else{
-	$pays->getContinent()->removePay($pays);
-	$this->get('session')->getFlashBag()->add('information','Action réfusée!!! Les données issus de cette interface ne peuvent plus être validées.');
+		$pays->getContinent()->removePay($pays);
+		$this->get('session')->getFlashBag()->add('information','Action réfusée!!! Les données issus de cette interface ne peuvent plus être validées.');
 	}
 	}
 	}
 	return $this->redirect($this->generateUrl('general_service_pays_continent'));
 }
 
-public function autosearchcountryAction($position = 'other')
+public function autosearchcountry($position = 'other')
 {
 	$em = $this->getDoctrine()->getManager();
-	$liste_pays = $em->getRepository('UsersLocalisationuserBundle:Pays')
+	$liste_pays = $em->getRepository(Pays::class)
 	                      ->findPaysContinent('afrique', 100);
-	return $this->render('UsersLocalisationuserBundle:Pays:autosearchcountry.html.twig', 
+	return $this->render('Theme/Users/Localisationuser/Pays/autosearchcountry.html.twig', 
 	array('liste_pays'=>$liste_pays,'position'=>$position));
 }
 
-public function chargementpaysAction()
+public function chargementpays()
 {
 	$itemapp = '';
 	$em = $this->getDoctrine()->getManager();
@@ -159,12 +159,11 @@ public function chargementpaysAction()
 		$itemapp = $_POST['itemapp'];
 	}
 	
-	$liste_pays = $em->getRepository('UsersLocalisationuserBundle:Pays')
+	$liste_pays = $em->getRepository(Pays::class)
 	                 ->myFindBy(250);
-	$produit = $em->getRepository('ProduitProduitBundle:Produit')
+	$produit = $em->getRepository(Produit::class)
 	               ->findOneProduit('afrique');
-	return $this->render('UsersLocalisationuserBundle:Pays:chargementpays.html.twig', 
+	return $this->render('Theme/Users/Localisationuser/Pays/chargementpays.html.twig', 
 	array('liste_pays'=>$liste_pays,'itemapp'=>$itemapp,'produit'=>$produit));
 }
-
 }

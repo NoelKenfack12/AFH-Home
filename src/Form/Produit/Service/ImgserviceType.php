@@ -1,10 +1,15 @@
 <?php
 
-namespace Produit\ServiceBundle\Form;
+namespace App\Form\Produit\Service;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use App\Entity\Produit\Service\Imgservice;
 
 class ImgserviceType extends AbstractType
 {
@@ -15,17 +20,17 @@ class ImgserviceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file','file',array('label_attr'=>array('style'=>'display: none;')))
+            ->add('file',FileType::class,array('label_attr'=>array('style'=>'display: none;')))
         ;
     }
     
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Produit\ServiceBundle\Entity\Imgservice'
+            'data_class' => Imgservice::class
         ));
     }
 

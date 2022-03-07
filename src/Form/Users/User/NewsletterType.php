@@ -1,10 +1,13 @@
 <?php
 
-namespace Users\UserBundle\Form;
+namespace App\Form\Users\User;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use App\Entity\Users\User\Newsletter;
 
 class NewsletterType extends AbstractType
 {
@@ -15,18 +18,18 @@ class NewsletterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email','text')
-            ->add('nom','text')
+            ->add('email',TextType::class)
+            ->add('nom',TextType::class)
         ;
     }
     
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Users\UserBundle\Entity\Newsletter'
+            'data_class' => Newsletter::class
         ));
     }
 

@@ -1,19 +1,20 @@
 <?php
 
-namespace Users\LocalisationuserBundle\Entity;
+namespace App\Entity\Users\Localisationuser;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
-use General\ValidatorBundle\Validatorfile\Image;
+use App\Service\Servicetext\GeneralServicetext;
+use App\Validator\Validatorfile\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Repository\Users\Localisationuser\DrapeauRepository;
 
 /**
  * Drapeau
  *
  * @ORM\Table("drapeau")
- * @ORM\Entity(repositoryClass="Users\LocalisationuserBundle\Entity\DrapeauRepository")
+ * @ORM\Entity(repositoryClass=DrapeauRepository::class)
  ** @ORM\HasLifecycleCallbacks
- */
+*/
 class Drapeau
 {
     /**
@@ -52,8 +53,8 @@ class Drapeau
 	
 	public function __construct()
 	{
-	$this->src ="source";
-	$this->alt ="alternatif";
+		$this->src ="source";
+		$this->alt ="alternatif";
 	}
 
     /**
@@ -111,7 +112,7 @@ class Drapeau
     {
         return $this->alt;
     }
-	//permet la récupération du nom du fichier temporaire
+	//permet la rï¿½cupï¿½ration du nom du fichier temporaire
     public function getTempFilename()
     {
     return $this->tempFilename;
@@ -121,7 +122,7 @@ class Drapeau
 	{
 	$this->tempFilename=$temp;
 	}
-	// permet la récupération du nom du fiechier
+	// permet la rï¿½cupï¿½ration du nom du fiechier
 	public function getFile()
 	{
 	return $this->file;
@@ -147,11 +148,11 @@ class Drapeau
 	public function setFile(UploadedFile $file)
 	{
 	$this->file = $file;
-	// On vérifie si on avait déjà un fichier pour cette entité
+	// On vï¿½rifie si on avait dï¿½jï¿½ un fichier pour cette entitï¿½
 	if (null !== $this->src) {
 	// On sauvegarde l'extension du fichier pour le supprimer plus tard
 	$this->tempFilename = $this->src;
-	// On réinitialise les valeurs des attributs url et alt
+	// On rï¿½initialise les valeurs des attributs url et alt
 	$this->src = null;
 	$this->alt = null;
 	}
@@ -200,7 +201,7 @@ class Drapeau
 	*/
 	public function postRemoveUpload()
 	{
-	// En PostRemove, on n'a pas accès à l'id, on utilise notre nom sauvegardé
+	// En PostRemove, on n'a pas accï¿½s ï¿½ l'id, on utilise notre nom sauvegardï¿½
 	if (file_exists($this->tempFilename)) {
 	// On supprime le fichier
 	unlink($this->tempFilename);

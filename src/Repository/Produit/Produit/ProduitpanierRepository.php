@@ -1,6 +1,6 @@
 <?php
 
-namespace Produit\ProduitBundle\Entity;
+namespace App\Repository\Produit\Produit;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -12,16 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProduitpanierRepository extends EntityRepository
 {
-public function myfindBy($id)
-{
-	$query = $this->createQueryBuilder('pp')
-	              ->leftJoin('pp.produit','p')
-	              ->leftJoin('pp.panier','pa')
-				  ->addSelect('p')
-				  ->where('pa.id = :id')
-				  ->setParameter('id',$id)
-	              ->orderBy('pp.date','DESC')
-                  ->getQuery();
-	return $query->getResult();
-}
+	public function myfindBy($id)
+	{
+		$query = $this->createQueryBuilder('pp')
+					->leftJoin('pp.produit','p')
+					->leftJoin('pp.panier','pa')
+					->addSelect('p')
+					->where('pa.id = :id')
+					->setParameter('id',$id)
+					->orderBy('pp.date','DESC')
+					->getQuery();
+		return $query->getResult();
+	}
 }

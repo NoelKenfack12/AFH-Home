@@ -1,10 +1,11 @@
-{% extends "UsersAdminuserBundle::layoutadmin.html.twig" %}
+{% extends "Theme/Users/Adminuser/layoutadmin.html.twig" %}
 {% block meta %}
-{{ parent() }}
-<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
-<meta name="author" content="Noel Kenfack"/>
-<meta name="description" content="{{ site }} | Administration | Cameroun | {{ metier }}"/>
+	{{ parent() }}
+	<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
+	<meta name="author" content="Noel Kenfack"/>
+	<meta name="description" content="{{ site }} | Administration | Cameroun | {{ metier }}"/>
 {% endblock %}
+
 {% block title %}
 {{ parent() }} | Accueil Admin
 {% endblock %}
@@ -20,7 +21,7 @@
             <div id="profile-page-content" class="row">
               <!-- profile-page-sidebar-->
               <div id="profile-page-sidebar" class="col s12 m4">
-			  {{ render(controller("UsersAdminuserBundle:Accueil:menuadmin")) }}
+			  {{ render(controller("App\\Controller\\Users\\Adminuser\\AccueilController:menuadmin")) }}
 			  </div>
               <!-- profile-page-sidebar-->
 			  <div id="profile-page-wall" class="col s12 m8">
@@ -88,7 +89,7 @@
 				</div>
 				
 				<div>
-    		    <form action="{{ path('users_adminuser_message_email_new_letter') }}" method="post" {{ form_enctype(form) }}>
+				{{ form_start(form, {'attr': {'class': 'row', 'action': path('users_adminuser_message_email_new_letter') }}) }}
     			  <div class="col-sm-12">
 				     <span style="color:red;">{{ form_errors(form) }}</span>
 					 <span style="color:red;">{{ form_errors(form.titre) }}</span>
@@ -112,8 +113,7 @@
 		          </div>
 		          </div>
 		         <div class="clear"></div>
-				 {{ form_rest(form) }}
-		        </form>
+				 {{ form_end(form) }}
   			   
 				</div> 
 			  </div>

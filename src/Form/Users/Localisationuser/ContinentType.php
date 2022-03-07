@@ -1,10 +1,14 @@
 <?php
 
-namespace Users\LocalisationuserBundle\Form;
+namespace App\Form\Users\Localisationuser;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use App\Entity\Users\Localisationuser\Continent;
 
 class ContinentType extends AbstractType
 {
@@ -15,21 +19,21 @@ class ContinentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom','text', array('attr'=>array('class'=>'form-control input-lg','placeholder'=>'Non du continent')))
-			->add('citoyen','text', array('attr'=>array('class'=>'form-control input-lg','placeholder'=>'Non des citoyens de ce continent')))
-			->add('citoyenne','text', array('attr'=>array('class'=>'form-control input-lg','placeholder'=>'Non des citoyennes de ce continent')))
-			->add('file','file',array('required'=>false,'label_attr'=>array('class'=>'file-imbriq')))
-			->add('siteweb','url', array('attr'=>array('class'=>'form-control input-lg','placeholder'=>'Site Africexplorer'),'required'=>false))
+            ->add('nom',TextType::class, array('attr'=>array('class'=>'form-control input-lg','placeholder'=>'Non du continent')))
+			->add('citoyen',TextType::class, array('attr'=>array('class'=>'form-control input-lg','placeholder'=>'Non des citoyens de ce continent')))
+			->add('citoyenne',TextType::class, array('attr'=>array('class'=>'form-control input-lg','placeholder'=>'Non des citoyennes de ce continent')))
+			->add('file',FileType::class,array('required'=>false,'label_attr'=>array('class'=>'file-imbriq')))
+			->add('siteweb',UrlType::class, array('attr'=>array('class'=>'form-control input-lg','placeholder'=>'Site Africexplorer'),'required'=>false))
         ;
     }
     
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Users\LocalisationuserBundle\Entity\Continent'
+            'data_class' => Continent::class
         ));
     }
 

@@ -492,11 +492,18 @@ padding: 18px 15px; position: absolute; left: 0px; top: 0px; width: 100%;">
 			</a>
 		</div>
 		{% endfor %}
-
-		
 	</div>
 
 	<div style="box-shadow:0px 0px 70px #888888; padding: 7px; border-radius: 7px; position: absolute; left: 0px; right: 0px; margin-top: 10px;">
+		{% if app.user != null %}
+			<a href="{{ path('users_user_user_accueil', {'id': app.user.id }) }}" style="float: right;">
+				<span class="fa fa-user"></span> My Account
+			</a>
+		{% else %}
+			<a href="{{ oauthloginUrl }}" style="float: right;">
+				<span class="fa fa-user"></span> My Account
+			</a>
+		{% endif %}
 		Applications AFH
 	</div>
 </div>

@@ -1,18 +1,19 @@
 <?php
 
-namespace Produit\ServiceBundle\Entity;
+namespace App\Entity\Produit\Service;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
-use General\ValidatorBundle\Validatorfile\Image;
+use App\Service\Servicetext\GeneralServicetext;
+use App\Validator\Validatorfile\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Repository\Produit\Service\ImgserviceRepository;
 
 /**
  * Imgservice
  *
  * @ORM\Table("imgservice")
- * @ORM\Entity(repositoryClass="Produit\ServiceBundle\Entity\ImgserviceRepository")
-  ** @ORM\HasLifecycleCallbacks
+ * @ORM\Entity(repositoryClass=ImgserviceRepository::class)
+ ** @ORM\HasLifecycleCallbacks
  */
 class Imgservice
 {

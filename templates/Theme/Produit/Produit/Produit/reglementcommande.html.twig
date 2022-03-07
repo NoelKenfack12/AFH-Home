@@ -1,18 +1,19 @@
-{% extends "UsersUserBundle::layoutuser.html.twig" %}
+{% extends "Theme/Users/User/layoutuser.html.twig" %}
 {% block meta %}
-{{ parent() }}
-<meta name="keywords" content="{{ site }}, Business, Innovation,Boutique,e-commerce,{{ site }},{{ metier  }}, {{ site }},site web, hébergement heb Cameroun, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, cameroun, site cameroun,hébergement web cameroun,site moins cher./>
-<meta name="author" content="Noel Kenfack"/>
-<meta name="description" content="{{ site }} | {{ metier }} | Cameroun | Commande | Réglement, {{ site }},site web, hébergement heb Cameroun, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, cameroun, site cameroun,hébergement web cameroun,site moins cher." />
+  {{ parent() }}
+  <meta name="keywords" content="{{ site }}, Business, Innovation,Boutique,e-commerce,{{ site }},{{ metier  }}, {{ site }},site web, hébergement heb Cameroun, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, cameroun, site cameroun,hébergement web cameroun,site moins cher./>
+  <meta name="author" content="Noel Kenfack"/>
+  <meta name="description" content="{{ site }} | {{ metier }} | Cameroun | Commande | Réglement, {{ site }},site web, hébergement heb Cameroun, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, cameroun, site cameroun,hébergement web cameroun,site moins cher." />
 {% endblock %}
+
 {% block title %}
-{{ parent() }} | Commande | {{ user.name(20) }} , {{ site }},site web, hébergement heb Cameroun, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, cameroun, site cameroun,hébergement web cameroun,site moins cher.
+  {{ parent() }} | Commande | {{ user.name(20) }} , {{ site }},site web, hébergement heb Cameroun, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, cameroun, site cameroun,hébergement web cameroun,site moins cher.
 {% endblock %}
 
 {% block userblog_body %}
 <!-- START CONTENT -->
-      <section id="content" class="variation-contenu" value="">
-	  {% include 'GeneralTemplateBundle:Menu:menusearch.html.twig' %}
+    <section id="content" class="variation-contenu" value="">
+	  {% include 'Theme/General/Template/Menu/menusearch.html.twig' %}
 			<!--card stats start-->
 		  <!--start container-->
         <div class="container" >
@@ -50,7 +51,7 @@
                       <p class="strong">Date</p>
                       <h4 class="header">{{ panier.date|date('d') }}.{{ panier.date|date('m') }}.{{ panier.date|date('y') }}</h4>
                     </div>
-					<div class="col s12 m3 l3">
+					          <div class="col s12 m3 l3">
                       <p class="strong">Domaines retenus</p>
                       <h6 style="font-size: 13px;">{{ panier.domaine }}</h6>
                     </div>
@@ -81,24 +82,23 @@
                         <td>{{ prodpan.produit.newprise }}</td>
                         <td>
 						<form action="" method="post" >
-						<select id="{{ prodpan.id }}" name="quantite" class="frm-field required modifierproduit" style="width: 100%;" required>
-						<option value="" name="country">Modifier la quantité</option> 
-						<option value="1" name="country" {% if prodpan.quantite == 1 %}selected{% endif %}>1</option> 
-						<option value="2" name="country" {% if prodpan.quantite == 2 %}selected{% endif %}>2</option> 
-						<option value="3" name="country" {% if prodpan.quantite == 3 %}selected{% endif %}>3</option> 
-						<option value="4" name="country" {% if prodpan.quantite == 4 %}selected{% endif %}>4</option> 
-						<option value="5" name="country" {% if prodpan.quantite == 5 %}selected{% endif %}>5</option> 
-						<option value="6" name="country" {% if prodpan.quantite == 6 %}selected{% endif %}>6</option> 
-						<option value="7" name="country" {% if prodpan.quantite == 7 %}selected{% endif %}>7</option> 
-						<option value="8" name="country" {% if prodpan.quantite == 8 %}selected{% endif %}>8</option> 
-						<option value="9" name="country" {% if prodpan.quantite == 9 %}selected{% endif %}>9</option> 
-						<option value="10" name="country" {% if prodpan.quantite == 10 %}selected{% endif %}>10</option> 
-						</select>
+              <select id="{{ prodpan.id }}" name="quantite" class="frm-field required modifierproduit" style="width: 100%;" required>
+                <option value="" name="country">Modifier la quantité</option> 
+                <option value="1" name="country" {% if prodpan.quantite == 1 %}selected{% endif %}>1</option> 
+                <option value="2" name="country" {% if prodpan.quantite == 2 %}selected{% endif %}>2</option> 
+                <option value="3" name="country" {% if prodpan.quantite == 3 %}selected{% endif %}>3</option> 
+                <option value="4" name="country" {% if prodpan.quantite == 4 %}selected{% endif %}>4</option> 
+                <option value="5" name="country" {% if prodpan.quantite == 5 %}selected{% endif %}>5</option> 
+                <option value="6" name="country" {% if prodpan.quantite == 6 %}selected{% endif %}>6</option> 
+                <option value="7" name="country" {% if prodpan.quantite == 7 %}selected{% endif %}>7</option> 
+                <option value="8" name="country" {% if prodpan.quantite == 8 %}selected{% endif %}>8</option> 
+                <option value="9" name="country" {% if prodpan.quantite == 9 %}selected{% endif %}>9</option> 
+                <option value="10" name="country" {% if prodpan.quantite == 10 %}selected{% endif %}>10</option> 
+              </select>
 						</form>
 						</td>
 						{% set cout = prodpan.produit.newprise  * prodpan.quantite %}
-						
-                        <td>{{ cout }}</td>
+						<td>{{ cout }}</td>
 						<td>
 						<a href="{{ path('produit_produit_elever_produit_commande',{'id': prodpan.id }) }}" title="Supprimer" class="btn-floating waves-effect waves-light deep-orange right"><i class="mdi-content-clear"></i></a>
 						<a href="{{ path('produit_produit_detail_produit_market', {'id': prodpan.produit.id }) }}" title="Description du produit" class="btn-floating waves-effect waves-light green right" style="margin-right: 3px;"><i class="mdi-action-visibility"></i></a>
@@ -180,8 +180,6 @@
 		  </div>
 		</div>
 	  </section>
-	  
-			 
 {% endblock %}
 
 {% block javascripttemplate %}
@@ -195,21 +193,21 @@ $('.modifierproduit').on('change', function(){
   $('.variation-contenu').attr('value',1);
   $(link).html('Patientez ...'); //attente du résultat
   $.get('{{ path('produit_produit_editer_courant_commande') }}',{ id: id, quantite: quantity }, function(data) {
-  $('.variation-contenu').attr('value',0);
-  if(data == 1)
-  {
-  window.location.reload();
-  }else{
-  alert('Une Erreur rencontrée');
-  window.location.reload();
-  }
+    $('.variation-contenu').attr('value',0);
+    if(data == 1)
+    {
+      window.location.reload();
+    }else{
+      alert('Une Erreur rencontrée');
+      window.location.reload();
+    }
   });
   }
 });
 
 $('.commande-alivrer').on('submit',function(){
-$(this).hide('slow');
-$('.remplire-formulaire').show('slow');
-return false;
+  $(this).hide('slow');
+  $('.remplire-formulaire').show('slow');
+  return false;
 });
 {% endblock %}

@@ -1,19 +1,21 @@
 <?php
 
-namespace Produit\ProduitBundle\Entity;
+namespace App\Entity\Produit\Produit;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
-use General\ValidatorBundle\Validatorfile\Image;
+use App\Service\Servicetext\GeneralServicetext;
+use App\Validator\Validatorfile\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Repository\Produit\Produit\ImgproduitRepository;
+use App\Entity\Produit\Produit\Produit;
 
 /**
  * Imgproduit
  *
  * @ORM\Table("imgproduit")
- * @ORM\Entity(repositoryClass="Produit\ProduitBundle\Entity\ImgproduitRepository")
+ * @ORM\Entity(repositoryClass=ImgproduitRepository::class)
  ** @ORM\HasLifecycleCallbacks
  */
 class Imgproduit
@@ -42,7 +44,7 @@ class Imgproduit
     private $alt;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Produit\ProduitBundle\Entity\Produit", inversedBy="imgproduits")
+       * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="imgproduits")
        * @ORM\JoinColumn(nullable=false)
         */
 	private $produit;
@@ -67,9 +69,9 @@ class Imgproduit
 	
 	public function __construct()
 	{
-	$this->src ="source";
-	$this->alt ="alternatif";
-	$this->date = new \Datetime();
+        $this->src ="source";
+        $this->alt ="alternatif";
+        $this->date = new \Datetime();
 	}
 
     /**
@@ -130,11 +132,9 @@ class Imgproduit
 
     /**
      * Set produit
-     *
-     * @param \Produit\ProduitBundle\Entity\Produit $produit
      * @return Imgproduit
      */
-    public function setProduit(\Produit\ProduitBundle\Entity\Produit $produit)
+    public function setProduit(Produit $produit): self
     {
         $this->produit = $produit;
 		$produit->addImgproduit($this);
@@ -144,10 +144,8 @@ class Imgproduit
 
     /**
      * Get produit
-     *
-     * @return \Produit\ProduitBundle\Entity\Produit 
      */
-    public function getProduit()
+    public function getProduit(): ?Produit
     {
         return $this->produit;
     }

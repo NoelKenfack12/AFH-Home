@@ -93,7 +93,7 @@
 
 <div class="row content-stat-application-current-year error-manager-catalogue" value="0" style="margin-top: 0px!important; margin-bottom: 35px!important;">
 	{% if lastyear|default(null) != null %}
-		{{ render(controller("ProduitServiceBundle:Service:applicationstat", {'position': 0, 'anneeid': lastyear.id})) }}
+		{{ render(controller("App\\Controller\\Produit\\Service\\ServiceController:applicationstat", {'position': 0, 'anneeid': lastyear.id})) }}
 		
 		<script type="text/javascript">
 			setTimeout(function() { uploadSlideCatalogue({{ lastyear.id }}); }, 500);

@@ -1,18 +1,22 @@
 <?php
 
-namespace Produit\ServiceBundle\Entity;
+namespace App\Entity\Produit\Service;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Service\Servicetext\GeneralServicetext;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Repository\Produit\Service\EvenementRepository;
+use App\Entity\Users\User\User;
+use App\Entity\Produit\Service\Service;
+use App\Entity\Produit\Produit\Produit;
 
 /**
  * Evenement
  *
  * @ORM\Table("evenement")
- * @ORM\Entity(repositoryClass="Produit\ServiceBundle\Entity\EvenementRepository")
+ * @ORM\Entity(repositoryClass=EvenementRepository::class)
  */
 class Evenement
 {
@@ -49,27 +53,27 @@ class Evenement
     private $date;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+       * @ORM\ManyToOne(targetEntity=User::class)
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $user;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Produit\ServiceBundle\Entity\Service")
+       * @ORM\ManyToOne(targetEntity=Service::class)
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $indicateur;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Produit\ServiceBundle\Entity\Service")
+       * @ORM\ManyToOne(targetEntity=Service::class)
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $annee;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Produit\ProduitBundle\Entity\Produit")
+       * @ORM\ManyToOne(targetEntity=Produit::class)
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $produit;
 	
 	// variable du service de normalisation des noms des pays.
@@ -136,11 +140,9 @@ class Evenement
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Evenement
      */
-    public function setUser(\Users\UserBundle\Entity\User $user)
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
@@ -149,10 +151,8 @@ class Evenement
 
     /**
      * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
@@ -205,11 +205,9 @@ class Evenement
 
     /**
      * Set indicateur
-     *
-     * @param \Produit\ServiceBundle\Entity\Service $indicateur
      * @return Evenement
      */
-    public function setIndicateur(\Produit\ServiceBundle\Entity\Service $indicateur)
+    public function setIndicateur(Service $indicateur): self
     {
         $this->indicateur = $indicateur;
 
@@ -218,21 +216,17 @@ class Evenement
 
     /**
      * Get indicateur
-     *
-     * @return \Produit\ServiceBundle\Entity\Service 
      */
-    public function getIndicateur()
+    public function getIndicateur(): ?Service
     {
         return $this->indicateur;
     }
 
     /**
      * Set annee
-     *
-     * @param \Produit\ServiceBundle\Entity\Service $annee
      * @return Evenement
      */
-    public function setAnnee(\Produit\ServiceBundle\Entity\Service $annee)
+    public function setAnnee(Service $annee): self
     {
         $this->annee = $annee;
 
@@ -241,21 +235,17 @@ class Evenement
 
     /**
      * Get annee
-     *
-     * @return \Produit\ServiceBundle\Entity\Service 
      */
-    public function getAnnee()
+    public function getAnnee(): ?Service
     {
         return $this->annee;
     }
 
     /**
      * Set produit
-     *
-     * @param \Produit\ProduitBundle\Entity\Produit $produit
      * @return Evenement
      */
-    public function setProduit(\Produit\ProduitBundle\Entity\Produit $produit)
+    public function setProduit(Produit $produit): self
     {
         $this->produit = $produit;
 
@@ -264,10 +254,8 @@ class Evenement
 
     /**
      * Get produit
-     *
-     * @return \Produit\ProduitBundle\Entity\Produit 
      */
-    public function getProduit()
+    public function getProduit(): ?Produit
     {
         return $this->produit;
     }

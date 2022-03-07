@@ -1,19 +1,24 @@
 <?php
 
-namespace Produit\ProduitBundle\Entity;
+namespace App\Entity\Produit\Produit;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
-use General\ValidatorBundle\Validatorfile\Image;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Service\Servicetext\GeneralServicetext;
+use App\Validator\Validatorfile\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Repository\Produit\Produit\SouscategorieRepository;
+use App\Entity\Users\User\User;
+use App\Entity\Produit\Produit\Categorie;
+use App\Entity\Produit\Produit\Produit;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Souscategorie
  *
  * @ORM\Table("souscategorie")
- * @ORM\Entity(repositoryClass="Produit\ProduitBundle\Entity\SouscategorieRepository")
+ * @ORM\Entity(repositoryClass=SouscategorieRepository::class)
   ** @ORM\HasLifecycleCallbacks
  */
 class Souscategorie
@@ -59,20 +64,20 @@ class Souscategorie
 
 	
 	/**
-      * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+      * @ORM\ManyToOne(targetEntity=User::class)
       * @ORM\JoinColumn(nullable=false)
-      */
+    */
     private $user;
 	
 	 /**
-       * @ORM\ManyToOne(targetEntity="Produit\ProduitBundle\Entity\Categorie", inversedBy="souscategories")
+       * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="souscategories")
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $categorie;
 	
 	/**
-         * @ORM\OneToMany(targetEntity="Produit\ProduitBundle\Entity\Produit", mappedBy="souscategorie")
-         */
+     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="souscategorie")
+     */
     private $produits;
 	
 	/**
@@ -188,11 +193,9 @@ class Souscategorie
 
     /**
      * Set categorie
-     *
-     * @param \Produit\ProduitBundle\Entity\Categorie $categorie
      * @return Souscategorie
      */
-    public function setCategorie(\Produit\ProduitBundle\Entity\Categorie $categorie)
+    public function setCategorie(Categorie $categorie): self
     {
         $this->categorie = $categorie;
 		$categorie->addSouscategory($this);
@@ -202,21 +205,17 @@ class Souscategorie
 
     /**
      * Get categorie
-     *
-     * @return \Produit\ProduitBundle\Entity\Categorie 
      */
-    public function getCategorie()
+    public function getCategorie(): ?Categorie
     {
         return $this->categorie;
     }
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Souscategorie
      */
-    public function setUser(\Users\UserBundle\Entity\User $user)
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
@@ -224,44 +223,36 @@ class Souscategorie
     }
 
     /**
-     * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
+     * Get user 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
     /**
      * Add produits
-     *
-     * @param \Produit\ProduitBundle\Entity\Produit $produits
      * @return Souscategorie
      */
-    public function addProduit(\Produit\ProduitBundle\Entity\Produit $produits)
+    public function addProduit(Produit $produits): self
     {
         $this->produits[] = $produits;
 
         return $this;
     }
-
+    
     /**
      * Remove produits
-     *
-     * @param \Produit\ProduitBundle\Entity\Produit $produits
      */
-    public function removeProduit(\Produit\ProduitBundle\Entity\Produit $produits)
+    public function removeProduit(Produit $produits)
     {
         $this->produits->removeElement($produits);
     }
 
     /**
      * Get produits
-     *
-     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getProduits()
+    public function getProduits(): ?Collection
     {
         return $this->produits;
     }

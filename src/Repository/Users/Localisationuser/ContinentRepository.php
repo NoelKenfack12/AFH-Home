@@ -1,6 +1,6 @@
 <?php
 
-namespace Users\LocalisationuserBundle\Entity;
+namespace App\Repository\Users\Localisationuser;
 
 use Doctrine\ORM\EntityRepository;
 

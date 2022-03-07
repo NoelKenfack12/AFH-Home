@@ -1,10 +1,11 @@
-{% extends "UsersUserBundle::layoutuser.html.twig" %}
+{% extends "Theme/Users/User/layoutuser.html.twig" %}
 {% block meta %}
-{{ parent() }}
-<meta name="keywords" content="{{ site }},site web, hébergement heb Cameroun, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, cameroun, site cameroun,hébergement web cameroun,site moins cher."/>
-<meta name="author" content="Noel Kenfack"/>
-<meta name="description" content="{{ site }} | Hébergement web, Site web, Hébergement revendeur pas cher, domaine à partir de 10000F." />
+	{{ parent() }}
+	<meta name="keywords" content="{{ site }},site web, hébergement heb Cameroun, hébergement web illimité,hébergement, site internet, site, gratuite,hébergement revendeur,template,domaine, nom de domaine, cameroun, site cameroun,hébergement web cameroun,site moins cher."/>
+	<meta name="author" content="Noel Kenfack"/>
+	<meta name="description" content="{{ site }} | Hébergement web, Site web, Hébergement revendeur pas cher, domaine à partir de 10000F." />
 {% endblock %}
+
 {% block title %}
 {{ parent() }} | Hébergement web, Site web, Hébergement revendeur pas cher, domaine à partir de 10000F.
 {% endblock %}
@@ -23,14 +24,13 @@
 	  <p>Email: {{ user.username }}</p>
 	  <p>Pay: {% if user.pays != null %}{{ user.pays.nom }}{% else %}Aucun{% endif %}</p>
 	  {% if app.user == user %}
-	  <form action="{{ path('users_user_modifier_profil',{'id': user.id }) }}" method="post" {{ form_enctype(form) }}>
+	  {{ form_start(form, {'attr': {'action': path('users_user_modifier_profil',{'id': user.id }) }}) }}
 		<span style="color:red;">{{ form_errors(form.file) }}</span>
 		<div style="margin-bottom: 7px; margin-top: 7px;">
 		{{ form_widget(form.file) }}
 		</div>
 		<div style=" margin-bottom: 7px; margin-top: 20px;"><button class="btn btn-primary">Modifier la photo</button></div>
-		{{ form_rest(form) }}
-	  </form>
+		{{ form_end(form) }}
 	  {% endif %}
 	  
 	  {# % if is_granted('ROLE_ADMIN') %  #}

@@ -1,10 +1,13 @@
 <?php
 
-namespace Users\UserBundle\Form;
+namespace App\Form\Users\User;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use App\Entity\Users\User\Imgslide;
 
 class ImgslideType extends AbstractType
 {
@@ -15,19 +18,19 @@ class ImgslideType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file','file')
-            ->add('titre','text')
-            ->add('description','text')
+            ->add('file',FileType::class)
+            ->add('titre',TextType::class)
+            ->add('description',TextType::class)
         ;
     }
     
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Users\UserBundle\Entity\Imgslide'
+            'data_class' => Imgslide::class
         ));
     }
 

@@ -1,17 +1,19 @@
 <?php
 
-namespace Users\UserBundle\Entity;
+namespace App\Entity\Users\User;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToArrayTransformer;
+use App\Repository\Users\User\InvestissementRepository;
+use App\Entity\Users\User\User;
 
 /**
  * Investissement
  *
  * @ORM\Table("investissement")
- * @ORM\Entity(repositoryClass="Users\UserBundle\Entity\InvestissementRepository")
-  ** @ORM\HasLifecycleCallbacks
- */
+ * @ORM\Entity(repositoryClass=InvestissementRepository::class)
+ ** @ORM\HasLifecycleCallbacks
+*/
 class Investissement
 {
     /**
@@ -87,9 +89,9 @@ class Investissement
     private $date;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+       * @ORM\ManyToOne(targetEntity=User::class)
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $user;
 	
 	public function __construct()
@@ -293,11 +295,9 @@ class Investissement
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Investissement
      */
-    public function setUser(\Users\UserBundle\Entity\User $user)
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
@@ -306,10 +306,8 @@ class Investissement
 
     /**
      * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }

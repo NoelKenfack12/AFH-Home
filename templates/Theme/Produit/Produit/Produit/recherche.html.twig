@@ -1,105 +1,106 @@
-{% extends "UsersUserBundle::layoutuser.html.twig" %}
+{% extends "Theme/Users/User/layoutuser.html.twig" %}
 {% block meta %}
-{{ parent() }}
-<meta name="keywords" content="{{ site }}, Business, Innovation,Boutique,e-commerce,{{ metier }}"/>
-<meta name="author" content="Noel Kenfack"/>
-<meta name="description" content="{{ site }} | Cameroun | {{ metier }}" />
+	{{ parent() }}
+	<meta name="keywords" content="{{ site }}, Business, Innovation,Boutique,e-commerce,{{ metier }}"/>
+	<meta name="author" content="Noel Kenfack"/>
+	<meta name="description" content="{{ site }} | Cameroun | {{ metier }}" />
 {% endblock %}
+
 {% block title %}
 {{ parent() }} | {{ metier }} | {{ site }} 
 {% endblock %}
 
 {% block userblog_body %}
-			 <div class="main">
-                <div class="wrap">
-             	  <div class="content-top">
-				  <h2>Résultat de la recherche pour le mot clé  <span style="margin-left: 7px; margin-right: 7px;">/</span> {{ donnee }} </h2>
-				  </div>
-			<div class="content-bottom">
-			  {% if liste_produit|length % 3 == 0 %}
-			  {% set nbre = liste_produit|length//3 %}
-			  {% else %}
-			  {% set nbre = (liste_produit|length)//3 + 1 %}
-			  {% endif %}
-              {% set begin = 0 %}
-			  {% set end = 3 %}
-			  {% for i in range(0,nbre-1) %}
-				<div class="box1">
-				{% for produit in liste_produit|slice(begin,end)  %}
-				   <div class="col_1_of_single1 span_1_of_single1"><a href="{{ path('produit_produit_detail_produit_market', {'id': produit.id }) }}">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">{{ produit.nom }}</h3>
-					  	<p class="m_2">{{ produit.description }}</p>
-				         <div class="grid_img">
-						   <div class="css3">
-						   {% set nbre = random() % produit.imgproduits|length %}
-						   {% for img in produit.imgproduits %}
-						   {% if loop.index0 == nbre %}
-						   <img src="{{ asset(img.getWebpath) }}" alt="" style="height: 180px;"/>
-						   {% endif %}
-						   {% endfor %}
-						   </div>
-					          <div class="mask1">
-	                       		<div class="info">Plus de détail</div>
-			                  </div>
-	                    </div>
-                       <div class="price"><span style="text-decoration: line-through;">{{ produit.ancienPrixProduit }} {{ devise }}</span> /{{ produit.newprise }} {{ devise }}</div>
-					   </div>
-					   </div>
-					   <span class="rating1">
-				        <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
-				        <label for="rating-input-1-5" class="rating-star1"></label>
-				        <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
-				        <label for="rating-input-1-4" class="rating-star1"></label>
-				        <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
-				        <label for="rating-input-1-3" class="rating-star1"></label>
-				        <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
-				        <label for="rating-input-1-2" class="rating-star"></label>
-				        <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
-				        <label for="rating-input-1-1" class="rating-star"></label>&nbsp;({{ produit.nblike }})
-		    	      </span>
-						 <ul class="list2 variation-contenu" value="0">
-						  <li style="padding-top: 4px;">
-						  	<img src="{{ asset('template/web/images/plus.png') }}" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="{% if app.user == null %}{{ path('login') }}{% else %}{{ path('produit_produit_add_panier_produit', {'id': produit.id }) }}{% endif %}"> Recommandez </a>
-							  <ul class="sub-icon1 list">
-							     <li>
-								 <h3>{{ produit.nom }} 
-								 <div class="btn_form">
-									   <form {% if app.user == null %}action="{{ path('login') }}"{% else %}class="ajout-produit-panier"{% endif %} value="{{ produit.id }}">
-										 <input type="submit" value="Ajouter au panier" title="">
-									  </form>
-									</div>
-									<div class="btn_form">
-									   <form {% if app.user == null %}action="{{ path('login') }}"{% else %}class="like-produit-courant"{% endif %} value="{{ produit.id }}">
-										 <input type="submit" value="J'aime ce produit" title="">
-									   </form>
-									</div>
-									</h3>       
-									</li>
-									<li><p>{% if produit.contenu == null %}Commandez dès maintenant et soyez livrer à domicile à moins d'une heure de temps{% else %}{{ produit.contenu }}{% endif %}</p>
-									</li>
-								</ul>
-							  </li>
-							</ul>
-						   </li>
-					     </ul>
-			    	    <div class="clear"></div>
-			    	</a></div>
-					{% endfor %}
-					<div class="clear"></div>
-			      </div>
-				    {% set begin = end %}
-			        {% set end = end + 3 %}
-					{% endfor %}
-					{% if liste_produit|length == 0 %}
-					<h4>Aucun produit pour la recherche avec le mot clé {{ donnee }}</h4>
-					{% endif %}
-			  </div>
-			 </div>
-        </div>
+<div class="main">
+<div class="wrap">
+	<div class="content-top">
+	<h2>Résultat de la recherche pour le mot clé  <span style="margin-left: 7px; margin-right: 7px;">/</span> {{ donnee }} </h2>
+	</div>
+<div class="content-bottom">
+{% if liste_produit|length % 3 == 0 %}
+{% set nbre = liste_produit|length//3 %}
+{% else %}
+{% set nbre = (liste_produit|length)//3 + 1 %}
+{% endif %}
+{% set begin = 0 %}
+{% set end = 3 %}
+{% for i in range(0,nbre-1) %}
+<div class="box1">
+{% for produit in liste_produit|slice(begin,end)  %}
+	<div class="col_1_of_single1 span_1_of_single1"><a href="{{ path('produit_produit_detail_produit_market', {'id': produit.id }) }}">
+		<div class="view1 view-fifth1">
+		<div class="top_box">
+		<h3 class="m_1">{{ produit.nom }}</h3>
+		<p class="m_2">{{ produit.description }}</p>
+			<div class="grid_img">
+			<div class="css3">
+			{% set nbre = random() % produit.imgproduits|length %}
+			{% for img in produit.imgproduits %}
+			{% if loop.index0 == nbre %}
+			<img src="{{ asset(img.getWebpath) }}" alt="" style="height: 180px;"/>
+			{% endif %}
+			{% endfor %}
+			</div>
+				<div class="mask1">
+				<div class="info">Plus de détail</div>
+				</div>
+		</div>
+		<div class="price"><span style="text-decoration: line-through;">{{ produit.ancienPrixProduit }} {{ devise }}</span> /{{ produit.newprise }} {{ devise }}</div>
+		</div>
+		</div>
+		<span class="rating1">
+		<input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
+		<label for="rating-input-1-5" class="rating-star1"></label>
+		<input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
+		<label for="rating-input-1-4" class="rating-star1"></label>
+		<input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
+		<label for="rating-input-1-3" class="rating-star1"></label>
+		<input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
+		<label for="rating-input-1-2" class="rating-star"></label>
+		<input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
+		<label for="rating-input-1-1" class="rating-star"></label>&nbsp;({{ produit.nblike }})
+		</span>
+			<ul class="list2 variation-contenu" value="0">
+			<li style="padding-top: 4px;">
+			<img src="{{ asset('template/web/images/plus.png') }}" alt=""/>
+			<ul class="icon1 sub-icon1 profile_img">
+				<li><a class="active-icon c1" href="{% if app.user == null %}{{ path('login') }}{% else %}{{ path('produit_produit_add_panier_produit', {'id': produit.id }) }}{% endif %}"> Recommandez </a>
+				<ul class="sub-icon1 list">
+					<li>
+					<h3>{{ produit.nom }} 
+					<div class="btn_form">
+						<form {% if app.user == null %}action="{{ path('login') }}"{% else %}class="ajout-produit-panier"{% endif %} value="{{ produit.id }}">
+							<input type="submit" value="Ajouter au panier" title="">
+						</form>
+					</div>
+					<div class="btn_form">
+						<form {% if app.user == null %}action="{{ path('login') }}"{% else %}class="like-produit-courant"{% endif %} value="{{ produit.id }}">
+							<input type="submit" value="J'aime ce produit" title="">
+						</form>
+					</div>
+					</h3>       
+					</li>
+					<li><p>{% if produit.contenu == null %}Commandez dès maintenant et soyez livrer à domicile à moins d'une heure de temps{% else %}{{ produit.contenu }}{% endif %}</p>
+					</li>
+				</ul>
+				</li>
+			</ul>
+			</li>
+			</ul>
+		<div class="clear"></div>
+	</a></div>
+	{% endfor %}
+	<div class="clear"></div>
+	</div>
+	{% set begin = end %}
+	{% set end = end + 3 %}
+	{% endfor %}
+	{% if liste_produit|length == 0 %}
+	<h4>Aucun produit pour la recherche avec le mot clé {{ donnee }}</h4>
+	{% endif %}
+</div>
+</div>
+</div>
 {% endblock %}
 
 {% block javascripttemplate %}

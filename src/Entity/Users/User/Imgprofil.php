@@ -1,19 +1,21 @@
 <?php
 
-namespace Users\UserBundle\Entity;
+namespace App\Entity\Users\User;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
-use General\ValidatorBundle\Validatorfile\Image;
+use App\Service\Servicetext\GeneralServicetext;
+use App\Validator\Validatorfile\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Repository\Users\User\ImgprofilRepository;
+use App\Entity\Users\User\User;
 
 /**
  * Imgprofil
  *
  * @ORM\Table("imgprofil")
- * @ORM\Entity(repositoryClass="Users\UserBundle\Entity\ImgprofilRepository")
+ * @ORM\Entity(repositoryClass=ImgprofilRepository::class)
  ** @ORM\HasLifecycleCallbacks
  */
 class Imgprofil
@@ -46,7 +48,7 @@ class Imgprofil
 	private $file;
 	
 	/**
-       * @ORM\OneToOne(targetEntity="Users\UserBundle\Entity\User", inversedBy="imgprofil" )
+       * @ORM\OneToOne(targetEntity=User::class, inversedBy="imgprofil" )
         * @ORM\JoinColumn(nullable=false)
        */
    private $user;
@@ -59,9 +61,9 @@ class Imgprofil
 	
 	public function __construct(GeneralServicetext $service)
 	{
-	$this->src ="source";
-	$this->alt ="alternatif";
-	$this->servicetext = $service;
+		$this->src ="source";
+		$this->alt ="alternatif";
+		$this->servicetext = $service;
 	}
 
 
@@ -229,11 +231,9 @@ class Imgprofil
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Imgprofil
      */
-    public function setUser(\Users\UserBundle\Entity\User $user)
+    public function setUser(User $user): self
     {
         $this->user = $user;
 		$user->setImgprofil();
@@ -242,11 +242,9 @@ class Imgprofil
     }
 
     /**
-     * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
+     * Get user 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }

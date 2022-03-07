@@ -1,15 +1,18 @@
 produit_service_contact_us:
     path: /nous/contacter
-    defaults: { _controller: ProduitServiceBundle:Message:contactus }
+    controller: App\Controller\Produit\Service\MessageController:contactus
 produit_service_contact_us_slache:
     path: /nous/contacter/
-    defaults: { _controller: ProduitServiceBundle:Message:contactus }
+    controller: App\Controller\Produit\Service\MessageController:contactus
 produit_service_chargement_statatistique_annee:
     path: /chargement/statatistique/annee/{position}/{anneeid}
-    defaults: { _controller: ProduitServiceBundle:Service:applicationstat, position: 0, anneeid: 0 }
+    controller: App\Controller\Produit\Service\ServiceController:applicationstat
+    defaults:
+        position: 0
+        anneeid: 0
     requirements:
         position: \d+
         anneeid: \d+
 produit_service_callback_homepage:
     path: /callback/homepage/afh
-    defaults: { _controller: ProduitServiceBundle:Service:callbackhomepage }
+    controller: App\Controller\Produit\Service\ServiceController:callbackhomepage

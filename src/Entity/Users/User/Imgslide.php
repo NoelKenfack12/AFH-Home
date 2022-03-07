@@ -1,19 +1,21 @@
 <?php
 
-namespace Users\UserBundle\Entity;
+namespace App\Entity\Users\User;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
-use General\ValidatorBundle\Validatorfile\Image;
+use App\Service\Servicetext\GeneralServicetext;
+use App\Validator\Validatorfile\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Repository\Users\User\ImgslideRepository;
+use App\Entity\Users\User\User;
 
 /**
  * Imgslide
  *
  * @ORM\Table("imgslide")
- * @ORM\Entity(repositoryClass="Users\UserBundle\Entity\ImgslideRepository")
+ * @ORM\Entity(repositoryClass=ImgslideRepository::class)
  ** @ORM\HasLifecycleCallbacks
  */
 class Imgslide
@@ -68,9 +70,9 @@ class Imgslide
 	
 	
 	/**
-      * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+      * @ORM\ManyToOne(targetEntity=User::class)
       * @ORM\JoinColumn(nullable=false)
-      */
+    */
     private $user;
 	
 	/**
@@ -86,10 +88,10 @@ class Imgslide
 	
 	public function __construct(GeneralServicetext $service)
 	{
-	$this->src ="source";
-	$this->alt ="alternatif";
-	$this->servicetext = $service;
-	$this->date = new \Datetime();
+        $this->src ="source";
+        $this->alt ="alternatif";
+        $this->servicetext = $service;
+        $this->date = new \Datetime();
 	}
 
 
@@ -326,11 +328,9 @@ class Imgslide
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Imgslide
      */
-    public function setUser(\Users\UserBundle\Entity\User $user)
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
@@ -339,10 +339,8 @@ class Imgslide
 
     /**
      * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }

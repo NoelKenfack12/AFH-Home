@@ -1,20 +1,24 @@
 <?php
 
-namespace Produit\ProduitBundle\Entity;
+namespace App\Entity\Produit\Produit;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Service\Servicetext\GeneralServicetext;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use General\ValidatorBundle\Validatorfile\Image;
+use App\Validator\Validatorfile\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Repository\Produit\Produit\CategorieRepository;
+use App\Entity\Users\User\User;
+use App\Entity\Produit\Produit\Souscategorie;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Categorie
  *
  * @ORM\Table("categorie")
- * @ORM\Entity(repositoryClass="Produit\ProduitBundle\Entity\CategorieRepository")
+ * @ORM\Entity(repositoryClass=CategorieRepository::class)
  * @UniqueEntity(fields="nom", message="Cette catégorie existe déjà.")
   ** @ORM\HasLifecycleCallbacks
  */
@@ -53,14 +57,14 @@ class Categorie
     private $date;
 	
 	/**
-      * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+      * @ORM\ManyToOne(targetEntity=User::class)
       * @ORM\JoinColumn(nullable=false)
       */
     private $user;
 	
 	/**
-         * @ORM\OneToMany(targetEntity="Produit\ProduitBundle\Entity\Souscategorie", mappedBy="categorie")
-         */
+     * @ORM\OneToMany(targetEntity=Souscategorie::class, mappedBy="categorie")
+     */
     private $souscategories;
 	
 	 /**
@@ -167,11 +171,9 @@ class Categorie
 
     /**
      * Add souscategories
-     *
-     * @param \Produit\ProduitBundle\Entity\Souscategorie $souscategories
      * @return Categorie
      */
-    public function addSouscategory(\Produit\ProduitBundle\Entity\Souscategorie $souscategories)
+    public function addSouscategory(Souscategorie $souscategories): self
     {
         $this->souscategories[] = $souscategories;
 
@@ -180,43 +182,35 @@ class Categorie
 
     /**
      * Remove souscategories
-     *
-     * @param \Produit\ProduitBundle\Entity\Souscategorie $souscategories
      */
-    public function removeSouscategory(\Produit\ProduitBundle\Entity\Souscategorie $souscategories)
+    public function removeSouscategory(Souscategorie $souscategories)
     {
         $this->souscategories->removeElement($souscategories);
     }
 
     /**
-     * Get souscategories
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * Get souscategories 
      */
-    public function getSouscategories()
+    public function getSouscategories(): ?Collection
     {
         return $this->souscategories;
     }
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Categorie
      */
-    public function setUser(\Users\UserBundle\Entity\User $user)
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
-
+    
     /**
-     * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
+     * Get user 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }

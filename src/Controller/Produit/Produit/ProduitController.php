@@ -1,26 +1,42 @@
 <?php
 /*(c) Noel Kenfack <noel.kenfack@yahoo.fr> Février 2015
 */
-namespace Produit\ProduitBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+namespace App\Controller\Produit\Produit;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Produit\ProduitBundle\Entity\Produit;
-use Produit\ProduitBundle\Entity\Coutlivraison;
-use Produit\ProduitBundle\Entity\Panier;
-use Users\UserBundle\Entity\User;
-use Produit\ProduitBundle\Entity\Produitpanier;
-use Produit\ProduitBundle\Entity\Imgproduit;
-use Produit\ProduitBundle\Form\ProduitType;
-use Produit\ProduitBundle\Form\CoutlivraisonType;
-use Produit\ProduitBundle\Entity\Souscategorie;
-use General\TemplateBundle\Entites\Recherche;
+use App\Entity\Produit\Produit\Produit;
+use App\Entity\Produit\Produit\Coutlivraison;
+use App\Entity\Produit\Produit\Panier;
+use App\Entity\Users\User\User;
+use App\Entity\Produit\Produit\Produitpanier;
+use App\Entity\Produit\Produit\Imgproduit;
+use App\Form\Produit\Produit\ProduitType;
+use App\Form\Produit\Produit\CoutlivraisonType;
+use App\Entity\Produit\Produit\Souscategorie;
+use App\Entity\General\Template\Recherche;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use App\Service\Email\Singleemail;
+use App\Service\Servicetext\GeneralServicetext;
+use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Users\User\Imgslide;
+use App\Entity\Produit\Service\Ville;
+use App\Entity\Produit\Service\Evenement;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class ProduitController extends Controller
+class ProduitController extends AbstractController
 {
-public function miseajourproduitAction($id)
+private $params;
+private $_servicemail;
+
+public function __construct(ParameterBagInterface $params, Singleemail $servicemail)
+{
+	$this->params = $params;
+	$this->_servicemail = $servicemail;
+}
+
+public function miseajourproduit(GeneralServicetext $service, Request $request, $id)
 {
 	$em = $this->getDoctrine()->getManager();
-	$service = $this->container->get('general_service.servicetext');
 	if(isset($_GET['id']))
 	{
 		$id = $_GET['id'];
@@ -28,15 +44,14 @@ public function miseajourproduitAction($id)
 		$id = $id;
 	}
 	
-	$produit = $em->getRepository('ProduitProduitBundle:Produit')
+	$produit = $em->getRepository(Produit::class)
 					->find($id);
-
 	if($produit != null)
 	{
-    $formpro = $this->createForm(new ProduitType($produit->getsouscategorie()->getCategorie()), $produit);
-	$request = $this->get('request');
+    $formpro = $this->createForm(ProduitType::class, $produit, array('cat'=>$produit->getsouscategorie()->getCategorie()));
+
 	if ($request->getMethod() == 'POST'){
-		$formpro->bind($request);
+		$formpro->handleRequest($request);
 		$produit->setUser($this->getUser());
 		$produit->setServicetext($service);
 		if($produit->getImgpro() != null)
@@ -47,7 +62,7 @@ public function miseajourproduitAction($id)
 		}
 		
 		$liste_img = $produit->getImgproduits();
-		$nbimgproduit = $this->container->getParameter('nbimgparproduit');
+		$nbimgproduit = $this->params->get('nbimgparproduit');
 		if($formpro->isValid() and count($liste_img) <= $nbimgproduit){
 			if($produit->getImgpro() != null)
 			{
@@ -64,7 +79,7 @@ public function miseajourproduitAction($id)
 		}
 		return $this->redirect($this->generateUrl('users_adminuser_save_categorie_product'));
 	}
-	return $this->render('UsersAdminuserBundle:Produit:modifierproduit.html.twig',
+	return $this->render('Theme/Users/Adminuser/Produit/modifierproduit.html.twig',
 	array('formpro'=>$formpro->createView(),'produit'=>$produit));
 	}else{
 		echo 'Echec ! Une erreur a été rencontrée.';
@@ -72,14 +87,13 @@ public function miseajourproduitAction($id)
 	}
 }
 
-public function supprimerimageAction(Imgproduit $imgproduit)
+public function supprimerimage(Imgproduit $imgproduit, Request $request)
 {
 	$em = $this->getDoctrine()->getManager();
 	$formsupp = $this->createFormBuilder()->getForm(); 
-    $request = $this->get('request');
 	$produit = $imgproduit->getProduit();
 	if ($request->getMethod() == 'POST') {
-    $formsupp->bind($request);
+    $formsupp->handleRequest($request);
     if ($formsupp->isValid()){
 	if(count($produit->getImgproduits()) > 1)
 	{
@@ -97,12 +111,12 @@ public function supprimerimageAction(Imgproduit $imgproduit)
 	return $this->redirect($this->generateUrl('users_adminuser_save_categorie_product'));
 }
 
-public function listeproduituserAction(Souscategorie $souscategorie)
+public function listeproduituser(Souscategorie $souscategorie)
 {
 	$em = $this->getDoctrine()->getManager();
-	$liste_produit = $em->getRepository('ProduitProduitBundle:Produit')
+	$liste_produit = $em->getRepository(Produit::class)
 	                    ->myFindBy($souscategorie->getId());
-	$liste_slide = $em->getRepository('UsersUserBundle:Imgslide')
+	$liste_slide = $em->getRepository(Imgslide::class)
 	                      ->myFindAll();
 	if(isset($_GET['spaf']))
 	{
@@ -113,13 +127,14 @@ public function listeproduituserAction(Souscategorie $souscategorie)
 			$session->set('superafilier',htmlspecialchars($_GET['spaf']));
 		}
 	}
-	return $this->render('ProduitProduitBundle:Produit:listeproduituser.html.twig', 
+	return $this->render('Theme/Produit/Produit/Produit/listeproduituser.html.twig', 
 	array('souscategorie'=>$souscategorie,'liste_produit'=>$liste_produit,'liste_slide'=>$liste_slide));
 }
-public function detailproduitAction(Produit $produit)
+
+public function detailproduit(Produit $produit)
 {
 	$em = $this->getDoctrine()->getManager();
-	$repositorie = $em->getRepository('ProduitProduitBundle:Produit');
+	$repositorie = $em->getRepository(Produit::class);
 	$liste_produit = $repositorie->FindBy(array('souscategorie'=>$produit->getSouscategorie()));
 	$all_produit =  $repositorie->orderCroissant();
 	$top_cinq = $repositorie->topProduit(5);
@@ -127,20 +142,20 @@ public function detailproduitAction(Produit $produit)
 	$position = 0;
 	foreach($all_produit as $pro)
 	{
-	if($pro->getId() == $produit->getId()){
-	$position++;
-	break;
-	}else{
-	$position++;
+		if($pro->getId() == $produit->getId()){
+			$position++;
+			break;
+		}else{
+			$position++;
+		}
 	}
-	}
-	$topcat = $em->getRepository('ProduitProduitBundle:SousCategorie')
+	$topcat = $em->getRepository(SousCategorie::class)
 	             ->topsouscategorie(5);
-	return $this->render('ProduitProduitBundle:Produit:detailproduit.html.twig', 
+	return $this->render('Theme/Produit/Produit/Produit/detailproduit.html.twig', 
 	array('liste_produit'=>$liste_produit,'produit'=>$produit,'position'=>$position,
 	'all_produit'=>$all_produit,'top_cinq'=>$top_cinq,'top_like'=>$top_like,'topcat'=>$topcat));
 }
-public function likeproductAction()
+public function likeproduct()
 {
 	if(isset($_GET['id']))
 	{
@@ -149,7 +164,7 @@ public function likeproductAction()
 	$id = 0;
 	}
 	$em = $this->getDoctrine()->getManager();
-	$produit = $em->getRepository('ProduitProduitBundle:Produit')
+	$produit = $em->getRepository(Produit::class)
 	                 ->find($id);
 	if($produit != null and $this->getUser() != null){
 	$userlikes = $produit->getUserlikes();
@@ -173,7 +188,7 @@ public function likeproductAction()
 	exit;
 	}
 }
-public function ajouterpanierAction()
+public function ajouterpanier()
 {
 	if(isset($_GET['id']))
 	{
@@ -182,11 +197,11 @@ public function ajouterpanierAction()
 	$id = 0;
 	}
 	$em = $this->getDoctrine()->getManager();
-	$produit = $em->getRepository('ProduitProduitBundle:Produit')
+	$produit = $em->getRepository(Produit::class)
 	                 ->find($id);
 	if($produit != null and $this->getUser() != null){
 	
-	$oldpanier = $em->getRepository('ProduitProduitBundle:Panier')
+	$oldpanier = $em->getRepository(Panier::class)
 	                 ->findOneBy(array('user'=>$this->getUser(),'payer'=>0));
 		if($oldpanier == null)
 		{
@@ -196,7 +211,7 @@ public function ajouterpanierAction()
 			if($envoi != null)
 			{
 				$tabuseraffilier = explode('host',$envoi);
-				$useraffilier = $em->getRepository('UsersUserBundle:User')
+				$useraffilier = $em->getRepository(User::class)
 	                               ->find($tabuseraffilier[0]);
 			}
 		
@@ -248,12 +263,12 @@ public function ajouterpanierAction()
 	exit;
 	}
 }
-public function addpanierAction(Produit $produit)
+public function addpanier(Produit $produit)
 {
 	$em = $this->getDoctrine()->getManager();
 	if($this->getUser() != null)
 	{
-	$oldpanier = $em->getRepository('ProduitProduitBundle:Panier')
+	$oldpanier = $em->getRepository(Panier::class)
 	                 ->findOneBy(array('user'=>$this->getUser(),'payer'=>0));
 		if($oldpanier == null)
 		{
@@ -300,29 +315,30 @@ public function addpanierAction(Produit $produit)
 	}
 	return $this->redirect($this->generateUrl('produit_produit_liste_produit_souscategorie',array('id'=>$produit->getSouscategorie()->getId())));
 }
-public function reglementcommandeAction(User $user)
+public function reglementcommande(User $user)
 {
 	$em = $this->getDoctrine()->getManager();
 	$nbprod = 0;
 	$produitpanier = null;
-	$panier = $em->getRepository('ProduitProduitBundle:Panier')
+	$panier = $em->getRepository(Panier::class)
 				 ->findOneBy(array('user'=>$user,'payer'=>0));
-		if($panier != null)
+	if($panier != null)
+	{
+		$produitpanier = $panier->getProduitpaniers();
+		foreach($produitpanier as $prodpan)
 		{
-			$produitpanier = $panier->getProduitpaniers();
-			foreach($produitpanier as $prodpan)
-			{
-				$nbprod = $nbprod + $prodpan->getQuantite();
-				$prodpan->getProduit()->setEm($em);
-			}
-			$liste_ville = $em->getRepository('ProduitServiceBundle:Ville')
-				        ->findAll();
-			return $this->render('ProduitProduitBundle:Produit:reglementcommande.html.twig', array('panier'=>$panier,'user'=>$user,'produitpanier'=>$produitpanier,'nbprod'=>$nbprod,'liste_ville'=>$liste_ville));
-		}else{
-		return $this->redirect($this->generateUrl('users_user_acces_plateforme'));
+			$nbprod = $nbprod + $prodpan->getQuantite();
+			$prodpan->getProduit()->setEm($em);
 		}
+		$liste_ville = $em->getRepository(Ville::class)
+					->findAll();
+		return $this->render('Theme/Produit/Produit/Produit/reglementcommande.html.twig', array('panier'=>$panier,'user'=>$user,'produitpanier'=>$produitpanier,'nbprod'=>$nbprod,'liste_ville'=>$liste_ville));
+	}else{
+		return $this->redirect($this->generateUrl('users_user_acces_plateforme'));
+	}
 }
-public function editcommandeAction()
+
+public function editcommande()
 {
 	if(isset($_GET['id']))
 	{
@@ -337,7 +353,7 @@ public function editcommandeAction()
 	$quantite = 0;
 	}
 	$em = $this->getDoctrine()->getManager();
-	$prodpan = $em->getRepository('ProduitProduitBundle:Produitpanier')
+	$prodpan = $em->getRepository(Produitpanier::class)
 	                 ->find($id);
 	if($prodpan != null)
 	{
@@ -350,7 +366,7 @@ public function editcommandeAction()
 	exit;
 	}
 }
-public function eleveproduitAction(Produitpanier $prodpan)
+public function eleveproduit(Produitpanier $prodpan)
 {
 	if($this->getUser() == $prodpan->getpanier()->getUser())
 	{
@@ -362,16 +378,16 @@ public function eleveproduitAction(Produitpanier $prodpan)
 	return $this->redirect($this->generateUrl('login'));
 }
 
-public function supprimerproduitAction(Produit $produit)
+public function supprimerproduit(Produit $produit, Request $request)
 {
 	$em = $this->getDoctrine()->getManager();
-	$liste_service = $em->getRepository('ProduitServiceBundle:Evenement')
+	$liste_service = $em->getRepository(Evenement::class)
 	                 ->findBy(array('produit'=>$produit));
 	$categorie = $produit->getSouscategorie();
 	$formsupp = $this->createFormBuilder()->getForm(); 
-	$request = $this->get('request');
+
 	if ($request->getMethod() == 'POST') {
-		$formsupp->bind($request);
+		$formsupp->handleRequest($request);
 		if ($formsupp->isValid()){
 			if(count($liste_service) == 0){
 			$liste_image = $produit->getImgproduits();
@@ -393,37 +409,36 @@ public function supprimerproduitAction(Produit $produit)
 	return $this->redirect($this->generateUrl('users_adminuser_save_categorie_product'));
 }
 
-public function rechercheproduitAction()
+public function rechercheproduit(Request $request)
 {
 	$em = $this->getDoctrine()->getManager();
 	$recherche = new Recherche();
 	$formBuilder = $this->createFormBuilder($recherche);
 	$formBuilder
-              ->add('donnee', 'text',array('attr'=>array('class'=>'form-control police2','placeholder'=>'Retrouver un produit','type'=>'search')));
+              ->add('donnee', TextType::class ,array('attr'=>array('class'=>'form-control police2','placeholder'=>'Retrouver un produit','type'=>'search')));
 	$formrecher = $formBuilder->getForm();
 	$liste_produit = null;
-	$request = $this->get('request');
+
 	if ($request->getMethod() == 'POST') {
-		$formrecher->bind($request);
+		$formrecher->handleRequest($request);
 		if ($formrecher->isValid()){
-	     $liste_produit = $em->getRepository('ProduitProduitBundle:Produit')
+	     $liste_produit = $em->getRepository(Produit::class)
 						     ->findProduit($recherche->getDonnee());
 		}
 	}
-	return $this->render('ProduitProduitBundle:Produit:recherche.html.twig', array('liste_produit'=>$liste_produit,'donnee'=>$recherche->getDonnee()));
+	return $this->render('Theme/Produit/Produit/Produit/recherche.html.twig', array('liste_produit'=>$liste_produit,'donnee'=>$recherche->getDonnee()));
 }
-public function addcoutlivraisonAction(Produit $produit)
+public function addcoutlivraison(Produit $produit, Request $request, GeneralServicetext $service)
 {
 	$em = $this->getDoctrine()->getManager();
-	$service = $this->container->get('general_service.servicetext');
 	$coutlivraison = new Coutlivraison($service);
-	$formlivraison = $this->createForm(new CoutlivraisonType(), $coutlivraison);
-	$request = $this->get('request');
+	$formlivraison = $this->createForm(CoutlivraisonType::class, $coutlivraison);
+
 	if ($request->getMethod() == 'POST'){
-	$formlivraison->bind($request);
+	$formlivraison->handleRequest($request);
 	$coutlivraison->setUser($this->getUser());
 	$coutlivraison->setProduit($produit);
-	$oldcout = $em->getRepository('ProduitProduitBundle:Coutlivraison')
+	$oldcout = $em->getRepository(Coutlivraison::class)
 						     ->findOneBy(array('ville'=>$coutlivraison->getVille(),'produit'=>$produit));
     if ($formlivraison->isValid() and $oldcout == null){
 		$em->persist($coutlivraison);
@@ -433,7 +448,7 @@ public function addcoutlivraisonAction(Produit $produit)
 	}
 	return $this->redirect($this->generateUrl('users_adminuser_update_courant_produit',array('id'=>$produit->getId())));
 }
-public function modifcoutlivraisonAction(Coutlivraison $coutlivraison)
+public function modifcoutlivraison(Coutlivraison $coutlivraison)
 {
 	$em = $this->getDoctrine()->getManager();
     if (isset($_POST['coutlivraison']) and is_numeric($_POST['coutlivraison'])){
@@ -443,7 +458,7 @@ public function modifcoutlivraisonAction(Coutlivraison $coutlivraison)
 	}
 	return $this->redirect($this->generateUrl('users_adminuser_update_courant_produit',array('id'=>$coutlivraison->getProduit()->getId())));
 }
-public function supprimercoutlivraisonAction(Coutlivraison $coutlivraison)
+public function supprimercoutlivraison(Coutlivraison $coutlivraison)
 {
 	$produit = $coutlivraison->getProduit();
 	$em = $this->getDoctrine()->getManager();
@@ -451,16 +466,17 @@ public function supprimercoutlivraisonAction(Coutlivraison $coutlivraison)
 	$em->flush();
 	return $this->redirect($this->generateUrl('users_adminuser_update_courant_produit',array('id'=>$produit->getId())));
 }
-public function nosreferencesAction()
+
+public function nosreferences()
 {
-	return $this->render('ProduitProduitBundle:Produit:nosreferences.html.twig');
+	return $this->render('Theme/Produit/Produit/Produit/nosreferences.html.twig');
 }
-public function servicesstructAction()
+public function servicesstruct()
 {
-	return $this->render('ProduitProduitBundle:Produit:servicesstruct.html.twig');
+	return $this->render('Theme/Produit/Produit/Produit/servicesstruct.html.twig');
 }
-public function aboutuserAction()
+public function aboutuser()
 {
-	return $this->render('ProduitProduitBundle:Produit:aboutus.html.twig');
+	return $this->render('Theme/Produit/Produit/Produit/aboutus.html.twig');
 }
 }

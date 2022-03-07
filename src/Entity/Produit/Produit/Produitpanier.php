@@ -1,14 +1,17 @@
 <?php
 
-namespace Produit\ProduitBundle\Entity;
+namespace App\Entity\Produit\Produit;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\Produit\Produit\ProduitpanierRepository;
+use App\Entity\Produit\Produit\Produit;
+use App\Entity\Produit\Produit\Panier;
 
 /**
  * Produitpanier
  *
  * @ORM\Table("produitpanier")
- * @ORM\Entity(repositoryClass="Produit\ProduitBundle\Entity\ProduitpanierRepository")
+ * @ORM\Entity(repositoryClass=ProduitpanierRepository::class)
  */
 class Produitpanier
 {
@@ -50,15 +53,15 @@ class Produitpanier
     private $date;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Produit\ProduitBundle\Entity\Produit")
+       * @ORM\ManyToOne(targetEntity=Produit::class)
        * @ORM\JoinColumn(nullable=false)
-       */
+    */
 	private $produit;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Produit\ProduitBundle\Entity\Panier", inversedBy="produitpaniers")
+       * @ORM\ManyToOne(targetEntity=Panier::class, inversedBy="produitpaniers")
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $panier;
 	
 	public function __construct()
@@ -127,11 +130,9 @@ class Produitpanier
 
     /**
      * Set produit
-     *
-     * @param \Produit\ProduitBundle\Entity\Produit $produit
      * @return Produitpanier
      */
-    public function setProduit(\Produit\ProduitBundle\Entity\Produit $produit)
+    public function setProduit(Produit $produit): self
     {
         $this->produit = $produit;
 
@@ -140,21 +141,17 @@ class Produitpanier
 
     /**
      * Get produit
-     *
-     * @return \Produit\ProduitBundle\Entity\Produit 
      */
-    public function getProduit()
+    public function getProduit(): ?Produit
     {
         return $this->produit;
     }
 
     /**
      * Set panier
-     *
-     * @param \Produit\ProduitBundle\Entity\Panier $panier
      * @return Produitpanier
      */
-    public function setPanier(\Produit\ProduitBundle\Entity\Panier $panier)
+    public function setPanier(Panier $panier): self
     {
         $this->panier = $panier;
 		$panier->addProduitpanier($this);
@@ -164,10 +161,8 @@ class Produitpanier
 
     /**
      * Get panier
-     *
-     * @return \Produit\ProduitBundle\Entity\Panier 
      */
-    public function getPanier()
+    public function getPanier(): ?Panier
     {
         return $this->panier;
     }

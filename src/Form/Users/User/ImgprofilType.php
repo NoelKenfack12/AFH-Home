@@ -1,10 +1,13 @@
 <?php
 
-namespace Users\UserBundle\Form;
+namespace App\Form\Users\User;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use App\Entity\Users\User\Imgprofil;
 
 class ImgprofilType extends AbstractType
 {
@@ -15,17 +18,17 @@ class ImgprofilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file','file',array('attr'=>array('style'=>'opacity: 0.5;width: 100%;')))
+            ->add('file',FileType::class,array('attr'=>array('style'=>'opacity: 0.5;width: 100%;')))
         ;
     }
     
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Users\UserBundle\Entity\Imgprofil'
+            'data_class' => Imgprofil::class
         ));
     }
 

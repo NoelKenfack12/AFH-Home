@@ -1,19 +1,32 @@
 <?php
-/*(c) Noel Kenfack <noel.kenfack@yahoo.fr> Février 2015
+/*(c) Noel Kenfack <noel.kenfack@yahoo.fr> Fï¿½vrier 2015
 */
-namespace Produit\ProduitBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+namespace App\Controller\Produit\Produit;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Users\UserBundle\Entity\User;
-use Produit\ProduitBundle\Entity\Panier;
-use Produit\ProduitBundle\Entity\Produitpanier;
+use App\Entity\Users\User\User;
+use App\Entity\Produit\Produit\Panier;
+use App\Entity\Produit\Produit\Produitpanier;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use App\Service\Email\Singleemail;
+use App\Entity\Produit\Produit\Souscategorie;
+use App\Entity\Produit\Service\Ville;
+use App\Entity\Produit\Produit\Produit;
 
-class PanierController extends Controller
+class PanierController extends AbstractController
 {
-public function validationpayementAction(User $user)
+private $params;
+private $_servicemail;
+
+public function __construct(ParameterBagInterface $params, Singleemail $servicemail)
+{
+	$this->params = $params;
+	$this->_servicemail = $servicemail;
+}
+public function validationpayement(User $user)
 {
 	$em = $this->getDoctrine()->getManager();
-	$panier = $em->getRepository('ProduitProduitBundle:Panier')
+	$panier = $em->getRepository(Panier::class)
 				 ->findOneBy(array('user'=>$user,'payer'=>0));
 	if($this->getUser() == $user and $panier != null)
 	{
@@ -34,21 +47,22 @@ public function validationpayementAction(User $user)
 		exit;
 	}
 }
-public function paniernonlivrerAction()
+public function paniernonlivrer()
 {
 	$em = $this->getDoctrine()->getManager();
-	$liste_panier = $em->getRepository('ProduitProduitBundle:Panier')
+	$liste_panier = $em->getRepository(Panier::class)
 				       ->findBy(array('payer'=>1,'livrer'=>0),array('date'=>'desc'));
-	return $this->render('UsersAdminuserBundle:Panier:paniernonlivrer.html.twig',array('liste_panier'=>$liste_panier));
+	return $this->render('Theme/Users/Adminuser/Panier/paniernonlivrer.html.twig',array('liste_panier'=>$liste_panier));
 }
-public function contenupanierAction(Panier $panier)
+public function contenupanier(Panier $panier)
 {
 	$em = $this->getDoctrine()->getManager();
-	$liste_produit = $em->getRepository('ProduitProduitBundle:Produitpanier')
+	$liste_produit = $em->getRepository(Produitpanier::class)
 				       ->myfindBy($panier->getId());
-	return $this->render('UsersAdminuserBundle:Panier:contenupanier.html.twig',array('liste_produit'=>$liste_produit,'panier'=>$panier));
+	return $this->render('Theme/Users/Adminuser/Panier/contenupanier.html.twig',array('liste_produit'=>$liste_produit,'panier'=>$panier));
 }
-public function livraisonpanierAction(Panier $panier)
+
+public function livraisonpanier(Panier $panier)
 {
 	$em = $this->getDoctrine()->getManager();
 	if($panier->getLivrer() == false)
@@ -58,29 +72,29 @@ public function livraisonpanierAction(Panier $panier)
 	}
 	return $this->redirect($this->generateUrl('users_adminuser_liste_panier_non_livrer'));
 }
-public function panierlivrerAction()
+public function panierlivrer()
 {
 	$em = $this->getDoctrine()->getManager();
-	$liste_panier = $em->getRepository('ProduitProduitBundle:Panier')
+	$liste_panier = $em->getRepository(Panier::class)
 				       ->findBy(array('payer'=>1,'livrer'=>1),array('date'=>'desc'));
-	return $this->render('UsersAdminuserBundle:Panier:panierlivrer.html.twig',array('liste_panier'=>$liste_panier));
+	return $this->render('Theme/Users/Adminuser/Panier/panierlivrer.html.twig',array('liste_panier'=>$liste_panier));
 }
-public function detailpanieruserAction(Panier $panier)
+public function detailpanieruser(Panier $panier)
 {
 	$em = $this->getDoctrine()->getManager();
-	$liste_produit = $em->getRepository('ProduitProduitBundle:Produitpanier')
+	$liste_produit = $em->getRepository(Produitpanier::class)
 				       ->myfindBy($panier->getId());
-	$topcat = $em->getRepository('ProduitProduitBundle:Souscategorie')
+	$topcat = $em->getRepository(Souscategorie::class)
 	                 ->topsouscategorie(8);
-	return $this->render('ProduitProduitBundle:Panier:detailpanieruser.html.twig',
+	return $this->render('Theme/Produit/Produit/Panier/detailpanieruser.html.twig',
 	array('liste_produit'=>$liste_produit,'panier'=>$panier,'topcat'=>$topcat));
 }
-public function modifierlieulivraisonAction(Panier $panier)
+public function modifierlieulivraison(Panier $panier)
 {
 	$em = $this->getDoctrine()->getManager();
 	if(isset($_POST['ville']))
 	{
-		$ville = $em->getRepository('ProduitServiceBundle:Ville')
+		$ville = $em->getRepository(Ville::class)
 				       ->findOneBy(array('nom'=>$_POST['ville']));
 			if($ville != null)
 			{
@@ -90,7 +104,8 @@ public function modifierlieulivraisonAction(Panier $panier)
 	}
 	return $this->redirect($this->generateUrl('produit_produit_reglement_commande_du_panier',array('id'=>$this->getUser()->getId())));
 }
-public function payementpanierAction(Panier $panier, $montant)
+
+public function payementpanier(Panier $panier, $montant)
 {
 	$em = $this->getDoctrine()->getManager();
 	if(isset($_POST['tel']) and isset($_POST['destination']))
@@ -105,26 +120,31 @@ public function payementpanierAction(Panier $panier, $montant)
 	}
 	$em->flush();
 	
-	$mailer = $this->get('mailer');
-		$message = \Swift_Message::newInstance()
-		->setSubject($panier->getUser()->name(30).' vient de une commande.')
-		->setFrom(array('support@hosting.africexplorer.com'=>'Support Afex Hosting'))
-		->setTo('noel.kenfack@yahoo.fr')
-		->setBody('
-		<h2>'.$panier->getUser()->name(30).' vient de passer une commande.</h2>
-		<div>Vérifiez la commande sur <a href="http://hosting.africexplorer.com">http://hosting.africexplorer.com</a></div>
-		','text/html');
-		$mailer->send($message);
-		
+	$siteweb = $this->params->get('siteweb');
+	$sitename = $this->params->get('sitename');
+	$emailadmin = $this->params->get('emailadmin');
+
+	if($service->email($emailadmin))
+	{
+		$response = $this->_servicemail->sendNotifEmail(
+			$sitename, //Nom du destinataire
+			$emailadmin, //Email Destinataire
+			$panier->getUser()->name(30).' vient de une commande.', //Objet de l'email
+			$panier->getUser()->name(30).' vient de une commande.', //Grand Titre de l'email
+			'vient de passer une commande.</h2>
+			<div>VÃ©rifiez la commande sur <a href="http://hosting.africexplorer.com">http://hosting.africexplorer.com</a></div>',  //Contenu de l'email
+			$siteweb //Lien Ã  suivre
+		);
+	}		
 	return $this->redirect($this->generateUrl('users_user_user_accueil', array('id'=>$panier->getUser()->getId())));
 }
-public function ajoutdomaineAction($domaine)
+public function ajoutdomaine($domaine)
 {
 	$em = $this->getDoctrine()->getManager();
-	$produit = $em->getRepository('ProduitProduitBundle:Produit')
+	$produit = $em->getRepository(Produit::class)
 	                 ->findOneBy(array('bestplan'=>true));
 	if($produit != null and $this->getUser() != null){
-	$oldpanier = $em->getRepository('ProduitProduitBundle:Panier')
+	$oldpanier = $em->getRepository(Panier::class)
 	                 ->findOneBy(array('user'=>$this->getUser(),'payer'=>0));
 		if($oldpanier == null)
 		{
@@ -134,7 +154,7 @@ public function ajoutdomaineAction($domaine)
 			if($envoi != null)
 			{
 				$tabuseraffilier = explode('host',$envoi);
-				$useraffilier = $em->getRepository('UsersUserBundle:User')
+				$useraffilier = $em->getRepository(User::class)
 	                               ->find($tabuseraffilier[0]);
 			}
 		

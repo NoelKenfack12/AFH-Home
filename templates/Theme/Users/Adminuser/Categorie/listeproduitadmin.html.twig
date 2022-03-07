@@ -1,10 +1,11 @@
-{% extends "UsersAdminuserBundle::layoutadmin.html.twig" %}
+{% extends "Theme/Users/Adminuser/layoutadmin.html.twig" %}
 {% block meta %}
-{{ parent() }}
-<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
-<meta name="author" content="Noel Kenfack"/>
-<meta name="description" content="{{ site }} | Administration | Cameroun | {{ metier }}"/>
+	{{ parent() }}
+	<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
+	<meta name="author" content="Noel Kenfack"/>
+	<meta name="description" content="{{ site }} | Administration | Cameroun | {{ metier }}"/>
 {% endblock %}
+
 {% block title %}
 {{ parent() }} | Accueil Admin
 {% endblock %}
@@ -22,7 +23,7 @@
             <div id="profile-page-content" class="row">
               <!-- profile-page-sidebar-->
               <div id="profile-page-sidebar" class="col s12 m4">
-			  {{ render(controller("UsersAdminuserBundle:Accueil:menuadmin")) }}
+			  {{ render(controller("App\\Controller\\Users\\Adminuser\\AccueilController:menuadmin")) }}
 			  </div>
               <!-- profile-page-sidebar-->
 
@@ -55,7 +56,7 @@
 					{% endfor %}
 					</span>
                     <div class="row">
-					  <form class="col s12" action="{{ path('users_adminuser_liste_produit_souscategorie',{'id': souscategorie.id }) }}" method="post" {{ form_enctype(formpro) }}>
+					  {{ form_start(formpro, {'attr': {'class': 'col s12','action': path('users_adminuser_liste_produit_souscategorie',{'id': souscategorie.id }) }}) }}
                         <div class="row">
 						<span style="color:red;">{{ form_errors(formpro) }}</span>
 						<span style="color:red;">{{ form_errors(formpro.nom) }}</span>
@@ -119,8 +120,7 @@
 							 </div>
                             </div>
                           </div>
-                        {{ form_rest(formpro) }}
-					    </form> 
+                        {{ form_end(formpro) }}
                     </div>
                 </div>
 				

@@ -1,21 +1,19 @@
-{% extends "UsersAdminuserBundle::layoutadmin.html.twig" %}
+{% extends "Theme/Users/Adminuser/layoutadmin.html.twig" %}
 {% block meta %}
-{{ parent() }}
-<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
-<meta name="author" content="Noel Kenfack"/>
-<meta name="description" content="{{ site }} | Inscription | Cameroun | {{ metier }}" />
-
+	{{ parent() }}
+	<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
+	<meta name="author" content="Noel Kenfack"/>
+	<meta name="description" content="{{ site }} | Inscription | Cameroun | {{ metier }}" />
 {% endblock %}
 
 {% block title %}
-{{ parent() }} | Accueil Admin
+	{{ parent() }} | Accueil Admin
 {% endblock %}
 
 {% block userblog_body %}
 <div class="row" style="background: #f2f2f2;">
 <div class="col-md-10 col-md-offset-1 col-xs-12 panel" style="min-height: 700px; padding-bottom: 50px;">    
-{{ render(controller("UsersAdminuserBundle:Accueil:menuadmin")) }}
-
+	{{ render(controller("App\\Controller\\Users\\Adminuser\\AccueilController:menuadmin")) }}
 <div>
 <div class="row">
 	<div class="col-lg-12 col-sm-12">
@@ -123,7 +121,7 @@
 					{% endif %}
 					{% endfor %}
 				</h4>
-    		    <form action="{{ path('users_adminuser_save_categorie_product') }}" method="post" {{ form_enctype(form) }} style="margin-top: 15px;">
+				{{ form_start(form, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_save_categorie_product') }}) }}
 				<div class="col-sm-6">
 				     <span style="color:red;">{{ form_errors(form) }}</span>
 					 <span style="color:red;">{{ form_errors(form.nom) }}</span>
@@ -145,8 +143,7 @@
 				  </div>
 		          </div>
 		         <div class="clear"></div>
-				 {{ form_rest(form) }}
-				</form>	
+				 {{ form_end(form) }}
 				<div class="clearfix"></div>
 				</div>
 				
@@ -179,7 +176,7 @@
 				<div style="background: #f7f7f7; border-bottom: 1px solid #ddd; margin: -5px 0px 7px 0px;">
 					<h2 style="margin: 5px;">Ajouter une nouvelle sous-catégorie de produit.</h2>	
 				</div>
-    		    <form action="{{ path('users_adminuser_ajouter_sous_categorie') }}" method="post" {{ form_enctype(formscat) }} style="margin-top: 15px;">
+				{{ form_start(formscat, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_ajouter_sous_categorie') }}) }}
 				<div class="col-sm-6">
 				     <span style="color:red;">{{ form_errors(formscat) }}</span>
 					 <span style="color:red;">{{ form_errors(formscat.nom) }}</span>
@@ -205,8 +202,7 @@
 				  </div>
 		          </div>
 		         <div class="clear"></div>
-				 {{ form_rest(formscat) }}
-				</form>	
+				 {{ form_end(formscat) }}
 				<div class="clearfix"></div>
 				</div>
 				
@@ -240,7 +236,7 @@
 				<div style="background: #f7f7f7; border-bottom: 1px solid #ddd; margin: -5px 0px 7px 0px;">
 					<h2 style="margin: 5px;">Ajouter un nouveau produit</h2>	
 				</div>
-    		    <form action="{{ path('users_adminuser_liste_produit_souscategorie') }}" method="post" {{ form_enctype(formpro) }} style="margin-top: 15px;">
+				{{ form_start(formpro, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_liste_produit_souscategorie') }}) }}
 				<div class="col-sm-6">
 				     <span style="color:red;">{{ form_errors(formpro) }}</span>
 					 <span style="color:red;">{{ form_errors(formpro.nom) }}</span>
@@ -303,8 +299,7 @@
 					  </div>
 		          </div>
 		         <div class="clear"></div>
-				 {{ form_rest(formpro) }}
-				</form>	
+				 {{ form_end(formpro) }}
 				<div class="clearfix"></div>
 				</div>
 				
@@ -338,7 +333,7 @@
 				<div style="background: #f7f7f7; border-bottom: 1px solid #ddd; margin: -5px 0px 7px 0px;">
 					<h2 style="margin: 5px;">Ajouter un indicateur d'analyse</h2>	
 				</div>
-    		    <form action="{{ path('users_adminuser_ajouter_nouveau_service') }}" method="post" {{ form_enctype(formservice) }} style="margin-top: 15px;">
+				{{ form_start(formservice, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_ajouter_nouveau_service') }}) }}
 				<div class="col-sm-6">
 				     <span style="color:red;">{{ form_errors(formservice) }}</span>
 					 <span style="color:red;">{{ form_errors(formservice.nom) }}</span>
@@ -371,8 +366,7 @@
 					</div>
 		          </div>
 		         <div class="clear"></div>
-				 {{ form_rest(formservice) }}
-				</form>	
+				 {{ form_end(formservice) }}
 				<div class="clearfix"></div>
 				</div>
 				
@@ -406,7 +400,7 @@
 				<div style="background: #f7f7f7; border-bottom: 1px solid #ddd; margin: -5px 0px 7px 0px;">
 					<h2 style="margin: 5px;">Ajouter l'évolution d'un indicateur</h2>	
 				</div>
-    		    <form action="{{ path('users_adminuser_add_un_evenement') }}" method="post" {{ form_enctype(formevent) }} style="margin-top: 15px;">
+				{{ form_start(formevent, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_add_un_evenement') }}) }}
 				<div class="col-sm-6">
 				     <span style="color:red;">{{ form_errors(formevent) }}</span>
 					 <span style="color:red;">{{ form_errors(formevent.bestvalue) }}</span>
@@ -438,8 +432,7 @@
 				  </div>
 		          </div>
 		         <div class="clear"></div>
-				 {{ form_rest(formevent) }}
-				</form>	
+				 {{ form_end(formevent) }}
 				<div class="clearfix"></div>
 				</div>
 				
@@ -499,7 +492,7 @@
 	</div>
 </div>
 <div class="modal-footer color-top" style="text-align: right; border-top: 4px solid #37c0fb; display: block;">
-{% include "GeneralTemplateBundle:Menu:social.html.twig" %}
+{% include "Theme/General/Template/Menu/social.html.twig" %}
 </div>
 </div>
 </div>

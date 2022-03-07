@@ -1,20 +1,26 @@
 <?php
 
-namespace Produit\ProduitBundle\Entity;
+namespace App\Entity\Produit\Produit;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
-use General\ValidatorBundle\Validatortext\Siteweb;
-use General\ValidatorBundle\Validatorfile\Image;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Service\Servicetext\GeneralServicetext;
+use App\Validator\Validatortext\Siteweb;
+use App\Validator\Validatorfile\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Repository\Produit\Produit\ProduitRepository;
+use App\Entity\Users\User\User;
+use App\Entity\Produit\Produit\Imgproduit;
+use App\Entity\Produit\Produit\Coutlivraison;
+use App\Entity\Produit\Produit\Souscategorie;
+use App\Entity\Doctrine\Common\Collections\Collection;
 
 /**
  * Produit
  *
  * @ORM\Table("produit")
- * @ORM\Entity(repositoryClass="Produit\ProduitBundle\Entity\ProduitRepository")
+ * @ORM\Entity(repositoryClass=ProduitRepository::class)
  ** @ORM\HasLifecycleCallbacks
  */
 class Produit
@@ -145,15 +151,15 @@ class Produit
     private $difference;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+       * @ORM\ManyToOne(targetEntity=User::class)
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $user;
 	
 	/**
-          * @ORM\ManyToMany(targetEntity="Users\UserBundle\Entity\User")
-	 * @ORM\JoinColumn(nullable=true)
-          */
+     * @ORM\ManyToMany(targetEntity=User::class)
+    * @ORM\JoinColumn(nullable=true)
+    */
     private $userlikes;
 	
 	/**
@@ -164,21 +170,21 @@ class Produit
     private $prixlivraison;
 	
 	/**
-         * @ORM\OneToMany(targetEntity="Produit\ProduitBundle\Entity\Imgproduit", mappedBy="produit")
-         */
+     * @ORM\OneToMany(targetEntity=Imgproduit::class, mappedBy="produit")
+     */
     private $imgproduits;
 	
 	private $imgpro;
 	
 	/**
-         * @ORM\OneToMany(targetEntity="Produit\ProduitBundle\Entity\Coutlivraison", mappedBy="produit")
-         */
+     * @ORM\OneToMany(targetEntity=Coutlivraison::class, mappedBy="produit")
+     */
     private $coutlivraisons;
 	
 	 /**
-       * @ORM\ManyToOne(targetEntity="Produit\ProduitBundle\Entity\Souscategorie", inversedBy="produits")
+       * @ORM\ManyToOne(targetEntity=Souscategorie::class, inversedBy="produits")
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $souscategorie;
 	
 	/**
@@ -242,7 +248,7 @@ class Produit
 	
 	public function priseLivraison($ville)
 	{
-		$coutlivraison = $this->em->getRepository('ProduitProduitBundle:Coutlivraison')
+		$coutlivraison = $this->em->getRepository(Coutlivraison::class)
 	                     ->findOneBy(array('ville'=>$ville,'produit'=>$this));
 		if($coutlivraison != null)
 		{
@@ -466,11 +472,9 @@ class Produit
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Produit
      */
-    public function setUser(\Users\UserBundle\Entity\User $user)
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
@@ -479,21 +483,17 @@ class Produit
 
     /**
      * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
     /**
      * Add imgproduits
-     *
-     * @param \Produit\ProduitBundle\Entity\Imgproduit $imgproduits
      * @return Produit
      */
-    public function addImgproduit(\Produit\ProduitBundle\Entity\Imgproduit $imgproduits)
+    public function addImgproduit(Imgproduit $imgproduits): self
     {
         $this->imgproduits[] = $imgproduits;
 
@@ -502,20 +502,16 @@ class Produit
 
     /**
      * Remove imgproduits
-     *
-     * @param \Produit\ProduitBundle\Entity\Imgproduit $imgproduits
      */
-    public function removeImgproduit(\Produit\ProduitBundle\Entity\Imgproduit $imgproduits)
+    public function removeImgproduit(Imgproduit $imgproduits)
     {
         $this->imgproduits->removeElement($imgproduits);
     }
 
     /**
-     * Get imgproduits
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * Get imgproduits 
      */
-    public function getImgproduits()
+    public function getImgproduits(): Collection
     {
         return $this->imgproduits;
     }
@@ -546,11 +542,9 @@ class Produit
 
     /**
      * Set souscategorie
-     *
-     * @param \Produit\ProduitBundle\Entity\Souscategorie $souscategorie
      * @return Produit
      */
-    public function setSouscategorie(\Produit\ProduitBundle\Entity\Souscategorie $souscategorie)
+    public function setSouscategorie(Souscategorie $souscategorie): self
     {
         $this->souscategorie = $souscategorie;
 		$souscategorie->addProduit($this);
@@ -561,7 +555,7 @@ class Produit
     /**
      * Get souscategorie
      *
-     * @return \Produit\ProduitBundle\Entity\Souscategorie 
+     * @return \Produit\Produit\Souscategorie 
      */
     public function getSouscategorie()
     {
@@ -616,11 +610,9 @@ class Produit
 
     /**
      * Add userlikes
-     *
-     * @param \Users\UserBundle\Entity\User $userlikes
      * @return Produit
      */
-    public function addUserlike(\Users\UserBundle\Entity\User $userlikes)
+    public function addUserlike(User $userlikes): self
     {
         $this->userlikes[] = $userlikes;
 		$this->nblike = $this->nblike + 1;
@@ -630,31 +622,25 @@ class Produit
 
     /**
      * Remove userlikes
-     *
-     * @param \Users\UserBundle\Entity\User $userlikes
      */
-    public function removeUserlike(\Users\UserBundle\Entity\User $userlikes)
+    public function removeUserlike(User $userlikes)
     {
         $this->userlikes->removeElement($userlikes);
     }
 
     /**
      * Get userlikes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getUserlikes()
+    public function getUserlikes(): ?Collection
     {
         return $this->userlikes;
     }
-
+    
     /**
      * Add coutlivraisons
-     *
-     * @param \Produit\ProduitBundle\Entity\Coutlivraison $coutlivraisons
      * @return Produit
      */
-    public function addCoutlivraison(\Produit\ProduitBundle\Entity\Coutlivraison $coutlivraisons)
+    public function addCoutlivraison(Coutlivraison $coutlivraisons): self
     {
         $this->coutlivraisons[] = $coutlivraisons;
 
@@ -663,20 +649,16 @@ class Produit
 
     /**
      * Remove coutlivraisons
-     *
-     * @param \Produit\ProduitBundle\Entity\Coutlivraison $coutlivraisons
      */
-    public function removeCoutlivraison(\Produit\ProduitBundle\Entity\Coutlivraison $coutlivraisons)
+    public function removeCoutlivraison(Coutlivraison $coutlivraisons)
     {
         $this->coutlivraisons->removeElement($coutlivraisons);
     }
 
     /**
      * Get coutlivraisons
-     *
-     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getCoutlivraisons()
+    public function getCoutlivraisons(): ?Collection
     {
         return $this->coutlivraisons;
     }

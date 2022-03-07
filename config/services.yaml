@@ -15,13 +15,41 @@ parameters:
     sitename: AFHunt
     emailadmin: support@afhunt.com
     url_single_email: http://sendapi.afhunt.com/
+    saltcookies: dkjdlkdsfnksdfsd
 
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
-
+    general_service.servicetext:
+        class: App\Service\Servicetext\GeneralServicetext
+    App\Service\Servicetext\GeneralServicetext: '@general_service.servicetext'
+    general_validatortext.emailuser:
+        class: App\Validator\Validatortext\EmailValidator
+        arguments: [ '@general_service.servicetext' ]
+        tags:
+            - { name: validator.constraint_validator, alias: email_user }
+    general_validatortext.sitewebuser:
+        class: App\Validator\Validatortext\SitewebValidator
+        arguments: [ '@general_service.servicetext' ]
+        tags:
+            - { name: validator.constraint_validator, alias: siteweb_user }
+    general_validatortext.passworduser:
+        class: App\Validator\Validatortext\PasswordValidator
+        arguments: [ '@general_service.servicetext' ]
+        tags:
+            - { name: validator.constraint_validator, alias: password_user }
+    general_validator.telephone:
+        class: App\Validator\Validatortext\TelephoneValidator
+        arguments: [ '@general_service.servicetext' ]
+        tags:
+            - { name: validator.constraint_validator, alias: adresse_telephone }
+    general_validatorfile.image:
+        class:   App\Validator\Validatorfile\ImgValidator
+        arguments: [ '@general_service.servicetext' ]
+        tags: 
+            - { name: validator.constraint_validator, alias: my_image }
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:

@@ -2,7 +2,7 @@
 /*(c) Noel Kenfack <noel.kenfack@yahoo.fr> Février 2016
 */
 namespace App\Controller\Produit\Produit;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Produit\Produit\Categorie;
 use App\Form\Produit\Produit\CategorieType;
@@ -19,7 +19,7 @@ use App\Service\Email\Singleemail;
 use App\Service\Servicetext\GeneralServicetext;
 use Symfony\Component\HttpFoundation\Request;
 
-class CategorieController extends Controller
+class CategorieController extends AbstractController
 {
 private $params;
 private $_servicemail;

@@ -1,10 +1,8 @@
 <div class="row">
 <div class="col-md-8 col-md-offset-2 col-sm-12">
-	<form class="row" action="{{ path('users_adminuser_modif_pays_localisation_user', {'id': pays.id }) }}" method="post" {{ form_enctype(form2) }} style="margin-top: 15px;">
-	
-	  {% include "UsersLocalisationuserBundle:Pays:formulairepays.html.twig" %}
-      {{ form_rest(form2) }}
-	</form>	
+	{{ form_start(form2, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_modif_pays_localisation_user', {'id': pays.id }) }}) }}
+	  {% include "Theme/Users/Localisationuser/Pays/formulairepays.html.twig" %}
+    {{ form_rest(form2) }}
 	<div class="clearfix"></div>
 </div>
 </div>

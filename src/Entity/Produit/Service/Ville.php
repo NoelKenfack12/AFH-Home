@@ -1,17 +1,21 @@
 <?php
 
-namespace Produit\ServiceBundle\Entity;
+namespace App\Entity\Produit\Service;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Service\Servicetext\GeneralServicetext;
+use App\Repository\Produit\Service\VilleRepository;
+use App\Entity\Users\User\User;
+use App\Entity\Produit\Produit\Coutlivraison;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Ville
  *
  * @ORM\Table("ville")
- * @ORM\Entity(repositoryClass="Produit\ServiceBundle\Entity\VilleRepository")
+ * @ORM\Entity(repositoryClass=VilleRepository::class)
  */
 class Ville
 {
@@ -48,14 +52,14 @@ class Ville
     private $date;
 	
 	/**
-       * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+       * @ORM\ManyToOne(targetEntity=User::class)
        * @ORM\JoinColumn(nullable=false)
-        */
+    */
 	private $user;
 	
 	/**
-         * @ORM\OneToMany(targetEntity="Produit\ProduitBundle\Entity\Coutlivraison", mappedBy="ville")
-         */
+     * @ORM\OneToMany(targetEntity=Coutlivraison::class, mappedBy="ville")
+     */
     private $coutlivraisons;
 	
 	// variable du service de normalisation des noms des pays.
@@ -63,9 +67,9 @@ class Ville
 	
 	public function __construct(GeneralServicetext $service)
 	{
-	$this->servicetext = $service;
-	$this->date = new \Datetime();
-	$this->coutlivraisons = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->servicetext = $service;
+        $this->date = new \Datetime();
+        $this->coutlivraisons = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 	
 	public function setServicetext( GeneralServicetext $service)
@@ -159,11 +163,9 @@ class Ville
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Ville
      */
-    public function setUser(\Users\UserBundle\Entity\User $user)
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
@@ -172,21 +174,17 @@ class Ville
 
     /**
      * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
     /**
      * Add coutlivraisons
-     *
-     * @param \Produit\ProduitBundle\Entity\Coutlivraison $coutlivraisons
      * @return Ville
      */
-    public function addCoutlivraison(\Produit\ProduitBundle\Entity\Coutlivraison $coutlivraisons)
+    public function addCoutlivraison(Coutlivraison $coutlivraisons): self
     {
         $this->coutlivraisons[] = $coutlivraisons;
 
@@ -195,20 +193,16 @@ class Ville
 
     /**
      * Remove coutlivraisons
-     *
-     * @param \Produit\ProduitBundle\Entity\Coutlivraison $coutlivraisons
      */
-    public function removeCoutlivraison(\Produit\ProduitBundle\Entity\Coutlivraison $coutlivraisons)
+    public function removeCoutlivraison(Coutlivraison $coutlivraisons)
     {
         $this->coutlivraisons->removeElement($coutlivraisons);
     }
 
     /**
-     * Get coutlivraisons
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * Get coutlivraisons 
      */
-    public function getCoutlivraisons()
+    public function getCoutlivraisons(): ?Collection
     {
         return $this->coutlivraisons;
     }

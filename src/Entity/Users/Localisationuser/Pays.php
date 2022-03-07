@@ -1,28 +1,34 @@
 <?php
 
-namespace Users\LocalisationuserBundle\Entity;
+namespace App\Entity\Users\Localisationuser;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
-use General\ValidatorBundle\Validatortext\Siteweb;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Validator\Validatortext\Siteweb;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\ExecutionContextInterface;
-use General\ServiceBundle\Servicetext\GeneralServicetext;
-use General\ValidatorBundle\Validatorfile\Image;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use App\Service\Servicetext\GeneralServicetext;
+use App\Validator\Validatorfile\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Repository\Users\Localisationuser\PaysRepository;
+use App\Entity\Users\Localisationuser\Drapeau;
+use App\Entity\Users\Localisationuser\Continent;
+use App\Entity\Users\Localisationuser\Langue;
+use App\Entity\Users\User\User;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Pays
  *
  * @ORM\Table("pays")
- * @ORM\Entity(repositoryClass="Users\LocalisationuserBundle\Entity\PaysRepository")
+ * @ORM\Entity(repositoryClass=PaysRepository::class)
  * @UniqueEntity(fields="siteweb", message="Ce site est déjà enregistré.")
  * @UniqueEntity(fields="nom", message="Ce pays est déjà enregistré.")
-  * @UniqueEntity(fields="code", message="Ce code existe déjà.")
-  ** @ORM\HasLifecycleCallbacks
-  * @Assert\Callback(methods={"nomValide"})
+ * @UniqueEntity(fields="code", message="Ce code existe déjà.")
+ * @ORM\HasLifecycleCallbacks
+ * @Assert\Callback(methods={"nomValide"})
  */
  
 class Pays
@@ -84,27 +90,27 @@ class Pays
     private $domaine;
 	
 	/**
-           * @ORM\OneToOne(targetEntity="Users\LocalisationuserBundle\Entity\Drapeau",  cascade={"persist","remove"})
-           * @ORM\JoinColumn(nullable=true)
-	*@Assert\Valid()
-          */
+     * @ORM\OneToOne(targetEntity=Drapeau::class,  cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=true)
+     *@Assert\Valid()
+    */
 	private $drapeau;
 	
 	/**
-	* @ORM\ManyToOne(targetEntity="Users\LocalisationuserBundle\Entity\Continent", inversedBy="pays")
+	* @ORM\ManyToOne(targetEntity=Continent::class, inversedBy="pays")
 	* @ORM\JoinColumn(nullable=false)
 	*/
     private $continent;
 	
 	/**
-	* @ORM\ManyToMany(targetEntity="Users\LocalisationuserBundle\Entity\Langue", inversedBy="pays")
+	* @ORM\ManyToMany(targetEntity=Langue::class, inversedBy="pays")
 	* @ORM\JoinColumn(nullable=true)
 	*/
     private $langues;
 	
 	/**
-         * @ORM\OneToMany(targetEntity="Users\UserBundle\Entity\User", mappedBy="pays")
-         */
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="pays")
+     */
     private $users;
 	
 	/**
@@ -130,13 +136,12 @@ class Pays
 	private $tempFilename;
 	
 	// variable du service de normalisation des noms de fichier
-	private $servicefile;
-	
+	private $servicefile;	
 	
 	public function __construct()
 	{
-	$this->langues = new \Doctrine\Common\Collections\ArrayCollection();
-	$this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->langues = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
 
@@ -248,18 +253,16 @@ class Pays
      */
     public function premajuscule()
 	{
-	$this->nom =  ucfirst($this->nom);
-	$this->citoyen =  ucfirst($this->citoyen);
-	$this->citoyenne = ucfirst($this->citoyenne);
+        $this->nom =  ucfirst($this->nom);
+        $this->citoyen =  ucfirst($this->citoyen);
+        $this->citoyenne = ucfirst($this->citoyenne);
 	}
 
     /**
      * Set continent
-     *
-     * @param \Users\LocalisationuserBundle\Entity\Continent $continent
      * @return Pays
      */
-    public function setContinent(\Users\LocalisationuserBundle\Entity\Continent $continent)
+    public function setContinent(Continent $continent): self
     {
         $this->continent = $continent;
 		$continent->addPay($this);
@@ -268,22 +271,18 @@ class Pays
     }
 
     /**
-     * Get continent
-     *
-     * @return \Users\LocalisationuserBundle\Entity\Continent 
+     * Get continent 
      */
-    public function getContinent()
+    public function getContinent(): ?Continent
     {
         return $this->continent;
     }
 
     /**
      * Add langues
-     *
-     * @param \Users\LocalisationuserBundle\Entity\Langue $langues
      * @return Pays
      */
-    public function addLangue(\Users\LocalisationuserBundle\Entity\Langue $langues)
+    public function addLangue(Langue $langues): self
     {
         $this->langues[] = $langues;
 		if($langue != null){
@@ -292,13 +291,11 @@ class Pays
 
         return $this;
     }
-
+    
     /**
      * Remove langues
-     *
-     * @param \Users\LocalisationuserBundle\Entity\Langue $langues
      */
-    public function removeLangue(\Users\LocalisationuserBundle\Entity\Langue $langues)
+    public function removeLangue(Langue $langues): self
     {
         $this->langues->removeElement($langues);
 		if($langue != null){
@@ -307,22 +304,23 @@ class Pays
     }
 
     /**
-     * Get langues
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * Get langues 
      */
-    public function getLangues()
+    public function getLangues(): ?Collection
     {
         return $this->langues;
     }
-	
-	public function nomValide(ExecutionContextInterface $context)
+
+    /**
+     * @Assert\Callback
+     */
+	public function nomValide(ExecutionContextInterface $context, $payload)
 	{
-	if (count($this->langues) > 4)
-	{
-	$context->addViolationAt($this->nom, 'Trop de langue pour ce pays.', array(), null);
-	}
-	}
+        if(count($this->langues) > 4)
+        {
+            $context->addViolationAt($this->nom, 'Trop de langue pour ce pays.', array(), null);
+        }
+    }
 
     /**
      * Set citoyenne
@@ -362,11 +360,9 @@ class Pays
 
     /**
      * Set drapeau
-     *
-     * @param \Users\LocalisationuserBundle\Entity\Drapeau $drapeau
      * @return Pays
      */
-    public function setDrapeau(\Users\LocalisationuserBundle\Entity\Drapeau $drapeau = null)
+    public function setDrapeau(Drapeau $drapeau = null): self
     {
         $this->drapeau = $drapeau;
 
@@ -375,21 +371,17 @@ class Pays
 
     /**
      * Get drapeau
-     *
-     * @return \Users\LocalisationuserBundle\Entity\Drapeau 
      */
-    public function getDrapeau()
+    public function getDrapeau(): ?Drapeau
     {
         return $this->drapeau;
     }
 
     /**
      * Add users
-     *
-     * @param \Users\UserBundle\Entity\User $users
      * @return Pays
      */
-    public function addUser(\Users\UserBundle\Entity\User $users)
+    public function addUser(User $users): self
     {
         $this->users[] = $users;
 
@@ -398,20 +390,16 @@ class Pays
 
     /**
      * Remove users
-     *
-     * @param \Users\UserBundle\Entity\User $users
      */
-    public function removeUser(\Users\UserBundle\Entity\User $users)
+    public function removeUser(User $users)
     {
         $this->users->removeElement($users);
     }
 
     /**
-     * Get users
-     *
-     * @return \Doctrine\Common\Collections\Collection 
+     * Get users 
      */
-    public function getUsers()
+    public function getUsers(): ?Collection
     {
         return $this->users;
     }

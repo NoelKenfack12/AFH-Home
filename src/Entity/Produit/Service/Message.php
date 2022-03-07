@@ -1,18 +1,20 @@
 <?php
 
-namespace Produit\ServiceBundle\Entity;
+namespace App\Entity\Produit\Service;
 
 use Doctrine\ORM\Mapping as ORM;
-use General\ValidatorBundle\Validatortext\Email;
-use General\ValidatorBundle\Validatortext\Taillemin;
-use General\ValidatorBundle\Validatortext\Taillemax;
-use General\ValidatorBundle\Validatortext\Telephone;
+use App\Validator\Validatortext\Email;
+use App\Validator\Validatortext\Taillemin;
+use App\Validator\Validatortext\Taillemax;
+use App\Validator\Validatortext\Telephone;
+use App\Repository\Produit\Service\MessageRepository;
+use App\Entity\Users\User\User;
 
 /**
  * Message
  *
  * @ORM\Table("message")
- * @ORM\Entity(repositoryClass="Produit\ServiceBundle\Entity\MessageRepository")
+ * @ORM\Entity(repositoryClass=MessageRepository::class)
  */
 class Message
 {
@@ -95,9 +97,9 @@ class Message
     private $email;
 	
 	/**
-      * @ORM\ManyToOne(targetEntity="Users\UserBundle\Entity\User")
+      * @ORM\ManyToOne(targetEntity=User::class)
       * @ORM\JoinColumn(nullable=true)
-      */
+    */
     private $user;
 	
 	public function __construct()
@@ -235,11 +237,9 @@ class Message
 
     /**
      * Set user
-     *
-     * @param \Users\UserBundle\Entity\User $user
      * @return Message
      */
-    public function setUser(\Users\UserBundle\Entity\User $user = null)
+    public function setUser(User $user = null): self
     {
         $this->user = $user;
 
@@ -248,10 +248,8 @@ class Message
 
     /**
      * Get user
-     *
-     * @return \Users\UserBundle\Entity\User 
      */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
