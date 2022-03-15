@@ -2,6 +2,8 @@
 
 namespace App\Entity\Produit\Produit;
 
+use App\Entity\Produit\Service\Service;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Validator\Validatortext\Taillemin;
 use App\Validator\Validatortext\Taillemax;
@@ -221,69 +223,70 @@ class Produit
 	private $em;
 	
 	public function __construct(GeneralServicetext $service)
-	{
-		$this->servicetext = $service;
-		$this->nblike = 0;
-		$this->nbvente = 0;
-		$this->newprise = 0;
-		$this->prixlivraison = 0;
-		$this->rang = 0;
-		$this->choixauteur = false;
-		$this->lastprise = false;
-		$this->difference = 0;
-		$this->date = new \Datetime();
-		$this->imgproduits = new \Doctrine\Common\Collections\ArrayCollection();
-		$this->coutlivraisons = new \Doctrine\Common\Collections\ArrayCollection();
-		$this->userlikes = new \Doctrine\Common\Collections\ArrayCollection();
-	}
+                     	{
+                     		$this->servicetext = $service;
+                     		$this->nblike = 0;
+                     		$this->nbvente = 0;
+                     		$this->newprise = 0;
+                     		$this->prixlivraison = 0;
+                     		$this->rang = 0;
+                     		$this->choixauteur = false;
+                     		$this->lastprise = false;
+                     		$this->difference = 0;
+                     		$this->date = new \Datetime();
+                     		$this->imgproduits = new \Doctrine\Common\Collections\ArrayCollection();
+                     		$this->coutlivraisons = new \Doctrine\Common\Collections\ArrayCollection();
+                     		$this->userlikes = new \Doctrine\Common\Collections\ArrayCollection();
+                     
+                     	}
 	
 	public function setEm($em)
-	{
-	$this->em = $em;
-	}
+                     	{
+                     	$this->em = $em;
+                     	}
 	public function getEm()
-	{
-	return $this->em;
-	}
+                     	{
+                     	return $this->em;
+                     	}
 	
 	public function priseLivraison($ville)
-	{
-		$coutlivraison = $this->em->getRepository(Coutlivraison::class)
-	                     ->findOneBy(array('ville'=>$ville,'produit'=>$this));
-		if($coutlivraison != null)
-		{
-			return $coutlivraison->getMontant();
-		}else{
-			return $this->prixlivraison;
-		}
-	}
+                     	{
+                     		$coutlivraison = $this->em->getRepository(Coutlivraison::class)
+                     	                     ->findOneBy(array('ville'=>$ville,'produit'=>$this));
+                     		if($coutlivraison != null)
+                     		{
+                     			return $coutlivraison->getMontant();
+                     		}else{
+                     			return $this->prixlivraison;
+                     		}
+                     	}
 	
 	public function getImgpro()
-	{
-		return $this->imgpro;
-	}
+                     	{
+                     		return $this->imgpro;
+                     	}
 	
 	public function setImgpro($imgpro)
-	{
-		$this->imgpro = $imgpro;
-	}
+                     	{
+                     		$this->imgpro = $imgpro;
+                     	}
 	
 	public function getServicetext()
-	{
-		return $this->servicetext;
-	}
+                     	{
+                     		return $this->servicetext;
+                     	}
 	
 	public function setServicetext(GeneralServicetext $service)
-	{
-		$this->servicetext = $service;
-		return $this;
-	}
+                     	{
+                     		$this->servicetext = $service;
+                     		return $this;
+                     	}
 	
 	public function ancienPrixProduit()
-	{
-	$aprix = $this->newprise + $this->difference;
-	return $aprix;
-	}
+                     	{
+                     	$aprix = $this->newprise + $this->difference;
+                     	return $aprix;
+                     	}
 	
 	/**
       * @ORM\PrePersist()
@@ -292,9 +295,9 @@ class Produit
     public function preSave()
     {
 	if($this->newprise != $this->lastprise)
-	{
-        $this->difference = ($this->lastprise - $this->newprise);
-	}
+                     	{
+                             $this->difference = ($this->lastprise - $this->newprise);
+                     	}
 	$this->lastprise = $this->newprise;
 	}
 
@@ -509,7 +512,7 @@ class Produit
     }
 
     /**
-     * Get imgproduits 
+     * @return Collection<int, Service>
      */
     public function getImgproduits(): Collection
     {
@@ -517,28 +520,28 @@ class Produit
     }
 	
 	public function getImage()
-	{
-		$imageservice = null;
-		if(count($this->imgproduits) >= 2)
-		{
-			$tail = mt_rand(1, count($this->imgproduits));
-		}else{
-			$tail = 1;
-		}
-		
-		$compt = 1;
-		foreach($this->imgproduits as $image)
-		{
-			if($compt == $tail)
-			{
-				$imageservice = $image;
-				break;
-			}else{
-				$compt++;
-			}
-		}
-		return $imageservice;
-	}
+                     	{
+                     		$imageservice = null;
+                     		if(count($this->imgproduits) >= 2)
+                     		{
+                     			$tail = mt_rand(1, count($this->imgproduits));
+                     		}else{
+                     			$tail = 1;
+                     		}
+                     		
+                     		$compt = 1;
+                     		foreach($this->imgproduits as $image)
+                     		{
+                     			if($compt == $tail)
+                     			{
+                     				$imageservice = $image;
+                     				break;
+                     			}else{
+                     				$compt++;
+                     			}
+                     		}
+                     		return $imageservice;
+                     	}
 
     /**
      * Set souscategorie
@@ -555,9 +558,8 @@ class Produit
     /**
      * Get souscategorie
      *
-     * @return \Produit\Produit\Souscategorie 
      */
-    public function getSouscategorie()
+    public function getSouscategorie(): ?Souscategorie
     {
         return $this->souscategorie;
     }
@@ -698,89 +700,89 @@ class Produit
 	}
 	// permet la récupération du nom du fiechier
 	public function getFile()
-	{
-	return $this->file;
-	}
+                     	{
+                     	return $this->file;
+                     	}
 	
 	public function getUploadDir()
-	{
-	// On retourne le chemin relatif vers l'image pour un navigateur
-	return 'bundles/produit/produit/images/produit';
-	}
+                     	{
+                     	// On retourne le chemin relatif vers l'image pour un navigateur
+                     	return 'bundles/produit/produit/images/produit';
+                     	}
 	protected function getUploadRootDir()
-	{
-	// On retourne le chemin relatif vers l'image pour notre codePHP
-	return  __DIR__.'/../../../../web/'.$this->getUploadDir();
-	}
+                     	{
+                     	// On retourne le chemin relatif vers l'image pour notre codePHP
+                     	return  __DIR__.'/../../../../web/'.$this->getUploadDir();
+                     	}
 	public function setFile(UploadedFile $file)
-	{
-	$this->file = $file;
-	// On vérifie si on avait déjà un fichier pour cette entité
-	if (null !== $this->src) {
-	// On sauvegarde l'extension du fichier pour le supprimer plus tard
-	$this->tempFilename = $this->src;
-	// On réinitialise les valeurs des attributs url et alt
-	$this->src = null;
-	$this->alt = null;
-	}
-	}
+                     	{
+                     	$this->file = $file;
+                     	// On vérifie si on avait déjà un fichier pour cette entité
+                     	if (null !== $this->src) {
+                     	// On sauvegarde l'extension du fichier pour le supprimer plus tard
+                     	$this->tempFilename = $this->src;
+                     	// On réinitialise les valeurs des attributs url et alt
+                     	$this->src = null;
+                     	$this->alt = null;
+                     	}
+                     	}
 	/**
 	* @ORM\PrePersist()
 	* @ORM\PreUpdate()
 	*/
 	public function preUpload()
-	{
-	if (null === $this->file) {
-	return;
-	}
-	$text = $this->file->getClientOriginalName();
-	$this->src = $this->setServicetext->normaliseText($text);
-	$this->alt = $this->src;
-	}
+                     	{
+                     	if (null === $this->file) {
+                     	return;
+                     	}
+                     	$text = $this->file->getClientOriginalName();
+                     	$this->src = $this->setServicetext->normaliseText($text);
+                     	$this->alt = $this->src;
+                     	}
 	
 	/**
 	* @ORM\PostPersist()
 	* @ORM\PostUpdate()
 	*/
 	public function upload()
-	{
-	// Si jamais il n'y a pas de fichier (champ facultatif)
-	if (null === $this->file) {
-	return;
-	}
-	if (null !== $this->tempFilename) {
-	$oldFile = $this->getUploadRootDir().'/'.$this->id.'.'.$this->tempFilename;
-	if (file_exists($oldFile)) {
-	unlink($oldFile);
-	}
-	}
-	$this->file->move( $this->getUploadRootDir(), $this->id.'.'.$this->src);
-	}
+                     	{
+                     	// Si jamais il n'y a pas de fichier (champ facultatif)
+                     	if (null === $this->file) {
+                     	return;
+                     	}
+                     	if (null !== $this->tempFilename) {
+                     	$oldFile = $this->getUploadRootDir().'/'.$this->id.'.'.$this->tempFilename;
+                     	if (file_exists($oldFile)) {
+                     	unlink($oldFile);
+                     	}
+                     	}
+                     	$this->file->move( $this->getUploadRootDir(), $this->id.'.'.$this->src);
+                     	}
 	
 	/**
 	*@ORM\PreRemove()
 	*/
 	public function preRemoveUpload()
-	{
-	$this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->src;
-	}
+                     	{
+                     	$this->tempFilename = $this->getUploadRootDir().'/'.$this->id.'.'.$this->src;
+                     	}
 	
 	/**
 	* @ORM\PostRemove()
 	*/
 	public function postRemoveUpload()
-	{
-	// En PostRemove, on n'a pas accès à l'id, on utilise notre nom sauvegardé
-	if (file_exists($this->tempFilename)) {
-	// On supprime le fichier
-	unlink($this->tempFilename);
-	}
-	}
+                     	{
+                     	// En PostRemove, on n'a pas accès à l'id, on utilise notre nom sauvegardé
+                     	if (file_exists($this->tempFilename)) {
+                     	// On supprime le fichier
+                     	unlink($this->tempFilename);
+                     	}
+                     	}
 	
 	public function getWebPath()
-	{
-	return $this->getUploadDir().'/'.$this->getId().'.'.$this->getSrc();
-	}
+                     	{
+                     	return $this->getUploadDir().'/'.$this->getId().'.'.$this->getSrc();
+                     	}
 
     /**
      * Set link

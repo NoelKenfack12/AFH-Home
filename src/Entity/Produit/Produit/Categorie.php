@@ -37,8 +37,8 @@ class Categorie
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255,unique=true)
-     *@Taillemin(valeur=3, message="Au moins 3 caractères")
-     *@Taillemax(valeur=70, message="Au plus 70 caractès")
+     * @Taillemin(valeur=3, message="Au moins 3 caractères")
+     * @Taillemax(valeur=70, message="Au plus 70 caractès")
      */
     private $nom;
 	
@@ -82,7 +82,7 @@ class Categorie
     private $alt;
 	
 	/**
-	*@Image(taillemax=1500000, message="la taille de l'image  %string% est grande.")
+	* @Image(taillemax=1500000, message="la taille de l'image  %string% est grande.")
 	*/
 	private $file;
 	

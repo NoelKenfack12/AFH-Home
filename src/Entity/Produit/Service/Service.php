@@ -2,6 +2,7 @@
 
 namespace App\Entity\Produit\Service;
 
+use App\Entity\Produit\Produit\Produit;
 use Doctrine\ORM\Mapping as ORM;
 use App\Validator\Validatortext\Taillemin;
 use App\Validator\Validatortext\Taillemax;
@@ -86,26 +87,26 @@ class Service
 	private $em;
 	
 	public function __construct(GeneralServicetext $service)
-	{
-		$this->servicetext = $service;
-		$this->date = new \Datetime();
-		$this->type = 0;
-		$this->rang = 0;
-	}
+            	{
+            		$this->servicetext = $service;
+            		$this->date = new \Datetime();
+            		$this->type = 0;
+            		$this->rang = 0;
+            	}
 
 	public function setServicetext( GeneralServicetext $service)
-    {
-    $this->servicetext = $service;
-    }
+                {
+                $this->servicetext = $service;
+                }
     public function getServicetext()
     {
     return $this->servicetext;
     }
 	
 	public function setEm($em)
-    {
-		$this->em = $em;
-    }
+                {
+            		$this->em = $em;
+                }
 	
     public function getEm()
     {
@@ -276,19 +277,20 @@ class Service
     }
 	
 	public function getTabColor()
-	{
-		return array(array('#f7f7f7','#333'),array('#f96d00','#fff'),array('#ffffff','#333'),array('#f2f2f2','#333'),array('#00325a','#fff'),array('#a6be53','#fff'),array('#3498db','#fff'));
-	}
+            	{
+            		return array(array('#f7f7f7','#333'),array('#f96d00','#fff'),array('#ffffff','#333'),array('#f2f2f2','#333'),array('#00325a','#fff'),array('#a6be53','#fff'),array('#3498db','#fff'));
+            	}
 	public function getvaleurAppli($idapp, $idannee)
-	{
-		$indicateur = $this->em->getRepository(Evenement::class)
-							   ->getvaleurAppli($this->getId(),$idapp,$idannee);
-		
-		if($indicateur != null)
-		{
-			$random_keys = array_rand($this->getTabColor());
-			$indicateur->setCodecouleur($this->getTabColor()[$random_keys]);
-		}
-		return $indicateur;
-	}
+            	{
+            		$indicateur = $this->em->getRepository(Evenement::class)
+            							   ->getvaleurAppli($this->getId(),$idapp,$idannee);
+            		
+            		if($indicateur != null)
+            		{
+            			$random_keys = array_rand($this->getTabColor());
+            			$indicateur->setCodecouleur($this->getTabColor()[$random_keys]);
+            		}
+            		return $indicateur;
+            	}
+
 }

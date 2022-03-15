@@ -21,6 +21,7 @@ twig:
         mailregex: /[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}/i
         siteweb: http://www.afhunt.com
         oauthloginUrl: http://localhost:4200/public/oauth2?clientid=sZjGlfwhpQsAa5o5EWfx96PVSJpilSDlC6t5P6A1CBvCKhcVMDsUBHkI7y6S2zXaSkPV+CziIu0cXSGbFIde6PxD2Jtw7iVoffC+Xg==]z12U[MQHdVvulzDnBeJ/vt4OrWdbRnjuk9musXv967qUHKPEKY994nH34zQhP7Zf8fHJIs7Kpac+V8CXGSnkHrKTEEcmGm4ruhkNwux5cmbnvLXo6A9jS7fpMd/02Pup9ev/i4cSu0AwthOZyAKvvUuaRCReeYpcCW+7i80ZJI7b3AvMWLzU93pMlLUNP+9+Vjg==
+        clientSecret: q173il4fh8yem1lv
 when@test:
     twig:
         strict_variables: true
