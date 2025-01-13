@@ -19,6 +19,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use App\Service\Email\Singleemail;
 use App\Security\TokenAuthenticator;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
+use Symfony\Component\HttpFoundation\Request;
 
 class MenuController extends AbstractController
 {
@@ -37,7 +38,7 @@ public function __construct(TokenAuthenticator $authenticator, GuardAuthenticato
 	$this->_servicemail = $servicemail;
 }
 
-public function menubare($position="afhunt")
+public function menubare(Request $request, $position="afhunt")
 {
 	$em = $this->getDoctrine()->getManager();
 	if($this->getUser() == null and isset($_COOKIE["PIDSESSREM"]) and $_COOKIE["PIDSESSREM"] != 'delete')

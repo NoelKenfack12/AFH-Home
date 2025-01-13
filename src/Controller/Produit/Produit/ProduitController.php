@@ -66,7 +66,7 @@ public function miseajourproduit(GeneralServicetext $service, Request $request, 
 		if($formpro->isValid() and count($liste_img) <= $nbimgproduit){
 			if($produit->getImgpro() != null)
 			{
-			$em->persist($imgpro);
+				$em->persist($imgpro);
 			}
 			$em->flush();
 		}else{

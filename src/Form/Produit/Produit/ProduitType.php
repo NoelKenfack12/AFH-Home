@@ -50,10 +50,11 @@ class ProduitType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Produit::class
+            'data_class' => Produit::class,
+            'cat'=>null
         ));
     }
 

@@ -514,7 +514,7 @@ class Produit
     /**
      * @return Collection<int, Service>
      */
-    public function getImgproduits(): Collection
+    public function getImgproduits()
     {
         return $this->imgproduits;
     }
@@ -712,7 +712,7 @@ class Produit
 	protected function getUploadRootDir()
                      	{
                      	// On retourne le chemin relatif vers l'image pour notre codePHP
-                     	return  __DIR__.'/../../../../web/'.$this->getUploadDir();
+                     	return  __DIR__.'/../../../../public/'.$this->getUploadDir();
                      	}
 	public function setFile(UploadedFile $file)
                      	{
@@ -736,7 +736,7 @@ class Produit
                      	return;
                      	}
                      	$text = $this->file->getClientOriginalName();
-                     	$this->src = $this->setServicetext->normaliseText($text);
+                     	$this->src = $this->servicetext->normaliseText($text);
                      	$this->alt = $this->src;
                      	}
 	
