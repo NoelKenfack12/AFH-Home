@@ -38,7 +38,7 @@ public function __construct(TokenAuthenticator $authenticator, GuardAuthenticato
 	$this->_servicemail = $servicemail;
 }
 
-public function menubare(Request $request, $position="afhunt")
+public function menubare(Request $request, $position="admin")
 {
 	$em = $this->getDoctrine()->getManager();
 	if($this->getUser() == null and isset($_COOKIE["PIDSESSREM"]) and $_COOKIE["PIDSESSREM"] != 'delete')
@@ -89,7 +89,7 @@ public function menubareleft()
 	array('liste_categorie'=>$liste_categorie,'nbprod'=>$nbprod,'produitpanier'=>$produitpanier,'sous_categorie'=>$sous_categorie));
 }
 
-public function menubareright($position="afhunt")
+public function menubareright($position="admin")
 {
 	$em = $this->getDoctrine()->getManager();
 	$liste_appli = $em->getRepository(Produit::class)
@@ -99,7 +99,7 @@ public function menubareright($position="afhunt")
 	array('position'=>$position,'liste_appli'=>$liste_appli));
 }
 
-public function footer($position="afhunt")
+public function footer($position="admin")
 {
 	$em = $this->getDoctrine()->getManager();
 	

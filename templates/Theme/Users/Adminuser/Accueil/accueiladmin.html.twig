@@ -1,4 +1,509 @@
 {% extends "Theme/Users/Adminuser/layoutadmin.html.twig" %}
+
+{% block meta %}
+	{{ parent() }}
+	<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
+	<meta name="author" content="Noel Kenfack"/>
+	<meta name="description" content="{{ site }} | Inscription | Cameroun " />
+{% endblock %}
+
+{% block title %}
+	{{ parent() }} | {{ 'Accueil Admin'|trans }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block userblog_menuleft %}
+	  {{ render(controller("App\\Controller\\Users\\Adminuser\\AccueilController:menuadmin")) }}
+{% endblock %}
+
+{% block userblog_body %}
+
+{% include 'Theme/General/Template/Menu/descriptionvariable.html.twig' %}
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+	  <li class="breadcrumb-item text-sm text-dark active"><a class="opacity-5 text-dark" href="#!">{{ 'Administration'|trans }}</a></li>
+	</ol>
+</nav>
+<div class="divider mb-3" style="border-top: 2px dashed #999;"></div>
+
+<div class="section" style="padding: 5px 0px 0px 0px;">
+   
+   <div class="row">
+	  <div class="col s12 m4">
+	   <div class="card card-body">
+		   <h4 class="title-1">
+		   <a href="#galerie-reseller" class="page-scroll-cgu" style="display: block;">
+		   Galerie <span style="float: right; display: inline-block; width: 30px;height: 30px; border-radius: 15px; color: #fff; background: #333; text-align: center;">{{ allslide|length }}</span>
+		   </a>
+		   </h4>
+		   <a href="#!" class="open-modal-new-slide" style="background: #3565ae; padding: 7px; color: #fff;"><span class="mdi-av-playlist-add" style="font-size: 12px;"></span> Ajouter</a>
+	   </div>
+	 </div>
+   
+	 <div class="col s12 m4">
+	   <div class="card card-body">
+		   <h4 class="title-1">
+		   <a href="#categorie-produit" class="page-scroll-cgu" style="display: block;">
+		   Catégories <span style="float: right; display: inline-block; width: 30px;height: 30px; border-radius: 15px; color: #fff; background: #333; text-align: center;">{{ nbcategorie|length }}</span>
+		   </a>
+		   </h4>
+		   <a href="#!" class="open-modal-nouv-categorie" style="background: #3565ae; padding: 7px; color: #fff;"><span class="mdi-av-playlist-add" style="font-size: 12px;"></span> Ajouter</a>
+	   </div>
+	 </div>
+   
+	 <div class="col s12 m4">
+	   <div class="card card-body">
+		   <h4 class="title-1">
+			<a href="#souscategorie-produit" class="page-scroll-cgu" style="display: block;">
+			Sous-Catégories <span class="nb-scat-accueil" style="float: right; display: inline-block; width: 30px;height: 30px; border-radius: 15px; color: #fff; background: #333; text-align: center;">{{ liste_scategorie|length }}</span>
+			</a>
+			</h4>
+		   <a href="#!" class="open-modal-nouvelle-souscategorie" style="background: #3565ae; padding: 7px; color: #fff;"><span class="mdi-av-playlist-add" style="font-size: 12px;"></span> Ajouter</a>
+	   </div>
+	 </div>
+   </div>
+   
+   <div class="row">
+		<div class="col-md-12">
+		   {% for infos in app.session.flashbag.get('information') %}
+		   {% if loop.first %}
+			   {% include 'Theme/General/Template/Menu/flasinfos.html.twig' %}
+		   {% endif %}
+		   {% endfor %}
+   
+		   {% set id = '' %}
+		   {% for infos in app.session.flashbag.get('supprime_slide') %}
+		   {% if loop.last %}
+			   <div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
+			   <strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le slide {{ infos|lower }} </strong>
+			   <form action="{{ path('users_adminuser_delete_courant_slide',{'id': id }) }}" method="post">
+			   <input type="submit" value="Supprimer" style="background: red;"/>
+			   {{ form_rest(formsupp) }}
+			   </form>
+			   </div>
+		   {% else %}
+		   {% set id = infos %}
+		   {% endif %}
+		   {% endfor %}
+		   
+		   
+		   {% for infos in app.session.flashbag.get('supprime_continent') %}
+		   {% if loop.last %}
+			   <div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
+			   <strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le continent {{ infos|lower }} </strong>
+			   <form action="{{ path('users_adminuser_localisation_supprimer_continent', {'id': id }) }}" method="post">
+			   <input type="submit" value="Supprimer" style="background: red;"/>
+			   {{ form_rest(formsupp) }}
+			   </form>
+			   </div>
+		   {% else %}
+		   {% set id = infos %}
+		   {% endif %}
+		   {% endfor %}
+		   
+		   {% for infos in app.session.flashbag.get('pays_supp') %}
+		   {% if loop.last %}
+			   <div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
+			   <strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le pays {{ infos|lower }} </strong>
+			   <form action="{{ path('users_adminuser_drop_country_user_local', {'id': id }) }}" method="post">
+			   <input type="submit" value="Supprimer" style="background: red;"/>
+			   {{ form_rest(formsupp) }}
+			   </form>
+			   </div>
+		   {% else %}
+		   {% set id = infos %}
+		   {% endif %}
+		   {% endfor %}
+	   </div>
+   </div>
+   
+   <h5 id="galerie-reseller mt-3" style="border-bottom: 2px dashed #999; margin-bottom: 7px;">
+	   {{ 'Galerie photos'|trans }}:
+   </h5>
+
+   <div class="row" style="margin-top: 25px;">
+		{% for slide in allslide %}
+			<div class="col-md-3 mb-3">
+				<div class="card" data-animation="true">
+					<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+					<a class="d-block blur-shadow-image">
+						<img src="{{ asset(slide.getWebpath) }}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg" style="height: 200px;">
+					</a>
+					<div class="colored-shadow" style="background-image: url(&quot;{{ asset(slide.getWebpath) }}&quot;);"></div>
+					</div>
+					<div class="card-body text-center">
+					<div class="d-flex mt-n6 mx-auto">
+					<a href="{{ path('users_adminuser_delete_courant_slide',{'id': slide.id }) }}" class="btn btn-link text-primary ms-auto border-0" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Supprimer">
+						<i class="mdi-content-clear" style="font-size: 15px;"></i>
+					</a>
+					<button class="btn btn-link text-info me-auto border-0 update-subcontent-image-slide" value="{{ slide.id }}" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Modifier">
+						<i class="mdi-image-edit" style="font-size: 15px;"></i>
+					</button>
+					</div>
+					<h5 class="font-weight-normal mt-3">
+						<a href="javascript:;">{{ slide.titre }}</a>
+					</h5>
+					<p class="mb-0">
+						{{ slide.description }}
+					</p>
+					</div>
+					<hr class="dark horizontal my-0">
+					<div class="card-footer d-flex">
+
+						<div class="row">
+							<div class="col-md-8">
+								<img src="{% if slide.user.imgprofil == null %}{{ asset('template/images/avatar.jpg') }}{% else %}{{ asset(slide.user.imgprofil.getWebPath) }}{% endif %}" alt="" class="circle responsive-img valign profile-image" style="height: 30px; width: 30px; border-radius: 15px; float: left; margin-right: 5px;margin-top: -7px;">
+				   				Par <a href="#">{{ slide.user.name(25) }}</a>
+							</div>
+							<div class="col-md-4 text-right">
+								{{ slide.date|date('d/m/y') }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+
+   <h5 id="categorie-produit" style="border-bottom: 2px dashed #999; margin-bottom: 7px; margin-top: 0px;">
+	   {{ 'Catalogue produit'|trans }}:
+   </h5>
+   <div class="row">
+	  {% for categorie in nbcategorie %}
+	  <div class="col-md-4">
+	   <div class="card card-body" style="margin-bottom: 5px;">
+		   <h4 class="title-1">
+			<a href="#produit-scategorie-{{ categorie.id }}" class="page-scroll-cgu" style="display: block;" title="{{ categorie.nom }}">
+				<img src="{{ asset(categorie.getWebPath) }}" alt="" class="circle responsive-img valign profile-image left" style="width: 30px; height: 30px;"/>
+				<span style="margin-left: 7px; display: inline-block; width: 70%;" class="coustom-my-text">{{ categorie.rang }}. {{ categorie.nom }} </span>
+				<span style="float: right; display: inline-block; width: 30px;height: 30px; border-radius: 15px; color: #fff; background: #333; text-align: center;">{{ categorie.souscategories|length }}</span>
+			</a>
+		   </h4>
+		   <div class="row">
+				<div class="col-md-6">
+					<a href="#!" class="update-content-article" value="{{ categorie.id }}" style="background: #3565ae; padding: 7px; color: #fff;"><span class="mdi-content-create" style="font-size: 11px;"></span> Modifier</a>
+				</div>
+				<div class="col-md-6">
+					<a href="{{ path('users_adminuser_supprimer_categorie_produit', {'id': categorie.id}) }}" style="background: #ff4081; padding: 7px; color: #fff;"><span class="mdi-action-highlight-remove" style="font-size: 11px;"></span> Supprimer</a>
+				</div>
+		   </div>
+	   </div>
+	  </div>
+	  {% endfor %}
+   </div>
+   
+   {% for categorie in nbcategorie %}
+   <h5 id="produit-scategorie-{{ categorie.id }}" style="border-bottom: 2px dashed #999; margin-bottom: 7px; margin-top: 0px;">
+	   {{ categorie.nom|trans }}:
+   </h5>
+   
+   <div class="row">
+	  {% for scat in categorie.souscategories %}
+	  <div class="col-md-4">
+	   <div class="card card-body" style="margin-bottom: 5px;">
+		   <h4 class="title-1">
+				<a href="{{ path('users_adminuser_liste_produit_souscategorie', {'id': scat.id }) }}" style="display: block;" title="{{ scat.nom }}">
+					<img src="{% if scat.src != null %}{{ asset(scat.getWebPath) }}{% else %}{{ asset('template/images/diplome.jpg') }}{% endif %}" alt="" class="circle responsive-img valign profile-image left" style="width: 30px; height: 30px;"/>
+					<span style="margin-left: 7px; display: inline-block; width: 70%;" class="coustom-my-text">{{ scat.rang }}. {{ scat.nom }} </span>
+					<span style="float: right; display: inline-block; width: 30px;height: 30px; border-radius: 15px; color: #fff; background: #333; text-align: center;">{{ scat.produits|length }}</span>
+				</a>
+			</h4>
+		    <div class="row">
+				<div class="col-md-6">
+					<a href="#!" class="update-subcontent-product" value="{{ scat.id }}" style="background: #3565ae; padding: 7px; color: #fff;"><span class="mdi-content-create" style="font-size: 11px;"></span> Modifier</a>
+				</div>
+				<div class="col-md-6">
+					<a href="{{ path('users_adminuser_delete_scat_prod', {'id': scat.id}) }}" style="background: #ff4081; padding: 7px; color: #fff;"><span class="mdi-action-highlight-remove" style="font-size: 11px;"></span> Supprimer</a>
+				</div>
+			</div>
+	   </div>
+	  </div>
+	  {% endfor %}
+   </div>
+   {% endfor %}
+   
+   
+   <!--DataTables example-->
+   </div>
+
+
+
+<div class="modal fade" data-backdrop="false" id="modalGestionCatalogueSelect" style="margin-top: 60px;">
+<div class="modal-dialog">
+<div class="modal-content" style="padding: 0px; border-radius: 0px;">
+
+	<div class="modal-header">
+		<h5 class="modal-title"><i class="mdi-content-create"></i> Mise à jour de l'article</h5>
+		<button type="button" class="btn close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="row">
+		<div class="col-md-12">
+			<div class="wait-chargement-content-module" style="text-align: center;">
+				Patientez un moment pendant le chargement de l'article</br>
+				<img src="{{ asset('template/images/loader1.gif') }}" alt="image" style="height: 40px; width: 40px;">
+			</div>
+
+			<div class="content-module-loading" style="display: none;">
+
+			</div>
+		</div>
+		</div>
+	</div>
+
+	<div class="modal-footer" style="padding-top: 15px; z-index: 1;">
+		{% include 'Theme/General/Template/Menu/social.html.twig' %}
+	</div>
+
+</div>
+</div>
+</div>
+
+
+<div class="modal fade" data-backdrop="false" id="modalFormSlide" style="margin-top: 60px;">
+<div class="modal-dialog">
+<div class="modal-content" style="padding: 0px;">
+
+	<div class="modal-header">
+		<h5 class="modal-title"><i class="mdi-image-camera"></i> Ajouter une image</h5>
+		<button type="button" class="btn close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<h4 class="header2">Préparer vos images pour les slides</h4>
+
+		{{ form_start(formslide, {'attr': {'action': path('users_adminuser_add_new_slide') }}) }}
+		<div class="form-group">
+			<span style="color:red;">{{ form_errors(formslide) }}</span>
+			<span style="color:red;">{{ form_errors(formslide.titre) }}</span>
+			<div class="form-group">
+				{{ form_widget(formslide.titre) }}
+				{{ form_label(formslide.titre,'Titre du slide') }}
+			</div>
+			<div class="form-group">
+				{{ form_errors(formslide.description) }}
+				{{ form_widget(formslide.description) }}
+				{{ form_label(formslide.description,'Description de l\'image') }}
+			</div>
+		</div>
+
+		<div class="form-group">
+			<span>Image</span>
+			{{ form_widget(formslide.file) }}
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary float-end" type="submit" name="action">Enregister
+				<i class="mdi-content-send right"></i>
+			</button>
+		</div>
+
+		{{ form_end(formslide) }}
+
+	</div>
+	<div class="modal-footer" style="padding-top: 15px; z-index: 1;">
+		{% include 'Theme/General/Template/Menu/social.html.twig' %}
+	</div>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade" data-backdrop="false" id="modalFormCategorie" style="margin-top: 60px;">
+<div class="modal-dialog">
+<div class="modal-content" style="padding: 0px;">
+
+<div class="modal-header">
+	<h5 class="modal-title"><i class="mdi-action-receipt"></i> Ajouter une nouvelle catégorie </h5>
+	<button type="button" class="btn close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+
+<div class="modal-body">
+
+ {{ form_start(form, {'attr': {'action': path('users_adminuser_save_categorie_product') }}) }}
+  <h4 class="header2">Ajouter une nouvelle catégorie de produit sur {{ site }}</h4>
+  <span style="color:red;">{{ form_errors(form) }}</span>
+  <span style="color:red;">{{ form_errors(form.nom) }}</span>
+
+	<div class="form-group">
+	  {{ form_widget(form.nom) }}
+	  {{ form_label(form.nom,'Nom de la catégorie') }}
+	</div>
+
+	<div class="form-group">
+	  <select id="type_service" name="typeservice" class="form-control">
+	  	<option value="marketing">Marketing</option>
+	  </select>
+	  <label for="type_service">Sélectionnez le type de contenu</label>
+	</div>
+
+	<div class="form-group">
+	  <span>Image</span>
+	  {{ form_widget(form.file) }}
+	</div>
+
+	<div class="form-group mt-3">
+		<button class="btn btn-primary float-end" type="submit" name="action"> Enregistrez</button>
+	</div>
+	{{ form_end(form) }}
+
+</div>
+
+<div class="modal-footer" style="padding-top: 15px; z-index: 1;">
+	{% include 'Theme/General/Template/Menu/social.html.twig' %}
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="modal fade" data-backdrop="false" id="modalFormSousCategorie" style="margin-top: 60px;">
+<div class="modal-dialog">
+<div class="modal-content" style="padding: 0px; border-radius: 0px;">
+
+	<div class="modal-header">
+		<h5 class="modal-title"><i class="mdi-action-receipt"></i> Ajouter une nouvelle sous-catégorie </h5>
+		<button type="button" class="btn close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+<div class="modal-body">
+
+{{ form_start(formcat, {'attr': {'action': path('users_adminuser_ajouter_sous_categorie') }}) }}
+  <h4 class="header2">Lier votre sous-catégorie à une catégorie existante</h4>
+  <span style="color:red;">{{ form_errors(formcat) }}</span>
+  <span style="color:red;">{{ form_errors(formcat.nom) }}</span>
+
+	<div class="form-group">
+	  {{ form_widget(formcat.nom) }}
+	  {{ form_label(formcat.nom,'Nom de la sous-catégorie') }}
+	</div>
+	<div class="form-group">
+	  {{ form_widget(formcat.categorie) }}
+	  {{ form_label(formcat.categorie,'Catégorie') }}
+	</div>
+
+	<div class="file-field form-group">
+		  <span>Image</span>
+		  {{ form_widget(formcat.file) }}
+	  </div>
+	<div class="form-group mt-3">
+		  {{ form_widget(formcat.rang) }}
+		  {{ form_label(formcat.rang,'Rang dans la classement') }}
+	</div>
+
+	<div class="form-group">
+	  <select id="type_service" name="typeservice" class="form-control">
+		<option value="emailmarketing">Email Marketing</option>
+		<option value="smsmarketing">SMS Marketing</option>
+		<option value="raccourcissementlien">Raccourcissement de lien</option>
+		<option value="partageannonce">Partage d'annonces</option>
+		<option value="integrationbanniere">Intégration de bannières</option>
+		<option value="facebookads">Publicité Facebook</option>
+		<option value="googleads">Publicité Google</option>
+		<option value="editeurpro">Editeurs professionnel</option>
+	  </select>
+	  <label for="type_service">Sélectionnez le type de contenu</label>
+	</div>
+
+	<button class="btn btn-primary float-end" type="submit" name="action"> Enregistrez</button>
+
+{{ form_end(formcat) }}
+
+</div>
+
+<div class="modal-footer" style="padding-top: 15px; z-index: 1;">
+	{% include 'Theme/General/Template/Menu/social.html.twig' %}
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}
+
+
+{% block srcjavascripttemplate %}
+
+{% endblock %}
+
+{% block javascripttemplate %}
+$('.update-content-article').click(function(){
+	var id = $(this).attr('value');
+	$('#modalGestionCatalogueSelect').modal('show');
+	$('.wait-chargement-content-module').show();
+	$('.content-module-loading').hide();
+	$.get('{{ path('users_adminuser_modification_categorie_produit') }}',{ id: id }, function(data){
+		$('.wait-chargement-content-module').hide();
+		$('.content-module-loading').show();
+		$('.content-module-loading').html(data);
+	});
+});
+
+$('.update-subcontent-product').click(function(){
+	var id = $(this).attr('value');
+	$('#modalGestionCatalogueSelect').modal('show');
+	$('.wait-chargement-content-module').show();
+	$('.content-module-loading').hide();
+	$.get('{{ path('users_adminuser_modifier_sous_categorie_produit') }}',{ id: id }, function(data){
+		$('.wait-chargement-content-module').hide();
+		$('.content-module-loading').show();
+		$('.content-module-loading').html(data);
+	});
+});
+
+$('.update-subcontent-image-slide').click(function(){
+	var id = $(this).attr('value');
+	$('#modalGestionCatalogueSelect').modal('show');
+	$('.wait-chargement-content-module').show();
+	$('.content-module-loading').hide();
+	$.get('{{ path('users_adminuser_change_image_slide') }}',{ id: id }, function(data){
+		$('.wait-chargement-content-module').hide();
+		$('.content-module-loading').show();
+		$('.content-module-loading').html(data);
+	});
+});
+
+$('.open-modal-new-slide').click(function(){
+	$('#modalFormSlide').modal('show');
+});
+$('.open-modal-nouv-categorie').click(function(){
+	$('#modalFormCategorie').modal('show');
+});
+$('.open-modal-nouvelle-souscategorie').click(function(){
+	$('#modalFormSousCategorie').modal('show');
+});
+
+
+$('a.page-scroll-cgu').click(function(){
+if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+  var target = $(this.hash);
+  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+  if (target.length) {
+	$('html,body').animate({
+	  scrollTop: target.offset().top - 40
+	}, 900);
+	return false;
+  }
+}
+});
+{% endblock %}
+
+
+
+
+
+{#
+
+{% extends "Theme/Users/Adminuser/layoutadmin.html.twig" %}
 {% block meta %}
 	{{ parent() }}
 	<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
@@ -14,49 +519,7 @@
 <div class="row" style="background: #f2f2f2;">
 <div class="col-md-10 col-md-offset-1 col-xs-12 panel" style="min-height: 700px; padding-bottom: 50px;">    
 {{ render(controller("App\\Controller\\Users\\Adminuser\\AccueilController:menuadmin")) }}
-{% set id = '' %}
-{% for infos in app.session.flashbag.get('supprime_slide') %}
-{% if loop.last %}
-	<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
-	<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le slide {{ infos|lower }} </strong>
-	<form action="{{ path('users_adminuser_delete_courant_slide',{'id': id }) }}" method="post">
-	<input type="submit" value="Supprimer" style="background: red;"/>
-	{{ form_rest(formsupp) }}
-	</form>
-	</div>
-{% else %}
-{% set id = infos %}
-{% endif %}
-{% endfor %}
 
-
-{% for infos in app.session.flashbag.get('supprime_continent') %}
-{% if loop.last %}
-	<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
-	<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le continent {{ infos|lower }} </strong>
-	<form action="{{ path('users_adminuser_localisation_supprimer_continent', {'id': id }) }}" method="post">
-	<input type="submit" value="Supprimer" style="background: red;"/>
-	{{ form_rest(formsupp) }}
-	</form>
-	</div>
-{% else %}
-{% set id = infos %}
-{% endif %}
-{% endfor %}
-
-{% for infos in app.session.flashbag.get('pays_supp') %}
-{% if loop.last %}
-	<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
-	<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le pays {{ infos|lower }} </strong>
-	<form action="{{ path('users_adminuser_drop_country_user_local', {'id': id }) }}" method="post">
-	<input type="submit" value="Supprimer" style="background: red;"/>
-	{{ form_rest(formsupp) }}
-	</form>
-	</div>
-{% else %}
-{% set id = infos %}
-{% endif %}
-{% endfor %}
 
 
 <div>
@@ -361,3 +824,6 @@ $('.open-pays-localisation-user').click(function(){
 	});
 });	
 {% endblock %}
+
+
+#}

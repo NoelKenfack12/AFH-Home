@@ -657,89 +657,141 @@ window.addEventListener("resize", () => {
 
 
 {% else %}
-<div style="height: 60px; background: #fff; padding-left: 40px;">
-<a href="{{ path('users_user_acces_plateforme') }}">
-	<img src="{{ asset('templateafh/images/logo-lg-afh.png') }}" alt="Logo {{ site }}" style="with: 150px; height: 60px;">
-</a>
-<div class="dropdown" style="position: absolute; top: 10px; right: 20px; z-index: 1000!important;">
-	<a id="dropdownMenu-top-1" data-toggle="dropdown" style="color: #333; white-space: nowrap; cursor: pointer;">
-		<i class="fa fa-th"></i> Applications <i class="fa fa-angle-down"></i>
-	</a>
-	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu-top-1" style="padding-top: 0px;margin-top: -35px; margin-right: -20px; width: 300px;">
 
-		<div class="row" style="background: #fff; box-shadow: 0 0 11px rgba(33,33,33,.2); ">
-			<div class="col-xs-4 col-md-4 text-center item-app" style="height:90px; margin-top: 15px; border-radius: 5px;">
-				<a href="http://africexplorer.com/" target="_blank" style="display: block; width: 100%; height: 100%; padding: 7px;">
-				<img src="{{ asset('template/images/logoafricexplorer.png') }}" style="width: 60px; height: 60px;"></br>
-				<strong style="white-space: nowrap; font-weight: normal; font-size: 12px;">AFH Afrique</strong>
-				</a>
-			</div>
-			<div class="col-xs-4 col-md-4 text-center item-app" style="height:90px; margin-top: 15px; border-radius: 5px;">
-				<a href="http://host.afhunt.com/" target="_blank"  style="display: block; width: 100%; height: 100%; padding: 7px;">
-				<img src="{{ asset('template/images/logohosting.png') }}" style="width: 60px; height: 60px;"></br>
-				<strong style="white-space: nowrap; font-weight: normal; font-size: 12px;">AFH Host</strong>
-				</a>
-			</div>
-			<div class="col-xs-4 col-md-4 text-center item-app" style="height:90px; margin-top: 15px; border-radius: 5px;">
-				<a href="http://ads.afhunt.com" target="_blank" style="display: block; width: 100%; height: 100%; padding: 7px;">
-				<img src="{{ asset('template/images/logoadd.png') }}" style="width: 60px; height: 60px;"></br>
-				<strong style="white-space: nowrap; font-weight: normal; font-size: 12px;">AFH Adds</strong>
-				</a>
-			</div>
-			<div class="col-xs-4 col-md-4 text-center item-app" style="height:90px; margin-top: 15px; border-radius: 5px;">
-				<a href="http://win.afhunt.com" target="_blank" style="display: block; width: 100%; height: 100%; padding: 7px;">
-				<img src="{{ asset('template/images/logowin.png') }}" style="width: 60px; height: 60px;"></br>
-				<strong style="white-space: nowrap; font-weight: normal; font-size: 12px;">AFH Win</strong>
-				</a>
-			</div>
-			<div class="col-xs-4 col-md-4 text-center item-app" style="height:90px; margin-top: 15px; border-radius: 5px;">
-				<a href="http://hbill.afhunt.com" target="_blank" style="display: block; width: 100%; height: 100%; padding: 7px;">
-				<img src="{{ asset('template/images/logohbill.png') }}" style="width: 60px; height: 60px;"></br>
-				<strong style="white-space: nowrap; font-weight: normal; font-size: 12px;">AFH HBill</strong>
-				</a>
-			</div>
-			<div class="col-xs-4 col-md-4 text-center item-app" style="height:90px; margin-top: 15px; border-radius: 5px;">
-				<a href="http://code.afhunt.com" target="_blank" style="display: block; width: 100%; height: 100%; padding: 7px;">
-				<img src="{{ asset('template/images/logocode.png') }}" style="width: 60px; height: 60px;"></br>
-				<strong style="white-space: nowrap; font-weight: normal; font-size: 12px;">AFH Code</strong>
-				</a>
-			</div>
-			<div class="col-xs-4 col-md-4 text-center item-app" style="height:90px; margin-top: 15px; border-radius: 5px;">
-				<a href="http://mbill.afhunt.com" target="_blank" style="display: block; width: 100%; height: 100%; padding: 7px;">
-				<img src="{{ asset('template/images/logombill.png') }}" style="width: 60px; height: 60px;"></br>
-				<strong style="white-space: nowrap; font-weight: normal; font-size: 12px;">AFH MBill</strong>
-				</a>
-			</div>
-			<div class="col-xs-4 col-md-4 text-center item-app" style="height:90px; margin-top: 15px; border-radius: 5px;">
-				<a href="http://market.afhunt.com" target="_blank" style="display: block; width: 100%; height: 100%; padding: 7px;">
-				<img src="{{ asset('template/images/logomarket.png') }}" style="width: 60px; height: 60px;"></br>
-				<strong style="white-space: nowrap; font-weight: normal; font-size: 12px;">AFH Market</strong>
-				</a>
-			</div>
-			<div class="col-xs-4 col-md-4 text-center item-app" style="height:90px; margin-top: 15px; border-radius: 5px;">
-				<a href="http://liveca.afhunt.com" target="_blank" style="display: block; width: 100%; height: 100%; padding: 7px;">
-				<img src="{{ asset('template/images/logoliveca-transparnet.png') }}" style="width: 60px; height: 60px;"></br>
-				<strong style="white-space: nowrap; font-weight: normal; font-size: 12px;">AFH LiveCa</strong>
-				</a>
-			</div>
-			<div class="col-xs-12 col-md-12 text-center" style="height: 25px;  background: #f2f2f2; margin: 20px 0px -5px 0px;">
-			<a href="http://afhunt.com/" target="_blank" style="display: inline-block; width: 100%; height: 100%; border-radius: 5px;">
-				Toutes les applications
-			</a>
-			</div>
-			</div>
-	</div>
-</div>
-</div>
+    <!-- Navbar -->
+    <nav class="menu-item-down navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 border-radius-xl z-index-sticky blur shadow-blur left-auto" id="navbarBlur" navbar-scroll="true">
+						
+      <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
+        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+        </ol>
+        <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+      </nav>
+      <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+        <div class="input-group input-group-outline">
+          <label class="form-label">Type here...</label>
+          <input type="text" class="form-control">
+        </div>
+        </div>
+        <ul class="navbar-nav  justify-content-end">
+        <li class="nav-item d-flex align-items-center">
+          <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+          <i class="fa fa-user me-sm-1"></i>
+          <span class="d-sm-inline d-none">Sign In</span>
+          </a>
+        </li>
+        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+          <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+          <div class="sidenav-toggler-inner">
+            <i class="sidenav-toggler-line"></i>
+            <i class="sidenav-toggler-line"></i>
+            <i class="sidenav-toggler-line"></i>
+          </div>
+          </a>
+        </li>
+        <li class="nav-item px-3 d-flex align-items-center">
+          <a href="javascript:;" class="nav-link text-body p-0">
+          <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+          </a>
+        </li>
+        <li class="nav-item dropdown pe-2 d-flex align-items-center">
+          <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-bell cursor-pointer"></i>
+          </a>
+          <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+          <li class="mb-2">
+            <a class="dropdown-item border-radius-md" href="javascript:;">
+            <div class="d-flex py-1">
+              <div class="my-auto">
+              <img src="./assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+              </div>
+              <div class="d-flex flex-column justify-content-center">
+              <h6 class="text-sm font-weight-normal mb-1">
+                <span class="font-weight-bold">New message</span> from Laur
+              </h6>
+              <p class="text-xs text-secondary mb-0">
+                <i class="fa fa-clock me-1"></i>
+                13 minutes ago
+              </p>
+              </div>
+            </div>
+            </a>
+          </li>
+          <li class="mb-2">
+            <a class="dropdown-item border-radius-md" href="javascript:;">
+            <div class="d-flex py-1">
+              <div class="my-auto">
+              <img src="./assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
+              </div>
+              <div class="d-flex flex-column justify-content-center">
+              <h6 class="text-sm font-weight-normal mb-1">
+                <span class="font-weight-bold">New album</span> by Travis Scott
+              </h6>
+              <p class="text-xs text-secondary mb-0">
+                <i class="fa fa-clock me-1"></i>
+                1 day
+              </p>
+              </div>
+            </div>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item border-radius-md" href="javascript:;">
+            <div class="d-flex py-1">
+              <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+              <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>credit-card</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                  <g transform="translate(1716.000000, 291.000000)">
+                  <g transform="translate(453.000000, 454.000000)">
+                    <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
+                    <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                  </g>
+                  </g>
+                </g>
+                </g>
+              </svg>
+              </div>
+              <div class="d-flex flex-column justify-content-center">
+              <h6 class="text-sm font-weight-normal mb-1">
+                Payment successfully completed
+              </h6>
+              <p class="text-xs text-secondary mb-0">
+                <i class="fa fa-clock me-1"></i>
+                2 days
+              </p>
+              </div>
+            </div>
+            </a>
+          </li>
+          </ul>
+        </li>
+        </ul>
+      </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
 
-<script type="text/javascript">
-$(function(){	
-$('.dropdown').hover(function(){
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(200);
-  }, function(){
-  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(200);
-});
-});
-</script>
+    <script type="text/javascript">
+      $(window).bind('scroll', function(){
+      var largeur = ($(window).width());
+      dimension = 50;
+      /*if (largeur < 768)
+      {
+        dimension = 800;
+      }*/
+      // The value of where the "scoll" is.
+      if($(window).scrollTop() > dimension){
+        $('.menu-item-down').addClass('my-fixed-nav3');
+      }else{
+        $('.menu-item-down').removeClass('my-fixed-nav3');
+      }
+      });
+    </script>
+
 {% endif %}
 

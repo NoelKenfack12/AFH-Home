@@ -44,10 +44,15 @@ public function accueiladmin(GeneralServicetext $service)
 	$liste_continent =$em->getRepository(Continent::class)
                       ->findAll();
 	$liste_investissement =$em->getRepository(Investissement::class)
-                              ->myFindAll();				  
+                              ->myFindAll();		
+	$liste_scategorie = $em->getRepository(Souscategorie::class)
+						   ->findAll();
+	$souscategorie = new Souscategorie($service);
+	$formcat = $this->createForm(SouscategorieType::class, $souscategorie);  
     return $this->render('Theme/Users/Adminuser/Accueil/accueiladmin.html.twig',
 	array('nbcategorie'=>$nbcategorie,'formslide'=>$formslide->createView(),'form'=>$form->createView(), 'allslide'=>$allslide,
-	'formsupp'=>$formsupp->createView(),'liste_continent'=>$liste_continent,'liste_investissement'=>$liste_investissement,'form2'=>$formpays->createView()));
+	'formsupp'=>$formsupp->createView(),'liste_continent'=>$liste_continent,'liste_investissement'=>$liste_investissement,
+	'form2'=>$formpays->createView(), 'liste_scategorie'=>$liste_scategorie, 'formcat'=>$formcat->createView()));
 }
 
 public function menuadmin()

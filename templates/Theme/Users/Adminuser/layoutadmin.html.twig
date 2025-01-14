@@ -10,6 +10,12 @@
 {{ parent() }}
 {% endblock %}
 
+{% block menuleft %}
+{% block userblog_menuleft %}
+	{# zone réservé au template de dernier niveau #}
+{% endblock %}
+{% endblock %}
+
 {% block body %}
 
 {% block userblog_body %}

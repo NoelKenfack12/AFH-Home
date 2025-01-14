@@ -207,3 +207,39 @@ users_adminuser_del_souscategorie_appli:
     controller: App\Controller\Produit\Produit\CategorieController:delsouscategorie
     requirements:
         id: \d+
+users_adminuser_add_new_caracteristique:
+    path: /adminads/add/new/caracteristique/{id}
+    controller: App\Controller\Produit\Produit\CategorieController::addnewcaracteristique
+    requirements:
+        id: \d+
+users_adminuser_modification_categorie_produit:
+    path: /adminads/modification/categorie/produit/{id}
+    controller: App\Controller\Produit\Produit\CategorieController::modificationcategorie
+    defaults:
+        id: 0
+    requirements:
+        id: \d+
+users_adminuser_supprimer_categorie_produit:
+    path: /adminads/supprimer/categorie/produit/{id}
+    controller: App\Controller\Produit\Produit\CategorieController::supprimercategorie
+    requirements:
+        id: \d+
+users_adminuser_modifier_sous_categorie_produit:
+    path: /adminads/modifier/sous/categorie/produit/{id}
+    controller: App\Controller\Produit\Produit\CategorieController::altersouscategorie
+    defaults:
+        id: 0
+    requirements:
+        id: \d+
+users_adminuser_delete_scat_prod:
+    path: /adminads/delete/scat/prod/{id}
+    controller: App\Controller\Produit\Produit\CategorieController::supprimersouscategorie
+    requirements:
+        id: \d+
+users_adminuser_change_image_slide:
+    path: /adminads/change/image/slide/{id}
+    controller: App\Controller\Users\User\ImgslideController::alterslide
+    defaults:
+        id: 0
+    requirements:
+        id: \d+
