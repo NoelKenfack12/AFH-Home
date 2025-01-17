@@ -20,10 +20,14 @@ class ServiceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom',TextType::class,array('attr'=>array('placeholder'=>'Nom de l\'indicateur','class'=>'form-control','style'=>'width: 100%;')))
-            ->add('rang',IntegerType::class,array('attr'=>array('placeholder'=>'Rang dans le classement','class'=>'form-control','style'=>'width: 100%;')))
-            ->add('description',TextareaType::class,array('attr'=>array('placeholder'=>'Description de l\'indicateur','class'=>'form-control','style'=>'width: 100%;')))
-            ->add('imgservice',ImgserviceType::class)
+            ->add('nom', TextType::class,array('attr'=>array('style'=>'width: 100%;')))
+            ->add('breve',TextType::class,array('attr'=>array('style'=>'width: 100%;')))
+            ->add('link',TextType::class,array('attr'=>array('style'=>'width: 100%;'),'required'=>false))
+            ->add('keyword',TextType::class,array('attr'=>array('style'=>'width: 100%;')))
+            ->add('description',TextareaType::class,array('attr'=>array('class'=>'materialize-textarea','style'=>'width: 100%;'),'required'=>false))
+            ->add('prerequis',TextareaType::class,array('attr'=>array('class'=>'materialize-textarea','style'=>'width: 100%;'),'required'=>false))
+            ->add('rang',IntegerType::class,array('required'=>false))
+            ->add('imgservice',ImgserviceType::class,array('required'=>false))
         ;
     }
     

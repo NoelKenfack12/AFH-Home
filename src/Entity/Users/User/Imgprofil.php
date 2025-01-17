@@ -49,8 +49,8 @@ class Imgprofil
 	
 	/**
        * @ORM\OneToOne(targetEntity=User::class, inversedBy="imgprofil" )
-        * @ORM\JoinColumn(nullable=false)
-       */
+       * @ORM\JoinColumn(nullable=false)
+    */
    private $user;
 	
 	// permet le stocage temporaire du nom du fichier
@@ -161,7 +161,7 @@ class Imgprofil
 	protected function getUploadRootDir()
 	{
 	// On retourne le chemin relatif vers l'image pour notre codePHP
-	return  __DIR__.'/../../../../web/'.$this->getUploadDir();
+	return  __DIR__.'/../../../../public/'.$this->getUploadDir();
 	}
 	public function setFile(UploadedFile $file)
 	{

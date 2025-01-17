@@ -236,23 +236,26 @@ class Categorie
 	// On retourne le chemin relatif vers l'image pour un navigateur
 	return 'bundles/produit/produit/images/categorie';
 	}
+
 	protected function getUploadRootDir()
 	{
 	// On retourne le chemin relatif vers l'image pour notre codePHP
-	return  __DIR__.'/../../../../web/'.$this->getUploadDir();
+	return  __DIR__.'/../../../../public/'.$this->getUploadDir();
 	}
+    
 	public function setFile(UploadedFile $file)
 	{
-	$this->file = $file;
-	// On vérifie si on avait déjà un fichier pour cette entité
-	if (null !== $this->src) {
-	// On sauvegarde l'extension du fichier pour le supprimer plus tard
-	$this->tempFilename = $this->src;
-	// On réinitialise les valeurs des attributs url et alt
-	$this->src = null;
-	$this->alt = null;
+        $this->file = $file;
+        // On vérifie si on avait déjà un fichier pour cette entité
+        if (null !== $this->src) {
+            // On sauvegarde l'extension du fichier pour le supprimer plus tard
+            $this->tempFilename = $this->src;
+            // On réinitialise les valeurs des attributs url et alt
+            $this->src = null;
+            $this->alt = null;
+        }
 	}
-	}
+    
 	/**
 	* @ORM\PrePersist()
 	* @ORM\PreUpdate()

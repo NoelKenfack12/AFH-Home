@@ -1,0 +1,305 @@
+
+{% extends "Theme/Users/Adminuser/layoutadmin.html.twig" %}
+{% block meta %}
+	{{ parent() }}
+	<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
+	<meta name="author" content="Noel Kenfack"/>
+	<meta name="description" content="{{ site }} | Inscription | Cameroun | {{ metier }}" />
+{% endblock %}
+
+{% block title %}
+{{ parent() }} | Accueil Admin
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block userblog_menuleft %}
+	  {{ render(controller("App\\Controller\\Users\\Adminuser\\AccueilController:menuadmin")) }}
+{% endblock %}
+
+{% block userblog_body %}
+
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+	  <li class="breadcrumb-item text-sm text-dark active"><a class="opacity-5 text-dark" href="#!">{{ 'Administration'|trans }}</a></li>
+	</ol>
+</nav>
+<div class="divider mb-3" style="border-top: 2px dashed #999;"></div>
+
+<div class="section" style="padding: 5px 0px 0px 0px;">
+    <div class="tabset">
+        <!-- Tab 1 -->
+        <input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
+        <label for="tab1">Liste pays</label>
+        <!-- Tab 2 -->
+        <input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
+        <label for="tab2">Liste continents</label>
+        <!-- Tab 3 -->
+        <input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
+        <label for="tab3">Liste banière</label>
+        <!-- Tab 3 -->
+        <input type="radio" name="tabset" id="tab4" aria-controls="investissement">
+        <label for="tab4">Investissement</label>
+        
+        <div class="tab-panels">
+          <section id="marzen" class="tab-panel">
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                {{ form_start(form2, {'attr': {'id': 'form2','action': path('users_adminuser_savenew_pays_localite_user') }}) }}
+                {% include "Theme/Users/Localisationuser/Pays/formulairepays.html.twig" %}
+                {{ form_end(form2) }}
+                </div>
+            </div>
+            
+            <div class="row">
+            {% for continent in liste_continent %}
+                <!-- blog card -->
+                <div class="col-md-12" style="border-bottom: 2px solid #ddd; margin-bottom: 7px;">
+                    {{ continent.nom }}
+                </div>
+                
+                {% for pays in continent.pays %}
+                <div class="col-md-3">
+                    <div class="panel" style="border: 1px solid #ddd; position: sticky;">
+                    <div style="margin: 2px;">
+                        <a href="#!" class="open-pays-localisation-user" value="{{ pays.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
+                        <a href="{{ path('users_adminuser_drop_country_user_local', {'id': pays.id}) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
+                            
+                        <div>
+                        <div style="height: 25px;">
+                        </div>
+                            <img src="{% if pays.drapeau != null %}{{ asset(pays.drapeau.getWebpath) }}{% else %}{{ asset('template/images/logo.png') }}{% endif %}" alt=".." style="width: 100%; height: 100px;"/>
+                        </div>
+                        
+                        <span class="left"><a href="{{ pays.siteweb }}" target="_blank">{{ pays.nom }}</a></span></br>
+                        <div>Indicatif: {{ pays.code }}</div>
+                        <div>{{ pays.citoyen }}</div>
+                        <div>{{ pays.citoyenne }}</div>
+                        <div>Extension: {{ pays.domaine }}</div>
+                    </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endfor %}
+            </div>
+
+          </section>
+    
+    
+          <section id="rauchbier" class="tab-panel">
+            
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                {{ form_start(form, {'attr': {'id': 'form','action': path('users_adminuser_addnew_continent_localite_user') }}) }}
+                {% include "Theme/Users/Localisationuser/Pays/formulairecontinent.html.twig" %}
+                {{ form_end(form) }}
+                </div>
+            </div>
+            
+            <div class="row" style="margin-top: 10px;">
+            {% for continent in liste_continent %}
+            <!-- blog card -->
+            <div class="col-md-3">
+                <div class="panel" style="border: 1px solid #ddd; position: sticky;">
+                <div style="margin: 2px;">
+                    <a href="#!" class="open-content-continent-reponse" value="{{ continent.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
+                    <a href="{{ path('users_adminuser_localisation_supprimer_continent', {'id': continent.id }) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
+                        
+                    <div>
+                    <div style="height: 25px;">
+                    </div>
+                        <img src="{% if continent.src != null %}{{ asset(continent.getWebpath) }}{% else %}{{ asset('template/images/logo.png') }}{% endif %}" alt=".." style="width: 100%; height: 100px;"/>
+                    </div>
+                    <span class="left"><a href="#!">{{ continent.nom }}</a></span></br>
+                    <div>{{ continent.pays|length }} Pays</div>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+    
+          </section>
+          <section id="dunkles" class="tab-panel">
+            
+            <div>Préparer vos images pour les slides</div>
+				<div style="color: red;">
+				{% for infos in app.session.flashbag.get('imgslide') %}
+					{% if loop.first %}
+						{{ infos|raw }}
+					{% endif %}
+				{% endfor %}
+				</div>
+				  {{ form_start(formslide, {'attr': {'action': path('users_adminuser_add_new_slide') }}) }}
+				
+					<span style="color:red;">{{ form_errors(formslide) }}</span>
+					<span style="color:red;">{{ form_errors(formslide.titre) }}</span>
+					  <div class="row mb-3">
+                        <div  class="form-group col-md-6">
+                            {{ form_label(formslide.titre,'Titre du slide') }}
+                            {{ form_widget(formslide.titre,{'attr': {'class': 'form-control'}}) }}
+                        </div>
+                          <div  class="form-group col-md-6">
+                            <span style="color:red;">{{ form_errors(formslide.description) }}</span>
+                            {{ form_label(formslide.description,'Description du slide') }}
+                            {{ form_widget(formslide.description,{'attr': {'class': 'form-control'}}) }}
+                          </div>
+                      </div>
+					
+					  <span style="color:red;">{{ form_errors(formslide.file) }}</span>
+                      <div class="row">
+                        <div  class="form-group col-md-6">
+                            <div class="form-group">
+                            <span>Slide</span>
+                            {{ form_widget(formslide.file) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <button class="btn btn-primary" type="submit" name="action">
+                                Enregister
+                            </button>
+                        </div>
+                       </div>
+
+				{{ form_end(formslide) }}
+
+				<div class="row">
+			   {% for slide in allslide %}
+			   <!-- blog card -->
+				<div class="col-md-3">
+					<div class="panel" style="border: 1px solid #ddd; position: sticky;">
+                        <div style="margin: 2px;">
+                            <a href="{{ path('users_adminuser_delete_courant_slide',{'id': slide.id }) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
+                                
+                            <div>
+                                <img src="{{ asset(slide.getWebpath) }}" alt=".." style="width: 100%; height: 100px;">
+                            </div>
+                            <span class="left"><a href="">{{ slide.titre }}</a></span></br>
+                            <span class="right">{{ slide.date|date('d/m/y') }}</span>
+                            <div>{{ slide.description }}</div>
+                            <div class="col s9"> Par <a href="#">{{ slide.user.name(25) }}</a></div>
+                        </div>
+					</div>
+				</div>
+				{% endfor %}
+				</div>
+    
+          </section>
+
+          <section id="investissement" class="tab-panel">
+
+            <h2>Liste des investissements</h2>
+            {% for invest in liste_investissement %}
+            <div class="row" style="border-bottom: 1px solid #ddd;">
+                <div class="col-md-3">
+                Id: #{{ invest.investid }}</br>
+                Ville: {{ invest.villetext }} Le {{ invest.date|date('d') }}/{{ invest.date|date('m') }}/{{ invest.date|date('Y') }}
+                </div>
+                <div class="col-md-3">
+                Type: {{ invest.type }}</br>
+                Montant: {{ invest.montant }} {{ devise }}
+                </div>
+                <div class="col-md-3">
+                Nom: {{ invest.nom }}</br>
+                Prenom: {{ invest.prenom }}
+                </div>
+                <div class="col-md-3">
+                Tel: {{ invest.tel }}</br>
+                Email: {{ invest.email }}
+                </div>
+            </div>
+            {% endfor %}
+
+          </section>
+        </div>
+        
+      </div>
+</div>
+
+<div class="modal" data-backdrop="static" id="modalArticlesDetail">
+<div class="modal-dialog modal-md">
+<div class="modal-content">
+<div class="modal-header color-bottom" style="border-bottom: 4px solid #37c0fb; display: block;">
+	<button type="button" class="close" data-dismiss="modal" style="float: right;">&times;</button>
+	<h3 class="modal-title" style="text-transform: capitalize;">Modification article</h3>
+</div>
+<div class="modal-body null-bottom null-bottom-in">
+	<div class="row">
+	  <div class="input-field col s12">
+		<div class="wait-chargement-content-module-article" style="text-align: center;">
+			Patientez un moment pendant le chargement de l'article</br>
+			<img src="{{ asset('template/images/loader1.gif') }}" alt="image" style="height: 40px; width: 40px;">
+		</div>
+
+		<div class="content-module-loading-article" style="display: none;">
+		
+		</div>
+	  </div>
+	</div>
+</div>
+<div class="modal-footer color-top" style="text-align: right; border-top: 4px solid #37c0fb; display: block;">
+{% include "Theme/General/Template/Menu/social.html.twig" %}
+</div>
+</div>
+</div>
+</div>
+
+{% for infos in app.session.flashbag.get('information') %}
+{% if loop.first %}
+
+<div class="modal" data-backdrop="static" id="modal-information-pays">
+<div class="modal-dialog modal-md">
+<div class="modal-content">
+<div class="modal-header color-bottom" style="border-bottom: 4px solid #37c0fb;">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">Résultat de l'action effectuée </h4>
+</div>
+<div class="modal-body null-bottom null-bottom-in">
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-top: 30px; padding-bottom: 10px;">
+		{{ infos|raw }}
+	</div>
+</div>
+</div>
+<div class="modal-footer color-top" style="text-align: right; border-top: 4px solid #37c0fb;">
+{% include "Theme/General/Template/Menu/social.html.twig" %}
+</div>
+</div>
+</div>
+</div>
+
+{% endif %}
+{% endfor %}
+{% endblock %}
+
+{% block javascripttemplate %}
+
+
+
+$('.open-content-continent-reponse').click(function(){
+	var id = $(this).attr('value');
+	$('#modalArticlesDetail').modal('show');
+	$('.wait-chargement-content-module-article').show();
+	$('.content-module-loading-article').hide();
+	$.get('{{ path('users_adminuser_update_content_continent') }}',{ id: id }, function(data){
+		$('.wait-chargement-content-module-article').hide();
+		$('.content-module-loading-article').show();
+		$('.content-module-loading-article').html(data);
+	});
+});	
+
+$('.open-pays-localisation-user').click(function(){
+	var id = $(this).attr('value');
+	$('#modalArticlesDetail').modal('show');
+	$('.wait-chargement-content-module-article').show();
+	$('.content-module-loading-article').hide();
+	$.get('{{ path('users_adminuser_modif_pays_localisation_user') }}',{ id: id }, function(data){
+		$('.wait-chargement-content-module-article').hide();
+		$('.content-module-loading-article').show();
+		$('.content-module-loading-article').html(data);
+	});
+});	
+{% endblock %}

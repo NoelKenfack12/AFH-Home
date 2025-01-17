@@ -1,162 +1,620 @@
 {% extends "Theme/Users/Adminuser/layoutadmin.html.twig" %}
+
 {% block meta %}
 	{{ parent() }}
 	<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
 	<meta name="author" content="Noel Kenfack"/>
-	<meta name="description" content="{{ site }} | Administration | Cameroun | {{ metier }}"/>
+	<meta name="description" content="{{ site }} | Inscription | Cameroun " />
 {% endblock %}
 
 {% block title %}
-{{ parent() }} | Accueil Admin
+	{{ parent() }} | {{ 'Accueil Admin'|trans }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block userblog_menuleft %}
+	  {{ render(controller("App\\Controller\\Users\\Adminuser\\AccueilController:menuadmin")) }}
 {% endblock %}
 
 {% block userblog_body %}
-	<div class="login">
-       <div class="wrap">
-		 {{ render(controller("App\\Controller\\Users\\Adminuser\\AccueilController:menuadmin")) }}
-     	    
-		<div class="cont span_2_of_3">
-		   <div class="mens-toolbar">
-              <div class="sort" style="width: 50%;">
-               	<div class="sort-by">
-		           Liste des services.
-                </div>
-    		  </div>
-	          <div class="pager">   
-				<div class="limiter visible-desktop">			
-	             </div>
-		   		<div class="clear"></div>
-	    	    </div>
-     	      <div class="clear"></div>
-	          </div>
-                <h4>
-				{% set id = '' %}
-				{% for infos in app.session.flashbag.get('supprime_prod') %}
-				{% if loop.last %}
-				<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le service ou l'événement {{ infos|lower }} </strong>
-				<form action="{{ path('users_adminuser_supprimer_service_even',{'id': id }) }}" method="post">
-				<input type="submit" value="Supprimer" style="background: red;"/>
-				{{ form_rest(formsupp) }}
-				</form>
-				{% else %}
-				{% set id = infos %}
-				{% endif %}
-				{% endfor %}
-			    <span style="color: red;">
-				{% for infos in app.session.flashbag.get('information') %}
-				{% if loop.first %}
-				{{ infos|raw }}
-				{% endif %}
-				{% endfor %}
-				</span>
+
+{% include 'Theme/General/Template/Menu/descriptionvariable.html.twig' %}
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+	  <li class="breadcrumb-item text-sm text-dark active"><a class="opacity-5 text-dark" href="#!">{{ 'Administration'|trans }}</a></li>
+	  <li class="breadcrumb-item text-sm text-dark active" aria-current="page">{{ 'Articles'|trans }}</li>
+	</ol>
+</nav>
+<div class="divider mb-3" style="border-top: 2px dashed #999;"></div>
+
+<div class="section" style="padding: 5px 0px 0px 0px;">
+	  
+	  <div class="row">
+		 <div class="col s12 m6">
+		  <div class="card card-1">
+			  <div class="card-body">
+				<h4 class="title-1">
+					<a href="#!" style="display: block;">
+						Liste d'article <span style="float: right; display: inline-block; width: 30px;height: 30px; border-radius: 15px; color: #fff; background: #333; text-align: center;">{{ liste_service|length }}</span>
+					</a>
 				</h4>
-				
-			  {% if liste_service|length % 3 == 0 %}
-			  {% set nbre = liste_service|length//3 %}
-			  {% else %}
-			  {% set nbre = (liste_service|length)//3 + 1 %}
+				<a href="#!" class="open-modal-new-article" style="background: #3565ae; padding: 7px; color: #fff;"><span class="mdi-av-playlist-add" style="font-size: 12px;"></span> Ajouter</a>
+			  </div>
+		  </div>
+		</div>
+	  
+		<div class="col s12 m6">
+		  <div class="card card-1">
+			  <div class="card-body">
+				<h4 class="title-1">
+				<a href="#all-offert-reseller" class="page-scroll-cgu" style="display: block;">
+					Types d'articles
+				</a>
+				</h4>
+				<a href="#!" class="open-modal-nouv-type" style="background: #3565ae; padding: 7px; color: #fff;"><span class="mdi-av-playlist-add" style="font-size: 12px;"></span> Ajouter</a>
+			  </div>
+		  </div>
+		</div>
+	  </div>
+	  
+	  <div class="row">
+	  <div id="profile-page-wall" class="col s12 m8">
+		 <div id="profile-page-sidebar" class="col s12 m12">
+			  {% for infos in app.session.flashbag.get('information') %}
+			  {% if loop.first %}
+				  {% include 'Theme/General/Template/Menu/flasinfos.html.twig' %}
 			  {% endif %}
-              {% set begin = 0 %}
-			  {% set end = 3 %}
-			  {% for i in range(0,nbre-1) %}
-			    <div class="box1">
-				{% for service in liste_service|slice(begin,end) %}
-				   <div class="col_1_of_single1 span_1_of_single1"><a href="{{ path('users_adminuser_modifier_un_service', {'id': service.id}) }}">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">{{ service.nom }}</h3>
-					  	<p class="m_2">{{ service.user.name(20) }}</p>
-				         <div class="grid_img">
-						   <div class="css3">
-						   <img src="{{ asset(service.imgservice.getWebpath) }}" alt="" style="height: 180px;"/>
-						   </div>
-					          <div class="mask1">
-	                       		<div class="info">Modifier</div>
-			                  </div>
-	                    </div>
-                       <div class="price"> {{ service.type }}</div>
-					   </div>
-					   </div>
-					   <span class="rating1">
-				        <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
-				        <label for="rating-input-1-5" class="rating-star1"></label>
-				        <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
-				        <label for="rating-input-1-4" class="rating-star1"></label>
-				        <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
-				        <label for="rating-input-1-3" class="rating-star1"></label>
-				        <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
-				        <label for="rating-input-1-2" class="rating-star"></label>
-				        <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
-				        <label for="rating-input-1-1" class="rating-star"></label>&nbsp;&nbsp;
-		    	      </span>
-						 <ul class="list2">
-						  <li>
-						  	<img src="{{ asset('template/web/images/plus.png') }}" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="{{ path('users_adminuser_supprimer_service_even', {'id': service.id}) }}"> Supprimer </a>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clear"></div>
-			    	</a></div>
-					
-					{% endfor %}
-				  <div class="clear"></div>
-			  </div>
-			  {% set begin = end %}
-			  {% set end = end + 3 %}
 			  {% endfor %}
-			  <div class="mens-toolbar" style="margin-top: 15px;">
-              <div class="sort" style="width: 50%;">
-               	<div class="sort-by">
-		           Ajouter un nouveau service.
-                </div>
-    		  </div>
-	          <div class="pager">   
-				<div class="limiter visible-desktop">			
-	             </div>
-		   		<div class="clear"></div>
-	    	    </div>
-     	      <div class="clear"></div>
-	          </div>
-			<div class="wrap">
-    	      <h4 class="title">Ajout un evénement ou un service de votre structure
-			  </h4>
-			   {{ form_start(form, {'attr': {'action': path('users_adminuser_ajouter_nouveau_service') }}) }}
-    			  <div class="col_1_of_2 span_1_of_2">
-				     <span style="color:red;">{{ form_errors(form) }}</span>
-					 <span style="color:red;">{{ form_errors(form.nom) }}</span>
-		   			 <div style="margin-top: 10px;">{{ form_widget(form.nom) }}</div>
-					 <span style="color:red;">{{ form_errors(form.description) }}</span>
-					 <div style="margin-top: 10px;">{{ form_widget(form.description) }}</div>
-		    	  </div>
-		    	  <div class="col_1_of_2 span_1_of_2">	
-				    <div>
-					<select id="typeservice" name="typeservice" class="frm-field required" style="width: 100%; margin-top: 10px;">
-		            <option value="">Type du service</option>         
-		            <option value="Passer une commande">Passer une commande</option>
-		            <option value="Evénement">Evénement</option>
-		            <option value="Evénement">Etat de votre commande</option>
-		            <option value="Evénement">Votre livraison</option>
-		            <option value="Evénement">Mode de payement</option>
-					<option value="Evénement">Produits class</option>
-					<option value="Evénement">Nos services</option>
-					</select>
-					</div>
-					<span style="color:red;">{{ form_errors(form.imgservice) }}</span>
-		   			<div style="margin-top: 10px;">{{ form_widget(form.imgservice) }}</div>
-				  <button class="grey" style="margin-top: 10px;">Submit</button>
-		          </div>
-		         <div class="clear"></div>
-				 {{ form_end(form) }}
-    	      </div>
-			  
+		 </div>
+	  
+		 {% set id = '' %}
+		  {% for infos in app.session.flashbag.get('supprime_prod') %}
+			  {% if loop.last %}
+			  <div class="card-panel" style="margin-top: 0px;">
+				  <strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le service ou l'événement {{ infos|lower }} </strong>
+				  <form action="{{ path('users_adminuser_supprimer_service_even',{'id': id }) }}" method="post">
+				  <input type="submit" value="Supprimer" style="background: red;"/>
+				  {{ form_rest(formsupp) }}
+				  </form>
 			  </div>
-			  <div class="clear"></div>
+			  {% else %}
+				  {% set id = infos %}
+			  {% endif %}
+		  {% endfor %}
+	  </div>
+	  </div>
+	  
+	  <h5 id="all-offert-reseller" style="border-bottom: 2px dashed #999; margin-bottom: 7px; margin-top: 20px;">
+		  {{ 'Articles par type'|trans }} :
+	  </h5>
+	  
+	  <div class="row">
+	  <div class="col s12 m12 14">
+	  <main style="box-shadow: 0px 0px 2px rgba(0,0,0,0.05); background: #fff;">
+		{% for type in type_article %}
+		<div class="topic">
+		  <div class="open">
+			<h2 class="question"><img src="{% if type.src != null %}{{ asset(type.getWebPath) }}{% else %}{{ asset('template/images/conversation.png') }}{% endif %}" alt="" style="width: 30px; height: 30px; margin-bottom: -8px!important;"/> {{ type.position }} <span class="mdi-hardware-keyboard-arrow-right" style="font-size: 11px;"></span> {{ type.nom }}</h2>
+			<span class="faq-t"></span>
+		  </div>
+		  <div class="answer">
+			  <div class="module-comment-block">
+
+				<div class="dropdown float-lg-end pe-4" style="float: right;">
+					<a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+					  <i class="fa fa-ellipsis-v text-secondary" aria-hidden="true"></i>
+					</a>
+					<ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+	
+						<li>
+							<a href="#!" class="update-content-type-article dropdown-item" value="{{ type.id }}"><i class="mdi-editor-border-color"></i> Modifier</a>
+						</li>
+						<li>
+							<a href="{{ path('users_adminuser_delete_type_article', {'id': type.id}) }}" class="dropdown-item"><i class="mdi-action-highlight-remove"></i> Supprimer</a>
+						</li>
+						{% if type.position != 'domaine' %}
+						<li>
+							<a href="{{ path('users_adminuser_liste_article_type', {'id': type.id}) }}" class="dropdown-item"><i class="mdi-image-center-focus-strong"></i> Articles - {{ type.services|length }}</a>
+						</li>
+						{% endif %}
+	
+					</ul>
+				</div>
+
+				<div>{{ type.description }}</div>
+				<div><a href="{{ path('users_adminuser_liste_article_type', {'id': type.id}) }}">Affichez la liste complète des articles de cette catégorie ({{ type.services|length }}) <span style="font-size: 12px;" class="mdi-action-input"></span></a></div>
+			  </div>
+		  </div>
+		</div>
+		{% else %}
+		<div class="topic">
+		  <div class="open">
+		  <h2 class="question">1. Aucun article publié pour cette catégorie
+		  </h2><span class="faq-t"></span>
+		  </div>
+		  <p class="answer">La liste des articles des supports s'affichera ici.</p>
+		</div>
+		{% endfor %}
+	  </main>
+	  </div>
+	  
+	</div>
+</div>
+
+<div class="modal fade" data-backdrop="false"  id="modalGestionCatalogueSelect" style="margin-top: 60px;">
+	<div class="modal-dialog">
+	<div class="modal-content" style="padding: 0px; border-radius: 0px;">
+
+	<div class="modal-header">
+		<h5 class="modal-title"><i class="mdi-hardware-keyboard-alt"></i> Gestion du catalogue </h5>
+		<button type="button" class="btn close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+	<div class="modal-body">
+	<div class="row">
+		<div class="row">
+		  <div class="col-md-12">
+			<div class="wait-chargement-content-module" style="text-align: center;">
+				Patientez un moment pendant le chargement de l'article</br>
+				<img src="{{ asset('template/images/loader1.gif') }}" alt="image" style="height: 40px; width: 40px;">
 			</div>
-		   </div>
+	
+			<div class="content-module-loading" style="display: none;">
+	
+			</div>
+		  </div>
+		</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	<div class="modal fade" data-backdrop="false" id="modalFormArticle" style="margin-top: 60px;">
+	<div class="modal-dialog">
+	<div class="modal-content" style="padding: 0px; border-radius: 0px;">
+
+	<div class="modal-header">
+		<h5 class="modal-title"><i class="mdi-av-playlist-add"></i> Ajouter un article</h5>
+		<button type="button" class="btn close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+
+	<div class="modal-body">
+	<h4 class="header2">Ajouter un article</h4>
+	
+	<div class="row">
+		{{ form_start(form, {'attr': {'class': 'col s12','action': path('users_adminuser_ajouter_nouveau_service') }}) }}
+	  <div class="row">
+		
+		  <div class="col-md-12">
+			<span style="color:red;">{{ form_errors(form) }}</span>
+			<span style="color:red;">{{ form_errors(form.nom) }}</span>
+
+			{{ form_widget(form.nom) }}
+			{{ form_label(form.nom,'Nom de l\'article') }}
+		  </div>
+		  <div class="col-md-12" style="margin-bottom: 15px;">
+			<select id="typearticle" name="typearticle" class="form-control" style="width: 100%; margin-top: 10px;">
+			
+				<option value="about">À propos</option>
+				<option value="mission">Mission</option>
+				<option value="vision">Vision</option>
+				<option value="engagement">Engagement</option>
+				<option value="justice">Service Juridiqe</option>
+				<option value="marketing">Stratégies de communication</option>
+				<option value="educationlarge">Education massive</option>
+				<option value="entrepreneur">Promotion Entrepreneuriat</option>
+				<option value="nosreperes">Nos repères</option>
+				<option value="bourse">Bourses</option>
+				<option value="comptabilite">Comptabilite</option>
+				<option value="investissment">Investissments</option>
+				<option value="action">Action</option>
+				<option value="donation">Donation</option>
+				<option value="cgu">CGU</option>
+				<option value="confidentialite">Confidentialité</option>
+
+			</select>
+		  </div>
+	
+		  <div class="col-md-12 type_produit type_about" style="display: none;">
+			<select id="typeabout" name="typeabout" class="form-control" style="width: 100%; margin-top: 10px;">
+				<option value="0">Sélectionnez le type de about</option>
+				{% for type in type_about %}
+				<option value="{{ type.id }}">{{ type.nom }}</option>
+				{% endfor %}
+			</select>
+		  </div>
+		  <div class="col-md-12 type_produit type_mission" style="display: none;">
+			<select id="typemission" name="typemission" class="form-control" style="width: 100%; margin-top: 10px;">
+				<option value="0">Sélectionnez le type mission</option>
+				{% for type in type_mission %}
+				<option value="{{ type.id }}">{{ type.nom }}</option>
+				{% endfor %}
+			</select>
+		  </div>
+		  <div class="col-md-12 type_produit type_vision" style="display: none;">
+			<select id="typevision" name="typevision" class="form-control" style="width: 100%; margin-top: 10px;">
+				<option value="0">Sélectionnez le type d'avantage de win</option>
+				{% for type in type_vision %}
+				<option value="{{ type.id }}">{{ type.nom }}</option>
+				{% endfor %}
+			</select>
+		  </div>
+		  <div class="col-md-12 type_produit type_engagement" style="display: none;">
+			<select id="typeengagement" name="typeengagement" class="form-control" style="width: 100%; margin-top: 10px;">
+			<option value="0">Sélectionnez le type de engagement</option>
+			{% for type in type_engagement %}
+			<option value="{{ type.id }}">{{ type.nom }}</option>
+			{% endfor %}
+			</select>
+		  </div>
+		  <div class="col-md-12 type_produit type_justice" style="display: none;">
+			<select id="typejustice" name="typejustice" class="form-control" style="width: 100%; margin-top: 10px;">
+			<option value="0">Sélectionnez le type du justice</option>
+			{% for type in type_justice %}
+			<option value="{{ type.id }}">{{ type.nom }}</option>
+			{% endfor %}
+			</select>
+		  </div>
+		  <div class="col-md-12 type_produit type_marketing" style="display: none;">
+			<select id="typemarketing" name="typemarketing" class="form-control" style="width: 100%; margin-top: 10px;">
+			<option value="0">Sélectionnez le type de marketing</option>
+			{% for type in type_marketing %}
+			<option value="{{ type.id }}">{{ type.nom }}</option>
+			{% endfor %}
+			</select>
+		  </div>
+		  <div class="col-md-12 type_produit type_educationlarge" style="display: none;">
+			<select id="typeeducationlarge" name="typeeducationlarge" class="form-control" style="width: 100%; margin-top: 10px;">
+			<option value="0">Sélectionnez le type educationlarge</option>
+			{% for type in type_educationlarge %}
+			<option value="{{ type.id }}">{{ type.nom }}</option>
+			{% endfor %}
+			</select>
+		  </div>
+		  <div class="col-md-12 type_produit type_entrepreneur" style="display: none;">
+			<select id="typeentrepreneur" name="typeentrepreneur" class="form-control" style="width: 100%; margin-top: 10px;">
+			<option value="0">Sélectionnez le type entrepreneur</option>
+			{% for type in type_entrepreneur %}
+			<option value="{{ type.id }}">{{ type.nom }}</option>
+			{% endfor %}
+			</select>
+		  </div>
+	
+		  <div class="col-md-12 type_produit type_nosreperes" style="display: none;">
+			<select id="typenosreperes" name="typenosreperes" class="form-control" style="width: 100%; margin-top: 10px;">
+			<option value="0">Sélectionnez le type nosreperes</option>
+			{% for type in type_nosreperes %}
+			<option value="{{ type.id }}">{{ type.nom }}</option>
+			{% endfor %}
+			</select>
+		  </div>
+		  <div class="col-md-12 type_produit type_bourse" style="display: none;">
+			<select id="typebourse" name="typebourse" class="form-control" style="width: 100%; margin-top: 10px;">
+				<option value="0">Sélectionnez le type bourse</option>
+				{% for type in type_bourse %}
+				<option value="{{ type.id }}">{{ type.nom }}</option>
+				{% endfor %}
+			</select>
+		  </div>
+		  <div class="col-md-12 type_produit type_comptabilite" style="display: none;">
+			<select id="typecomptabilite" name="typecomptabilite" class="form-control" style="width: 100%; margin-top: 10px;">
+				<option value="0">Sélectionner le type comptabilite</option>
+				{% for type in type_comptabilite %}
+				<option value="{{ type.id }}">{{ type.nom }}</option>
+				{% endfor %}
+			</select>
+		  </div>
+		  <div class="col-md-12 type_produit type_investissment" style="display: none;">
+			<select id="typeinvestissment" name="typeinvestissment" class="form-control" style="width: 100%; margin-top: 10px;">
+			<option value="0">Sélectionnez le type investissment</option>
+			{% for type in type_investissment %}
+			<option value="{{ type.id }}">{{ type.nom }}</option>
+			{% endfor %}
+			</select>
+		  </div>
+		  <div class="col-md-12 type_produit type_action" style="display: none;">
+			<select id="action" name="action" class="form-control" style="width: 100%; margin-top: 10px;">
+			<option value="0">Sélectionner le type actionariat</option>
+			{% for type in type_action %}
+			<option value="{{ type.id }}">{{ type.nom }}</option>
+			{% endfor %}
+			</select>
+		  </div>
+		  <div class="col-md-12 type_produit type_donation" style="display: none;">
+			<select id="typedonation" name="typedonation" class="form-control" style="width: 100%; margin-top: 10px;">
+			<option value="0">Sélectionnez le type donation</option>
+			{% for type in type_donation %}
+			<option value="{{ type.id }}">{{ type.nom }}</option>
+			{% endfor %}
+			</select>
+		  </div>
+	
+		  <div class="col-md-12 type_produit type_cgu" style="display: none;">
+			<select id="typecgu" name="typecgu" class="form-control" style="width: 100%; margin-top: 10px;">
+			<option value="0">Sélectionné le type cgu</option>
+			{% for type in type_cgu %}
+			<option value="{{ type.id }}">{{ type.nom }}</option>
+			{% endfor %}
+			</select>
+		  </div>
+	
+		  <div class="col-md-12 type_produit type_confidentialite" style="display: none;">
+			<select id="typeconfidentialite" name="typeconfidentialite" class="form-control" style="width: 100%; margin-top: 10px;">
+				<option value="0">Type Confidentialité {{ othersite }}</option>
+				{% for type in type_confidentialite %}
+				<option value="{{ type.id }}">{{ type.nom }}</option>
+				{% endfor %}
+			</select>
+		  </div>
+	
+		  <div class="col-md-12 mt-3">
+			{{ form_errors(form.description) }}
+			{{ form_widget(form.description) }}
+			{{ form_label(form.description,'Description de l\'article') }}
+		  </div>
+		   <div class="col-md-12">
+			{{ form_errors(form.rang) }}
+			{{ form_widget(form.rang) }}
+			<div>
+				{{ form_label(form.rang,'Rang dans le classement') }}
+			</div>
+		  </div>
+		  <div class="col-md-12">
+			{{ form_errors(form.breve) }}
+			{{ form_widget(form.breve) }}
+			{{ form_label(form.breve,'Titre raccourci') }}
+		  </div>
+		  <div class="col-md-12 mt-3">
+			{{ form_errors(form.prerequis) }}
+			{{ form_widget(form.prerequis) }}
+			{{ form_label(form.prerequis,'Prérequis pour l\'article') }}
+		  </div>
+		  <div class="col-md-12">
+			{{ form_errors(form.link) }}
+			{{ form_widget(form.link) }}
+			{{ form_label(form.link,'Ajouter un lien à l\'article') }}
+		  </div>
+	  </div>
+	
+	  <div class="row">
+		<div class="file-field col-md-12">
+			<span>Image Article {{ form_errors(form.imgservice) }}</span>
+			{{ form_widget(form.imgservice) }}
+		</div>
+		<div class="col-md-12 mt-3">
+			{{ form_errors(form.keyword) }}
+			{{ form_widget(form.keyword) }}
+			{{ form_label(form.breve,'Mots clés séparés par les virgules ') }}
+		  </div>
+		<div class="col-md-12">
+		  <button class="btn btn-primary" type="submit" name="action">Enregister 1
+			<i class="mdi-content-send right"></i>
+		  </button>
+		</div>
+	  </div>
+	
+	 <div class="clear"></div>
+	{{ form_end(form) }}
+	</div>
+	
+	
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	<div class="modal fade" data-backdrop="false" id="modalFormTypeArt" style="margin-top: 60px;">
+	<div class="modal-dialog">
+	<div class="modal-content" style="padding: 0px; border-radius: 0px;">
+
+	<div class="modal-header">
+		<h5 class="modal-title"><i class="mdi-av-playlist-add"></i> Ajouter un type d'article </h5>
+		<button type="button" class="btn close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
+
+	<div class="modal-body">
+	<h4 class="header2">Ajouter un type d'article</h4>
+	<div class="row">
+		{{ form_start(form, {'attr': {'class': 'col s12','action': path('users_adminuser_add_type_article') }}) }}
+		<div class="row">
+		
+		  <div class="col-md-12">
+			<span style="color:red;">{{ form_errors(formtype) }}</span>
+			<span style="color:red;">{{ form_errors(formtype.nom) }}</span>
+
+			{{ form_widget(formtype.nom) }}
+			{{ form_label(formtype.nom,'Type d\'article') }}
+		  </div>
+		  <div class="col-md-12">
+			{{ form_errors(formtype.description) }}
+			{{ form_widget(formtype.description) }}
+			{{ form_label(formtype.description,'Description du type') }}
+		  </div>
+		  <div class="col-md-12">
+			{{ form_errors(formtype.rang) }}
+			{{ form_widget(formtype.rang) }}
+			{{ form_label(formtype.nom,'Rang dans le classement') }}
+		  </div>
+	  </div>
+	
+	  <div class="row">
+		<div class="file-field col-md-12">
+			<span>Image Type</span>
+			{{ form_widget(formtype.file) }}
+		</div>
+		<div class="col-md-12">
+		<select id="typeservice" name="typeservice" class="form-control required" style="width: 100%; margin-top: 10px;">
+			<option value="about">À propos</option>
+			<option value="mission">Mission</option>
+			<option value="vision">Vision</option>
+			<option value="engagement">Engagement</option>
+			<option value="justice">Service Juridiqe</option>
+			<option value="marketing">Stratégies de communication</option>
+			<option value="educationlarge">Education massive</option>
+			<option value="entrepreneur">Promotion Entrepreneuriat</option>
+			<option value="nosreperes">Nos repères</option>
+			<option value="bourse">Bourses</option>
+			<option value="comptabilite">Comptabilite</option>
+			<option value="investissment">Investissments</option>
+			<option value="action">Action</option>
+			<option value="donation">Donation</option>
+			<option value="cgu">CGU</option>
+			<option value="confidentialite">Confidentialité</option>
+		</select>
+		</div>
+	  </div>
+	
+	  <div class="row mt-3">
+		<div class="col-md-12">
+		  <button class="btn btn-primary" type="submit" name="action">Enregister
+			<i class="mdi-content-send right"></i>
+		  </button>
+		</div>
+	  </div>
+	 <div class="clear"></div>
+	{{ form_end(formtype) }}
+	</div>
+	
+	</div>
+	</div>
+	</div>
+	</div>
+
+	<script type="text/javascript" src="{{ asset('template/js/tiny.min.js') }}"></script>
 {% endblock %}
 
-{% block javascripttemplate %}
+
+{% block srcjavascripttemplate %}
+
 {% endblock %}
+
+
+{% block javascripttemplate %}
+
+tinymce.init({ selector:'#service_description', entity_encoding: "raw" });
+tinymce.init({ selector:'#service_prerequis', entity_encoding: "raw" });
+
+//$('.select_multiple').show();
+
+$('.update-content-type-article').click(function(){
+	var id = $(this).attr('value');
+	$('#modalGestionCatalogueSelect').modal('show');
+	$('.wait-chargement-content-module').show();
+	$('.content-module-loading').hide();
+	$.get('{{ path('users_adminuser_update_type_article') }}',{ id: id }, function(data){
+		$('.wait-chargement-content-module').hide();
+		$('.content-module-loading').show();
+		$('.content-module-loading').html(data);
+	});
+});
+
+$('.open-modal-new-article').click(function(){
+	$('#modalFormArticle').modal('show');
+});
+
+$('.open-modal-nouv-type').click(function(){
+	$('#modalFormTypeArt').modal('show');
+});
+
+$(".open").click(function(){
+  var container = $(this).parents(".topic");
+  var answer = container.find(".answer");
+  var trigger = container.find(".faq-t");
+
+  answer.slideToggle(200);
+
+  if (trigger.hasClass("faq-o")) {
+    trigger.removeClass("faq-o");
+  }
+  else {
+    trigger.addClass("faq-o");
+  }
+
+  if (container.hasClass("expanded")) {
+    container.removeClass("expanded");
+  }
+  else {
+    container.addClass("expanded");
+  }
+});
+
+$('a.page-scroll-cgu').click(function(){
+if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+  var target = $(this.hash);
+  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+  if (target.length) {
+	$('html,body').animate({
+	  scrollTop: target.offset().top - 40
+	}, 900);
+	return false;
+  }
+}
+});
+
+$('#typearticle').change(function(){
+	$('.type_produit').hide();
+	if($(this).val() == 'about')
+	{
+		$('.type_about').show();
+	}else if($(this).val() == 'mission')
+	{
+		$('.type_mission').show();
+	}else if($(this).val() == 'vision')
+	{
+		$('.type_vision').show();
+	}else if($(this).val() == 'engagement')
+	{
+		$('.type_engagement').show();
+	}else if($(this).val() == 'justice')
+	{
+		$('.type_justice').show();
+	}else if($(this).val() == 'marketing')
+	{
+		$('.type_marketing').show();
+	}else if($(this).val() == 'educationlarge')
+	{
+		$('.type_educationlarge').show();
+	}else if($(this).val() == 'entrepreneur')
+	{
+		$('.type_entrepreneur').show();
+	}else if($(this).val() == 'nosreperes')
+	{
+		$('.type_nosreperes').show();
+	}else if($(this).val() == 'bourse')
+	{
+		$('.type_bourse').show();
+	}else if($(this).val() == 'comptabilite')
+	{
+		$('.type_comptabilite').show();
+	}else if($(this).val() == 'investissment')
+	{
+		$('.type_investissment').show();
+	}else if($(this).val() == 'action')
+	{
+		$('.type_action').show();
+	}else if($(this).val() == 'donation')
+	{
+		$('.type_donation').show();
+	}else if($(this).val() == 'cgu')
+	{
+		$('.type_cgu').show();
+	}else if($(this).val() == 'confidentialite')
+	{
+		$('.type_confidentialite').show();
+	}
+});
+
+{% endblock %}
+

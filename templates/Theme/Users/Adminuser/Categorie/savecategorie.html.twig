@@ -10,235 +10,275 @@
 	{{ parent() }} | Accueil Admin
 {% endblock %}
 
+{% block stylesheets %}
+	{{ parent() }}
+
+{% endblock %}
+
+{% block userblog_menuleft %}
+	  {{ render(controller("App\\Controller\\Users\\Adminuser\\AccueilController:menuadmin")) }}
+{% endblock %}
+
 {% block userblog_body %}
-<div class="row" style="background: #f2f2f2;">
-<div class="col-md-10 col-md-offset-1 col-xs-12 panel" style="min-height: 700px; padding-bottom: 50px;">    
-	{{ render(controller("App\\Controller\\Users\\Adminuser\\AccueilController:menuadmin")) }}
-<div>
-<div class="row">
-	<div class="col-lg-12 col-sm-12">
-		<ul class="nav nav-tabs">
-			<li class="active"><a href="#liste-pays" data-toggle="tab">Catalogue</a></li>
-			<li class=""><a href="#liste-continent" data-toggle="tab">Produits</a></li>
-			<li class=""><a href="#liste-baniere" data-toggle="tab">Evolutions</a></li>
-		</ul>
+
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+	  <li class="breadcrumb-item text-sm text-dark active"><a class="opacity-5 text-dark" href="#!">{{ 'Administration'|trans }}</a></li>
+	</ol>
+</nav>
+<div class="divider mb-3" style="border-top: 2px dashed #999;"></div>
+
+<div class="section" style="padding: 5px 0px 0px 0px;">
+
+	<!-- 
+  
+  Radio version of tabs.
+
+  Requirements:
+  - not rely on specific IDs for CSS (the CSS shouldn't need to know specific IDs)
+  - flexible for any number of unkown tabs [2-6]
+  - accessible
+
+  Caveats:
+  - since these are checkboxes the tabs not tab-able, need to use arrow keys
+
+  Also worth reading:
+  http://simplyaccessible.com/article/danger-aria-tabs/
+-->
+
+<div class="tabset">
+	<!-- Tab 1 -->
+	<input type="radio" name="tabset" id="tab1" aria-controls="marzen" checked>
+	<label for="tab1">Catalogue</label>
+	<!-- Tab 2 -->
+	<input type="radio" name="tabset" id="tab2" aria-controls="rauchbier">
+	<label for="tab2">Produits</label>
+	<!-- Tab 3 -->
+	<input type="radio" name="tabset" id="tab3" aria-controls="dunkles">
+	<label for="tab3">Evolutions</label>
+	
+	<div class="tab-panels">
+	  <section id="marzen" class="tab-panel">
 		
-		<div class="tab-content" style="min-height: 500px; margin-left: 1px;">
-			<div class="tab-pane active" id="liste-pays">
+		<div  id="liste-pays">
+			{% for infos in app.session.flashbag.get('categorie_supp') %}
+			{% if loop.last %}
+				<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
+				<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer la catégorie {{ infos|lower }} </strong>
+				<form action="{{ path('users_adminuser_delete_categorie_produit', {'id': id }) }}" method="post">
+				<input type="submit" value="Supprimer" style="background: red;"/>
+				{{ form_rest(formsupp) }}
+				</form>
+				</div>
+			{% else %}
+			{% set id = infos %}
+			{% endif %}
+			{% endfor %}
 			
-				{% for infos in app.session.flashbag.get('categorie_supp') %}
-				{% if loop.last %}
-					<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
-					<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer la catégorie {{ infos|lower }} </strong>
-					<form action="{{ path('users_adminuser_delete_categorie_produit', {'id': id }) }}" method="post">
-					<input type="submit" value="Supprimer" style="background: red;"/>
-					{{ form_rest(formsupp) }}
-					</form>
-					</div>
-				{% else %}
-				{% set id = infos %}
+			{% for infos in app.session.flashbag.get('souscategorie_supp') %}
+			{% if loop.last %}
+				<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
+				<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer la sous-catégorie {{ infos|lower }} </strong>
+				<form action="{{ path('users_adminuser_del_souscategorie_appli', {'id': id }) }}" method="post">
+				<input type="submit" value="Supprimer" style="background: red;"/>
+				{{ form_rest(formsupp) }}
+				</form>
+				</div>
+			{% else %}
+			{% set id = infos %}
+			{% endif %}
+			{% endfor %}
+			
+			{% for infos in app.session.flashbag.get('supprime_image') %}
+			{% if loop.last %}
+				<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
+				<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer l'image du produit {{ infos|lower }} </strong>
+				<form action="{{ path('users_adminuser_supprimer_image_produit', {'id': id }) }}" method="post">
+				<input type="submit" value="Supprimer" style="background: red;"/>
+				{{ form_rest(formsupp) }}
+				</form>
+				</div>
+			{% else %}
+			{% set id = infos %}
+			{% endif %}
+			{% endfor %}
+			
+			{% for infos in app.session.flashbag.get('supprime_prod') %}
+			{% if loop.last %}
+				<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
+				<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le produit {{ infos|lower }} </strong>
+				<form action="{{ path('users_adminuser_supprimer_courant_produit', {'id': id }) }}" method="post">
+				<input type="submit" value="Supprimer" style="background: red;"/>
+				{{ form_rest(formsupp) }}
+				</form>
+				</div>
+			{% else %}
+			{% set id = infos %}
+			{% endif %}
+			{% endfor %}
+			
+			{% for infos in app.session.flashbag.get('supprime_service') %}
+			{% if loop.last %}
+				<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
+				<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer l'indicateur {{ infos|lower }} </strong>
+				<form action="{{ path('users_adminuser_supprimer_service_even', {'id': id }) }}" method="post">
+				<input type="submit" value="Supprimer" style="background: red;"/>
+				{{ form_rest(formsupp) }}
+				</form>
+				</div>
+			{% else %}
+			{% set id = infos %}
+			{% endif %}
+			{% endfor %}
+			
+			{% for infos in app.session.flashbag.get('supprime_evolution') %}
+			{% if loop.last %}
+				<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
+				<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer les données {{ infos|lower }} </strong>
+				<form action="{{ path('users_adminuser_supprim_service_evenement', {'id': id }) }}" method="post">
+				<input type="submit" value="Supprimer" style="background: red;"/>
+				{{ form_rest(formsupp) }}
+				</form>
+				</div>
+			{% else %}
+			{% set id = infos %}
+			{% endif %}
+			{% endfor %}
+			
+			<div style="border: 1px solid #ddd; padding-bottom: 7px; margin-top: 7px;">
+			<div style="background: #f7f7f7; border-bottom: 1px solid #ddd; margin: -5px 0px 7px 0px;">
+				<h2 style="margin: 5px;">Ajouter une nouvelle catégorie de produit.</h2>	
+			</div>
+			<h4 class="title">
+				{% for infos in app.session.flashbag.get('information') %}
+				{% if loop.first %}
+				<div class="alert alert-warning">{{ infos|raw }}</div>
 				{% endif %}
 				{% endfor %}
-				
-				{% for infos in app.session.flashbag.get('souscategorie_supp') %}
-				{% if loop.last %}
-					<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
-					<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer la sous-catégorie {{ infos|lower }} </strong>
-					<form action="{{ path('users_adminuser_del_souscategorie_appli', {'id': id }) }}" method="post">
-					<input type="submit" value="Supprimer" style="background: red;"/>
-					{{ form_rest(formsupp) }}
-					</form>
+			</h4>
+			{{ form_start(form, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_save_categorie_product') }}) }}
+			<div class="col-sm-6">
+				 <span style="color:red;">{{ form_errors(form) }}</span>
+				 <span style="color:red;">{{ form_errors(form.nom) }}</span>
+				 <div class="form-group nom">
+					<span style="color:red;">{{ form_errors(form.nom) }}</span>
+					{{ form_widget(form.nom) }}
+				 </div>
+				 <span style="color:red;">{{ form_errors(form.rang) }}</span>
+				 <span>{{ form_label(form.file,'Lier une image descriptive de la catégorie') }}</span>
+				 <div style="margin-top: 10px;">{{ form_widget(form.file) }}</div>
+			</div>
+			  <div class="col-sm-6">
+				<div class="form-group rang">
+					<span style="color:red;">{{ form_errors(form.rang) }}</span>
+					{{ form_widget(form.rang) }}
+				 </div>
+			  <div class="keywords">
+				<button class="btn btn-primary">Enregistrez la catégorie</button>
+			  </div>
+			  </div>
+			 <div class="clear"></div>
+			 {{ form_end(form) }}
+			<div class="clearfix"></div>
+			</div>
+			
+			<div class="row" style="margin-top: 10px;">
+			<div class="col-md-12" style="border-bottom: 2px solid #ddd; margin-bottom: 7px;">
+				Liste des catégories
+			</div>
+			{% for categorie in liste_categorie %}
+			<!-- blog card -->
+			<div class="col-md-3">
+				<div class="panel" style="border: 1px solid #ddd; position: sticky;">
+				<div style="margin: 2px;">
+					<a href="#!" class="open-content-continent-reponse" value="{{ categorie.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
+					<a href="{{ path('users_adminuser_delete_categorie_produit', {'id': categorie.id }) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
+						
+					<div>
+					<div style="height: 25px;">
 					</div>
-				{% else %}
-				{% set id = infos %}
-				{% endif %}
-				{% endfor %}
-				
-				{% for infos in app.session.flashbag.get('supprime_image') %}
-				{% if loop.last %}
-					<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
-					<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer l'image du produit {{ infos|lower }} </strong>
-					<form action="{{ path('users_adminuser_supprimer_image_produit', {'id': id }) }}" method="post">
-					<input type="submit" value="Supprimer" style="background: red;"/>
-					{{ form_rest(formsupp) }}
-					</form>
+						<img src="{% if categorie.src != null %}{{ asset(categorie.getWebpath) }}{% else %}{{ asset('template/images/logo.png') }}{% endif %}" alt=".." style="width: 100%; height: 100px;"/>
 					</div>
-				{% else %}
-				{% set id = infos %}
-				{% endif %}
-				{% endfor %}
-				
-				{% for infos in app.session.flashbag.get('supprime_prod') %}
-				{% if loop.last %}
-					<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
-					<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer le produit {{ infos|lower }} </strong>
-					<form action="{{ path('users_adminuser_supprimer_courant_produit', {'id': id }) }}" method="post">
-					<input type="submit" value="Supprimer" style="background: red;"/>
-					{{ form_rest(formsupp) }}
-					</form>
-					</div>
-				{% else %}
-				{% set id = infos %}
-				{% endif %}
-				{% endfor %}
-				
-				{% for infos in app.session.flashbag.get('supprime_service') %}
-				{% if loop.last %}
-					<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
-					<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer l'indicateur {{ infos|lower }} </strong>
-					<form action="{{ path('users_adminuser_supprimer_service_even', {'id': id }) }}" method="post">
-					<input type="submit" value="Supprimer" style="background: red;"/>
-					{{ form_rest(formsupp) }}
-					</form>
-					</div>
-				{% else %}
-				{% set id = infos %}
-				{% endif %}
-				{% endfor %}
-				
-				{% for infos in app.session.flashbag.get('supprime_evolution') %}
-				{% if loop.last %}
-					<div class="panel" style="margin-top: 0px; border: 1px solid #ddd; padding: 7px;">
-					<strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer les données {{ infos|lower }} </strong>
-					<form action="{{ path('users_adminuser_supprim_service_evenement', {'id': id }) }}" method="post">
-					<input type="submit" value="Supprimer" style="background: red;"/>
-					{{ form_rest(formsupp) }}
-					</form>
-					</div>
-				{% else %}
-				{% set id = infos %}
-				{% endif %}
-				{% endfor %}
-				
-				<div style="border: 1px solid #ddd; padding-bottom: 7px; margin-top: 7px;">
-				<div style="background: #f7f7f7; border-bottom: 1px solid #ddd; margin: -5px 0px 7px 0px;">
-					<h2 style="margin: 5px;">Ajouter une nouvelle catégorie de produit.</h2>	
+					<span class="left"><a href="#!">{{ categorie.nom }}</a></span></br>
+					<div>{{ categorie.souscategories|length }} Sous-catégories</div>
 				</div>
-    	        <h4 class="title">
-					{% for infos in app.session.flashbag.get('information') %}
-					{% if loop.first %}
-					<div class="alert alert-warning">{{ infos|raw }}</div>
-					{% endif %}
-					{% endfor %}
-				</h4>
-				{{ form_start(form, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_save_categorie_product') }}) }}
-				<div class="col-sm-6">
-				     <span style="color:red;">{{ form_errors(form) }}</span>
-					 <span style="color:red;">{{ form_errors(form.nom) }}</span>
-					 <div class="form-group nom">
-						<span style="color:red;">{{ form_errors(form.nom) }}</span>
-						{{ form_widget(form.nom) }}
-					 </div>
-					 <span style="color:red;">{{ form_errors(form.rang) }}</span>
-					 <span>{{ form_label(form.file,'Lier une image descriptive de la catégorie') }}</span>
-				     <div style="margin-top: 10px;">{{ form_widget(form.file) }}</div>
-				</div>
-		    	  <div class="col-sm-6">
-					<div class="form-group rang">
-						<span style="color:red;">{{ form_errors(form.rang) }}</span>
-						{{ form_widget(form.rang) }}
-					 </div>
-				  <div class="keywords">
-					<button class="btn btn-primary">Enregistrez la catégorie</button>
-				  </div>
-		          </div>
-		         <div class="clear"></div>
-				 {{ form_end(form) }}
-				<div class="clearfix"></div>
-				</div>
-				
-				<div class="row" style="margin-top: 10px;">
-				<div class="col-md-12" style="border-bottom: 2px solid #ddd; margin-bottom: 7px;">
-					Liste des catégories
-				</div>
-				{% for categorie in liste_categorie %}
-				<!-- blog card -->
-				<div class="col-md-3">
-					<div class="panel" style="border: 1px solid #ddd;">
-					<div style="margin: 2px;">
-						<a href="#!" class="open-content-continent-reponse" value="{{ categorie.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
-						<a href="{{ path('users_adminuser_delete_categorie_produit', {'id': categorie.id }) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
-							
-						<div>
-						<div style="height: 25px;">
-						</div>
-							<img src="{% if categorie.src != null %}{{ asset(categorie.getWebpath) }}{% else %}{{ asset('template/images/logo.png') }}{% endif %}" alt=".." style="width: 100%; height: 100px;"/>
-						</div>
-						<span class="left"><a href="#!">{{ categorie.nom }}</a></span></br>
-						<div>{{ categorie.souscategories|length }} Sous-catégories</div>
-					</div>
-					</div>
-				</div>
-				{% endfor %}
-				</div>
-				
-				<div style="border: 1px solid #ddd; padding-bottom: 7px; margin-top: 7px;">
-				<div style="background: #f7f7f7; border-bottom: 1px solid #ddd; margin: -5px 0px 7px 0px;">
-					<h2 style="margin: 5px;">Ajouter une nouvelle sous-catégorie de produit.</h2>	
-				</div>
-				{{ form_start(formscat, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_ajouter_sous_categorie') }}) }}
-				<div class="col-sm-6">
-				     <span style="color:red;">{{ form_errors(formscat) }}</span>
-					 <span style="color:red;">{{ form_errors(formscat.nom) }}</span>
-					 <div class="form-group nom">
-						<span style="color:red;">{{ form_errors(formscat.nom) }}</span>
-						{{ form_widget(formscat.nom) }}
-					 </div>
-					 <span style="color:red;">{{ form_errors(formscat.file) }}</span>
-					 <span>{{ form_label(formscat.file,'Lier une image descriptive de la catégorie') }}</span>
-				     <div style="margin-top: 10px;">{{ form_widget(formscat.file) }}</div>
-				</div>
-		    	  <div class="col-sm-6">
-					<div class="form-group rang">
-						<span style="color:red;">{{ form_errors(formscat.rang) }}</span>
-						{{ form_widget(formscat.rang) }}
-					 </div>
-					<div class="form-group categorie">
-						<span style="color:red;">{{ form_errors(formscat.categorie) }}</span>
-						{{ form_widget(formscat.categorie) }}
-					 </div>
-				  <div class="keywords">
-					<button class="btn btn-primary">Enregistrez la catégorie</button>
-				  </div>
-		          </div>
-		         <div class="clear"></div>
-				 {{ form_end(formscat) }}
-				<div class="clearfix"></div>
-				</div>
-				
-				<div class="row" style="margin-top: 10px;">
-				<div class="col-md-12" style="border-bottom: 2px solid #ddd; margin-bottom: 7px;">
-					Liste des sous-catégories
-				</div>
-				{% for scat in liste_scat %}
-				<!-- blog card -->
-				<div class="col-md-3">
-					<div class="panel" style="border: 1px solid #ddd;">
-					<div style="margin: 2px;">
-						<a href="#!" class="open-content-scat-reponse" value="{{ scat.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
-						<a href="{{ path('users_adminuser_del_souscategorie_appli', {'id': scat.id }) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
-							
-						<div>
-						<div style="height: 25px;">
-						</div>
-							<img src="{% if scat.src != null %}{{ asset(scat.getWebpath) }}{% else %}{{ asset('template/images/logo.png') }}{% endif %}" alt=".." style="width: 100%; height: 100px;"/>
-						</div>
-						<span class="left"><a href="#!">{{ scat.nom }}</a></span></br>
-						<div>{{ scat.categorie.nom }}</div>
-					</div>
-					</div>
-				</div>
-				{% endfor %}
 				</div>
 			</div>
-			<div class="tab-pane" id="liste-continent">
+			{% endfor %}
+			</div>
+			
+			<div style="border: 1px solid #ddd; padding-bottom: 7px; margin-top: 7px;">
+			<div style="background: #f7f7f7; border-bottom: 1px solid #ddd; margin: -5px 0px 7px 0px;">
+				<h2 style="margin: 5px;">Ajouter une nouvelle sous-catégorie de produit.</h2>	
+			</div>
+			{{ form_start(formscat, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_ajouter_sous_categorie') }}) }}
+			<div class="col-sm-6">
+				 <span style="color:red;">{{ form_errors(formscat) }}</span>
+				 <span style="color:red;">{{ form_errors(formscat.nom) }}</span>
+				 <div class="form-group nom">
+					<span style="color:red;">{{ form_errors(formscat.nom) }}</span>
+					{{ form_widget(formscat.nom) }}
+				 </div>
+				 <span style="color:red;">{{ form_errors(formscat.file) }}</span>
+				 <span>{{ form_label(formscat.file,'Lier une image descriptive de la catégorie') }}</span>
+				 <div style="margin-top: 10px;">{{ form_widget(formscat.file) }}</div>
+			</div>
+			  <div class="col-sm-6">
+				<div class="form-group rang">
+					<span style="color:red;">{{ form_errors(formscat.rang) }}</span>
+					{{ form_widget(formscat.rang) }}
+				 </div>
+				<div class="form-group categorie">
+					<span style="color:red;">{{ form_errors(formscat.categorie) }}</span>
+					{{ form_widget(formscat.categorie) }}
+				 </div>
+			  <div class="keywords">
+				<button class="btn btn-primary">Enregistrez la catégorie</button>
+			  </div>
+			  </div>
+			 <div class="clear"></div>
+			 {{ form_end(formscat) }}
+			<div class="clearfix"></div>
+			</div>
+			
+			<div class="row" style="margin-top: 10px;">
+			<div class="col-md-12" style="border-bottom: 2px solid #ddd; margin-bottom: 7px;">
+				Liste des sous-catégories
+			</div>
+			{% for scat in liste_scat %}
+			<!-- blog card -->
+			<div class="col-md-3">
+				<div class="panel" style="border: 1px solid #ddd; position: sticky;">
+				<div style="margin: 2px;">
+					<a href="#!" class="open-content-scat-reponse" value="{{ scat.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
+					<a href="{{ path('users_adminuser_del_souscategorie_appli', {'id': scat.id }) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
+						
+					<div>
+					<div style="height: 25px;">
+					</div>
+						<img src="{% if scat.src != null %}{{ asset(scat.getWebpath) }}{% else %}{{ asset('template/images/logo.png') }}{% endif %}" alt=".." style="width: 100%; height: 100px;"/>
+					</div>
+					<span class="left"><a href="#!">{{ scat.nom }}</a></span></br>
+					<div>{{ scat.categorie.nom }}</div>
+				</div>
+				</div>
+			</div>
+			{% endfor %}
+			</div>
+		</div>
+
+	</section>
+
+
+	  <section id="rauchbier" class="tab-panel">
+		<div id="liste-continent">
 				<div style="border: 1px solid #ddd; padding-bottom: 7px; margin-top: 7px;">
 				<div style="background: #f7f7f7; border-bottom: 1px solid #ddd; margin: -5px 0px 7px 0px;">
 					<h2 style="margin: 5px;">Ajouter un nouveau produit</h2>	
 				</div>
 				{{ form_start(formpro, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_liste_produit_souscategorie') }}) }}
 				<div class="col-sm-6">
-				     <span style="color:red;">{{ form_errors(formpro) }}</span>
+					 <span style="color:red;">{{ form_errors(formpro) }}</span>
 					 <span style="color:red;">{{ form_errors(formpro.nom) }}</span>
 					 <div class="form-group nom">
 						<span style="color:red;">{{ form_errors(formpro.nom) }}</span>
@@ -250,7 +290,7 @@
 					 </div>
 					 <span style="color:red;">{{ form_errors(formpro.file) }}</span>
 					 <span>{{ form_label(formpro.file,'Ajouter le logo du produit') }}</span>
-				     <div style="margin-top: 10px;">{{ form_widget(formpro.file) }}</div>
+					 <div style="margin-top: 10px;">{{ form_widget(formpro.file) }}</div>
 					 <div class="form-group souscategorie" style="margin-top: 15px;">
 						<span style="color:red;">{{ form_errors(formpro.souscategorie) }}</span>
 						{{ form_widget(formpro.souscategorie) }}
@@ -268,7 +308,7 @@
 						{{ form_widget(formpro.forumlink) }}
 					 </div>
 				</div>
-		    	  <div class="col-sm-6">
+				  <div class="col-sm-6">
 					<div class="form-group rang">
 						<span style="color:red;">{{ form_errors(formpro.rang) }}</span>
 						{{ form_widget(formpro.rang) }}
@@ -280,7 +320,7 @@
 					
 					 <span style="color:red;">{{ form_errors(formpro.imgpro) }}</span>
 					 <span>{{ form_label(formpro.imgpro,'Lier une image descriptive du produit') }}</span>
-				     <div style="margin-top: 10px;">{{ form_widget(formpro.imgpro) }}</div>
+					 <div style="margin-top: 10px;">{{ form_widget(formpro.imgpro) }}</div>
 					 
 					 <div class="form-group tariflink" style="margin-top: 10px;">
 						<span style="color:red;">{{ form_errors(formpro.tariflink) }}</span>
@@ -297,8 +337,8 @@
 					  <div class="keywords" style="margin-top: 15px;">
 						<button class="btn btn-primary">Enregistrer le produit</button>
 					  </div>
-		          </div>
-		         <div class="clear"></div>
+				  </div>
+				 <div class="clear"></div>
 				 {{ form_end(formpro) }}
 				<div class="clearfix"></div>
 				</div>
@@ -310,7 +350,7 @@
 				{% for prod in liste_produit %}
 				<!-- blog card -->
 				<div class="col-md-3">
-					<div class="panel" style="border: 1px solid #ddd;">
+					<div class="panel" style="border: 1px solid #ddd; position: sticky;">
 					<div style="margin: 2px;">
 						<a href="#!" class="open-content-produit-reponse" value="{{ prod.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
 						<a href="{{ path('users_adminuser_supprimer_courant_produit', {'id': prod.id}) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
@@ -335,7 +375,7 @@
 				</div>
 				{{ form_start(formservice, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_ajouter_nouveau_service') }}) }}
 				<div class="col-sm-6">
-				     <span style="color:red;">{{ form_errors(formservice) }}</span>
+					 <span style="color:red;">{{ form_errors(formservice) }}</span>
 					 <span style="color:red;">{{ form_errors(formservice.nom) }}</span>
 					 <div class="form-group nom">
 						<span style="color:red;">{{ form_errors(formservice.nom) }}</span>
@@ -350,7 +390,7 @@
 						{{ form_widget(formservice.rang) }}
 					 </div>
 				</div>
-		    	  <div class="col-sm-6">
+				  <div class="col-sm-6">
 					<div class="form-group rang">
 						<select name="type" class="form-control">
 							<option value="0">Indicateur périodique</option>
@@ -359,13 +399,13 @@
 					 </div>
 					 <span style="color:red;">{{ form_errors(formservice.imgservice) }}</span>
 					 <span>{{ form_label(formservice.imgservice,'Ajouter une image descriptive') }}</span>
-				     <div style="margin-top: 10px;">{{ form_widget(formservice.imgservice) }}</div>
+					 <div style="margin-top: 10px;">{{ form_widget(formservice.imgservice) }}</div>
 					 
 					<div class="keywords" style="margin-top: 15px;">
 						<button class="btn btn-primary">Enregistrer l'indicateur</button>
 					</div>
-		          </div>
-		         <div class="clear"></div>
+				  </div>
+				 <div class="clear"></div>
 				 {{ form_end(formservice) }}
 				<div class="clearfix"></div>
 				</div>
@@ -377,7 +417,7 @@
 				{% for service in liste_service %}
 				<!-- blog card -->
 				<div class="col-md-3">
-					<div class="panel" style="border: 1px solid #ddd;">
+					<div class="panel" style="border: 1px solid #ddd; position: sticky;">
 					<div style="margin: 2px;">
 						<a href="#!" class="open-content-indicateur-reponse" value="{{ service.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
 						<a href="{{ path('users_adminuser_supprimer_service_even', {'id': service.id }) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
@@ -395,80 +435,87 @@
 				{% endfor %}
 				</div>
 			</div>
-			<div class="tab-pane" id="liste-baniere">
-				<div style="border: 1px solid #ddd; padding-bottom: 7px; margin-top: 7px;">
-				<div style="background: #f7f7f7; border-bottom: 1px solid #ddd; margin: -5px 0px 7px 0px;">
-					<h2 style="margin: 5px;">Ajouter l'évolution d'un indicateur</h2>	
-				</div>
-				{{ form_start(formevent, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_add_un_evenement') }}) }}
-				<div class="col-sm-6">
-				     <span style="color:red;">{{ form_errors(formevent) }}</span>
-					 <span style="color:red;">{{ form_errors(formevent.bestvalue) }}</span>
-					 <div class="form-group bestvalue">
-						<span style="color:red;">{{ form_errors(formevent.bestvalue) }}</span>
-						{{ form_widget(formevent.bestvalue) }}
-					 </div>
-					 <div class="form-group falsevalue">
-						<span style="color:red;">{{ form_errors(formevent.falsevalue) }}</span>
-						{{ form_widget(formevent.falsevalue) }}
-					 </div>
-					 <div class="form-group indicateur">
-						<span style="color:red;">{{ form_errors(formevent.indicateur) }}</span>
-						{{ form_widget(formevent.indicateur) }}
-					 </div>
-				</div>
-		    	  <div class="col-sm-6">
-					<div class="form-group annee">
-						<span style="color:red;">{{ form_errors(formevent.annee) }}</span>
-						{{ form_widget(formevent.annee) }}
-					 </div>
-					<div class="form-group produit">
-						<span style="color:red;">{{ form_errors(formevent.produit) }}</span>
-						{{ form_widget(formevent.produit) }}
-					 </div>
 
-				  <div class="keywords" style="margin-top: 15px;">
-					<button class="btn btn-primary">Enregistrer la stat</button>
-				  </div>
-		          </div>
-		         <div class="clear"></div>
-				 {{ form_end(formevent) }}
-				<div class="clearfix"></div>
-				</div>
-				
-				<div class="row" style="margin-top: 10px;">
-				<div class="col-md-12" style="border-bottom: 2px solid #ddd; margin-bottom: 7px;">
-					Evolution Indicateur
-				</div>
-				{% for event in liste_event %}
-				<!-- blog card -->
-				<div class="col-md-3">
-					<div class="panel" style="border: 1px solid #ddd;">
-					<div style="margin: 2px;">
-						<a href="#!" class="open-content-evolution-indicateur-reponse" value="{{ event.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
-						<a href="{{ path('users_adminuser_supprim_service_evenement', {'id': event.id}) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
-							
-						<div style="margin-bottom: 4px;">
-						<div style="height: 25px;">
-						</div>
-							<img src="{% if event.indicateur.imgservice != null %}{{ asset(event.indicateur.imgservice.getWebpath) }}{% else %}{{ asset('template/images/logo.png') }}{% endif %}" alt=".." style="width: 100%; height: 100px;"/>
-						</div>
-						<span class="left"><a href="#!">{{ event.indicateur.nom }} - {{ event.annee.nom }} - {{ event.produit.nom }}</a></span></br>
-						<div>Top: {{ event.bestvalue }}, Mauvaise: {{ event.falsevalue }}</div>
+	  </section>
+	  <section id="dunkles" class="tab-panel">
+		
+		<div id="liste-baniere">
+			<div style="border: 1px solid #ddd; padding-bottom: 7px; margin-top: 7px;">
+			<div style="background: #f7f7f7; border-bottom: 1px solid #ddd; margin: -5px 0px 7px 0px;">
+				<h2 style="margin: 5px;">Ajouter l'évolution d'un indicateur</h2>	
+			</div>
+			{{ form_start(formevent, {'attr': {'class': 'row', 'style': 'margin-top: 15px;', 'action': path('users_adminuser_add_un_evenement') }}) }}
+			<div class="col-sm-6">
+				 <span style="color:red;">{{ form_errors(formevent) }}</span>
+				 <span style="color:red;">{{ form_errors(formevent.bestvalue) }}</span>
+				 <div class="form-group bestvalue">
+					<span style="color:red;">{{ form_errors(formevent.bestvalue) }}</span>
+					{{ form_widget(formevent.bestvalue) }}
+				 </div>
+				 <div class="form-group falsevalue">
+					<span style="color:red;">{{ form_errors(formevent.falsevalue) }}</span>
+					{{ form_widget(formevent.falsevalue) }}
+				 </div>
+				 <div class="form-group indicateur">
+					<span style="color:red;">{{ form_errors(formevent.indicateur) }}</span>
+					{{ form_widget(formevent.indicateur) }}
+				 </div>
+			</div>
+			  <div class="col-sm-6">
+				<div class="form-group annee">
+					<span style="color:red;">{{ form_errors(formevent.annee) }}</span>
+					{{ form_widget(formevent.annee) }}
+				 </div>
+				<div class="form-group produit">
+					<span style="color:red;">{{ form_errors(formevent.produit) }}</span>
+					{{ form_widget(formevent.produit) }}
+				 </div>
+
+			  <div class="keywords" style="margin-top: 15px;">
+				<button class="btn btn-primary">Enregistrer la stat</button>
+			  </div>
+			  </div>
+			 <div class="clear"></div>
+			 {{ form_end(formevent) }}
+			<div class="clearfix"></div>
+			</div>
+			
+			<div class="row" style="margin-top: 10px;">
+			<div class="col-md-12" style="border-bottom: 2px solid #ddd; margin-bottom: 7px;">
+				Evolution Indicateur
+			</div>
+			{% for event in liste_event %}
+			<!-- blog card -->
+			<div class="col-md-3">
+				<div class="panel" style="border: 1px solid #ddd; position: sticky;">
+				<div style="margin: 2px;">
+					<a href="#!" class="open-content-evolution-indicateur-reponse" value="{{ event.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
+					<a href="{{ path('users_adminuser_supprim_service_evenement', {'id': event.id}) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
+						
+					<div style="margin-bottom: 4px;">
+					<div style="height: 25px;">
 					</div>
+						<img src="{% if event.indicateur.imgservice != null %}{{ asset(event.indicateur.imgservice.getWebpath) }}{% else %}{{ asset('template/images/logo.png') }}{% endif %}" alt=".." style="width: 100%; height: 100px;"/>
 					</div>
+					<span class="left"><a href="#!">{{ event.indicateur.nom }} - {{ event.annee.nom }} - {{ event.produit.nom }}</a></span></br>
+					<div>Top: {{ event.bestvalue }}, Mauvaise: {{ event.falsevalue }}</div>
 				</div>
-				{% endfor %}
 				</div>
 			</div>
+			{% endfor %}
+			</div>
 		</div>
-</div>
-</div>
-</div> 
+
+	  </section>
+	</div>
+	
+  </div>
+
 
 </div>
 </div>
 
+</div>
 
 <div class="modal" data-backdrop="static" id="modalArticlesDetail">
 <div class="modal-dialog modal-md">
@@ -501,6 +548,8 @@
 {% endblock %}
 
 {% block javascripttemplate %}
+
+
 $('.open-content-continent-reponse').click(function(){
 	var id = $(this).attr('value');
 	$('#modalArticlesDetail').modal('show');

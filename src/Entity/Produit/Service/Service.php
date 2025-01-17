@@ -12,6 +12,7 @@ use App\Repository\Produit\Service\ServiceRepository;
 use App\Entity\Users\User\User;
 use App\Entity\Produit\Service\Imgservice;
 use App\Entity\Produit\Service\Evenement;
+use App\Validator\Validatortext\Siteweb;
 
 /**
  * Service
@@ -49,6 +50,31 @@ class Service
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="breve", type="string", length=255, nullable=true)
+     * @Taillemin(valeur=3, message="Au moins 3 caractères")
+     * @Taillemax(valeur=120, message="Au plus 120 caractès")
+     */
+    private $breve;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prerequis", type="text", nullable=true)
+     * @Taillemax(valeur=5000, message="Au plus 5000 caractès")
+     */
+    private $prerequis;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="keyword", type="string", length=255, nullable=true)
+     * @Taillemax(valeur=250, message="Au plus 250 caractès")
+     */
+    private $keyword;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
@@ -61,6 +87,12 @@ class Service
      * @ORM\Column(name="type", type="integer")
      */
     private $type;  //0 pour l'année, 1 pour un indicateur
+
+	/**
+  * @ORM\ManyToOne(targetEntity=Typearticle::class, inversedBy="services")
+  * @ORM\JoinColumn(nullable=true)
+  */
+	private $typearticle;
 	
 	/**
      * @var integer
@@ -68,6 +100,14 @@ class Service
      * @ORM\Column(name="rang", type="integer")
      */
     private $rang; 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=255, nullable=true)
+     *@Siteweb()
+     */
+    private $link;
 	
 	/**
        * @ORM\ManyToOne(targetEntity=User::class)
@@ -277,20 +317,129 @@ class Service
     }
 	
 	public function getTabColor()
-            	{
-            		return array(array('#f7f7f7','#333'),array('#f96d00','#fff'),array('#ffffff','#333'),array('#f2f2f2','#333'),array('#00325a','#fff'),array('#a6be53','#fff'),array('#3498db','#fff'));
-            	}
-	public function getvaleurAppli($idapp, $idannee)
-            	{
-            		$indicateur = $this->em->getRepository(Evenement::class)
-            							   ->getvaleurAppli($this->getId(),$idapp,$idannee);
-            		
-            		if($indicateur != null)
-            		{
-            			$random_keys = array_rand($this->getTabColor());
-            			$indicateur->setCodecouleur($this->getTabColor()[$random_keys]);
-            		}
-            		return $indicateur;
-            	}
+    {
+        return array(array('#f7f7f7','#333'),array('#f96d00','#fff'),array('#ffffff','#333'),array('#f2f2f2','#333'),array('#00325a','#fff'),array('#a6be53','#fff'),array('#3498db','#fff'));
+    }
 
+	public function getvaleurAppli($idapp, $idannee)
+    {
+        $indicateur = $this->em->getRepository(Evenement::class)
+                                ->getvaleurAppli($this->getId(),$idapp,$idannee);
+        
+        if($indicateur != null)
+        {
+            $random_keys = array_rand($this->getTabColor());
+            $indicateur->setCodecouleur($this->getTabColor()[$random_keys]);
+        }
+        return $indicateur;
+    }
+
+    /**
+     * Set breve
+     *
+     * @param string $breve
+     * @return Service
+     */
+    public function setBreve($breve)
+    {
+        $this->breve = $breve;
+
+        return $this;
+    }
+
+    /**
+     * Get breve
+     *
+     * @return string
+     */
+    public function getBreve()
+    {
+        return $this->breve;
+    }
+
+    /**
+     * Set prerequis
+     *
+     * @param string $prerequis
+     * @return Service
+     */
+    public function setPrerequis($prerequis)
+    {
+        $this->prerequis = $prerequis;
+
+        return $this;
+    }
+
+    /**
+     * Get prerequis
+     *
+     * @return string
+     */
+    public function getPrerequis()
+    {
+        return $this->prerequis;
+    }
+
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     * @return Service
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * Set keyword
+     *
+     * @param string $keyword
+     * @return Service
+     */
+    public function setKeyword($keyword)
+    {
+        $this->keyword = $keyword;
+
+        return $this;
+    }
+
+    /**
+     * Get keyword
+     *
+     * @return string
+     */
+    public function getKeyword()
+    {
+        return $this->keyword;
+    }
+
+    public function setTypearticle(Typearticle $typearticle = null): self
+    {
+        $this->typearticle = $typearticle;
+        if($typearticle != null)
+        {
+            $typearticle->addService($this);
+        }
+
+        return $this;
+    }
+
+    public function getTypearticle(): ?Typearticle
+    {
+        return $this->typearticle;
+    }
 }

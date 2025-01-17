@@ -1,6 +1,9 @@
 users_adminuser_accueil_administration:
     path: /admin/accueil
     controller: App\Controller\Users\Adminuser\AccueilController:accueiladmin
+users_adminuser_localisation_investissement:
+    path: /admin/localisation/investissement
+    controller: App\Controller\Users\Adminuser\AccueilController:localisationInvestissement
 users_adminuser_save_categorie_product:
     path: /nouvelle/categorie
     controller: App\Controller\Produit\Produit\CategorieController:savecategorie
@@ -71,6 +74,34 @@ users_adminuser_enleve_role_admin:
 users_adminuser_ajouter_nouveau_service:
     path: /ajouter/nouveau/service
     controller: App\Controller\Produit\Service\ServiceController:nouveauservice
+users_adminuser_add_type_article:
+    path: /adminads/add/type/article
+    controller: App\Controller\Produit\Service\ServiceController::addtypearticle
+users_adminuser_delete_current_partie_article:
+    path: /adminads/delete/current/partie/article/{id}
+    controller: App\Controller\Produit\Service\ServiceController::deletepartie
+    requirements:
+        id: \d+
+users_adminuser_liste_article_type:
+    path: /adminads/liste/article/type/{id}/{page}
+    controller: App\Controller\Produit\Service\ServiceController::articlespartype
+    defaults:
+        page: 1
+    requirements:
+        id: \d+
+        page: \d+
+users_adminuser_delete_type_article:
+    path: /adminads/delete/type/article/{id}
+    controller: App\Controller\Produit\Service\ServiceController::supprimertypearticle
+    requirements:
+        id: \d+
+users_adminuser_update_type_article:
+    path: /adminads/update/type/article/{id}
+    controller: App\Controller\Produit\Service\ServiceController::updatetypearticle
+    defaults:
+        id: 0
+    requirements:
+        id: \d+
 users_adminuser_modifier_un_service:
     path: /modifier/un/nouveau/service/{id}
     controller: App\Controller\Produit\Service\ServiceController:modifierservice

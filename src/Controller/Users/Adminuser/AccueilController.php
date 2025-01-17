@@ -55,6 +55,35 @@ public function accueiladmin(GeneralServicetext $service)
 	'form2'=>$formpays->createView(), 'liste_scategorie'=>$liste_scategorie, 'formcat'=>$formcat->createView()));
 }
 
+public function localisationInvestissement(GeneralServicetext $service)
+{
+	$em = $this->getDoctrine()->getManager();
+	$allslide = $em->getRepository(Imgslide::class)
+	                      ->FindAll();
+	$nbcategorie = $em->getRepository(Categorie::class)
+	                      ->FindAll();
+	
+	$slide = new Imgslide($service);
+	$formslide = $this->createForm(ImgslideType::class, $slide);
+	
+	$formsupp = $this->createFormBuilder()->getForm();
+	
+	$continent = new Continent($service);
+	$form = $this->createForm(ContinentType::class, $continent);
+	
+	$pays = new Pays();
+	$formpays = $this->createForm(PaysType::class, $pays);
+	
+	$liste_continent =$em->getRepository(Continent::class)
+                      ->findAll();
+	$liste_investissement =$em->getRepository(Investissement::class)
+                              ->myFindAll();		
+    return $this->render('Theme/Users/Adminuser/Accueil/localisationInvestissement.html.twig',
+	array('nbcategorie'=>$nbcategorie,'formslide'=>$formslide->createView(),'form'=>$form->createView(), 'allslide'=>$allslide,
+	'formsupp'=>$formsupp->createView(),'liste_continent'=>$liste_continent,'liste_investissement'=>$liste_investissement,
+	'form2'=>$formpays->createView()));
+}
+
 public function menuadmin()
 {
 	$em = $this->getDoctrine()->getManager();
