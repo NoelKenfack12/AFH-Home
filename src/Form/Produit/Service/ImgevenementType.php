@@ -1,41 +1,37 @@
 <?php
-
 namespace App\Form\Produit\Service;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use App\Entity\Produit\Service\Ville;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use App\Entity\Produit\Service\Imgevenement;
 
-class VilleType extends AbstractType
+class ImgevenementType extends AbstractType
 {
-        /**
+      /**
      * @param FormBuilderInterface $builder
      * @param array $options
-     */
+    */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom',TextType::class,array('attr'=>array('placeholder'=>'Nom de la ville','style'=>'width: 100%;')))
+            ->add('file', FileType::class, array('label_attr'=>array('style'=>'display: none;')))
         ;
     }
-    
-    /**
-     * @param OptionsResolver $resolver
-     */
+
     public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => Ville::class
-        ));
-    }
+  	{
+  		$resolver->setDefaults(array(
+  		   'data_class' => Imgevenement::class
+  		));
+  	}
 
     /**
      * @return string
-     */
+    */
     public function getName()
     {
-        return 'produit_servicebundle_ville';
+        return 'produit_servicebundle_imgevenement';
     }
 }

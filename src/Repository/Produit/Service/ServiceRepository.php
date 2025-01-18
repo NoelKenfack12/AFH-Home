@@ -3,6 +3,7 @@
 namespace App\Repository\Produit\Service;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * ServiceRepository
@@ -19,18 +20,38 @@ public function myfindAll()
                   ->getQuery();
 	return $query->getResult();
 }
+
 public function getSelectIndicateur()
 {
     $qb = $this->createQueryBuilder('s')
-                  ->where('s.type = 1')
-                  ->orderBy('s.nom','ASC');
+               ->where('s.type = 1')
+               ->orderBy('s.nom','ASC');
 	return $qb;
 }
+
 public function getSelectAnnee()
 {
     $qb = $this->createQueryBuilder('s')
-                ->where('s.type = 0')
-                ->orderBy('s.nom','ASC');
+               ->where('s.type = 0')
+               ->orderBy('s.nom','ASC');
 	return $qb;
 }
+
+public function findAllArticle($id, $page, $nombreParPage)
+{
+	if($page < 1){
+		throw new \InvalidArgumentException('Page inexistant');
+	}
+	$query = $this->createQueryBuilder('s')
+				  ->leftJoin('s.typearticle','t')
+				  ->addSelect('t')
+				  ->where('t.id =:id')
+				  ->setParameter('id',$id)
+	              ->orderBy('s.rang','ASC')
+                  ->getQuery();
+	$query->setFirstResult(($page-1) * $nombreParPage)
+		  ->setMaxResults($nombreParPage);
+	return new Paginator($query);
+}
+
 }

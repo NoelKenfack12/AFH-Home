@@ -1,0 +1,269 @@
+{% extends "Theme/Users/Adminuser/layoutadmin.html.twig" %}
+{% block meta %}
+	{{ parent() }}
+	<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
+	<meta name="author" content="Noel Kenfack"/>
+	<meta name="description" content="{{ site }} | Administration | Cameroun | {{ metier }}"/>
+{% endblock %}
+
+{% block title %}
+	{{ parent() }} | Accueil Admin
+{% endblock %}
+
+{% block userblog_menuleft %}
+	{{ render(controller("App\\Controller\\Users\\Adminuser\\AccueilController:menuadmin")) }}
+{% endblock %}
+
+{% block userblog_body %}
+
+     <!--Borderless Table-->
+<div class="section" style="padding: 10px; background: #fff;">
+
+    <div class="row">
+    <div id="profile-page-sidebar" class="col s12 m12">
+            <h5 class="breadcrumbs-title">
+            {{ 'Vous êtes ici'|trans }}:
+            </h5>
+            <ol class="breadcrumb">
+            <li><a href="{{ path('users_adminuser_accueil_administration') }}">{{ 'Administration'|trans }}</a></li>
+            <li class="active">Articles</li>
+            <li class="active">{{ article.nom }}</li>
+            </ol>
+        </div>
+        </div>
+
+
+<div class="row">
+    <div id="profile-page-sidebar" class="col s12 m12">
+    {% for infos in app.session.flashbag.get('information') %}
+    {% if loop.first %}
+        {% include 'Theme/General/Template/Menu/flasinfos.html.twig' %}
+    {% endif %}
+    {% endfor %}
+    
+    <div class="clearfix"></div>
+    
+    {% set id = '' %}
+    {% for infos in app.session.flashbag.get('supprime_even') %}
+    {% if loop.last %}
+        <div class="card-panel" style="margin-top: 0px;">
+            <strong style="color: red;"><span class="fa fa-warning"></span> Êtes vous certain de vouloir supprimer l'article {{ infos|lower }} </strong>
+            <form action="{{ path('users_adminuser_delete_current_partie_article',{'id': id }) }}" method="post">
+            <input type="submit" value="Supprimer" style="background: red;"/>
+            {{ form_rest(formsupp) }}
+            </form>
+        </div>
+    {% else %}
+    {% set id = infos %}
+    {% endif %}
+    {% endfor %}
+    </div>
+    </div>
+    
+    
+    <div class="row">
+    <div class="col s12 m12 14">
+    <main style="box-shadow:0px 0px 2px rgba(0,0,0,0.05);">
+
+        <div class="row">
+            {% for partie in article.evenements %}
+            <div class="col-md-12" style="margin-top: 20px; padding: 5px 20px; border-top: 1px solid #ddd; display: block!important;">
+
+				<div class="dropdown float-lg-end pe-4" style="float: right;">
+					<a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+					  <i class="fa fa-ellipsis-v text-secondary" aria-hidden="true"></i>
+					</a>
+					<ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+			
+						<li>
+							<a href="#!" class="update-content-partie-article dropdown-item" value="{{ partie.id }}"><i class="mdi-editor-border-color"></i> Modifier</a>
+						</li>
+						<li>
+							<a href="{{ path('users_adminuser_delete_current_partie_article', {'id': partie.id}) }}" class="dropdown-item"><i class="mdi-action-highlight-remove"></i> Supprimer</a>
+						</li>
+						
+					</ul>
+				</div>
+			
+				<h2 style="font-size: 25px; margin: 0px;">
+					
+					{{ partie.nom }}
+			
+				</h2>
+			
+				{% if partie.imgevenement != null %}
+					<div class="text-center">
+					<img src="{{ asset(partie.imgevenement.getWebPath) }}" alt="" style="height: 250px; max-width: 100%; margin: 7px 0px;">
+					</div>
+				{% endif %}
+			
+				{{ partie.description|raw }}
+			</div>
+            {% endfor %}
+        <div class="clearfix"></div>
+        </div>
+    
+        <div style="margin-top: 20px; padding: 5px 20px; border-top: 1px solid #ddd;">
+            <h4 class="header2">Ajouter une nouvelle partie</h4>
+            <div class="row">
+              {{ form_start(formeven, {'attr': {'class': 'col s12','action': path('users_adminuser_add_article_part', {'id': article.id}) }}) }}
+                <div class="row">
+                <span style="color:red;">{{ form_errors(formeven) }}</span>
+                <span style="color:red;">{{ form_errors(formeven.nom) }}</span>
+                  <div class="input-field col s6">
+                    {{ form_widget(formeven.nom) }}
+                    {{ form_label(formeven.nom,'Titre de la nouvelle partie') }}
+                  </div>
+                  <div class="input-field col s6">
+                    {{ form_errors(formeven.rang) }}
+                    {{ form_widget(formeven.rang) }}
+                    {{ form_label(formeven.rang,'Rang dans le classement') }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s6">
+                    {{ form_errors(formeven.description) }}
+                    {{ form_widget(formeven.description, {'attr': {'class': 'materialize-textarea'}}) }}
+                    {{ form_label(formeven.description,'Sous catégorie') }}
+                  </div>
+                  <div class="input-field col s6">
+                        {{ form_errors(formeven.link) }}
+                        {{ form_widget(formeven.link) }}
+                        {{ form_label(formeven.link,'Ajouter un lien à l\'article') }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="file-field input-field col s6">
+                    <span>Image Article {{ form_errors(formeven.imgevenement) }}</span>
+                    {{ form_widget(formeven.imgevenement) }}
+                  </div>
+                  <div class="input-field col s6">
+                    <select id="typearticle" name="typearticle" class="form-control required" style="width: 100%; margin-top: 10px;">
+                    <option value="autres">Autres</option>
+                    <option value="facebook">Lien Facebook</option>
+                    <option value="likedin">Lien Linkedin</option>
+                    <option value="twitter">Lien Twitter</option>
+                    <option value="google">Lien google+</option>
+                    <option value="logo">Logo de l'entreprise</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="input-field col s6">
+                        {{ form_errors(formeven.breve) }}
+                        {{ form_widget(formeven.breve) }}
+                        {{ form_label(formeven.breve,'Description brève') }}
+                  </div>
+                  <div class="input-field col s6">
+                    <button class="btn btn-primary" type="submit" name="action">
+                      Enregister
+                      <i class="mdi-content-send right"></i>
+                    </button>
+                  </div>
+                </div>
+            
+                {{ form_end(formeven) }}
+            </div>
+            </div>
+                
+    </main>
+    </div>
+    </div>
+
+  
+</div>
+
+
+<div class="modal fade" data-backdrop="false"  id="modalGestionCatalogueSelect" style="margin-top: 60px;">
+    <div class="modal-dialog">
+    <div class="modal-content" style="padding: 0px; border-radius: 0px;">
+    
+        <div class="modal-header">
+            <h5 class="modal-title"><i class="mdi-hardware-keyboard-alt"></i> Modifier article </h5>
+            <button type="button" class="btn close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    
+        <div class="modal-body">
+            <div class="row">
+                <div class="row">
+                <div class="input-field col s12">
+                    <div class="wait-chargement-content-module" style="text-align: center;">
+                        Patientez un moment pendant le chargement de l'article</br>
+                        <img src="{{ asset('template/images/loader1.gif') }}" alt="image" style="height: 40px; width: 40px;">
+                    </div>
+    
+                    <div class="content-module-loading" style="display: none;">
+    
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{{ asset('template/js/tiny.min.js') }}"></script>
+{% endblock %}
+
+{% block javascripttemplate %}
+
+//$('.select_multiple').show();
+//tinymce.init({ selector:'#evenementedit_description', entity_encoding: "raw" });
+
+tinymce.init({ selector:'#evenementedit_description', height: 200,
+plugins: 'code image',
+toolbar: 'code image',
+
+automatic_uploads: true,
+a11y_advanced_options: true,
+file_picker_types: 'image',
+file_picker_callback: function (cb, value, meta) {
+  var input = document.createElement('input');
+  input.setAttribute('type', 'file');
+  input.setAttribute('accept', 'image/*');
+
+  input.onchange = function () {
+    var file = this.files[0];
+
+    var reader = new FileReader();
+    reader.onload = function () {
+      var id = 'blobid' + (new Date()).getTime();
+      var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+      var base64 = reader.result.split(',')[1];
+      var blobInfo = blobCache.create(id, file, base64);
+      blobCache.add(blobInfo);
+
+      cb(blobInfo.blobUri(), { title: file.name });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  input.click();
+},
+
+content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }' });
+
+$('.update-content-partie-article').click(function(){
+	var id = $(this).attr('value');
+	$('#modalGestionCatalogueSelect').modal('show');
+	$('.wait-chargement-content-module').show();
+	$('.content-module-loading').hide();
+	
+	$.get('{{ path('users_adminuser_update_partie_current_article') }}', { id: id }, function(data){
+		$('.wait-chargement-content-module').hide();
+		$('.content-module-loading').show();
+		$('.content-module-loading').html(data);
+	});
+});
+
+$('form.submit_form_partie').on('submit', function(){
+    var content =  tinymce.get('evenement_description').getContent();
+    $('#evenement_description').val(content);
+    //alert(content);
+    //return false;
+});
+{% endblock %}

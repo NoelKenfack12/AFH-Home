@@ -119,6 +119,11 @@ users_adminuser_mod_evolution_indicateur:
 users_adminuser_add_un_evenement:
     path: /add/un/evenement/service
     controller: App\Controller\Produit\Service\ServiceController:addevenement
+users_adminuser_add_article_part:
+    path: /add/article/part/{id}
+    controller: App\Controller\Produit\Service\ServiceController:addarticlepart
+    requirements:
+        id: \d+
 users_adminuser_supprim_service_evenement:
     path: /supprim/service/evenement/{id}
     controller: App\Controller\Produit\Service\ServiceController:supprimevenement
@@ -270,6 +275,25 @@ users_adminuser_delete_scat_prod:
 users_adminuser_change_image_slide:
     path: /adminads/change/image/slide/{id}
     controller: App\Controller\Users\User\ImgslideController::alterslide
+    defaults:
+        id: 0
+    requirements:
+        id: \d+
+users_adminuser_detail_article_admin:
+    path: /admin/detail/article/{id}
+    controller: App\Controller\Produit\Service\ServiceController:detailarticleadmin
+    requirements:
+        id: \d+
+users_adminuser_modif_description_article:
+    path: /adminads/modif/description/article/{id}
+    controller: App\Controller\Produit\Service\ServiceController::modifarticle
+    defaults:
+        id: 0
+    requirements:
+        id: \d+
+users_adminuser_update_partie_current_article:
+    path: /adminads/update/partie/current/article/{id}
+    controller: App\Controller\Produit\Service\ServiceController::modifpartiearticle
     defaults:
         id: 0
     requirements:

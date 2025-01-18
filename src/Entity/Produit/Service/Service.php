@@ -9,6 +9,8 @@ use App\Validator\Validatortext\Taillemax;
 use App\Service\Servicetext\GeneralServicetext;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\Produit\Service\ServiceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use App\Entity\Users\User\User;
 use App\Entity\Produit\Service\Imgservice;
 use App\Entity\Produit\Service\Evenement;
@@ -85,13 +87,13 @@ class Service
      * @var integer
      *
      * @ORM\Column(name="type", type="integer")
-     */
+    */
     private $type;  //0 pour l'année, 1 pour un indicateur
 
 	/**
-  * @ORM\ManyToOne(targetEntity=Typearticle::class, inversedBy="services")
-  * @ORM\JoinColumn(nullable=true)
-  */
+    * @ORM\ManyToOne(targetEntity=Typearticle::class, inversedBy="services")
+    * @ORM\JoinColumn(nullable=true)
+    */
 	private $typearticle;
 	
 	/**
@@ -118,35 +120,42 @@ class Service
 	/**
      * @ORM\OneToOne(targetEntity=Imgservice::class,  cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=false)
-     *@Assert\Valid()
+     * @Assert\Valid()
     */
 	private $imgservice;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Evenement::class, mappedBy="service")
+    */
+    private $evenements;
 	
 	// variable du service de normalisation des noms des pays.
 	private $servicetext;
 	private $em;
 	
 	public function __construct(GeneralServicetext $service)
-            	{
-            		$this->servicetext = $service;
-            		$this->date = new \Datetime();
-            		$this->type = 0;
-            		$this->rang = 0;
-            	}
+    {
+        $this->servicetext = $service;
+        $this->date = new \Datetime();
+        $this->type = 0;
+        $this->rang = 0;
+        $this->evenements = new ArrayCollection();
+    }
 
 	public function setServicetext( GeneralServicetext $service)
-                {
-                $this->servicetext = $service;
-                }
+    {
+    $this->servicetext = $service;
+    }
+
     public function getServicetext()
     {
-    return $this->servicetext;
+        return $this->servicetext;
     }
 	
 	public function setEm($em)
-                {
-            		$this->em = $em;
-                }
+    {
+        $this->em = $em;
+    }
 	
     public function getEm()
     {
@@ -441,5 +450,25 @@ class Service
     public function getTypearticle(): ?Typearticle
     {
         return $this->typearticle;
+    }
+
+    public function addEvenement(Evenement $evenements): self
+    {
+        $this->evenements[] = $evenements;
+
+        return $this;
+    }
+
+    public function removeEvenement(Evenement $evenements): self
+    {
+        $this->evenements->removeElement($evenements);
+    }
+
+    /**
+     * @return Collection|Evenement[]
+     */
+    public function getEvenements(): Collection
+    {
+        return $this->evenements;
     }
 }

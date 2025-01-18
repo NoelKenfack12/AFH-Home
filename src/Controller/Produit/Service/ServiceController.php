@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Form\Produit\Service\ServiceType;
 use App\Entity\Produit\Service\Service;
 use App\Form\Produit\Service\EvenementType;
+use App\Form\Produit\Service\EvenementeditType;
 use App\Entity\Produit\Service\Evenement;
 use App\Service\Servicetext\GeneralServicetext;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,170 +35,137 @@ class ServiceController extends AbstractController
 			{
 				$nosservice->getImgservice()->setServicetext($service);
 			}
+
 			if(isset($_POST['typearticle']))
 			{
-				$nosservice->setTypearticle($_POST['typearticle']);
-				if(isset($_POST['scatmodule']) and ($_POST['typearticle'] == 'fonctionnement' or $_POST['typearticle'] == 'outilscampagne'))
-				{
-					$scat = $em->getRepository(Souscategorie::class)
-								->find($_POST['scatmodule']);
-					if($scat != null)
-					{
-						$nosservice->setSouscategorie($scat);
-					}
-				}
-				if($_POST['typearticle'] == 'fonctionnement' and isset($_POST['typefonctionnement']))
+				$nosservice->setType($_POST['typearticle']);
+				if($_POST['typearticle'] == 'about' and isset($_POST['typeabout']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typefonctionnement']);
+								->find($_POST['typeabout']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'aboutwin') and isset($_POST['typeaboutwin']))
+				}else if(($_POST['typearticle'] == 'mission') and isset($_POST['typemission']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typeaboutwin']);
+								->find($_POST['typemission']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'avantagewin') and isset($_POST['typeavantagewin']))
+				}else if(($_POST['typearticle'] == 'vision') and isset($_POST['typevision']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typeavantagewin']);
+								->find($_POST['typevision']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-					if(isset($_POST['scatmodule'])){
-						$scat = $em->getRepository(Souscategorie::class)
-									->find($_POST['scatmodule']);
-						if($scat != null)
-						{
-							$nosservice->setSouscategorie($scat);
-						}
-					}
-					
-				}else if(($_POST['typearticle'] == 'fonctionnementwin') and isset($_POST['typefonctionnementwin']))
+				}else if(($_POST['typearticle'] == 'engagement') and isset($_POST['typeengagement']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-									->find($_POST['typefonctionnementwin']);
+									->find($_POST['typeengagement']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'blogwin') and isset($_POST['typeblogwin']))
+				}else if(($_POST['typearticle'] == 'justice') and isset($_POST['typejustice']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typeblogwin']);
+								->find($_POST['typejustice']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'faqwin') and isset($_POST['typefaqwin']))
+				}else if(($_POST['typearticle'] == 'marketing') and isset($_POST['typemarketing']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typefaqwin']);
+								->find($_POST['typemarketing']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'modepaiement') and isset($_POST['typemodepaiement']))
+				}else if(($_POST['typearticle'] == 'educationlarge') and isset($_POST['typeeducationlarge']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typemodepaiement']);
+								->find($_POST['typeeducationlarge']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'outilscampagne') and isset($_POST['typeoutilscampagne']))
+				}else if(($_POST['typearticle'] == 'entrepreneur') and isset($_POST['typeentrepreneur']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typeoutilscampagne']);
+								->find($_POST['typeentrepreneur']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'aproposads') and isset($_POST['typeaproposads']))
+				}else if(($_POST['typearticle'] == 'nosreperes') and isset($_POST['typenosreperes']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-									->find($_POST['typeaproposads']);
+									->find($_POST['typenosreperes']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'blogads') and isset($_POST['typeblogads']))
+				}else if(($_POST['typearticle'] == 'bourse') and isset($_POST['typebourse']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typeblogads']);
+								->find($_POST['typebourse']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'faqads') and isset($_POST['typefaqads']))
+				}else if(($_POST['typearticle'] == 'comptabilite') and isset($_POST['typecomptabilite']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typefaqads']);
+								->find($_POST['typecomptabilite']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'engagementads') and isset($_POST['typeengagementads']))
+				}else if(($_POST['typearticle'] == 'investissment') and isset($_POST['typeinvestissment']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-									->find($_POST['typeengagementads']);
+									->find($_POST['typeinvestissment']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'toutinclusads') and isset($_POST['typetoutinclusads']))
+				}else if(($_POST['typearticle'] == 'action') and isset($_POST['typeaction']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typetoutinclusads']);
+								->find($_POST['typeaction']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'cguads') and isset($_POST['typecguads']))
+				}else if(($_POST['typearticle'] == 'donation') and isset($_POST['typedonation']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typecguads']);
+								->find($_POST['typedonation']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'cguwin') and isset($_POST['typecguwin']))
+				}else if(($_POST['typearticle'] == 'cgu') and isset($_POST['typecgu']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typecguwin']);
+								->find($_POST['typecgu']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
-				}else if(($_POST['typearticle'] == 'confidentialiteads') and isset($_POST['typeconfidentialiteads']))
+				}else if(($_POST['typearticle'] == 'confidentialite') and isset($_POST['typeconfidentialite']))
 				{
 					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typeconfidentialiteads']);
+								->find($_POST['typeconfidentialite']);
 					if($type != null)
 					{
-						$nosservice->setType($type);
-					}
-				}else if(($_POST['typearticle'] == 'confidentialitewin') and isset($_POST['typeconfidentialitewin']))
-				{
-					$type = $em->getRepository(Typearticle::class)
-									->find($_POST['typeconfidentialitewin']);
-					if($type != null)
-					{
-						$nosservice->setType($type);
-					}
-				}else if(($_POST['typearticle'] == 'metiersafh') and isset($_POST['typemetiersafh']))
-				{
-					$type = $em->getRepository(Typearticle::class)
-								->find($_POST['typemetiersafh']);
-					if($type != null)
-					{
-						$nosservice->setType($type);
+						$nosservice->setTypearticle($type);
 					}
 				}
 			}
@@ -266,8 +234,6 @@ class ServiceController extends AbstractController
 							->findBy(array('position'=>'donation'));
 		$type_cgu = $em->getRepository(Typearticle::class)
 								->findBy(array('position'=>'cgu'));
-		$type_cguwin = $em->getRepository(Typearticle::class)
-							->findBy(array('position'=>'cguwin'));
 		$type_confidentialite = $em->getRepository(Typearticle::class)
 								   ->findBy(array('position'=>'confidentialite'));
 
@@ -301,6 +267,18 @@ class ServiceController extends AbstractController
 			}
 		}
 		return $this->redirect($this->generateUrl('users_adminuser_ajouter_nouveau_service'));
+	}
+
+	public function articlespartype(Typearticle $typearticle, $page)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$liste_article = $em->getRepository(Service::class)
+							->findAllArticle($typearticle->getId(),$page, 10);
+		$formsupp = $this->createFormBuilder()->getForm();
+
+		return $this->render('Theme/Users/Adminuser/Service/articlespartype.html.twig',
+		array('liste_article'=>$liste_article,'formsupp'=>$formsupp->createView(),
+		'nombrepage' => ceil(count($liste_article)/10),'page'=>$page,'typearticle'=>$typearticle));
 	}
 
 	public function modifierservice(GeneralServicetext $service, Request $request, $id)
@@ -402,6 +380,35 @@ class ServiceController extends AbstractController
 			}
 		}
 		return $this->redirect($this->generateUrl('users_adminuser_save_categorie_product'));
+	}
+
+	public function addarticlepart(Service $service, GeneralServicetext $serviceText, Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		$evenement = new Evenement($serviceText);
+		$formeven = $this->createForm(EvenementeditType::class, $evenement);
+		if ($request->getMethod() == 'POST'){
+			$formeven->handleRequest($request);
+			$evenement->setUser($this->getUser());
+			$evenement->setService($service);
+			if($evenement->getImgevenement() !== null)
+			{
+				$evenement->getImgevenement()->setServicetext($serviceText);
+			}
+			if($formeven->isValid() and isset($_POST['typearticle'])){
+				$evenement->setTypearticle($_POST['typearticle']);
+				$em->persist($evenement);
+				$em->flush();
+				$this->get('session')->getFlashBag()->add('information','Enregistrement effectué avec succès');
+
+				return $this->redirect($this->generateUrl('users_adminuser_detail_article_admin', array('id'=>$service->getId())));
+			}else{
+				$this->get('session')->getFlashBag()->add('information','Une ereur a été rencontrée !');
+			}
+		}
+		return $this->redirect($this->generateUrl('users_adminuser_liste_article_type',
+		array('id'=>$service->getTypearticle()->getId())));
 	}
 
 	public function supprimevenement(Evenement $even, Request $request)
@@ -552,5 +559,16 @@ class ServiceController extends AbstractController
 			echo 0;
 			exit;
 		}
+	}
+
+	public function detailarticleadmin(Service $article, GeneralServicetext $service)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$evenement = new Evenement($service);
+		$formeven = $this->createForm(EvenementeditType::class, $evenement);
+		$formsupp = $this->createFormBuilder()->getForm();
+
+		return $this->render('Theme/Users/Adminuser/Service/detailarticleadmin.html.twig',
+		array('article'=>$article, 'formeven'=>$formeven->createView(), 'formsupp'=>$formsupp->createView()));
 	}
 }
