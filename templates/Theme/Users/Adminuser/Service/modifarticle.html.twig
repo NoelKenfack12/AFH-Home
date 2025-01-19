@@ -1,0 +1,279 @@
+
+<div class="row">
+<div class="col-md-12">
+  {{ form_start(form, {'attr': {'class': 'col s12','action': path('users_adminuser_modif_description_article', {'id': article.id}) }}) }}
+
+	  <div class="row">
+		
+        <div class="col-md-12">
+          <span style="color:red;">{{ form_errors(form) }}</span>
+          <span style="color:red;">{{ form_errors(form.nom) }}</span>
+
+          {{ form_widget(form.nom) }}
+          {{ form_label(form.nom,'Nom de l\'article') }}
+        </div>
+        <div class="col-md-12" style="margin-bottom: 15px;">
+          <select id="typearticle" name="typearticle" class="form-control" style="width: 100%; margin-top: 10px;">
+          
+              <option value="about" {% if article.typearticle == 'about' %}selected{% endif %}>À propos</option>
+              <option value="mission" {% if article.typearticle == 'mission' %}selected{% endif %}>Mission</option>
+              <option value="vision" {% if article.typearticle == 'vision' %}selected{% endif %}>Vision</option>
+              <option value="engagement" {% if article.typearticle == 'engagement' %}selected{% endif %}>Engagement</option>
+              <option value="justice" {% if article.typearticle == 'justice' %}selected{% endif %}>Service Juridiqe</option>
+              <option value="marketing" {% if article.typearticle == 'marketing' %}selected{% endif %}>Stratégies de communication</option>
+              <option value="educationlarge" {% if article.typearticle == 'educationlarge' %}selected{% endif %}>Education massive</option>
+              <option value="entrepreneur" {% if article.typearticle == 'entrepreneur' %}selected{% endif %}>Promotion Entrepreneuriat</option>
+              <option value="nosreperes" {% if article.typearticle == 'nosreperes' %}selected{% endif %}>Nos repères</option>
+              <option value="bourse" {% if article.typearticle == 'bourse' %}selected{% endif %}>Bourses</option>
+              <option value="comptabilite" {% if article.typearticle == 'comptabilite' %}selected{% endif %}>Comptabilite</option>
+              <option value="investissment" {% if article.typearticle == 'investissment' %}selected{% endif %}>Investissments</option>
+              <option value="action" {% if article.typearticle == 'action' %}selected{% endif %}>Action</option>
+              <option value="donation" {% if article.typearticle == 'donation' %}selected{% endif %}>Donation</option>
+              <option value="cgu" {% if article.typearticle == 'cgu' %}selected{% endif %}>CGU</option>
+              <option value="confidentialite" {% if article.typearticle == 'confidentialite' %}selected{% endif %}>Confidentialité</option>
+
+          </select>
+        </div>
+  
+        <div class="col-md-12 type_produit type_about"  style="{% if article.type != null and article.type.position == 'about' %}{% else %}display: none;{% endif %}">
+          <select id="typeabout" name="typeabout" class="form-control" style="width: 100%; margin-top: 10px;">
+              <option value="0">Sélectionnez le type de about</option>
+              {% for type in type_about %}
+              <option value="{{ type.id }}">{{ type.nom }}</option>
+              {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12 type_produit type_mission" style="{% if article.type != null and article.type.position == 'mission' %}{% else %}display: none;{% endif %}">
+          <select id="typemission" name="typemission" class="form-control" style="width: 100%; margin-top: 10px;">
+              <option value="0">Sélectionnez le type mission</option>
+              {% for type in type_mission %}
+              <option value="{{ type.id }}">{{ type.nom }}</option>
+              {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12 type_produit type_vision" style="{% if article.type != null and article.type.position == 'vision' %}{% else %}display: none;{% endif %}">
+          <select id="typevision" name="typevision" class="form-control" style="width: 100%; margin-top: 10px;">
+              <option value="0">Sélectionnez le type d'avantage de win</option>
+              {% for type in type_vision %}
+              <option value="{{ type.id }}">{{ type.nom }}</option>
+              {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12 type_produit type_engagement" style="{% if article.type != null and article.type.position == 'engagement' %}{% else %}display: none;{% endif %}">
+          <select id="typeengagement" name="typeengagement" class="form-control" style="width: 100%; margin-top: 10px;">
+          <option value="0">Sélectionnez le type de engagement</option>
+          {% for type in type_engagement %}
+          <option value="{{ type.id }}">{{ type.nom }}</option>
+          {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12 type_produit type_justice" style="{% if article.type != null and article.type.position == 'justice' %}{% else %}display: none;{% endif %}">
+          <select id="typejustice" name="typejustice" class="form-control" style="width: 100%; margin-top: 10px;">
+          <option value="0">Sélectionnez le type du justice</option>
+          {% for type in type_justice %}
+          <option value="{{ type.id }}">{{ type.nom }}</option>
+          {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12 type_produit type_marketing" style="{% if article.type != null and article.type.position == 'marketing' %}{% else %}display: none;{% endif %}">
+          <select id="typemarketing" name="typemarketing" class="form-control" style="width: 100%; margin-top: 10px;">
+          <option value="0">Sélectionnez le type de marketing</option>
+          {% for type in type_marketing %}
+          <option value="{{ type.id }}">{{ type.nom }}</option>
+          {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12 type_produit type_educationlarge" style="{% if article.type != null and article.type.position == 'educationlarge' %}{% else %}display: none;{% endif %}">
+          <select id="typeeducationlarge" name="typeeducationlarge" class="form-control" style="width: 100%; margin-top: 10px;">
+          <option value="0">Sélectionnez le type educationlarge</option>
+          {% for type in type_educationlarge %}
+          <option value="{{ type.id }}">{{ type.nom }}</option>
+          {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12 type_produit type_entrepreneur" style="{% if article.type != null and article.type.position == 'entrepreneur' %}{% else %}display: none;{% endif %}">
+          <select id="typeentrepreneur" name="typeentrepreneur" class="form-control" style="width: 100%; margin-top: 10px;">
+          <option value="0">Sélectionnez le type entrepreneur</option>
+          {% for type in type_entrepreneur %}
+          <option value="{{ type.id }}">{{ type.nom }}</option>
+          {% endfor %}
+          </select>
+        </div>
+  
+        <div class="col-md-12 type_produit type_nosreperes"  style="{% if article.type != null and article.type.position == 'nosreperes' %}{% else %}display: none;{% endif %}">
+          <select id="typenosreperes" name="typenosreperes" class="form-control" style="width: 100%; margin-top: 10px;">
+          <option value="0">Sélectionnez le type nosreperes</option>
+          {% for type in type_nosreperes %}
+          <option value="{{ type.id }}">{{ type.nom }}</option>
+          {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12 type_produit type_bourse" style="{% if article.type != null and article.type.position == 'bourse' %}{% else %}display: none;{% endif %}">
+          <select id="typebourse" name="typebourse" class="form-control" style="width: 100%; margin-top: 10px;">
+              <option value="0">Sélectionnez le type bourse</option>
+              {% for type in type_bourse %}
+              <option value="{{ type.id }}">{{ type.nom }}</option>
+              {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12 type_produit type_comptabilite" style="{% if article.type != null and article.type.position == 'comptabilite' %}{% else %}display: none;{% endif %}">
+          <select id="typecomptabilite" name="typecomptabilite" class="form-control" style="width: 100%; margin-top: 10px;">
+              <option value="0">Sélectionner le type comptabilite</option>
+              {% for type in type_comptabilite %}
+              <option value="{{ type.id }}">{{ type.nom }}</option>
+              {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12 type_produit type_investissment"  style="{% if article.type != null and article.type.position == 'investissment' %}{% else %}display: none;{% endif %}">
+          <select id="typeinvestissment" name="typeinvestissment" class="form-control" style="width: 100%; margin-top: 10px;">
+          <option value="0">Sélectionnez le type investissment</option>
+          {% for type in type_investissment %}
+          <option value="{{ type.id }}">{{ type.nom }}</option>
+          {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12 type_produit type_action" style="{% if article.type != null and article.type.position == 'actionariat' %}{% else %}display: none;{% endif %}">
+          <select id="action" name="action" class="form-control" style="width: 100%; margin-top: 10px;">
+          <option value="0">Sélectionner le type actionariat</option>
+          {% for type in type_action %}
+          <option value="{{ type.id }}">{{ type.nom }}</option>
+          {% endfor %}
+          </select>
+        </div>
+        <div class="col-md-12 type_produit type_donation" style="{% if article.type != null and article.type.position == 'donation' %}{% else %}display: none;{% endif %}">
+          <select id="typedonation" name="typedonation" class="form-control" style="width: 100%; margin-top: 10px;">
+          <option value="0">Sélectionnez le type donation</option>
+          {% for type in type_donation %}
+          <option value="{{ type.id }}">{{ type.nom }}</option>
+          {% endfor %}
+          </select>
+        </div>
+  
+        <div class="col-md-12 type_produit type_cgu" style="{% if article.type != null and article.type.position == 'cgu' %}{% else %}display: none;{% endif %}">
+          <select id="typecgu" name="typecgu" class="form-control" style="width: 100%; margin-top: 10px;">
+          <option value="0">Sélectionné le type cgu</option>
+          {% for type in type_cgu %}
+          <option value="{{ type.id }}">{{ type.nom }}</option>
+          {% endfor %}
+          </select>
+        </div>
+  
+        <div class="col-md-12 type_produit type_confidentialite" style="{% if article.type != null and article.type.position == 'confidentialite' %}{% else %}display: none;{% endif %}">
+          <select id="typeconfidentialite" name="typeconfidentialite" class="form-control" style="width: 100%; margin-top: 10px;">
+              <option value="0">Type Confidentialité {{ othersite }}</option>
+              {% for type in type_confidentialite %}
+              <option value="{{ type.id }}">{{ type.nom }}</option>
+              {% endfor %}
+          </select>
+        </div>
+  
+        <div class="col-md-12 mt-3">
+          {{ form_errors(form.description) }}
+          {{ form_widget(form.description) }}
+          {{ form_label(form.description,'Description de l\'article') }}
+        </div>
+         <div class="col-md-12">
+          {{ form_errors(form.rang) }}
+          {{ form_widget(form.rang) }}
+          <div>
+              {{ form_label(form.rang,'Rang dans le classement') }}
+          </div>
+        </div>
+        <div class="col-md-12">
+          {{ form_errors(form.breve) }}
+          {{ form_widget(form.breve) }}
+          {{ form_label(form.breve,'Titre raccourci') }}
+        </div>
+        <div class="col-md-12 mt-3">
+          {{ form_errors(form.prerequis) }}
+          {{ form_widget(form.prerequis) }}
+          {{ form_label(form.prerequis,'Prérequis pour l\'article') }}
+        </div>
+        <div class="col-md-12">
+          {{ form_errors(form.link) }}
+          {{ form_widget(form.link) }}
+          {{ form_label(form.link,'Ajouter un lien à l\'article') }}
+        </div>
+    </div>
+  
+    <div class="row">
+      <div class="file-field col-md-12">
+          <span>Image Article {{ form_errors(form.imgservice) }}</span>
+          {{ form_widget(form.imgservice) }}
+      </div>
+      <div class="col-md-12 mt-3">
+          {{ form_errors(form.keyword) }}
+          {{ form_widget(form.keyword) }}
+          {{ form_label(form.breve,'Mots clés séparés par les virgules ') }}
+        </div>
+      <div class="col-md-12">
+        <button class="btn btn-primary" type="submit" name="action">Enregister 1
+          <i class="mdi-content-send right"></i>
+        </button>
+      </div>
+    </div>
+
+	 <div class="clear"></div>
+	 {{ form_end(form) }}
+	<div class="clearfix"></div>
+</div>
+</div>
+
+<script type="text/javascript" src="{{ asset('template/js/tiny.min.js') }}"></script>
+<script type="text/javascript">
+tinymce.init({ selector:'#service_description', entity_encoding: "raw" });
+tinymce.init({ selector:'#service_prerequis', entity_encoding: "raw" });
+
+$('#typearticle').change(function(){
+	$('.type_produit').hide();
+	if($(this).val() == 'about')
+	{
+		$('.type_about').show();
+	}else if($(this).val() == 'mission')
+	{
+		$('.type_mission').show();
+	}else if($(this).val() == 'vision')
+	{
+		$('.type_vision').show();
+	}else if($(this).val() == 'engagement')
+	{
+		$('.type_engagement').show();
+	}else if($(this).val() == 'justice')
+	{
+		$('.type_justice').show();
+	}else if($(this).val() == 'marketing')
+	{
+		$('.type_marketing').show();
+	}else if($(this).val() == 'educationlarge')
+	{
+		$('.type_educationlarge').show();
+	}else if($(this).val() == 'entrepreneur')
+	{
+		$('.type_entrepreneur').show();
+	}else if($(this).val() == 'nosreperes')
+	{
+		$('.type_nosreperes').show();
+	}else if($(this).val() == 'bourse')
+	{
+		$('.type_bourse').show();
+	}else if($(this).val() == 'comptabilite')
+	{
+		$('.type_comptabilite').show();
+	}else if($(this).val() == 'investissment')
+	{
+		$('.type_investissment').show();
+	}else if($(this).val() == 'action')
+	{
+		$('.type_action').show();
+	}else if($(this).val() == 'donation')
+	{
+		$('.type_donation').show();
+	}else if($(this).val() == 'cgu')
+	{
+		$('.type_cgu').show();
+	}else if($(this).val() == 'confidentialite')
+	{
+		$('.type_confidentialite').show();
+	}
+});
+</script>

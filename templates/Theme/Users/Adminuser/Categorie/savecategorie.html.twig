@@ -491,13 +491,22 @@
 				<div style="margin: 2px;">
 					<a href="#!" class="open-content-evolution-indicateur-reponse" value="{{ event.id }}" style="position: absolute; top: 7px; right: 40px; color: red;"><i class="fa fa-edit"></i></a>
 					<a href="{{ path('users_adminuser_supprim_service_evenement', {'id': event.id}) }}" style="position: absolute; top: 7px; right: 20px; color: red;"><i class="fa fa-times"></i></a>
-						
+					
+					{% if event.indicateur != null %}
 					<div style="margin-bottom: 4px;">
 					<div style="height: 25px;">
 					</div>
 						<img src="{% if event.indicateur.imgservice != null %}{{ asset(event.indicateur.imgservice.getWebpath) }}{% else %}{{ asset('template/images/logo.png') }}{% endif %}" alt=".." style="width: 100%; height: 100px;"/>
 					</div>
 					<span class="left"><a href="#!">{{ event.indicateur.nom }} - {{ event.annee.nom }} - {{ event.produit.nom }}</a></span></br>
+					{% else %}
+					<div style="margin-bottom: 4px;">
+						<div style="height: 25px;">
+						</div>
+							<img src="{% if event.service.imgservice != null %}{{ asset(event.service.imgservice.getWebpath) }}{% else %}{{ asset('template/images/logo.png') }}{% endif %}" alt=".." style="width: 100%; height: 100px;"/>
+						</div>
+						<span class="left"><a href="#!">{{ event.service.nom }}</a></span></br>
+					{% endif %}
 					<div>Top: {{ event.bestvalue }}, Mauvaise: {{ event.falsevalue }}</div>
 				</div>
 				</div>

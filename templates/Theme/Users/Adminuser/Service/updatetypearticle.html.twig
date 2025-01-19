@@ -1,0 +1,63 @@
+<div class="row">
+<div class="col-md-8 offset-md-2 col-sm-12">
+	{{ form_start(formtype, {'attr': {'class': 'col s12','action': path('users_adminuser_update_type_article', {'id': typearticle.id }) }}) }}
+		  <div class="row">
+			
+			  <div class="col-md-12">
+			  	<span style="color:red;">{{ form_errors(formtype) }}</span>
+				<span style="color:red;">{{ form_errors(formtype.nom) }}</span>
+				{{ form_widget(formtype.nom) }}
+				{{ form_label(formtype.nom,'Type d\'article') }}
+			  </div>
+			  <div class="col-md-12 mb-3">
+				{{ form_errors(formtype.rang) }}
+				{{ form_widget(formtype.rang) }}
+			  </div>
+			  <div class="col-md-12 mb-3">
+				{{ form_errors(formtype.description) }}
+				{{ form_widget(formtype.description) }}
+				{{ form_label(formtype.description,'Description du type') }}
+			  </div>
+		  </div>
+
+		  <div class="row">
+			<div class="file-field col-md-12">
+				<span>Image Article {{ form_errors(formtype.file) }}</span>
+				  {{ form_widget(formtype.file) }}
+			</div>
+			<div class="col-md-12 mt-3">
+			<select id="typeservice" name="typeservice" class="form-control">
+
+                <option value="about" {% if typearticle.position == 'about' %}selected{% endif %}>À propos</option>
+                <option value="mission" {% if typearticle.position == 'mission' %}selected{% endif %}>Mission</option>
+                <option value="vision" {% if typearticle.position == 'vision' %}selected{% endif %}>Vision</option>
+                <option value="engagement" {% if typearticle.position == 'engagement' %}selected{% endif %}>Engagement</option>
+                <option value="justice" {% if typearticle.position == 'justice' %}selected{% endif %}>Service Juridiqe</option>
+                <option value="marketing" {% if typearticle.position == 'marketing' %}selected{% endif %}>Stratégies de communication</option>
+                <option value="educationlarge" {% if typearticle.position == 'educationlarge' %}selected{% endif %}>Education massive</option>
+                <option value="entrepreneur" {% if typearticle.position == 'entrepreneur' %}selected{% endif %}>Promotion Entrepreneuriat</option>
+                <option value="nosreperes" {% if typearticle.position == 'nosreperes' %}selected{% endif %}>Nos repères</option>
+                <option value="bourse" {% if typearticle.position == 'bourse' %}selected{% endif %}>Bourses</option>
+                <option value="comptabilite" {% if typearticle.position == 'comptabilite' %}selected{% endif %}>Comptabilite</option>
+                <option value="investissment" {% if typearticle.position == 'investissment' %}selected{% endif %}>Investissments</option>
+                <option value="action" {% if typearticle.position == 'action' %}selected{% endif %}>Action</option>
+                <option value="donation" {% if typearticle.position == 'donation' %}selected{% endif %}>Donation</option>
+                <option value="cgu" {% if typearticle.position == 'cgu' %}selected{% endif %}>CGU</option>
+                <option value="confidentialite" {% if typearticle.position == 'confidentialite' %}selected{% endif %}>Confidentialité</option>
+
+			</select>
+			</div>
+		  </div>
+
+		  <div class="row mt-3">
+			<div class="col-md-12">
+			  <button class="btn btn-primary" type="submit" name="action">Enregister
+				<i class="mdi-content-send right"></i>
+			  </button>
+			</div>
+		  </div>
+		 <div class="clear"></div>
+		 {{ form_end(formtype) }}
+	<div class="clearfix"></div>
+</div>
+</div>

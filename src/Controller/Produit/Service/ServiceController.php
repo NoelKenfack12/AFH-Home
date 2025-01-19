@@ -247,6 +247,254 @@ class ServiceController extends AbstractController
 		'type_cgu'=>$type_cgu,'type_confidentialite'=>$type_confidentialite));
 	}
 
+	public function modifarticle(GeneralServicetext $service, Request $request, $id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		if(isset($_GET['id']))
+		{
+			$id = $_GET['id'];
+		}else{
+			$id = $id;
+		}
+		$article = $em->getRepository(Service::class)
+								->find($id);
+		if($article != null)
+		{
+		$form = $this->createForm(ServiceType::class, $article);
+			if ($request->getMethod() == 'POST'){
+			$form->handleRequest($request);
+			$article->setServicetext($service);
+			if ($form->isValid()){
+
+				$article->setUser($this->getUser());
+				if($article->getImgservice() !== null)
+				{
+					$article->getImgservice()->setServicetext($service);
+				}
+
+				if(isset($_POST['typearticle']))
+				{
+					$article->setType($_POST['typearticle']);
+					if($_POST['typearticle'] == 'about' and isset($_POST['typeabout']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typeabout']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'mission') and isset($_POST['typemission']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typemission']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'vision') and isset($_POST['typevision']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typevision']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'engagement') and isset($_POST['typeengagement']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+										->find($_POST['typeengagement']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'justice') and isset($_POST['typejustice']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typejustice']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'marketing') and isset($_POST['typemarketing']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typemarketing']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'educationlarge') and isset($_POST['typeeducationlarge']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typeeducationlarge']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'entrepreneur') and isset($_POST['typeentrepreneur']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typeentrepreneur']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'nosreperes') and isset($_POST['typenosreperes']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+										->find($_POST['typenosreperes']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'bourse') and isset($_POST['typebourse']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typebourse']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'comptabilite') and isset($_POST['typecomptabilite']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typecomptabilite']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'investissment') and isset($_POST['typeinvestissment']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+										->find($_POST['typeinvestissment']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'action') and isset($_POST['typeaction']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typeaction']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'donation') and isset($_POST['typedonation']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typedonation']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'cgu') and isset($_POST['typecgu']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typecgu']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'confidentialite') and isset($_POST['typeconfidentialite']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typeconfidentialite']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}
+				}
+
+				$em->flush();
+				$this->get('session')->getFlashBag()->add('information','Modification effectuée avec succès');
+			}else{
+			$this->get('session')->getFlashBag()->add('information','Une ereur a été rencontrée!');
+			}
+			return $this->redirect($this->generateUrl('users_adminuser_liste_article_type', array('id'=>$article->getTypearticle()->getId())));
+		}
+
+
+		$liste_module = $em->getRepository(Souscategorie::class)
+							->myfindAll();
+
+		$liste_service = $em->getRepository(Service::class)
+							->myfindAll();
+
+		$type_article = $em->getRepository(Typearticle::class)
+							->findAll();
+
+		$type_about = $em->getRepository(Typearticle::class)
+						 ->findBy(array('position'=>'about'));
+
+		$type_mission = $em->getRepository(Typearticle::class)
+						->findBy(array('position'=>'mission'));
+
+		$type_vision = $em->getRepository(Typearticle::class)
+						  ->findBy(array('position'=>'vision'));
+
+		$type_engagement = $em->getRepository(Typearticle::class)
+									->findBy(array('position'=>'engagement'));
+
+		$type_justice = $em->getRepository(Typearticle::class)
+						  ->findBy(array('position'=>'justice'));
+
+		$type_marketing = $em->getRepository(Typearticle::class)
+						  ->findBy(array('position'=>'marketing'));
+
+		$type_educationlarge = $em->getRepository(Typearticle::class)
+								  ->findBy(array('position'=>'educationlarge'));
+		$type_entrepreneur = $em->getRepository(Typearticle::class)
+								  ->findBy(array('position'=>'entrepreneur'));
+
+		$type_nosreperes = $em->getRepository(Typearticle::class)
+						      ->findBy(array('position'=>'nosreperes'));
+		$type_bourse = $em->getRepository(Typearticle::class)
+					      ->findBy(array('position'=>'bourse'));
+		$type_comptabilite = $em->getRepository(Typearticle::class)
+					            ->findBy(array('position'=>'comptabilite'));
+		$type_investissment = $em->getRepository(Typearticle::class)
+					->findBy(array('position'=>'investissment'));
+		$type_action = $em->getRepository(Typearticle::class)
+							->findBy(array('position'=>'action'));
+		$type_donation = $em->getRepository(Typearticle::class)
+							->findBy(array('position'=>'donation'));
+		$type_cgu = $em->getRepository(Typearticle::class)
+								->findBy(array('position'=>'cgu'));
+		$type_confidentialite = $em->getRepository(Typearticle::class)
+								   ->findBy(array('position'=>'confidentialite'));
+
+		return $this->render('Theme/Users/Adminuser/Service/modifarticle.html.twig',
+		array('form'=>$form->createView(),'liste_module'=>$liste_module,'type_article'=>$type_article,
+		'liste_service'=>$liste_service,'type_about'=>$type_about,'type_mission'=>$type_mission,
+		'type_vision'=>$type_vision,'type_engagement'=>$type_engagement,'type_justice'=>$type_justice,
+		'type_marketing'=>$type_marketing,'type_educationlarge'=>$type_educationlarge,'type_entrepreneur'=>$type_entrepreneur, 'type_nosreperes'=>$type_nosreperes,'type_bourse'=>$type_bourse,
+		'type_comptabilite'=>$type_comptabilite,'type_investissment'=>$type_investissment,'type_action'=>$type_action,'type_donation'=>$type_donation,
+		'type_cgu'=>$type_cgu,'type_confidentialite'=>$type_confidentialite, 'article'=>$article));
+		}else{
+			echo 'Echec ! Une erreur a été rencontrée.';
+			exit;
+		}
+	}
+
+	public function deletepartie(Evenement $partie, Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$formsupp = $this->createFormBuilder()->getForm();
+		if ($request->getMethod() == 'POST'){
+			$formsupp->handleRequest($request);
+			if ($formsupp->isValid()){
+				$em->remove($partie);
+				$em->flush();
+				$this->get('session')->getFlashBag()->add('information','Suppression effectuée avec succès');
+			}
+		}else{
+			$this->get('session')->getFlashBag()->add('supprime_even',$partie->getId());
+			$this->get('session')->getFlashBag()->add('supprime_even',$partie->getNom());
+		}
+		return $this->redirect($this->generateUrl('users_adminuser_liste_article_type', array('id'=>$partie->getService()->getTypearticle()->getId())));
+	}
+
 	public function addtypearticle(Request $request,GeneralServicetext $service)
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -315,6 +563,48 @@ class ServiceController extends AbstractController
 		}
 		return $this->render('Theme/Users/Adminuser/Service/modifierservice.html.twig',
 		array('formservice'=>$form->createView(),'nosservice'=>$nosservice));
+		}else{
+			echo 'Echec ! Une erreur a été rencontrée.';
+			exit;
+		}
+	}
+
+	public function modifpartiearticle($id, GeneralServicetext $service, Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		if(isset($_GET['id']))
+		{
+			$id = $_GET['id'];
+		}else{
+			$id = $id;
+		}
+		$partie = $em->getRepository(Evenement::class)
+						->find($id);
+		if($partie != null)
+		{
+		$formeven = $this->createForm(EvenementeditType::class, $partie);
+		if ($request->getMethod() == 'POST'){
+			$formeven->handleRequest($request);
+			$partie->setServicetext($service);
+			if ($formeven->isValid() and isset($_POST['typearticle'])){
+				$partie->setTypearticle($_POST['typearticle']);
+				$partie->setUser($this->getUser());
+				if($partie->getImgevenement() !== null)
+				{
+					$partie->getImgevenement()->setServicetext($service);
+				}
+
+				$em->flush();
+				$this->get('session')->getFlashBag()->add('information','Modification effectuée avec succès');
+
+				return $this->redirect($this->generateUrl('users_adminuser_detail_article_admin', array('id'=>$partie->getService()->getId())));
+			}else{
+				$this->get('session')->getFlashBag()->add('information','Une ereur a été rencontrée!');
+			}
+			return $this->redirect($this->generateUrl('users_adminuser_liste_article_type', array('id'=>$partie->getService()->getType()->getId())));
+		}
+		return $this->render('Theme/Users/Adminuser/Service/modifpartiearticle.html.twig',
+		array('formeven'=>$formeven->createView(),'partie'=>$partie));
 		}else{
 			echo 'Echec ! Une erreur a été rencontrée.';
 			exit;
@@ -411,6 +701,20 @@ class ServiceController extends AbstractController
 		array('id'=>$service->getTypearticle()->getId())));
 	}
 
+	public function supprimertypearticle(Typearticle $typearticle)
+	{
+		$em = $this->getDoctrine()->getManager();
+		if(count($typearticle->getServices()) == 0)
+		{
+			$em->remove($typearticle);
+			$em->flush();
+			$this->get('session')->getFlashBag()->add('information','Suppression effectuée avec succès');
+		}else{
+			$this->get('session')->getFlashBag()->add('information','Echec ! Cette catégorie contient les articles, Supprimez lès en premier.');
+		}
+		return $this->redirect($this->generateUrl('users_adminuser_ajouter_nouveau_service'));
+	}
+
 	public function supprimevenement(Evenement $even, Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -441,7 +745,10 @@ class ServiceController extends AbstractController
 								->findBy(array('indicateur'=>$service));
 			$liste_annee = $em->getRepository(Evenement::class)
 								->findBy(array('annee'=>$service));
-			if((count($liste_indicateur) + count($liste_annee)) == 0)
+			$liste_service = $em->getRepository(Evenement::class)
+								->findBy(array('service'=>$service));
+
+			if((count($liste_indicateur) + count($liste_annee) + count($liste_service)) == 0)
 			{
 				$em->remove($service);
 				$em->flush();
@@ -570,5 +877,39 @@ class ServiceController extends AbstractController
 
 		return $this->render('Theme/Users/Adminuser/Service/detailarticleadmin.html.twig',
 		array('article'=>$article, 'formeven'=>$formeven->createView(), 'formsupp'=>$formsupp->createView()));
+	}
+
+	public function updatetypearticle(Request $request,GeneralServicetext $service, $id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		if(isset($_GET['id']))
+		{
+			$id = $_GET['id'];
+		}else{
+			$id = $id;
+		}
+		$typearticle = $em->getRepository(Typearticle::class)
+										->find($id);
+		if($typearticle != null)
+		{
+		$formtype = $this->createForm(TypearticleType::class, $typearticle);
+			if ($request->getMethod() == 'POST'){
+				$formtype->handleRequest($request);
+				$typearticle->setServicetext($service);
+				if($formtype->isValid() and isset($_POST['typeservice'])){
+					$typearticle->setPosition($_POST['typeservice']);
+					$em->flush();
+					$this->get('session')->getFlashBag()->add('information','Modification effectuée avec succès');
+				}else{
+					$this->get('session')->getFlashBag()->add('information','Une ereur a été rencontrée!');
+				}
+				return $this->redirect($this->generateUrl('users_adminuser_ajouter_nouveau_service'));
+			}
+			return $this->render('Theme/Users/Adminuser/Service/updatetypearticle.html.twig',
+			array('formtype'=>$formtype->createView(),'typearticle'=>$typearticle));
+		}else{
+			echo 'Echec ! Une erreur a été rencontrée.';
+			exit;
+		}
 	}
 }
