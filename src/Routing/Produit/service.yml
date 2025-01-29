@@ -2,7 +2,7 @@ produit_service_contact_us:
     path: /nous/contacter
     controller: App\Controller\Produit\Service\MessageController:contactus
 produit_service_contact_us_slache:
-    path: /nous/contacter/
+    path: /nous/contacter
     controller: App\Controller\Produit\Service\MessageController:contactus
 produit_service_chargement_statatistique_annee:
     path: /chargement/statatistique/annee/{position}/{anneeid}
@@ -16,3 +16,21 @@ produit_service_chargement_statatistique_annee:
 produit_service_callback_homepage:
     path: /callback/homepage/afh
     controller: App\Controller\Produit\Service\ServiceController:callbackhomepage
+produit_service_articles_support:
+    path: /articles/support/{position}/{page}
+    controller: App\Controller\Produit\Service\ServiceController:articlessupport
+    defaults:
+        position: 'about'
+        page: 1
+produit_service_commentaire_article:
+    path: /commentaire/article/{id}
+    controller: App\Controller\Produit\Service\ServiceController:commentaireArticle
+    requirements:
+        id: \d+
+produit_service_branding_shop:
+    path: /branding/shop/{page}
+    controller: App\Controller\Produit\Service\ServiceController:brandingShop
+    defaults:
+        page: 1
+    requirements:
+        page: \d+

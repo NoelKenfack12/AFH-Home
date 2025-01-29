@@ -218,6 +218,8 @@
 				<option value="investissment">Investissments</option>
 				<option value="action">Action</option>
 				<option value="donation">Donation</option>
+				<option value="demasquer">Démasquer le colon</option>
+				<option value="branding">Accessoires Brand</option>
 				<option value="cgu">CGU</option>
 				<option value="confidentialite">Confidentialité</option>
 
@@ -337,6 +339,15 @@
 			{% endfor %}
 			</select>
 		  </div>
+
+		  <div class="col-md-12 type_produit type_demasquer" style="display: none;">
+			<select id="typedemasquer" name="typedemasquer" class="form-control" style="width: 100%; margin-top: 10px;">
+			<option value="0">Sélectionnez le type demasquer</option>
+			{% for type in type_demasquer %}
+			<option value="{{ type.id }}">{{ type.nom }}</option>
+			{% endfor %}
+			</select>
+		  </div>
 	
 		  <div class="col-md-12 type_produit type_cgu" style="display: none;">
 			<select id="typecgu" name="typecgu" class="form-control" style="width: 100%; margin-top: 10px;">
@@ -351,6 +362,15 @@
 			<select id="typeconfidentialite" name="typeconfidentialite" class="form-control" style="width: 100%; margin-top: 10px;">
 				<option value="0">Type Confidentialité {{ othersite }}</option>
 				{% for type in type_confidentialite %}
+				<option value="{{ type.id }}">{{ type.nom }}</option>
+				{% endfor %}
+			</select>
+		  </div>
+
+		  <div class="col-md-12 type_produit type_branding" style="display: none;">
+			<select id="typebranding" name="typebranding" class="form-control" style="width: 100%; margin-top: 10px;">
+				<option value="0">Type Branding {{ othersite }}</option>
+				{% for type in type_branding %}
 				<option value="{{ type.id }}">{{ type.nom }}</option>
 				{% endfor %}
 			</select>
@@ -470,6 +490,8 @@
 			<option value="investissment">Investissments</option>
 			<option value="action">Action</option>
 			<option value="donation">Donation</option>
+			<option value="demasquer">Démasquer le colon</option>
+			<option value="branding">Accessoires Brand</option>
 			<option value="cgu">CGU</option>
 			<option value="confidentialite">Confidentialité</option>
 		</select>
@@ -607,6 +629,12 @@ $('#typearticle').change(function(){
 	}else if($(this).val() == 'donation')
 	{
 		$('.type_donation').show();
+	}else if($(this).val() == 'demasquer')
+	{
+		$('.type_demasquer').show();
+	}else if($(this).val() == 'branding')
+	{
+		$('.type_branding').show();
 	}else if($(this).val() == 'cgu')
 	{
 		$('.type_cgu').show();

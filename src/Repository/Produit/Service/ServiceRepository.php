@@ -54,4 +54,20 @@ public function findAllArticle($id, $page, $nombreParPage)
 	return new Paginator($query);
 }
 
+public function myFindAllPagineType($type, $page, $nombreParPage)
+{
+	if ($page < 1){
+	throw new \InvalidArgumentException('Page inexistant');
+	}
+	$query = $this->createQueryBuilder('s')
+	              ->leftJoin('s.typearticle','t')
+				  ->addSelect('t')
+	              ->where('s.type LIKE :n')
+				  ->setParameter('n','%'.$type.'%')
+	              ->orderBy('s.rang','ASC')
+                  ->getQuery();
+	$query->setFirstResult(($page-1) * $nombreParPage)
+		  ->setMaxResults($nombreParPage);
+	return new Paginator($query);
+}
 }

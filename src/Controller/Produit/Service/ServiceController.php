@@ -151,6 +151,22 @@ class ServiceController extends AbstractController
 					{
 						$nosservice->setTypearticle($type);
 					}
+				}else if(($_POST['typearticle'] == 'demasquer') and isset($_POST['typedemasquer']))
+				{
+					$type = $em->getRepository(Typearticle::class)
+								->find($_POST['typedemasquer']);
+					if($type != null)
+					{
+						$nosservice->setTypearticle($type);
+					}
+				}else if(($_POST['typearticle'] == 'branding') and isset($_POST['typebranding']))
+				{
+					$type = $em->getRepository(Typearticle::class)
+								->find($_POST['typebranding']);
+					if($type != null)
+					{
+						$nosservice->setTypearticle($type);
+					}
 				}else if(($_POST['typearticle'] == 'cgu') and isset($_POST['typecgu']))
 				{
 					$type = $em->getRepository(Typearticle::class)
@@ -171,15 +187,6 @@ class ServiceController extends AbstractController
 			}
 
 			if ($form->isValid()){
-				if($nosservice->getType() == null)
-				{
-					$type = $em->getRepository(Typearticle::class)
-								->myFindOneType();
-					if($type != null)
-					{
-						$nosservice->setType($type);
-					}
-				}
 				$em->persist($nosservice);
 				$em->flush();
 				$this->get('session')->getFlashBag()->add('information','Enregistrement effectué avec succès');
@@ -232,6 +239,10 @@ class ServiceController extends AbstractController
 							->findBy(array('position'=>'action'));
 		$type_donation = $em->getRepository(Typearticle::class)
 							->findBy(array('position'=>'donation'));
+		$type_demasquer = $em->getRepository(Typearticle::class)
+							->findBy(array('position'=>'demasquer'));
+		$type_branding = $em->getRepository(Typearticle::class)
+							->findBy(array('position'=>'branding'));
 		$type_cgu = $em->getRepository(Typearticle::class)
 								->findBy(array('position'=>'cgu'));
 		$type_confidentialite = $em->getRepository(Typearticle::class)
@@ -244,7 +255,7 @@ class ServiceController extends AbstractController
 		'type_vision'=>$type_vision,'type_engagement'=>$type_engagement,'type_justice'=>$type_justice,
 		'type_marketing'=>$type_marketing,'type_educationlarge'=>$type_educationlarge,'type_entrepreneur'=>$type_entrepreneur, 'type_nosreperes'=>$type_nosreperes,'type_bourse'=>$type_bourse,
 		'type_comptabilite'=>$type_comptabilite,'type_investissment'=>$type_investissment,'type_action'=>$type_action,'type_donation'=>$type_donation,
-		'type_cgu'=>$type_cgu,'type_confidentialite'=>$type_confidentialite));
+		'type_cgu'=>$type_cgu,'type_confidentialite'=>$type_confidentialite, 'type_demasquer'=>$type_demasquer, 'type_branding'=>$type_branding));
 	}
 
 	public function modifarticle(GeneralServicetext $service, Request $request, $id)
@@ -387,6 +398,22 @@ class ServiceController extends AbstractController
 						{
 							$article->setTypearticle($type);
 						}
+					}else if(($_POST['typearticle'] == 'demasquer') and isset($_POST['typedemasquer']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typedemasquer']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
+					}else if(($_POST['typearticle'] == 'branding') and isset($_POST['typebranding']))
+					{
+						$type = $em->getRepository(Typearticle::class)
+									->find($_POST['typebranding']);
+						if($type != null)
+						{
+							$article->setTypearticle($type);
+						}
 					}else if(($_POST['typearticle'] == 'cgu') and isset($_POST['typecgu']))
 					{
 						$type = $em->getRepository(Typearticle::class)
@@ -459,6 +486,10 @@ class ServiceController extends AbstractController
 							->findBy(array('position'=>'action'));
 		$type_donation = $em->getRepository(Typearticle::class)
 							->findBy(array('position'=>'donation'));
+		$type_demasquer = $em->getRepository(Typearticle::class)
+							->findBy(array('position'=>'demasquer'));
+		$type_branding = $em->getRepository(Typearticle::class)
+							->findBy(array('position'=>'branding'));
 		$type_cgu = $em->getRepository(Typearticle::class)
 								->findBy(array('position'=>'cgu'));
 		$type_confidentialite = $em->getRepository(Typearticle::class)
@@ -470,7 +501,7 @@ class ServiceController extends AbstractController
 		'type_vision'=>$type_vision,'type_engagement'=>$type_engagement,'type_justice'=>$type_justice,
 		'type_marketing'=>$type_marketing,'type_educationlarge'=>$type_educationlarge,'type_entrepreneur'=>$type_entrepreneur, 'type_nosreperes'=>$type_nosreperes,'type_bourse'=>$type_bourse,
 		'type_comptabilite'=>$type_comptabilite,'type_investissment'=>$type_investissment,'type_action'=>$type_action,'type_donation'=>$type_donation,
-		'type_cgu'=>$type_cgu,'type_confidentialite'=>$type_confidentialite, 'article'=>$article));
+		'type_cgu'=>$type_cgu,'type_confidentialite'=>$type_confidentialite, 'article'=>$article, 'type_demasquer'=>$type_demasquer, 'type_branding'=>$type_branding));
 		}else{
 			echo 'Echec ! Une erreur a été rencontrée.';
 			exit;
@@ -911,5 +942,49 @@ class ServiceController extends AbstractController
 			echo 'Echec ! Une erreur a été rencontrée.';
 			exit;
 		}
+	}
+
+	public function articlessupport($position, $page)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$liste_article = $em->getRepository(Service::class)
+							->myFindAllPagineType($position,$page,10);
+
+		if($position == "mission")
+		{
+			return $this->render('Theme/Produit/Service/Service/articlesmission.html.twig', 
+			array('page'=>$page, 'liste_article'=>$liste_article, 
+			'nombrepage'=>ceil(count($liste_article)/10), 'position'=>$position));
+		}else{
+			return $this->render('Theme/Produit/Service/Service/articlessupport.html.twig', 
+			array('page'=>$page, 'liste_article'=>$liste_article, 
+			'nombrepage'=>ceil(count($liste_article)/10), 'position'=>$position));
+		}
+	}
+
+	public function commentaireArticle(Service $article)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$article->setEm($em);
+		$liste_type = $em->getRepository(Typearticle::class)
+							->findBy(array('position'=>$article->getType()));	
+
+		$liste_article = $em->getRepository(Service::class)
+							->myFindAllPagineType($article->getType(),1,500);
+		$images_partie = new \Doctrine\Common\Collections\ArrayCollection();
+
+		return $this->render('Theme/Produit/Service/Service/commentaireArticle.html.twig',
+		array('article'=>$article, 'type_blog'=>$liste_type, 'liste_article'=>$liste_article));
+	}
+
+	public function brandingShop($page)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$liste_article = $em->getRepository(Service::class)
+							->myFindAllPagineType('branding',$page,10);
+
+		return $this->render('Theme/Produit/Service/Service/brandingShop.html.twig', 
+		array('page'=>$page, 'liste_article'=>$liste_article, 
+		'nombrepage'=>ceil(count($liste_article)/10), 'position'=>'branding'));
 	}
 }

@@ -84,9 +84,9 @@ class Service
     private $date;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="type", type="integer")
+     * @ORM\Column(name="type", type="string", length=255, nullable=true)
     */
     private $type;  //0 pour l'année, 1 pour un indicateur
 
@@ -137,7 +137,6 @@ class Service
     {
         $this->servicetext = $service;
         $this->date = new \Datetime();
-        $this->type = 0;
         $this->rang = 0;
         $this->evenements = new ArrayCollection();
     }
@@ -258,7 +257,7 @@ class Service
      * Get type
      *
      * @return string 
-     */
+    */
     public function getType()
     {
         return $this->type;
