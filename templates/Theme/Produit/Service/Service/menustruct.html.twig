@@ -1,6 +1,6 @@
 <style>
 	.icon-circle-panel{
-		position: absolute; top: 0px; right: 0px; height: 120px; width: 120px; background: #9dba3d; border-radius: 0px 0px 0px 50%; padding: 15px;
+		position: absolute; top: 0px; right: 0px; height: 50px; width: 50px; background: #9dba3d; border-radius: 0px 0px 0px 50%; padding: 15px;
 	}
 	
 	.tags {
@@ -167,7 +167,7 @@
 </style>
 
 <div class="toutleblock-popup">
-	<div class="shadow3" style="padding: 15px;">
+	<div class="shadow3" style="padding: 15px; position: relative; z-index: 3;">
 		<div class="card-body">
 
 		<div class="single_variation_wrap">
@@ -213,35 +213,13 @@
 		<h1>Projets récents</h1>
 	  
 		<ul>
-		  <li>
-			<a href="http://market.fahunt.com/">
-			  Afh Market
-			</a>
-		  </li>
-	  
-		  <li>
-			<a href="http://mbill.fahunt.com/">
-			  AFH Mbill
-			</a>
-		  </li>
-	  
-		  <li>
-			<a href="http://lbill.fahunt.com/">
-			  AFH LBill
-			</a>
-		  </li>
-	  
-		  <li>
-			<a href="http://hbill.fahunt.com/">
-			  AFH HBill
-			</a>
-		  </li>
-	  
-		  <li>
-			<a href="http://host.fahunt.com/">
-			  AFH Host
-			</a>
-		  </li>
+			{% for appli in liste_appli %}
+			<li>
+				<a href="">
+				{{ appli.nom }}
+				</a>
+			</li>
+			{% endfor %}
 	  
 		</ul>
 	  </div>
@@ -251,10 +229,10 @@
 
 		</div>
 		<div class="article-detail article-panel">
-			<h2>Vision</h2>
-			<h4 style="margin-bottom: 20px;">
+			<h4>Vision</h4>
+			<h5 style="margin-bottom: 20px;">
 				Être un groupe de référence en matière de nouvelles technologies en Afrique dans les Années à venir.
-			</h4>
+			</h5>
 		</div>
 	</div>
 
@@ -263,10 +241,10 @@
 
 		</div>
 		<div class="article-detail article-panel">
-			<h2>Mission</h2>
-			<h4 style="margin-bottom: 20px;">
+			<h4>Mission</h4>
+			<h5 style="margin-bottom: 20px;">
 				Fédérer les forces financière et technique autour des problématiques precises dans le but d'apporter des solutions adaptées.
-			</h4>
+			</h5>
 		</div>
 	</div>
 	<div class="stop-courant-panel-popup">

@@ -34,3 +34,6 @@ produit_service_branding_shop:
         page: 1
     requirements:
         page: \d+
+produit_service_contacts:
+    path: /contacts
+    controller: App\Controller\Produit\Service\ServiceController:contacts

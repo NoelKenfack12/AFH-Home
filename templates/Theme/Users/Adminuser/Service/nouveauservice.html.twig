@@ -220,6 +220,7 @@
 				<option value="donation">Donation</option>
 				<option value="demasquer">Démasquer le colon</option>
 				<option value="branding">Accessoires Brand</option>
+				<option value="projets">Projets Incubation</option>
 				<option value="cgu">CGU</option>
 				<option value="confidentialite">Confidentialité</option>
 
@@ -375,6 +376,14 @@
 				{% endfor %}
 			</select>
 		  </div>
+		  <div class="col-md-12 type_produit type_projets" style="display: none;">
+			<select id="typeprojets" name="typeprojets" class="form-control" style="width: 100%; margin-top: 10px;">
+				<option value="0">Type projets {{ othersite }}</option>
+				{% for type in type_projets %}
+				<option value="{{ type.id }}">{{ type.nom }}</option>
+				{% endfor %}
+			</select>
+		  </div>
 	
 		  <div class="col-md-12 mt-3">
 			{{ form_errors(form.description) }}
@@ -492,6 +501,7 @@
 			<option value="donation">Donation</option>
 			<option value="demasquer">Démasquer le colon</option>
 			<option value="branding">Accessoires Brand</option>
+			<option value="projets">Projets Incubation</option>
 			<option value="cgu">CGU</option>
 			<option value="confidentialite">Confidentialité</option>
 		</select>
@@ -635,6 +645,9 @@ $('#typearticle').change(function(){
 	}else if($(this).val() == 'branding')
 	{
 		$('.type_branding').show();
+	}else if($(this).val() == 'projets')
+	{
+		$('.type_projets').show();
 	}else if($(this).val() == 'cgu')
 	{
 		$('.type_cgu').show();

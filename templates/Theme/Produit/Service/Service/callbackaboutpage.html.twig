@@ -188,7 +188,7 @@
 				  </div>
 				  <div class="member-info member-info2">
 					<h3>Noel Kenfack</h3>
-					<p>Dev Full-stack polyglotte & CEO</p>
+					<p>CTO & Co-founder</p>
 					  <div class="social-teams">
 						<a href="https://www.facebook.com/noel12.kenfack/" class="buttonrs" target="_blank">
 							<div class="icon">
@@ -421,7 +421,7 @@
 
 <div class="col-sm-12 col-md-4">
 	
-	{% include 'Theme/Produit/Service/Service/menustruct.html.twig' %}
+	{{ render(controller("App\\Controller\\Produit\\Service\\ServiceController:menustruct")) }}
 			
 </div>
 </div>

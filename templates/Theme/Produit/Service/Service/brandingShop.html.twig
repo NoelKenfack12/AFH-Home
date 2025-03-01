@@ -26,7 +26,7 @@
 <div class="shadow- bg-light1"style="padding: 0px 0px 15px 0px; z-index: 1; position: relative!important; background: #fff;  box-shadow: 0px 1px 5px 0px #d4d8de;">
 <!-- div style="height: 40px; background: #fff;"></div -->
 	<div class="container" style="padding-top: 5px;">
-		<h3>À propos de nous
+		<h3>Boutique {{ site }}
 			<span style="float: right;">
 				<a href="#!">
 					<span class="fa fa-heart"></span>
@@ -41,55 +41,68 @@
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="card-shop mb-3">
-                <img class="card-img-top" src="https://i.pinimg.com/564x/34/fd/2c/34fd2c0ed73d58075c257fc16b590f78.jpg" alt="Card image cap" style="height: 100%;">
+                <img class="card-img-top" src="{{ asset('template/images/shirt1.jpeg') }}" alt="Card image cap" style="height: 100%;">
                 <div class="product-detail">
-                    <h5 class="card-title heading text-center">PURE COTTON T-SHIRT</h5>
-                    <span class="subheading">Mens Formal T-Shirt</span>
-                    <blockquote>
-                   <p>'Little Bit Of Description About The Product Like Size Color And Care.'</p>
+                    <h5 class="card-title heading text-center">Chemise conférencier</h5>
+                    <span class="subheading">Model Homme</span>
+                    <blockquote class="pt-3 mb-3 mt-3">
+                    <p>Les conférenciers de {{ site }} organisent et animent les conférences sur les thématiques chères au Think Thank après enregistrement</p>
                     </blockquote>
-                    <button type="button" class="btn btn-outline-dark">BUY NOW</button>  
-                   </div>
+                    <button type="button" class="btn btn-outline-dark">Commander</button>  
+                </div>
             </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="card-shop mb-3" >
-                        <img class="card-img-top" src="https://i.pinimg.com/564x/33/3b/f0/333bf01c1ed48714c4d5fd8f60410320.jpg" alt="Card image cap" style="height: 100%;">
-                        <div class="product-detail">
-                            <h5 class="card-title heading text-center">STYLISH  T-SHIRT</h5>
-                            <span class="subheading">Mens Partywear Outfit</span>
-                            <blockquote>
-                                <p>'Little Bit Of Description About The Product Like Size Color And Care.'</p>
-                            </blockquote>
-            <button type="button" class="btn btn-outline-dark">BUY NOW</button>  
-                            
-                           </div>
-                    </div>
+            <div class="card-shop mb-3" >
+                <img class="card-img-top" src="{{ asset('template/images/shirt2.png') }}" alt="Card image cap" style="height: 100%;">
+                <div class="product-detail">
+                    <h5 class="card-title heading text-center">Chemise Créateur de contenu</h5>
+                    <span class="subheading">Model Homme</span>
+                    <blockquote class="pt-3 mb-3 mt-3">
+                        <p>Les créateurs de contenu propose des contenus sur notre thématique pour les plateformes web et mobile</p>
+                    </blockquote>
+                    <button type="button" class="btn btn-outline-dark">Commander</button>  
+                </div>
+            </div>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="card-shop mb-3" >
-                <img class="card-img-top" src="https://i.pinimg.com/564x/58/84/8b/58848bc4ba1bb100f0ddb0bc612fa9e9.jpg" alt="Card image cap" style="height: 100%;"> 
+                <img class="card-img-top" src="{{ asset('template/images/shirt3.png') }}" alt="Card image cap" style="height: 100%;"> 
                 <div class="product-detail">
-                    <h5 class="card-title heading text-center">DESIGNER T-SHIRT</h5>
-                    <span class="subheading">Mens Fit T-shirt</span>
-                    <blockquote>
-                        <p>'Little Bit Of Description About The Product Like Size Color And Care.'</p>
+                    <h5 class="card-title heading text-center">Chemise porteur de projet</h5>
+                    <span class="subheading">Model Homme</span>
+                    <blockquote class="pt-3 mb-3 mt-3">
+                        <p>Les porteur de projet sont des promoteur d'entreprises soutenu par {{ site }}</p>
                     </blockquote>
-                    <button type="button" class="btn btn-outline-dark">BUY NOW</button>  
+                    <button type="button" class="btn btn-outline-dark">Commander</button>  
                    </div>
             </div>
         </div>
 
         <div class="col-lg-4 col-md-6 col-sm-12">
             <div class="card-shop mb-3" >
-                <img class="card-img-top" src="https://i.pinimg.com/564x/58/84/8b/58848bc4ba1bb100f0ddb0bc612fa9e9.jpg" alt="Card image cap" style="height: 100%;"> 
+                <img class="card-img-top" src="{{ asset('template/images/hat1.png') }}" alt="Card image cap" style="height: 100%;"> 
                 <div class="product-detail">
-                    <h5 class="card-title heading text-center">DESIGNER T-SHIRT</h5>
-                    <span class="subheading">Mens Fit T-shirt</span>
-                    <blockquote>
-                        <p>'Little Bit Of Description About The Product Like Size Color And Care.'</p>
+                    <h5 class="card-title heading text-center">Casquette Membres</h5>
+                    <span class="subheading">Homme et Femme</span>
+                    <blockquote class="pt-3 mb-3 mt-3">
+                        <p>Ce modèle peut être arboré par tous les membres du {{ site }}, quelle que soit leur statut.</p>
                     </blockquote>
-                    <button type="button" class="btn btn-outline-dark">BUY NOW</button>  
+                    <button type="button" class="btn btn-outline-dark">Commander</button>  
+                   </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card-shop mb-3" >
+                <img class="card-img-top" src="{{ asset('template/images/pull1.png') }}" alt="Card image cap" style="height: 100%;"> 
+                <div class="product-detail">
+                    <h5 class="card-title heading text-center">Capush Membres</h5>
+                    <span class="subheading">Homme et Femme</span>
+                    <blockquote class="pt-3 mb-3 mt-3">
+                        <p>Ce modèle peut être arboré par tous les membres du {{ site }}, quelle que soit leur statut.</p>
+                    </blockquote>
+                    <button type="button" class="btn btn-outline-dark">Commander</button>  
                    </div>
             </div>
         </div>

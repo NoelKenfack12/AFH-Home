@@ -22,7 +22,6 @@
 	  }
     }
 
-
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 :root {
   --color-white-100: hsl(0, 0%, 100%);
@@ -363,6 +362,7 @@
     visibility: hidden;
   }
 }
+
 .coustom-btn-app{
 	display: inline-block;
 	padding: 7px;
@@ -372,6 +372,7 @@
 	color: #325ea9;
 	margin-top: 15px; height: 40px;
 }
+
 @media screen and (min-width: 62rem){
 .coustom-btn-text{
 	display: none;
@@ -393,7 +394,7 @@
 	<nav class="navbar-menu-hover container">
 	  <div class="navbar-inner-menu-hover">
 		<a href="{{ path('users_user_acces_plateforme') }}" class="brand-menu-hover">
-			<img src="{{ asset('afhholding/images/afh-logo2.png') }}" alt="" style="height: 50px;"/>
+			<img src="{{ asset('template/images/logo-afh-tt.png') }}" alt="" style="height: 50px;"/>
 		</a>
 		<div class="burger-menu-hover" id="burger-afh">
 		  <span class="burger-line-menu-hover"></span>
@@ -407,7 +408,7 @@
 
       <li class="menu-item-menu-hover dropdown-menu-hover">
         <span class="dropdown-toggle-menu-hover menu-link-menu-hover">
-          Comité central <i class="fa fa-angle-down bx-menu-hover bx-chevron-down-menu-hover"></i>
+          Comité Stratégique <i class="fa fa-angle-down bx-menu-hover bx-chevron-down-menu-hover"></i>
         </span>
         <div class="dropdown-content-menu-hover">
           <div class="dropdown-column-menu-hover">
@@ -424,7 +425,7 @@
             <div class="dropdown-block-menu-hover">
             <span class="dropdown-icon-menu-hover"><i class="bx-menu-hover bx-video-menu-hover"></i></span>
             <div class="dropdown-inner-menu-hover">
-              <a href="#" class="text-base-menu-hover font-medium-menu-hover">Visions</a>
+              <a href="{{ path('produit_service_articles_support', {'position': 'vision'}) }}" class="text-base-menu-hover font-medium-menu-hover">Visions</a>
               <p class="text-base-menu-hover font-normal-menu-hover">
               Learn video tutorial with our professional instructors.
               </p>
@@ -435,7 +436,7 @@
             <div class="dropdown-block-menu-hover">
             <span class="dropdown-icon-menu-hover"><i class="bx-menu-hover bx-book-open-menu-hover"></i></span>
             <div class="dropdown-inner-menu-hover">
-              <a href="#" class="text-base-menu-hover font-medium-menu-hover">Engagements</a>
+              <a href="{{ path('produit_service_articles_support', {'position': 'engagement'}) }}" class="text-base-menu-hover font-medium-menu-hover">Engagements</a>
               <p class="text-base-menu-hover font-normal-menu-hover">
               Discover how to register, install and use our products.
               </p>
@@ -444,9 +445,21 @@
             <div class="dropdown-block-menu-hover">
             <span class="dropdown-icon-menu-hover"><i class="bx-menu-hover bx-bookmark-menu-hover"></i></span>
             <div class="dropdown-inner-menu-hover">
-              <a href="#" class="text-base-menu-hover font-medium-menu-hover">Service juridique et conseil</a>
+              <a href="{{ path('produit_service_articles_support', {'position': 'justice'}) }}" class="text-base-menu-hover font-medium-menu-hover">Service juridique et conseil</a>
               <p class="text-base-menu-hover font-normal-menu-hover">
               Share and connect with other user in our communities.
+              </p>
+            </div>
+            </div>
+          </div>
+
+          <div class="dropdown-group-menu-hover">
+            <div class="dropdown-block-menu-hover">
+            <span class="dropdown-icon-menu-hover"><i class="bx-menu-hover bx-book-open-menu-hover"></i></span>
+            <div class="dropdown-inner-menu-hover">
+              <a href="{{ path('produit_service_contacts') }}" class="text-base-menu-hover font-medium-menu-hover">Agir maintenant</a>
+              <p class="text-base-menu-hover font-normal-menu-hover">
+              Discover how to register, install and use our products.
               </p>
             </div>
             </div>
@@ -454,6 +467,7 @@
           </div>
         </div>
       </li>
+
 
       <li class="menu-item-menu-hover dropdown-menu-hover">
         <span class="dropdown-toggle-menu-hover menu-link-menu-hover">
@@ -485,31 +499,31 @@
             </div>
             <ul class="dropdown-items-menu-hover">
               <li>
-                <a href="#" class="text-base-menu-hover font-medium-menu-hover">La bourse AFHunt</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'bourse'}) }}" class="text-base-menu-hover font-medium-menu-hover">La bourse AFHunt</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
                 Learn video tutorial with our professional instructors.
                 </p>
               </li>
               <li>
-                <a href="#" class="text-base-menu-hover font-medium-menu-hover">Stratégie de comptabilité</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'comptabilite'}) }}" class="text-base-menu-hover font-medium-menu-hover">Stratégie de comptabilité</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
                 Learn video tutorial with our professional instructors.
                 </p>
               </li>
               <li>
-                <a href="#" class="text-base-menu-hover font-medium-menu-hover">Investissement en amorçage</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'investissment'}) }}" class="text-base-menu-hover font-medium-menu-hover">Investissement en amorçage</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
                 Learn video tutorial with our professional instructors.
                 </p>
               </li>
               <li>
-                <a href="#" class="text-base-menu-hover font-medium-menu-hover">Achat des actions</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'action'}) }}" class="text-base-menu-hover font-medium-menu-hover">Achat des actions</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
                 Learn video tutorial with our professional instructors.
                 </p>
               </li>
               <li>
-                <a href="#" class="text-base-menu-hover font-medium-menu-hover">Donation</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'donation'}) }}" class="text-base-menu-hover font-medium-menu-hover">Donation</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
                 Learn video tutorial with our professional instructors.
                 </p>
@@ -524,31 +538,31 @@
             </div>
             <ul class="dropdown-items-menu-hover">
               <li>
-                <a href="#" class="text-base-menu-hover font-medium-menu-hover">Notre stratégie de communication</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'marketing'}) }}" class="text-base-menu-hover font-medium-menu-hover">Notre stratégie de communication</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
                 Learn video tutorial with our professional instructors.
                 </p>
               </li>
               <li>
-                <a href="#" class="text-base-menu-hover font-medium-menu-hover">Education Massive</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'educationlarge'}) }}" class="text-base-menu-hover font-medium-menu-hover">Education Massive</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
                 Learn video tutorial with our professional instructors.
                 </p>
               </li>
               <li>
-                <a href="#" class="text-base-menu-hover font-medium-menu-hover">Promotion de l'entrepreneuriat</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'entrepreneur'}) }}" class="text-base-menu-hover font-medium-menu-hover">Promotion de l'entrepreneuriat</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
                 Learn video tutorial with our professional instructors.
                 </p>
               </li>
               <li>
-                <a href="#" class="text-base-menu-hover font-medium-menu-hover">Recherche de nos repères</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'nosreperes'}) }}" class="text-base-menu-hover font-medium-menu-hover">Recherche de nos repères</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
                 Learn video tutorial with our professional instructors.
                 </p>
               </li>
               <li>
-                <a href="#" class="text-base-menu-hover font-medium-menu-hover">Démasquons les plans du colon</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'demasquer'}) }}" class="text-base-menu-hover font-medium-menu-hover">Démasquons les plans du boureau</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
                 Learn video tutorial with our professional instructors.
                 </p>
