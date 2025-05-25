@@ -279,14 +279,14 @@
   .dropdown-column-menu-hover {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     -moz-column-gap: 2rem;
-         column-gap: 2rem;
-    max-width: 75rem;
+         column-gap: 0px;
+    max-width: 85rem;
     margin-inline: auto;
   }
   .dropdown-group-menu-hover {
     align-content: baseline;
-    row-gap: 1.25rem;
-    padding-block: 4rem;
+    row-gap: 0px;
+    padding-block: 0px;
   }
   .dropdown-group-menu-hover:first-child, .dropdown-group-menu-hover:last-child {
     margin: unset;
@@ -388,8 +388,6 @@
 }
 </style>
 {% if position == "home" %}
-
-
 <header class="header-menu-hover" id="header-afh">
 	<nav class="navbar-menu-hover container">
 	  <div class="navbar-inner-menu-hover">
@@ -418,7 +416,7 @@
             <div class="dropdown-inner-menu-hover">
               <a href="{{ path('produit_service_articles_support', {'position': 'mission'}) }}" class="text-base-menu-hover font-medium-menu-hover">Missions</a>
               <p class="text-base-menu-hover font-normal-menu-hover">
-              Hear and enjoy our inspiration podcast together with us.
+                Inspirer, concevoir et promouvoir des idées novatrices afin d’accélérer l’émergence d’un modèle de gouvernance multipolaire.
               </p>
             </div>
             </div>
@@ -427,7 +425,7 @@
             <div class="dropdown-inner-menu-hover">
               <a href="{{ path('produit_service_articles_support', {'position': 'vision'}) }}" class="text-base-menu-hover font-medium-menu-hover">Visions</a>
               <p class="text-base-menu-hover font-normal-menu-hover">
-              Learn video tutorial with our professional instructors.
+                S’unir pour défendre équitablement l’espèce humaine, quel que soit son rang ou sa race, dans l’univers infini
               </p>
             </div>
             </div>
@@ -438,7 +436,7 @@
             <div class="dropdown-inner-menu-hover">
               <a href="{{ path('produit_service_articles_support', {'position': 'engagement'}) }}" class="text-base-menu-hover font-medium-menu-hover">Engagements</a>
               <p class="text-base-menu-hover font-normal-menu-hover">
-              Discover how to register, install and use our products.
+                Nous nous engageons à promouvoir et à défendre notre programme partout et pour toujours.
               </p>
             </div>
             </div>
@@ -447,7 +445,7 @@
             <div class="dropdown-inner-menu-hover">
               <a href="{{ path('produit_service_articles_support', {'position': 'justice'}) }}" class="text-base-menu-hover font-medium-menu-hover">Service juridique et conseil</a>
               <p class="text-base-menu-hover font-normal-menu-hover">
-              Share and connect with other user in our communities.
+                Nous faisons nos pas en mettant la justice et l’équité au centre.
               </p>
             </div>
             </div>
@@ -459,7 +457,7 @@
             <div class="dropdown-inner-menu-hover">
               <a href="{{ path('produit_service_contacts') }}" class="text-base-menu-hover font-medium-menu-hover">Agir maintenant</a>
               <p class="text-base-menu-hover font-normal-menu-hover">
-              Discover how to register, install and use our products.
+                Rejoignez-nous pour qu’ensemble, nous participions à la construction d’un monde où tous les êtres humains sont équitablement protégés et défendus.
               </p>
             </div>
             </div>
@@ -484,11 +482,20 @@
               <li>
                 <a href="#" class="text-base-menu-hover font-medium-menu-hover">Soumission de projets</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Learn video tutorial with our professional instructors.
+                Projets encadrés et développés par <strong>{{ site }}</strong> 
                 </p></li>
               <li><a href="#" class="dropdown-link-menu-hover">AFH Market</a></li>
               <li><a href="#" class="dropdown-link-menu-hover">AFH Host</a></li>
-              <li><a href="#" class="dropdown-link-menu-hover">AFH Story</a></li>
+              <li><a href="#" class="dropdown-link-menu-hover">AFH Code</a></li>
+              <li><a href="#" class="dropdown-link-menu-hover">Gloobest</a></li>
+              <li><a href="#" class="dropdown-link-menu-hover">AFH Ads&Win</a></li>
+              <li><a href="#" class="dropdown-link-menu-hover">AFH Formations</a></li>
+              <li><a href="#" class="dropdown-link-menu-hover">AFH Factory</a></li>
+              <li><a href="#" class="dropdown-link-menu-hover">AFH  Wallet</a></li>
+              <li><a href="#" class="dropdown-link-menu-hover">SYSCofie</a></li>
+              <li><a href="#" class="dropdown-link-menu-hover">Mel Moïse Market</a></li>
+              <li><a href="#" class="dropdown-link-menu-hover">AFH Box</a></li>
+              <li><a href="#" class="dropdown-link-menu-hover">AFH LiveCa</a></li>
             </ul>
           </div>
 
@@ -501,31 +508,31 @@
               <li>
                 <a href="{{ path('produit_service_articles_support', {'position': 'bourse'}) }}" class="text-base-menu-hover font-medium-menu-hover">La bourse AFHunt</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Learn video tutorial with our professional instructors.
+                  Le Financement des projets est assuré par notre Bourse.
                 </p>
               </li>
               <li>
                 <a href="{{ path('produit_service_articles_support', {'position': 'comptabilite'}) }}" class="text-base-menu-hover font-medium-menu-hover">Stratégie de comptabilité</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Learn video tutorial with our professional instructors.
+                  Nos projets intègrent un processus comptable transparent et accessible à tous.
                 </p>
               </li>
               <li>
                 <a href="{{ path('produit_service_articles_support', {'position': 'investissment'}) }}" class="text-base-menu-hover font-medium-menu-hover">Investissement en amorçage</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Learn video tutorial with our professional instructors.
+                  Investissement avec taux d'intérêt mensuel sans engagement pour le demandeur.
                 </p>
               </li>
               <li>
                 <a href="{{ path('produit_service_articles_support', {'position': 'action'}) }}" class="text-base-menu-hover font-medium-menu-hover">Achat des actions</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Learn video tutorial with our professional instructors.
+                  Reprise des actions d'un actionnaire dans l'une de notre entreprise.
                 </p>
               </li>
               <li>
                 <a href="{{ path('produit_service_articles_support', {'position': 'donation'}) }}" class="text-base-menu-hover font-medium-menu-hover">Donation</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Learn video tutorial with our professional instructors.
+                  Nous acceptons les aides destinées au développement des projets portés par le think tank.
                 </p>
               </li>
             </ul>
@@ -540,31 +547,31 @@
               <li>
                 <a href="{{ path('produit_service_articles_support', {'position': 'marketing'}) }}" class="text-base-menu-hover font-medium-menu-hover">Notre stratégie de communication</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Learn video tutorial with our professional instructors.
+                  Nos projets intègrent un processus de communication transparent et accessible à tous.
                 </p>
               </li>
               <li>
                 <a href="{{ path('produit_service_articles_support', {'position': 'educationlarge'}) }}" class="text-base-menu-hover font-medium-menu-hover">Education Massive</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Learn video tutorial with our professional instructors.
+                Comprennez comment ça marche
                 </p>
               </li>
               <li>
                 <a href="{{ path('produit_service_articles_support', {'position': 'entrepreneur'}) }}" class="text-base-menu-hover font-medium-menu-hover">Promotion de l'entrepreneuriat</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Learn video tutorial with our professional instructors.
+                Outils d'accompagnements
                 </p>
               </li>
               <li>
                 <a href="{{ path('produit_service_articles_support', {'position': 'nosreperes'}) }}" class="text-base-menu-hover font-medium-menu-hover">Recherche de nos repères</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Learn video tutorial with our professional instructors.
+                L’histoire doit être connue, et nos cultures millénaires préservées.
                 </p>
               </li>
               <li>
                 <a href="{{ path('produit_service_articles_support', {'position': 'demasquer'}) }}" class="text-base-menu-hover font-medium-menu-hover">Démasquons les plans du boureau</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Learn video tutorial with our professional instructors.
+                Mettons fin à la domination et aux inégalités profondes
                 </p>
               </li>
             </ul>

@@ -35,9 +35,9 @@
         <div class="container pd-t-home" style="position: relative; z-index: 2;">
           <div class="row row-50">
             <div class="col-xl-6 col-xxl-5">
-              <div class="welcome_area_thumb">
+              <div class="welcome_area_thumb afhTargetPopupContent" id="afh-cm-video-44">
                 <img src="{{ asset('afhholding/images/home-image.png') }}" alt="" style="height: 350px;"/>
-                <a class="video_btn" href="https://www.youtube.com/watch?v=D97LV31uMyo"><i class="fa fa-play"></i><span class="video-sonar"></span></a>
+                <a class="video_btn" href="#!"><i class="fa fa-play"></i><span class="video-sonar"></span></a>
               </div>
               <h2 class="app-title">Rejoins le groupe {{ site }} en passant à l'action dès aujourd'hui !</h2>
               <h6 class="help-content">
@@ -304,7 +304,8 @@
                       </div>
 
                       <div class="help-content">
-                        Nous sommes un groupe d'ingénieurs en chasse des technologies à la pointe contribuant à la croissance et le contrôle automatisé du flux d’opérations des startups et PMEs Moderne.
+                        <strong>{{ 'now'|date('Y') - 2013 }} an déjà</strong><br/>
+                        <strong>AFHunt Think Tank</strong> est un collectif de jeunes esprits brillants, visionnaires et engagés, conscients des enjeux du monde contemporain. Animés par la volonté d’agir concrètement.
                       </div>
 
                       <ul class="tags-box">

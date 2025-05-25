@@ -1,0 +1,194 @@
+{% extends "Theme/Users/Adminuser/layoutadmin.html.twig" %}
+
+{% block meta %}
+	{{ parent() }}
+	<meta name="keywords" content="{{ site }}, Business, Innovation,Administration"/>
+	<meta name="author" content="Noel Kenfack"/>
+	<meta name="description" content="{{ site }} | Inscription | Cameroun " />
+{% endblock %}
+
+{% block title %}
+	{{ parent() }} | {{ 'Accueil Admin'|trans }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+    <style>
+        .input-group {
+        display: flex;
+        align-content: stretch;
+        }
+
+        .input-group > input {
+        flex: 1 0 auto;
+        }
+
+        /**
+        * Even when I set some dimension-related styles on this
+        * element but not on the input or button, they'll still
+        * line up.
+        */
+        .input-group-addon {
+        background: #eee;
+        border: 1px solid #ccc;
+        padding: 0.5em 1em;
+        }
+    </style>
+{% endblock %}
+
+{% block userblog_menuleft %}
+	  {{ render(controller("App\\Controller\\Users\\Adminuser\\AccueilController:menuadmin")) }}
+{% endblock %}
+
+{% block userblog_body %}
+
+{% include 'Theme/General/Template/Menu/descriptionvariable.html.twig' %}
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+	  <li class="breadcrumb-item text-sm text-dark active"><a class="opacity-5 text-dark" href="#!">{{ 'Administration'|trans }}</a></li>
+	</ol>
+</nav>
+<div class="divider mb-3" style="border-top: 2px dashed #999;"></div>
+
+<div class="section" style="padding: 5px 0px 0px 0px;">
+   
+   
+   <h5 id="galerie-reseller mt-3" style="border-bottom: 2px dashed #999; margin-bottom: 7px;">
+    <a href="#!" class="open-modal-new-slide btn btn-primary" style="float: right;"><span class="mdi-av-playlist-add" style="font-size: 12px;"></span> Ajouter</a>
+	   {{ 'Liste des questions'|trans }}:
+   </h5>
+
+   <!--DataTables example-->
+   </div>
+
+<div class="modal fade" data-backdrop="false" id="modalFormSlide" style="margin-top: 60px;">
+<div class="modal-dialog">
+<div class="modal-content" style="padding: 0px;">
+
+	<div class="modal-header">
+		<h5 class="modal-title"><i class="mdi-image-camera"></i> Ajouter une image</h5>
+		<button type="button" class="btn close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<h4 class="header2">Préparer vos images pour les slides</h4>
+
+		{{ form_start(form, {'attr': {'action': path('users_adminuser_liste_questionnaires') }}) }}
+		<div class="form-group">
+			<span style="color:red;">{{ form_errors(form) }}</span>
+			<span style="color:red;">{{ form_errors(form.titre) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.titre) }}
+				{{ form_label(form.titre,'Titre du slide') }}
+			</div>
+		</div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-addon">
+                <input class="form-check-input" type="radio" name="reponse" id="flexRadioDefault1" value="first">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Bonne Réponse ?
+                </label>
+            </span>
+            <input type="text" name="firstPost" placeholder="Proposition 1" required>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-addon">
+                <input class="form-check-input" type="radio" name="reponse" id="flexRadioDefault2" value="second">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Bonne Réponse ?
+                </label>
+            </span>
+            <input type="text" name="secondPost" placeholder="Proposition 2" required/>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-addon">
+                <input class="form-check-input" type="radio" name="reponse" id="flexRadioDefault3" value="third">
+                <label class="form-check-label" for="flexRadioDefault3">
+                    Bonne Réponse ?
+                </label>
+            </span>
+            <input type="text" name="thirdPost" placeholder="Proposition 3" required>
+        </div>
+
+        <div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.nomGagnant) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.nomGagnant) }}
+				{{ form_label(form.nomGagnant,'Nom gagnant') }}
+			</div>
+		</div>
+
+        <div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.telGagnant) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.telGagnant) }}
+				{{ form_label(form.telGagnant,'Téléphone gagnant') }}
+			</div>
+		</div>
+
+        <div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.emailGagnant) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.emailGagnant) }}
+				{{ form_label(form.emailGagnant,'Téléphone gagnant') }}
+			</div>
+		</div>
+
+        <div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.villeGagnant) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.villeGagnant) }}
+				{{ form_label(form.villeGagnant,'Ville gagnant') }}
+			</div>
+		</div>
+
+        <div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.nomAuteur) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.nomAuteur) }}
+				{{ form_label(form.nomAuteur,'Ville gagnant') }}
+			</div>
+		</div>
+
+        <div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.telAuteur) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.telAuteur) }}
+				{{ form_label(form.telAuteur,'Ville gagnant') }}
+			</div>
+		</div>
+
+
+		<div class="form-group">
+			<button class="btn btn-primary float-end" type="submit" name="action">Enregister
+				<i class="mdi-content-send right"></i>
+			</button>
+		</div>
+
+		{{ form_end(form) }}
+
+	</div>
+	<div class="modal-footer" style="padding-top: 15px; z-index: 1;">
+		{% include 'Theme/General/Template/Menu/social.html.twig' %}
+	</div>
+</div>
+</div>
+</div>
+
+{% endblock %}
+
+
+{% block srcjavascripttemplate %}
+
+{% endblock %}
+
+{% block javascripttemplate %}
+$('.open-modal-new-slide').click(function(){
+	$('#modalFormSlide').modal('show');
+});
+{% endblock %}

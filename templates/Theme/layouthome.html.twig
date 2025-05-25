@@ -7239,7 +7239,7 @@ body{
   padding: 10px 20px;
   margin-top: -1px;
 }
-.contact-form .second-container form button {
+.contact-form .second-container form button{
   height: 50px;
   background: #9dba3d;
   color: #fff;
@@ -7501,9 +7501,9 @@ $(function(){
 {% endblock %}
 });
 
-$('.video_btn').magnificPopup({
+/*$('.video_btn').magnificPopup({
 		type: 'iframe'
-});
+});*/
 
 var activator = $('.activator');
 var navBg = $('#fade-bg');
@@ -7620,6 +7620,9 @@ $(window).on('load', function () {
 });
 </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded",()=>{var e,t=Array.from(document.querySelectorAll("div.afhTargetPopupContent")).map(e=>e.id);if(0===t.length)return;let l=new URLSearchParams({afhContentIds:t.join("__")});var n=document.createElement("script"),i=document.getElementsByTagName("script")[0];n.async=!0,n.src="{{ serverVideo }}/embebed/video/blog/jsContent?"+l.toString(),n.charset="UTF-8",n.setAttribute("crossorigin","*"),i.parentNode.insertBefore(n,i),t.forEach(e=>{(function e(t,l){let n=document.getElementById(t);if(!n){console.warn(`\xc9l\xe9ment avec l'ID '${t}' introuvable.`);return}let i=window.getComputedStyle(n),s=i.position,a;"static"===s?((a=document.createElement("div")).style.position="relative",a.style.display="inline-block",a.style.width=i.width,a.style.height=i.height,n.parentNode.insertBefore(a,n),a.appendChild(n)):a=n;let r=document.createElement("div");r.style.position="absolute",r.style.top="0",r.style.left="0",r.style.width="100%",r.style.height="100%",r.style.backgroundColor="rgba(255, 255, 255, 0.7)",r.style.zIndex="9999",r.style.display="flex",r.style.justifyContent="center",r.style.alignItems="center",r.style.pointerEvents="all",r.classList.add("loader-afhExtend");let o=document.createElement("img");o.src=l,o.alt="Chargement...",o.style.width="20px",o.style.height="20px",r.appendChild(o),a.appendChild(r)})(e,"{{ asset('template/images/loader.gif') }}")})});
+  </script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67521475-33"></script>

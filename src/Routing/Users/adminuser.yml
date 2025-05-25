@@ -298,3 +298,8 @@ users_adminuser_update_partie_current_article:
         id: 0
     requirements:
         id: \d+
+users_adminuser_liste_questionnaires:
+    path: /liste/questionnaires/{page}
+    controller: App\Controller\Produit\Service\QuestionController:listeQuestionnaires
+    defaults:
+        page: 1

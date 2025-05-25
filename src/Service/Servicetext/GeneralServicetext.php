@@ -130,4 +130,13 @@ public function badRequest($error)
 {
 	return new JsonResponse(array("status-code" => 400, "description" => "Bad Request - ".$error), Response::HTTP_BAD_REQUEST);
 }
+
+public function initialisePid($id)
+{
+	$id = (string)($id);
+	$tail = $this->password(10 - strlen($id));
+	$pid = $id.''.$tail;
+
+	return strtoupper($pid);
+}
 }
