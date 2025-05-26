@@ -59,8 +59,156 @@
 	   {{ 'Liste des questions'|trans }}:
    </h5>
 
-   <!--DataTables example-->
-   </div>
+   <div class="row mt-5">
+	  <div class="col s12 m12 14">
+	  <main style="box-shadow: 0px 0px 2px rgba(0,0,0,0.05); background: #fff;">
+		{% for article in liste_article %}
+		<div class="topic">
+		  <div class="open">
+			<h2 class="question"><img src="{{ asset('template/images/conversation.png') }}" alt="" style="width: 30px; height: 30px; margin-bottom: -8px!important;"/> {{ article.reference }} <span class="mdi-hardware-keyboard-arrow-right" style="font-size: 11px;"></span> {{ article.titre }}</h2>
+			<span class="faq-t"></span>
+		  </div>
+		  <div class="answer">
+			  <div class="module-comment-block">
+
+				<div class="dropdown float-lg-end pe-4" style="float: right;">
+					<a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+					  <i class="fa fa-ellipsis-v text-secondary" aria-hidden="true"></i>
+					</a>
+					<ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+	
+						<li>
+							<a href="#!" class="update-content-type-article dropdown-item" value="{{ article.id }}"><i class="mdi-editor-border-color"></i> Modifier</a>
+						</li>
+						<li>
+							<a href="#!" class="add-content-new-candidat dropdown-item" value="{{ article.id }}"><i class="mdi-editor-border-color"></i> Ajouter Candidat</a>
+						</li>
+	
+					</ul>
+				</div>
+				{% if article.firstPost|length  %}
+				<div>
+					<h3>{{ article.firstPost["proposition"] }}</h3>
+					{% if article.firstPost["reponse"] == true %}
+					<div><span class="label label-success">Bonne Réponse</span></div>
+					{% else %}
+					<div><span class="label label-danger">Mauvaise réponse</span></div>
+					{% endif %}
+				</div>
+				{% endif %}
+				{% if article.secondPost|length > 0 %}
+				<div>
+					<h3>{{ article.secondPost["proposition"] }}</h3>
+					{% if article.secondPost["reponse"] == true %}
+					<div><span class="label label-success">Bonne Réponse</span></div>
+					{% else %}
+					<div><span class="label label-danger">Mauvaise réponse</span></div>
+					{% endif %}
+				</div>
+				{% endif %}
+				{% if article.thirdPost|length  %}
+				<div>
+					<h3>{{ article.thirdPost["proposition"] }}</h3>
+					{% if article.thirdPost["reponse"] == true %}
+					<div><span class="label label-success">Bonne Réponse</span></div>
+					{% else %}
+					<div><span class="label label-danger">Mauvaise réponse</span></div>
+					{% endif %}
+				</div>
+				{% endif %}
+
+
+				<div class="table-responsive" style="width: 100%;">
+                      <table class="table align-items-center" style="width: 100%;">
+                        <thead>
+                          <tr>
+                            <th class="text-secondary text-sm font-weight-normal text-left p-2">Nom</th>
+                            <th class="text-secondary text-sm font-weight-normal text-left p-2">Prenom</th>
+                            <th class="text-secondary text-sm font-weight-normal text-left p-2">Téléphone</th>
+                            <th class="text-secondary text-sm font-weight-normal text-left p-2">Email</th>
+							<th class="text-secondary text-sm font-weight-normal text-left p-2">Ville</th>
+							<th class="text-secondary text-sm font-weight-normal text-left p-2">Reponse</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+							{% for candidat in article.candidats %}
+                          <tr>
+                            <td >
+                              {{ candidat.nom }}
+                            </td>
+                            <td>
+                              <h6 class="text-sm font-weight-normal mb-0">{{ candidat.prenom }}</h6>
+                            </td>
+                            <td>
+                              <h6 class="text-sm font-weight-normal mb-0">{{ candidat.tel }}</h6>
+                            </td>
+                            <td class="align-middle text-sm">
+                              <h6 class="text-sm font-weight-normal mb-0">{{ candidat.email }}</h6>
+                            </td>
+							<td class="align-middle text-sm">
+                              <h6 class="text-sm font-weight-normal mb-0">{{ candidat.ville }}</h6>
+                            </td>
+							<td class="align-middle text-sm">
+                              <h6 class="text-sm font-weight-normal mb-0">{{ candidat.reponse }}</h6>
+                            </td>
+                          </tr>
+						  {% endfor %}
+
+                        </tbody>
+                      </table>
+                    </div>
+
+			  </div>
+		  </div>
+		</div>
+		{% else %}
+		<div class="topic">
+		  <div class="open">
+		  <h2 class="question">1. Aucun article publié pour cette catégorie
+		  </h2><span class="faq-t"></span>
+		  </div>
+		  <p class="answer">La liste des articles des supports s'affichera ici.</p>
+		</div>
+		{% endfor %}
+	  </main>
+	  </div>
+	  
+	</div>
+
+<!--DataTables example-->
+</div>
+
+
+<div class="modal fade" data-backdrop="false"  id="modalGestionCatalogueSelect" style="margin-top: 60px;">
+<div class="modal-dialog">
+<div class="modal-content" style="padding: 0px; border-radius: 0px;">
+
+<div class="modal-header">
+	<h5 class="modal-title"><i class="mdi-hardware-keyboard-alt"></i> Gestion du catalogue </h5>
+	<button type="button" class="btn close" data-dismiss="modal" aria-label="Close" data-bs-dismiss="modal">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+
+<div class="modal-body">
+<div class="row">
+	<div class="row">
+		<div class="col-md-12">
+		<div class="wait-chargement-content-module" style="text-align: center;">
+			Patientez un moment pendant le chargement de l'article</br>
+			<img src="{{ asset('template/images/loader1.gif') }}" alt="image" style="height: 40px; width: 40px;">
+		</div>
+
+		<div class="content-module-loading" style="display: none;">
+
+		</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 <div class="modal fade" data-backdrop="false" id="modalFormSlide" style="margin-top: 60px;">
 <div class="modal-dialog">
@@ -190,5 +338,51 @@
 {% block javascripttemplate %}
 $('.open-modal-new-slide').click(function(){
 	$('#modalFormSlide').modal('show');
+});
+
+$('.update-content-type-article').click(function(){
+	var id = $(this).attr('value');
+	$('#modalGestionCatalogueSelect').modal('show');
+	$('.wait-chargement-content-module').show();
+	$('.content-module-loading').hide();
+	$.get('{{ path('users_adminuser_set_gagnant_questionnaire') }}',{ id: id }, function(data){
+		$('.wait-chargement-content-module').hide();
+		$('.content-module-loading').show();
+		$('.content-module-loading').html(data);
+	});
+});
+
+$('.add-content-new-candidat').click(function(){
+	var id = $(this).attr('value');
+	$('#modalGestionCatalogueSelect').modal('show');
+	$('.wait-chargement-content-module').show();
+	$('.content-module-loading').hide();
+	$.get('{{ path('users_adminuser_add_candidat_question') }}',{ id: id }, function(data){
+		$('.wait-chargement-content-module').hide();
+		$('.content-module-loading').show();
+		$('.content-module-loading').html(data);
+	});
+});
+
+$(".open").click(function(){
+  var container = $(this).parents(".topic");
+  var answer = container.find(".answer");
+  var trigger = container.find(".faq-t");
+
+  answer.slideToggle(200);
+
+  if (trigger.hasClass("faq-o")) {
+    trigger.removeClass("faq-o");
+  }
+  else {
+    trigger.addClass("faq-o");
+  }
+
+  if (container.hasClass("expanded")) {
+    container.removeClass("expanded");
+  }
+  else {
+    container.addClass("expanded");
+  }
 });
 {% endblock %}

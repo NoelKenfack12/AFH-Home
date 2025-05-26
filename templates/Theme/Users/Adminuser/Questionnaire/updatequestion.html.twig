@@ -1,0 +1,110 @@
+
+<div class="row">
+<div class="col-md-12">
+  {{ form_start(form, {'attr': {'action': path('users_adminuser_set_gagnant_questionnaire', {'id': question.id}) }}) }}
+
+	  <div class="form-group">
+			<span style="color:red;">{{ form_errors(form) }}</span>
+			<span style="color:red;">{{ form_errors(form.titre) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.titre) }}
+				{{ form_label(form.titre,'Titre du slide') }}
+			</div>
+		</div>
+
+
+        <div class="input-group mb-3">
+            <span class="input-group-addon">
+                <input class="form-check-input" type="radio" name="reponse" id="flexRadioDefault1" value="first" {% if question.firstPost|length > 0 and question.firstPost['reponse'] == true %}checked{% endif %}>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Bonne Réponse ?
+                </label>
+            </span>
+            <input type="text" name="firstPost" placeholder="Proposition 1" required value="{% if question.firstPost|length > 0 %}{{ question.firstPost["proposition"] }}{% endif %}">
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-addon">
+                <input class="form-check-input" type="radio" name="reponse" id="flexRadioDefault2" value="second" {% if question.secondPost|length > 0 and question.secondPost['reponse'] == true %}checked{% endif %}/>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Bonne Réponse ?
+                </label>
+            </span>
+            <input type="text" name="secondPost" placeholder="Proposition 2" required value="{% if question.secondPost|length > 0 %}{{ question.secondPost["proposition"] }}{% endif %}"/>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-addon">
+                <input class="form-check-input" type="radio" name="reponse" id="flexRadioDefault3" value="third" {% if question.thirdPost|length > 0 and question.thirdPost['reponse'] == true %}checked{% endif %}>
+                <label class="form-check-label" for="flexRadioDefault3">
+                    Bonne Réponse ?
+                </label>
+            </span>
+            <input type="text" name="thirdPost" placeholder="Proposition 3" required value="{% if question.thirdPost|length > 0 %}{{ question.thirdPost["proposition"] }}{% endif %}">
+        </div>
+
+        <div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.nomGagnant) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.nomGagnant) }}
+				{{ form_label(form.nomGagnant,'Nom gagnant') }}
+			</div>
+		</div>
+
+        <div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.telGagnant) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.telGagnant) }}
+				{{ form_label(form.telGagnant,'Téléphone gagnant') }}
+			</div>
+		</div>
+
+        <div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.emailGagnant) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.emailGagnant) }}
+				{{ form_label(form.emailGagnant,'Téléphone gagnant') }}
+			</div>
+		</div>
+
+        <div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.villeGagnant) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.villeGagnant) }}
+				{{ form_label(form.villeGagnant,'Ville gagnant') }}
+			</div>
+		</div>
+
+        <div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.nomAuteur) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.nomAuteur) }}
+				{{ form_label(form.nomAuteur,'Ville gagnant') }}
+			</div>
+		</div>
+
+        <div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.telAuteur) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.telAuteur) }}
+				{{ form_label(form.telAuteur,'Ville gagnant') }}
+			</div>
+		</div>
+  
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-primary" type="submit" name="action">Enregister 1
+          <i class="mdi-content-send right"></i>
+        </button>
+      </div>
+    </div>
+
+	 <div class="clear"></div>
+	 {{ form_end(form) }}
+	<div class="clearfix"></div>
+</div>
+</div>
+
+<script type="text/javascript">
+
+</script>

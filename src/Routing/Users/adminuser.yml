@@ -102,6 +102,20 @@ users_adminuser_update_type_article:
         id: 0
     requirements:
         id: \d+
+users_adminuser_set_gagnant_questionnaire:
+    path: /setgagnant/questionnaire/{id}
+    controller: App\Controller\Produit\Service\QuestionController::updatequestion
+    defaults:
+        id: 0
+    requirements:
+        id: \d+
+users_adminuser_add_candidat_question:
+    path: /add/candidat/question/{id}
+    controller: App\Controller\Produit\Service\QuestionController::addCandidatQuestion
+    defaults:
+        id: 0
+    requirements:
+        id: \d+
 users_adminuser_modifier_un_service:
     path: /modifier/un/nouveau/service/{id}
     controller: App\Controller\Produit\Service\ServiceController:modifierservice

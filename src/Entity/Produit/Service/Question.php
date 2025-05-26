@@ -5,6 +5,8 @@ namespace App\Entity\Produit\Service;
 use App\Repository\Produit\Service\QuestionRepository;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Users\User\User;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Entity(repositoryClass=QuestionRepository::class)
@@ -91,9 +93,15 @@ class Question
      */
     private $telAuteur;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Candidat::class, mappedBy="question", cascade={"persist"})
+    */
+    private $candidats;
+
     public function __construct()
 	{
 		$this->date = new \Datetime();
+        $this->candidats = new ArrayCollection();
 	}
 
     public function getId(): ?int
@@ -139,7 +147,7 @@ class Question
 
     /**
      * Set user
-     * @return Message
+     * @return Question
      */
     public function setUser(User $user = null): self
     {
@@ -262,5 +270,25 @@ class Question
         $this->telAuteur = $telAuteur;
 
         return $this;
+    }
+
+    public function addCandidat(Candidat $candidats): self
+    {
+        $this->candidats[] = $candidats;
+
+        return $this;
+    }
+
+    public function removeCandidat(Candidat $candidats): self
+    {
+        $this->candidats->removeElement($candidats);
+    }
+
+    /**
+     * @return Collection|Candidat[]
+     */
+    public function getCandidats(): Collection
+    {
+        return $this->candidats;
     }
 }
