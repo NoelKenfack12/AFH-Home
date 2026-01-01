@@ -31,7 +31,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
-        - { path: ^/packagewebsiteadmin, roles: ROLE_GESTION, requires_channel: http }
+        - { path: ^/adminbof, roles: ROLE_GESTION, requires_channel: http }
         - { path: ^/ajouter/domaine/panier, roles: ROLE_USER, requires_channel: http }
         - { path: ^/*, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: http }
 

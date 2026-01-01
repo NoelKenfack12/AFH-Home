@@ -311,6 +311,13 @@
 			</div>
 		</div>
 
+		<div class="form-group mb-3">
+			<span style="color:red;">{{ form_errors(form.consigne) }}</span>
+			<div class="form-group">
+				{{ form_widget(form.consigne) }}
+				{{ form_label(form.consigne,'Consigne du gain') }}
+			</div>
+		</div>
 
 		<div class="form-group">
 			<button class="btn btn-primary float-end" type="submit" name="action">Enregister

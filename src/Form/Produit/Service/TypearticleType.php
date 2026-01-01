@@ -24,6 +24,7 @@ class TypearticleType extends AbstractType
         $builder
             ->add('nom',TextType::class,array('attr'=>array('style'=>'width: 100%','class'=>'form-control')))
             ->add('rang',IntegerType::class,array('attr'=>array('style'=>'width: 100%','class'=>'form-control')))
+            ->add('breve',TextType::class,array('attr'=>array('style'=>'width: 100%','class'=>'form-control')))
 			->add('description',TextareaType::class,array('attr'=>array('style'=>'width: 100%;', 'class'=>'form-control materialize-textarea')))
             ->add('file',FileType::class,array('attr'=>array('style'=>'width: 100%','class'=>'form-control'),'required'=>false))
         ;

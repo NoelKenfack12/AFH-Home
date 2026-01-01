@@ -391,19 +391,19 @@
 <header class="header-menu-hover" id="header-afh">
 	<nav class="navbar-menu-hover container">
 	  <div class="navbar-inner-menu-hover">
-		<a href="{{ path('users_user_acces_plateforme') }}" class="brand-menu-hover">
-			<img src="{{ asset('template/images/logo-afh-tt.png') }}" alt="" style="height: 50px;"/>
-		</a>
-		<div class="burger-menu-hover" id="burger-afh">
-		  <span class="burger-line-menu-hover"></span>
-		  <span class="burger-line-menu-hover"></span>
-		  <span class="burger-line-menu-hover"></span>
-		</div>
+      <a href="{{ path('users_user_acces_plateforme') }}" class="brand-menu-hover">
+        <img src="{{ asset('template/images/logo-afh-tt.png') }}" alt="" style="height: 50px;"/>
+      </a>
+      <div class="burger-menu-hover" id="burger-afh">
+        <span class="burger-line-menu-hover"></span>
+        <span class="burger-line-menu-hover"></span>
+        <span class="burger-line-menu-hover"></span>
+      </div>
 	  </div>
 	  <div class="navbar-block-menu-hover" id="menu-afh">
 		<ul class="menu-menu-hover">
 		  <li class="menu-item-menu-hover"><a href="{{ path('produit_service_articles_support') }}" class="menu-link-menu-hover">À propos</a></li>
-
+      <li class="menu-item-menu-hover"><a href="{{ path('produit_service_open_quiz_response') }}" class="menu-link-menu-hover">Quiz</a></li>
       <li class="menu-item-menu-hover dropdown-menu-hover">
         <span class="dropdown-toggle-menu-hover menu-link-menu-hover">
           Comité Stratégique <i class="fa fa-angle-down bx-menu-hover bx-chevron-down-menu-hover"></i>
@@ -551,29 +551,32 @@
                 </p>
               </li>
               <li>
-                <a href="{{ path('produit_service_articles_support', {'position': 'educationlarge'}) }}" class="text-base-menu-hover font-medium-menu-hover">Education Massive</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'nosreperes'}) }}" class="text-base-menu-hover font-medium-menu-hover">Recherche de nos repères</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Comprennez comment ça marche
+                L’histoire doit être connue, et nos cultures millénaires doivent être décrites.
                 </p>
               </li>
+              <li>
+                <a href="{{ path('produit_service_articles_support', {'position': 'demasquer'}) }}" class="text-base-menu-hover font-medium-menu-hover">Comprenons ce qui est, et agissons.</a>
+                <p class="text-base-menu-hover font-normal-menu-hover">
+                Scrutons les faits et gestes de tout ce qui façonne notre quotidien.
+                </p>
+              </li>
+              <li>
+                <a href="{{ path('produit_service_articles_support', {'position': 'educationlarge'}) }}" class="text-base-menu-hover font-medium-menu-hover">Education Massive</a>
+                <p class="text-base-menu-hover font-normal-menu-hover">
+                Ciblons, critiquons et proposons les perspectives solutionnaires.
+                </p>
+              </li>
+
               <li>
                 <a href="{{ path('produit_service_articles_support', {'position': 'entrepreneur'}) }}" class="text-base-menu-hover font-medium-menu-hover">Promotion de l'entrepreneuriat</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                Outils d'accompagnements
+                  Comment nous accompagnons la jeunesse dans la création de valeur
                 </p>
               </li>
-              <li>
-                <a href="{{ path('produit_service_articles_support', {'position': 'nosreperes'}) }}" class="text-base-menu-hover font-medium-menu-hover">Recherche de nos repères</a>
-                <p class="text-base-menu-hover font-normal-menu-hover">
-                L’histoire doit être connue, et nos cultures millénaires préservées.
-                </p>
-              </li>
-              <li>
-                <a href="{{ path('produit_service_articles_support', {'position': 'demasquer'}) }}" class="text-base-menu-hover font-medium-menu-hover">Démasquons les plans du boureau</a>
-                <p class="text-base-menu-hover font-normal-menu-hover">
-                Mettons fin à la domination et aux inégalités profondes
-                </p>
-              </li>
+              
+              
             </ul>
           </div>
           

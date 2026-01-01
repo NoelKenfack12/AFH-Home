@@ -12,6 +12,454 @@
 
 {% block stylesheets %}
   {{ parent() }}
+
+  <style>
+        /* Styles uniques pour éviter les conflits */
+        .blog-article-page {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            display: flex;
+            margin: 0 auto;
+            padding: 20px;
+            gap: 40px;
+        }
+        
+        /* Conteneur principal de l'article */
+        .blog-article-main {
+            flex: 1;
+            min-width: 0; /* Pour éviter les problèmes de flexbox */
+        }
+        
+        /* Bannière d'article */
+        .blog-article-banner {
+            position: relative;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .blog-article-banner-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .blog-article-banner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            padding: 40px 30px 30px;
+            color: white;
+        }
+        
+        .blog-article-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            color: #fff;
+            text-transform: capitalize;
+        }
+        
+        .blog-article-meta {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .blog-article-meta-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-article-meta-item i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+        
+        /* Description brève */
+        .blog-article-description {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 50px;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #2c6ecb;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* Sections de l'article */
+        .blog-article-sections {
+            margin-bottom: 60px;
+        }
+        
+        .blog-article-section {
+            margin-bottom: 80px;
+            scroll-margin-top: 30px; /* Pour l'ancrage avec le menu fixe */
+        }
+        
+        .blog-article-section-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        .blog-article-section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 0;
+        }
+        
+        .blog-article-section-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .blog-article-section-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #444;
+        }
+        
+        .blog-article-section-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Layout alterné pour les sections */
+        .blog-article-section.alternate .blog-article-section-content {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+        
+        .blog-article-section.alternate .blog-article-section-text {
+            flex: 1;
+            padding-right: 30px;
+        }
+        
+        .blog-article-section.alternate .blog-article-section-image-container {
+            flex: 1;
+        }
+        
+        .blog-article-section.alternate:nth-child(even) .blog-article-section-content {
+            flex-direction: row-reverse;
+        }
+        
+        .blog-article-section.alternate:nth-child(even) .blog-article-section-text {
+            padding-right: 0;
+            padding-left: 30px;
+        }
+        
+        /* Barre latérale de navigation */
+        .blog-article-sidebar {
+            width: 320px;
+            flex-shrink: 0;
+        }
+        
+        .blog-article-nav-container {
+            position: sticky;
+            top: 30px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-article-nav-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-article-nav-title i {
+            margin-right: 10px;
+            color: #2c6ecb;
+        }
+        
+        .blog-article-nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .blog-article-nav-item {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .blog-article-nav-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .blog-article-nav-link {
+            display: block;
+            color: #555;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .blog-article-nav-link:hover {
+            background-color: #f5f8ff;
+            color: #2c6ecb;
+            padding-left: 16px;
+        }
+        
+        .blog-article-nav-link.active {
+            background-color: #eef4ff;
+            color: #2c6ecb;
+            font-weight: 500;
+            border-left: 3px solid #2c6ecb;
+        }
+        
+        .blog-article-nav-link.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: #2c6ecb;
+            border-radius: 50%;
+        }
+        
+        /* Boutons de navigation */
+        .blog-article-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding: 25px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .blog-article-btn {
+            padding: 14px 28px;
+            background-color: #f5f7fa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            color: #2c6ecb;
+            font-weight: 500;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-article-btn:hover {
+            background-color: #2c6ecb;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 110, 203, 0.2);
+        }
+        
+        .blog-article-btn i {
+            margin: 0 8px;
+        }
+        
+        /* Articles similaires */
+        .blog-related-articles {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+        
+        .blog-related-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .blog-related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-related-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .blog-related-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-related-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .blog-related-content {
+            padding: 20px;
+        }
+        
+        .blog-related-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .blog-related-card-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .blog-related-card-title a:hover {
+            color: #2c6ecb;
+        }
+        
+        .blog-related-card-desc {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .blog-related-card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        /* Styles responsives */
+        @media (max-width: 1024px) {
+            .blog-article-page {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .blog-article-sidebar {
+                width: 100%;
+                order: -1;
+            }
+            
+            .blog-article-nav-container {
+                position: static;
+                top: auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .blog-article-title {
+                font-size: 2.2rem;
+            }
+            
+            .blog-article-banner-image {
+                height: 300px;
+            }
+            
+            .blog-article-section.alternate .blog-article-section-content,
+            .blog-article-section.alternate:nth-child(even) .blog-article-section-content {
+                flex-direction: column;
+            }
+            
+            .blog-article-section.alternate .blog-article-section-text,
+            .blog-article-section.alternate:nth-child(even) .blog-article-section-text {
+                padding-right: 0;
+                padding-left: 0;
+                margin-bottom: 20px;
+            }
+            
+            .blog-article-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .blog-article-btn {
+                justify-content: center;
+            }
+            
+            .blog-related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Utilitaires */
+        .blog-article-visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Animation pour les sections */
+        .blog-article-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .blog-article-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Indicateur de progression */
+        .blog-article-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #f0f0f0;
+            z-index: 99999999;
+            display: none;
+        }
+        
+        .blog-article-progress-bar {
+            height: 100%;
+            background-color: #2c6ecb;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .blog-article-progress.visible {
+            display: block;
+        }
+    </style>
+
 {% endblock %}
 
 {% block userblog_body %}
@@ -20,6 +468,367 @@
       <img src="{{ asset('afhholding/images/vector-top.png') }}" alt="" style="height: 500px;"/>
     </div>
     
+    <div class="mt-3" style="background-color: #fff!important; padding: 15px 0px; position: relative; z-index: 1;">
+        <div class="container">
+            <h3 class="breadcrumbs-title">
+                {{ article.breve }}
+            </h3>
+        </div>
+    </div>
+
+    <!-- Indicateur de progression de lecture -->
+    <div class="blog-article-progress" id="readingProgress">
+        <div class="blog-article-progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="blog-article-page container">
+        <!-- Contenu principal de l'article -->
+        <main class="blog-article-main">
+            <!-- Bannière de l'article avec image et titre -->
+            <article class="blog-article">
+                <div class="blog-article-banner" style="position: relative; z-index: 1;">
+                    <img src="{% if article.imgservice != null %}{{ asset(article.imgservice.getwebpath) }}{% else %}{{ asset('template/images/boost2.png') }}{% endif %}" 
+                         alt="{{ article.breve }}" 
+                         class="blog-article-banner-image">
+                    <div class="blog-article-banner-overlay">
+                        <h1 class="blog-article-title">{{ article.nom }}</h1>
+                        <div class="blog-article-meta">
+                            <div class="blog-article-meta-item">
+                                <i class="fa fa-calendar"></i>
+                                <span>{{ article.date|date('d') }} {{ article.date|date('m') }} {{ article.date|date('Y') }}</span>
+                            </div>
+                            <div class="blog-article-meta-item">
+                                <i class="fa fa-clock"></i>
+                                <span>8 min de lecture</span>
+                            </div>
+                            <div class="blog-article-meta-item">
+                                <i class="fa fa-folder"></i>
+                                <span>{{ article.typearticle.nom }}</span>
+                            </div>
+                            <div class="blog-article-meta-item">
+                                <i class="fa fa-eye"></i>
+                                <span>1,248 vues</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Description brève -->
+                <div class="blog-article-description">
+                    <div class="entry-summary">{{ article.description|raw }}</div>
+                    <p class="drop-cap">{{ article.prerequis|raw }}</p>
+                </div>
+                
+                <!-- Sections de l'article -->
+                <div class="blog-article-sections">
+
+                    {% for partie in article.getEvenements() %}
+                        {% if partie.imgevenement != null %}
+                            <!-- Section 1 -->
+                            <section class="blog-article-section alternate" id="section-architecture-{{ partie.id }}">
+                                <div class="blog-article-section-header">
+                                    <h2 class="blog-article-section-title">{{ partie.nom }}</h2>
+                                </div>
+                                <div class="blog-article-section-content">
+                                    <div class="blog-article-section-text">
+                                        {{ partie.description|raw }}
+                                    </div>
+                                    <div class="blog-article-section-image-container">
+                                        <img src="{% if partie.imgevenement != null %}{{ asset(partie.imgevenement.getwebpath) }}{% else %}{{ asset('template/images/boost2.png') }}{% endif %}" 
+                                            alt="{{ partie.nom }}" 
+                                            class="blog-article-section-image">
+                                    </div>
+                                </div>
+                            </section>
+                        {% else %}
+                            <!-- Section 4 -->
+                            <section class="blog-article-section" id="section-securite">
+                                <div class="blog-article-section-header">
+                                    <h2 class="blog-article-section-title">{{ partie.nom }}</h2>
+                                </div>
+                                <div class="blog-article-section-content">
+                                    <div class="blog-article-section-text">
+                                        {{ partie.description|raw }}
+                                    </div>
+                                </div>
+                            </section>
+                        {% endif %}
+                    {% endfor %}
+                    
+                </div>
+                
+                <!-- Boutons de navigation -->
+                <div class="blog-article-actions">
+                    <a href="#!" class="blog-article-btn">
+                        <i class="fa fa-arrow-left"></i>
+                        <span>Retour aux articles</span>
+                    </a>
+                    <a href="#section-outils" class="blog-article-btn">
+                        <span>Dernière section</span>
+                        <i class="fa fa-arrow-down"></i>
+                    </a>
+                </div>
+                
+                <!-- Articles similaires -->
+                <section class="blog-related-articles">
+                    <h2 class="blog-related-title">Articles similaires</h2>
+                    <div class="blog-related-grid">
+                        {% for course in liste_article %}
+                        <!-- Article 1 -->
+                        <article class="blog-related-card">
+                            <img src="{% if course.imgservice != null %}{{ asset(course.imgservice.getwebpath) }}{% else %}{{ asset('template/images/boost2.png') }}{% endif %}" 
+                                 alt="Code JavaScript moderne" 
+                                 class="blog-related-image">
+                            <div class="blog-related-content">
+                                <h3 class="blog-related-card-title">
+                                    <a href="{{ path('produit_service_commentaire_article', {'id': course.id}) }}">{{ course.nom }}</a>
+                                </h3>
+                                <p class="blog-related-card-desc">{{ course.description|raw }}</p>
+                                <div class="blog-related-card-meta">
+                                    <span><i class="far fa-clock"></i> 6 min</span>
+                                    <span><i class="far fa-calendar"></i> {{ course.date|date('d') }} {{ course.date|date('M') }} {{ course.date|date('Y') }}</span>
+                                </div>
+                            </div>
+                        </article>
+                        {% endfor %}
+                        
+                    </div>
+                </section>
+            </article>
+        </main>
+        
+        <!-- Barre latérale avec navigation -->
+        <div class="blog-article-sidebar" style="position: relative; z-index: 1;">
+            <div class="blog-article-nav-container" id="navContainer">
+                <h3 class="blog-article-nav-title">
+                    <i class="fa fa-list-ol"></i>
+                    <span>Sommaire de l'article</span>
+                </h3>
+                <nav aria-label="Navigation dans l'article">
+                    <ul class="blog-article-nav-menu" id="navMenu">
+                        {% for partie in article.getEvenements() %}
+                        <li class="blog-article-nav-item">
+                            <a href="#section-architecture-{{ partie.id }}" class="blog-article-nav-link" data-section="section-architecture">
+                                {{ partie.nom }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+                
+                <!-- Bouton pour remonter en haut -->
+                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #f0f0f0;">
+                    <button id="backToTop" class="blog-article-btn" style="width: 100%; justify-content: center;">
+                        <i class="fa fa-arrow-up"></i>
+                        <span>Haut de page</span>
+                    </button>
+                </div>
+                
+                <!-- Informations sur l'article -->
+                <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #f0f0f0;">
+                    <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 10px; color: #2c3e50;">
+                        <i class="fa fa-info-circle" style="color: #2c6ecb; margin-right: 8px;"></i>
+                        Informations
+                    </h4>
+                    <div style="font-size: 0.9rem; color: #666;">
+                        <p style="margin-bottom: 8px;">
+                            <strong>Catégorie:</strong> {{ article.typearticle.nom }}
+                        </p>
+                        <p style="margin-bottom: 8px;">
+                            <strong>Mots-clés:</strong> 
+                            {% for password in liste_key %}
+                                {{ password }} <span class="bi bi-dot"></span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            <strong>Partager:</strong>
+                            <a href="#" style="color: #2c6ecb; margin: 0 5px;"><i class="fa fa-twitter"></i></a>
+                            <a href="#" style="color: #2c6ecb; margin: 0 5px;"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" style="color: #2c6ecb; margin: 0 5px;"><i class="fa fa-facebook"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var sections = document.querySelectorAll('.blog-article-section');
+            var navLinks = document.querySelectorAll('.blog-article-nav-link');
+            var navContainer = document.getElementById('navContainer');
+            var backToTopBtn = document.getElementById('backToTop');
+            var readingProgress = document.getElementById('readingProgress');
+            var progressBar = document.getElementById('progressBar');
+            
+            // Fonction pour mettre à jour la navigation active
+            function updateActiveNav() {
+                let currentSectionId = '';
+                let maxVisibleArea = 0;
+                
+                // Trouver la section la plus visible
+                sections.forEach(section => {
+                    var rect = section.getBoundingClientRect();
+                    var visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+                    
+                    if (visibleHeight > maxVisibleArea && visibleHeight > 0) {
+                        maxVisibleArea = visibleHeight;
+                        currentSectionId = section.id;
+                    }
+                });
+                
+                // Mettre à jour les liens de navigation
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Mettre à jour la barre de progression
+                updateReadingProgress();
+            }
+            
+            // Fonction pour mettre à jour la barre de progression de lecture
+            function updateReadingProgress() {
+                var articleHeight = document.querySelector('.blog-article').offsetHeight;
+                var windowHeight = window.innerHeight;
+                var scrollPosition = window.scrollY;
+                
+                // Calculer le pourcentage de lecture
+                let progress = (scrollPosition / (articleHeight - windowHeight)) * 100;
+                progress = Math.min(100, Math.max(0, progress));
+                
+                // Mettre à jour la barre de progression
+                progressBar.style.width = `${progress}%`;
+                
+                // Afficher ou masquer la barre de progression
+                if (scrollPosition > 100) {
+                    readingProgress.classList.add('visible');
+                } else {
+                    readingProgress.classList.remove('visible');
+                }
+            }
+            
+            // Animation au défilement pour les sections
+            var animateSections = () => {
+                sections.forEach(section => {
+                    var rect = section.getBoundingClientRect();
+                    var isVisible = rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0;
+                    
+                    if (isVisible && !section.classList.contains('visible')) {
+                        section.classList.add('visible');
+                    }
+                });
+            };
+            
+            // Faire défiler jusqu'en haut
+            backToTopBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Navigation fluide pour les liens d'ancrage
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    var targetId = this.getAttribute('href');
+                    var targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        var offset = 30; // Compensation pour le menu fixe
+                        var targetPosition = targetElement.offsetTop - offset;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Mettre à jour l'URL sans recharger la page
+                        history.pushState(null, null, targetId);
+                    }
+                });
+            });
+            
+            // Gérer le positionnement du menu de navigation
+            function handleNavPosition() {
+                var scrollPosition = window.scrollY;
+                var articleTop = document.querySelector('.blog-article').offsetTop;
+                var articleBottom = articleTop + document.querySelector('.blog-article').offsetHeight;
+                var navHeight = navContainer.offsetHeight;
+                var windowHeight = window.innerHeight;
+                
+                // Si le menu dépasse la hauteur de l'article, ajuster sa position
+                if (scrollPosition + navHeight + 100 > articleBottom) {
+                    navContainer.style.position = 'absolute';
+                    navContainer.style.top = `${articleBottom - navHeight - 100}px`;
+                } else {
+                    navContainer.style.position = 'sticky';
+                    navContainer.style.top = '30px';
+                }
+            }
+            
+            // Initialiser les animations
+            animateSections();
+            updateActiveNav();
+            
+            // Écouter les événements de défilement
+            window.addEventListener('scroll', function() {
+                updateActiveNav();
+                animateSections();
+                handleNavPosition();
+            });
+            
+            // Écouter le redimensionnement de la fenêtre
+            window.addEventListener('resize', function() {
+                updateReadingProgress();
+                handleNavPosition();
+            });
+            
+            // Initialiser la position du menu
+            handleNavPosition();
+            
+            // Initialiser la barre de progression
+            updateReadingProgress();
+            
+            // Observer les changements dans le DOM pour les sections
+            var observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Gérer les boutons de navigation du contenu principal
+            var lastSectionBtn = document.querySelector('a[href="#section-outils"]');
+            if (lastSectionBtn) {
+                lastSectionBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.getElementById('section-outils').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            }
+        });
+    </script>
+
+
+
+
+    {#
     <div class="container" style="position: relative; z-index: 1;">
   
     <section style="padding-top: 5px; margin: 0 auto;">
@@ -32,16 +841,7 @@
             </div>
         </div>
     
-        <div class="row" style="margin-top: 0px;">
-            <div class="col-md-8">
-                <h3 class="breadcrumbs-title" style="margin-bottom: 15px;">
-                    {{ article.breve }}
-                </h3>
-            </div>
-            <div class="col-md-4">
-                -
-            </div>
-        </div>
+    
     
         <div class="row" style="margin-bottom: 15px; margin-top: 0px!important;">
                 
@@ -203,9 +1003,9 @@ $(window).scroll(function(){
     var scrollDistance = $(window).scrollTop();
     // Show/hide menu on scroll
     //if (scrollDistance >= 850) {
-        //	$('nav').fadeIn("fast");
+        //	$('nav').fadeIn("fat");
     //} else {
-        //	$('nav').fadeOut("fast");
+        //	$('nav').fadeOut("fat");
     //}
 
     // Assign active class to nav links while scolling
@@ -268,6 +1068,7 @@ function controlScroll()
 }
 controlScroll();
     </script>
+    #}
     
 {% endblock %}
 

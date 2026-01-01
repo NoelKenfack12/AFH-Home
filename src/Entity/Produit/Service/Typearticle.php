@@ -76,6 +76,13 @@ class Typearticle
     private $position;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="breve", type="string", length=255,nullable=true)
+     */
+    private $breve;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
@@ -214,6 +221,29 @@ class Typearticle
     public function getPosition()
     {
         return $this->position;
+    }
+
+    /**
+     * Set breve
+     *
+     * @param string $breve
+     * @return Typearticle
+     */
+    public function setBreve($breve)
+    {
+        $this->breve = $breve;
+
+        return $this;
+    }
+
+    /**
+     * Get breve
+     *
+     * @return string
+     */
+    public function getBreve()
+    {
+        return $this->breve;
     }
 
     /**

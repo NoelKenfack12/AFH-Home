@@ -18,6 +18,12 @@
 				{{ form_widget(formtype.description) }}
 				{{ form_label(formtype.description,'Description du type') }}
 			  </div>
+
+			  <div class="col-md-12">
+				{{ form_errors(formtype.breve) }}
+				{{ form_widget(formtype.breve) }}
+				{{ form_label(formtype.breve,'Brève résumé') }}
+			</div>
 		  </div>
 
 		  <div class="row">
@@ -25,6 +31,7 @@
 				<span>Image Article {{ form_errors(formtype.file) }}</span>
 				  {{ form_widget(formtype.file) }}
 			</div>
+
 			<div class="col-md-12 mt-3">
 			<select id="typeservice" name="typeservice" class="form-control">
 

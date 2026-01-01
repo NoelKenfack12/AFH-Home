@@ -1,89 +1,89 @@
 users_adminuser_accueil_administration:
-    path: /admin/accueil
+    path: /adminbof/accueil
     controller: App\Controller\Users\Adminuser\AccueilController:accueiladmin
 users_adminuser_localisation_investissement:
-    path: /admin/localisation/investissement
+    path: /adminbof/localisation/investissement
     controller: App\Controller\Users\Adminuser\AccueilController:localisationInvestissement
 users_adminuser_save_categorie_product:
-    path: /nouvelle/categorie
+    path: /adminbof/nouvelle/categorie
     controller: App\Controller\Produit\Produit\CategorieController:savecategorie
 users_adminuser_ajouter_sous_categorie:
-    path: /ajouter/nouvelle/souscategorie
+    path: /adminbof/ajouter/nouvelle/souscategorie
     controller: App\Controller\Produit\Produit\CategorieController:ajoutersouscategorie
 users_adminuser_add_new_slide:
-    path: /add/new/slide
+    path: /adminbof/add/new/slide
     controller: App\Controller\Users\User\ImgslideController:addnewslide
 users_adminuser_delete_courant_slide:
-    path: /delete/courant/slide/{id}
+    path: /adminbof/delete/courant/slide/{id}
     controller: App\Controller\Users\User\ImgslideController:deleteslide
     requirements:
         id: \d+
 users_adminuser_liste_produit_souscategorie:
-    path: /liste/produit/souscategorie
+    path: /adminbof/liste/produit/souscategorie
     controller: App\Controller\Produit\Produit\CategorieController:listeproduitadmin
 users_adminuser_miseajour_produit:
-    path: /miseajour/du/produit/{id}
+    path: /adminbof/miseajour/du/produit/{id}
     controller: App\Controller\Produit\Produit\ProduitController:miseajourproduit
     requirements:
         id: \d+
 users_adminuser_supprimer_image_produit:
-    path: /supprimer/image/produit/{id}
+    path: /adminbof/supprimer/image/produit/{id}
     controller: App\Controller\Produit\Produit\ProduitController:supprimerimage
     requirements:
         id: '^[a-zA-Z0-9]*$'
 users_adminuser_validation_dupayement:
-    path: /validation/du/payement/{id}
+    path: /adminbof/validation/du/payement/{id}
     controller: App\Controller\Produit\Produit\PanierController:validationpayement
     requirements:
         id: \d+
 users_adminuser_liste_panier_non_livrer:
-    path: /liste/des/paniers/non/livrer
+    path: /adminbof/liste/des/paniers/non/livrer
     controller: App\Controller\Produit\Produit\PanierController:paniernonlivrer
     requirements:
         id: \d+
 users_adminuser_contenu_panier_user:
-    path: /contenu/admin/panier/user/{id}
+    path: /adminbof/contenu/admin/panier/user/{id}
     controller: App\Controller\Produit\Produit\PanierController:contenupanier
     requirements:
         id: \d+
 users_adminuser_livraison_panier_commander:
-    path: /livraison/panier/commander/{id}
+    path: /adminbof/livraison/panier/commander/{id}
     controller: App\Controller\Produit\Produit\PanierController:livraisonpanier
     requirements:
         id: \d+
 users_adminuser_tousles_panier_livrer:
-    path: /tousles/paniers/livrer
+    path: /adminbof/tousles/paniers/livrer
     controller: App\Controller\Produit\Produit\PanierController:panierlivrer
     requirements:
         id: \d+
 users_adminuser_supprimer_courant_produit:
-    path: /supprimer/produit/admin/{id}
+    path: /adminbof/supprimer/produit/admin/{id}
     controller: App\Controller\Produit\Produit\ProduitController:supprimerproduit
     requirements:
         id: \d+
 users_adminuser_ajout_nouveau_admin:
-    path: /ajout/nouveau/admin/plateforme
+    path: /adminbof/ajout/nouveau/admin/plateforme
     controller: App\Controller\Users\User\UserController:nouveauadmin
     requirements:
         id: \d+
 users_adminuser_enleve_role_admin:
-    path: /enleve/role/admin/user/{id}
+    path: /adminbof/enleve/role/admin/user/{id}
     controller: App\Controller\Users\User\UserController:eleverole
     requirements:
         id: \d+
 users_adminuser_ajouter_nouveau_service:
-    path: /ajouter/nouveau/service
+    path: /adminbof/ajouter/nouveau/service
     controller: App\Controller\Produit\Service\ServiceController:nouveauservice
 users_adminuser_add_type_article:
-    path: /adminads/add/type/article
+    path: /adminbof/add/type/article
     controller: App\Controller\Produit\Service\ServiceController::addtypearticle
 users_adminuser_delete_current_partie_article:
-    path: /adminads/delete/current/partie/article/{id}
+    path: /adminbof/delete/current/partie/article/{id}
     controller: App\Controller\Produit\Service\ServiceController::deletepartie
     requirements:
         id: \d+
 users_adminuser_liste_article_type:
-    path: /adminads/liste/article/type/{id}/{page}
+    path: /adminbof/liste/article/type/{id}/{page}
     controller: App\Controller\Produit\Service\ServiceController::articlespartype
     defaults:
         page: 1
@@ -91,229 +91,229 @@ users_adminuser_liste_article_type:
         id: \d+
         page: \d+
 users_adminuser_delete_type_article:
-    path: /adminads/delete/type/article/{id}
+    path: /adminbof/delete/type/article/{id}
     controller: App\Controller\Produit\Service\ServiceController::supprimertypearticle
     requirements:
         id: \d+
 users_adminuser_update_type_article:
-    path: /adminads/update/type/article/{id}
+    path: /adminbof/update/type/article/{id}
     controller: App\Controller\Produit\Service\ServiceController::updatetypearticle
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_set_gagnant_questionnaire:
-    path: /setgagnant/questionnaire/{id}
+    path: /adminbof/setgagnant/questionnaire/{id}
     controller: App\Controller\Produit\Service\QuestionController::updatequestion
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_add_candidat_question:
-    path: /add/candidat/question/{id}
+    path: /adminbof/add/candidat/question/{id}
     controller: App\Controller\Produit\Service\QuestionController::addCandidatQuestion
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_modifier_un_service:
-    path: /modifier/un/nouveau/service/{id}
+    path: /adminbof/modifier/un/nouveau/service/{id}
     controller: App\Controller\Produit\Service\ServiceController:modifierservice
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_mod_evolution_indicateur:
-    path: /mod/evolution/indicateur/{id}
+    path: /adminbof/mod/evolution/indicateur/{id}
     controller: App\Controller\Produit\Service\ServiceController:modifevolutionindicateur
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_add_un_evenement:
-    path: /add/un/evenement/service
+    path: /adminbof/add/un/evenement/service
     controller: App\Controller\Produit\Service\ServiceController:addevenement
 users_adminuser_add_article_part:
-    path: /add/article/part/{id}
+    path: /adminbof/add/article/part/{id}
     controller: App\Controller\Produit\Service\ServiceController:addarticlepart
     requirements:
         id: \d+
 users_adminuser_supprim_service_evenement:
-    path: /supprim/service/evenement/{id}
+    path: /adminbof/supprim/service/evenement/{id}
     controller: App\Controller\Produit\Service\ServiceController:supprimevenement
     requirements:
         id: \d+
 users_adminuser_supprimer_service_even:
-    path: /supprimer/service/even/{id}
+    path: /adminbof/supprimer/service/even/{id}
     controller: App\Controller\Produit\Service\ServiceController:supprimerservice
     requirements:
         id: \d+
 users_adminuser_liste_message_recu:
-    path: /liste/des/messages/recu
+    path: /adminbof/liste/des/messages/recu
     controller: App\Controller\Produit\Service\MessageController:messagerecu
 users_adminuser_supprim_message_contact:
-    path: /supprimer/message/contact/{id}
+    path: /adminbof/supprimer/message/contact/{id}
     controller: App\Controller\Produit\Service\MessageController:supprimermessage
     requirements:
         id: \d+
 produit_service_ajouter_ville:
-    path: /ajout/nouvelle/ville
+    path: /adminbof/ajout/nouvelle/ville
     controller: App\Controller\Produit\Service\VilleController:ajoutville
 produit_service_supprimer_ville_courante:
-    path: /supprimer/ville/courante/{id}
+    path: /adminbof/supprimer/ville/courante/{id}
     controller: App\Controller\Produit\Service\VilleController:supprimerville
     requirements:
         id: \d+
 users_adminuser_add_cout_livraison:
-    path: /add/cout/livraison/produit/{id}
+    path: /adminbof/add/cout/livraison/produit/{id}
     controller: App\Controller\Produit\Produit\ProduitController:addcoutlivraison
     requirements:
         id: \d+
 users_adminuser_modif_coutlivraison_produit:
-    path: /modif/coutlivraison/produit/{id}
+    path: /adminbof/modif/coutlivraison/produit/{id}
     controller: App\Controller\Produit\Produit\ProduitController:modifcoutlivraison
     requirements:
         id: \d+
 users_adminuser_delete_coutlivraison:
-    path: /delete/produit/coutlivraison/{id}
+    path: /adminbof/delete/produit/coutlivraison/{id}
     controller: App\Controller\Produit\Produit\ProduitController:supprimercoutlivraison
     requirements:
         id: \d+
 users_adminuser_addnew_continent_localite_user:
-    path: /addnew/continent/localite/user
+    path: /adminbof/addnew/continent/localite/user
     controller: App\Controller\Users\Localisationuser\ContinentController:accueilcontinent
 users_adminuser_savenew_pays_localite_user:
-    path: /savenew/pays/localite/user
+    path: /adminbof/savenew/pays/localite/user
     controller: App\Controller\Users\Localisationuser\PaysController:ajouterpays
 users_adminuser_validation_message_market:
-    path: /validation/message/market/{id}
+    path: /adminbof/validation/message/market/{id}
     controller: App\Controller\Produit\Service\MessageController:validationmessage
     requirements:
         id: \d+
 users_adminuser_message_email_new_letter:
-    path: /message/email/news/letter
+    path: /adminbof/message/email/news/letter
     controller: App\Controller\Produit\Service\MessemailController:messageemail
 users_adminuser_suppression_mess_email_user:
-    path: /suppression/mess/email/user/{id}
+    path: /adminbof/suppression/mess/email/user/{id}
     controller: App\Controller\Produit\Service\MessemailController:supprimermessemail
     requirements:
         id: \d+
 users_adminuser_update_content_continent:
-    path: /user/update/content/continent/{id}
+    path: /adminbof/user/update/content/continent/{id}
     controller: App\Controller\Users\Localisationuser\ContinentController:updatecontinent
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_upgrate_categorie_produit:
-    path: /user/upgrate/categorie/produit/{id}
+    path: /adminbof/user/upgrate/categorie/produit/{id}
     controller: App\Controller\Produit\Produit\CategorieController:upgratecategorie
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_modif_souscategorie_application:
-    path: /user/modif/souscategorie/application/{id}
+    path: /adminbof/user/modif/souscategorie/application/{id}
     controller: App\Controller\Produit\Produit\CategorieController:modifscat
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_alter_application_produit:
-    path: /user/alter/application/produit/{id}
+    path: /adminbof/user/alter/application/produit/{id}
     controller: App\Controller\Produit\Produit\ProduitController:miseajourproduit
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_modif_pays_localisation_user:
-    path: /modif/pays/localisation/user/{id}
+    path: /adminbof/modif/pays/localisation/user/{id}
     controller: App\Controller\Users\Localisationuser\PaysController:modificationpays
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_localisation_supprimer_continent:
-    path: /user/localisation/supprimer/continent/{id}
+    path: /adminbof/user/localisation/supprimer/continent/{id}
     controller: App\Controller\Users\Localisationuser\ContinentController:supprimercontinent
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_drop_country_user_local:
-    path: /drop/country/user/local/{id}
+    path: /adminbof/drop/country/user/local/{id}
     controller: App\Controller\Users\Localisationuser\PaysController:dropcountryuser
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_delete_categorie_produit:
-    path: /delete/categorie/produit/{id}
+    path: /adminbof/delete/categorie/produit/{id}
     controller: App\Controller\Produit\Produit\CategorieController:deletecategorie
     requirements:
         id: \d+
 users_adminuser_del_souscategorie_appli:
-    path: /del/souscategorie/appli/{id}
+    path: /adminbof/del/souscategorie/appli/{id}
     controller: App\Controller\Produit\Produit\CategorieController:delsouscategorie
     requirements:
         id: \d+
 users_adminuser_add_new_caracteristique:
-    path: /adminads/add/new/caracteristique/{id}
+    path: /adminbof/add/new/caracteristique/{id}
     controller: App\Controller\Produit\Produit\CategorieController::addnewcaracteristique
     requirements:
         id: \d+
 users_adminuser_modification_categorie_produit:
-    path: /adminads/modification/categorie/produit/{id}
+    path: /adminbof/modification/categorie/produit/{id}
     controller: App\Controller\Produit\Produit\CategorieController::modificationcategorie
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_supprimer_categorie_produit:
-    path: /adminads/supprimer/categorie/produit/{id}
+    path: /adminbof/supprimer/categorie/produit/{id}
     controller: App\Controller\Produit\Produit\CategorieController::supprimercategorie
     requirements:
         id: \d+
 users_adminuser_modifier_sous_categorie_produit:
-    path: /adminads/modifier/sous/categorie/produit/{id}
+    path: /adminbof/modifier/sous/categorie/produit/{id}
     controller: App\Controller\Produit\Produit\CategorieController::altersouscategorie
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_delete_scat_prod:
-    path: /adminads/delete/scat/prod/{id}
+    path: /adminbof/delete/scat/prod/{id}
     controller: App\Controller\Produit\Produit\CategorieController::supprimersouscategorie
     requirements:
         id: \d+
 users_adminuser_change_image_slide:
-    path: /adminads/change/image/slide/{id}
+    path: /adminbof/change/image/slide/{id}
     controller: App\Controller\Users\User\ImgslideController::alterslide
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_detail_article_admin:
-    path: /admin/detail/article/{id}
+    path: /adminbof/detail/article/{id}
     controller: App\Controller\Produit\Service\ServiceController:detailarticleadmin
     requirements:
         id: \d+
 users_adminuser_modif_description_article:
-    path: /adminads/modif/description/article/{id}
+    path: /adminbof/modif/description/article/{id}
     controller: App\Controller\Produit\Service\ServiceController::modifarticle
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_update_partie_current_article:
-    path: /adminads/update/partie/current/article/{id}
+    path: /adminbof/update/partie/current/article/{id}
     controller: App\Controller\Produit\Service\ServiceController::modifpartiearticle
     defaults:
         id: 0
     requirements:
         id: \d+
 users_adminuser_liste_questionnaires:
-    path: /liste/questionnaires/{page}
+    path: /adminbof/liste/questionnaires/{page}
     controller: App\Controller\Produit\Service\QuestionController:listeQuestionnaires
     defaults:
         page: 1

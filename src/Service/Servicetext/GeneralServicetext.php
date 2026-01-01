@@ -131,10 +131,22 @@ public function badRequest($error)
 	return new JsonResponse(array("status-code" => 400, "description" => "Bad Request - ".$error), Response::HTTP_BAD_REQUEST);
 }
 
+public function generateCode($tail = 10)
+{
+	$tabchar = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',0,1,2,3,4,5,6,7,8,9);
+	$chaine = '';
+	for($i = 0; $i < $tail; $i++)
+	{
+		$number = array_rand($tabchar);
+		$chaine .= $tabchar[$number];
+	}
+	return $chaine;
+}
+
 public function initialisePid($id)
 {
 	$id = (string)($id);
-	$tail = $this->password(10 - strlen($id));
+	$tail = $this->generateCode(10 - strlen($id));
 	$pid = $id.''.$tail;
 
 	return strtoupper($pid);

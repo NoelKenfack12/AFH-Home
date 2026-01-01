@@ -14,6 +14,10 @@ use App\Entity\Users\Localisationuser\Pays;
 use App\Entity\Produit\Produit\Produit;
 use App\Entity\Produit\Service\Service;
 use App\Service\Users\User\UserService;
+use Symfony\Component\Security\Http\Event\LogoutEvent;
+use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class SecurityController extends AbstractController
 {
@@ -194,5 +198,33 @@ public function opensession(Request $request, GeneralServicetext $generalService
 	
 	$data = $generalServicetext->badRequest();
 	return $data;
+}
+
+public function clearsession(Request $request, GeneralServicetext $service, TokenStorageInterface $tokenStorage, EventDispatcherInterface $eventDispatcher)
+{
+	$logoutEvent = new LogoutEvent($request, $tokenStorage->getToken());
+    $eventDispatcher->dispatch($logoutEvent);
+    $tokenStorage->setToken(null);
+    $response = new Response();
+    $response->headers->clearCookie('REMEMBERME');
+	$response->headers->clearCookie('PIDSESSREM');
+	$response->headers->clearCookie('PIDSESSDUR');
+    $response->send();
+	/*if(isset($_COOKIE["PIDSESSREM"]) and isset($_COOKIE["PIDSESSDUR"]))
+	{
+		// Stock les infos du cookie
+		$cookie_info = array(
+			'name'  => "PIDSESSREM",
+			'value' => "delete",
+			'time'  => $_COOKIE["PIDSESSDUR"]
+		);
+		setCookie($cookie_info['name'], $cookie_info['value'], $cookie_info['time'],'/');
+	}
+	
+	$this->get('security.token_storage')->setToken(null);
+
+	$request->getSession()->invalidate();*/
+
+	return $this->redirect($this->generateUrl('users_user_acces_plateforme'));
 }
 }

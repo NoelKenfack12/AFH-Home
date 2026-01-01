@@ -32,6 +32,11 @@ class Question
     private $reference;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $consigne;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $date;
@@ -129,6 +134,18 @@ class Question
     public function setReference(string $reference): self
     {
         $this->reference = $reference;
+
+        return $this;
+    }
+
+    public function getConsigne(): ?string
+    {
+        return $this->consigne;
+    }
+
+    public function setConsigne(string $consigne): self
+    {
+        $this->consigne = $consigne;
 
         return $this;
     }

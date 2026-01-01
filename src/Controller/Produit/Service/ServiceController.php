@@ -11,6 +11,7 @@ use App\Form\Produit\Service\EvenementeditType;
 use App\Entity\Produit\Service\Evenement;
 use App\Service\Servicetext\GeneralServicetext;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Produit\Service\Question;
 use App\Entity\Produit\Produit\Produit;
 use App\Entity\Produit\Service\Typearticle;
 use App\Form\Produit\Service\TypearticleType;
@@ -966,11 +967,21 @@ class ServiceController extends AbstractController
 		}
 	}
 
-	public function articlessupport($position, $page)
+	public function articlessupport($position, $page, $idType)
 	{
 		$em = $this->getDoctrine()->getManager();
-		$liste_article = $em->getRepository(Service::class)
+		$currentTypeArticle = null;
+		if($idType > 0)
+		{
+			$currentTypeArticle = $em->getRepository(Typearticle::class)
+							         ->find($idType);
+
+			$liste_article = $em->getRepository(Service::class)
+							->myFindByTypearticlePagine($idType, $position, $page, 10);
+		}else{
+			$liste_article = $em->getRepository(Service::class)
 							->myFindAllPagineType($position, $page, 10);
+		}
 
 		if($position == "mission" or $position == "vision")
 		{
@@ -982,10 +993,23 @@ class ServiceController extends AbstractController
 			array('page'=>$page, 'liste_article'=>$liste_article, 
 			'nombrepage'=>ceil(count($liste_article)/10), 'position'=>$position));
 		}else{
+
+			$type_article = $em->getRepository(Typearticle::class)
+							->findBy(array('position'=>$position), array("rang"=>"asc"), 20);
+			
 			return $this->render('Theme/Produit/Service/Service/articlessupport.html.twig', 
-			array('page'=>$page, 'liste_article'=>$liste_article, 
-			'nombrepage'=>ceil(count($liste_article)/10), 'position'=>$position));
+			array('page'=>$page, 'liste_article'=>$liste_article, 'type_article'=>$type_article,
+			'nombrepage'=>ceil(count($liste_article)/10), 'position'=>$position, 'idType'=>$idType, 'currentTypeArticle'=>$currentTypeArticle));
 		}
+	}
+
+	public function openQuiz($page)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$liste_article = $em->getRepository(Question::class)
+                            ->myFindAllPagine($page, 10);
+		return $this->render('Theme/Produit/Service/Service/openQuiz.html.twig', 
+		array('page'=>$page, 'liste_article'=>$liste_article,'nombrepage'=>ceil(count($liste_article)/10)));
 	}
 
 	public function commentaireArticle(Service $article)

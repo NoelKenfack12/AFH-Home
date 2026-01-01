@@ -17,10 +17,19 @@ produit_service_callback_homepage:
     path: /callback/homepage/afh
     controller: App\Controller\Produit\Service\ServiceController:callbackhomepage
 produit_service_articles_support:
-    path: /articles/support/{position}/{page}
+    path: /articles/support/{position}/{page}/{idType}
     controller: App\Controller\Produit\Service\ServiceController:articlessupport
     defaults:
         position: 'about'
+        page: 1
+        idType: 0
+    requirements:
+        page: \d+
+        idType: \d+
+produit_service_open_quiz_response:
+    path: /open/quiz/{page}
+    controller: App\Controller\Produit\Service\ServiceController:openQuiz
+    defaults:
         page: 1
 produit_service_commentaire_article:
     path: /commentaire/article/{id}

@@ -88,6 +88,90 @@
     <!-- End:begins  -->
   </div>
 
+  <div class="clearfix"></div>
+	{% if nombrepage > 0 %}
+				
+	{% if page > 1 and page <= nombrepage %}
+	{% set pagepre = page - 1 %}
+	{% else %}
+		{% set pagepre = nombrepage %}
+	{% endif %}
+
+	{% if page < nombrepage %}
+		{% set pagesuiv = page + 1 %}
+	{% else %}
+		{% set pagesuiv =  1 %}
+	{% endif %}
+
+	{% if nombrepage < 5 %}
+		{% set debut = 1 %}
+		{% set fin = nombrepage %}
+	{% else %}
+		{% if page > 2 and page < (nombrepage - 2) %}
+			{% set debut = page - 2 %}
+			{% if page + 2 >= nombrepage %}
+				{% set fin = nombrepage %}
+			{% else %}
+				{% set fin = page + 2 %}
+			{% endif %}
+		{% else %}
+			{% if page <= 2 %}
+				{% if page == 1 %}
+					{% set debut = 1 %}
+					{% set fin = page + 3 %}
+				{% else %}
+					{% set debut = 1 %}
+					{% set fin = page + 2 %}
+				{% endif %}
+			{% else %}
+				{% set debut = page - 2 %}
+				{% if page + 2 >= nombrepage %}
+					{% set fin = nombrepage %}
+				{% else %}
+					{% set fin = page + 2 %}
+				{% endif %}
+			{% endif %}
+		{% endif %}
+		
+	{% endif %}
+
+	<div class="row" style="margin: 15px  0px;">
+		<div class="col-md-12">
+		<div class="flex-container" style="background: #fafafa; ">
+			<div class="paginate-ctn">
+			<a href="{{ path('produit_service_articles_support', {'position': position, 'page': 1 }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-fast-backward"></span> </a>
+			<a href="{{ path('produit_service_articles_support', {'position': position, 'page': pagepre }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-step-backward"></span> </a>
+			{% for p in debut..fin %}
+				<a href="{{ path('produit_service_articles_support', {'position': position, 'page': p }) }}" style="display: inline-block;" class="round-effect {% if p == page %}activepage{% endif %}">{{ p }}</a>
+			{% endfor %}
+			<a href="{{ path('produit_service_articles_support', {'position': position, 'page': pagesuiv }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-step-forward"></span> </a>
+			<a href="{{ path('produit_service_articles_support', {'position': position, 'page': nombrepage }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-fast-forward"></span> </a>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="clearfix"></div>
+	{% else %}
+
+	<div class="row" style="margin: 15px  0px;">
+		<div class="col-md-12">
+		<div class="flex-container" style="background: #fafafa; ">
+			<div class="paginate-ctn">
+		
+			<a href="{{ path('produit_service_articles_support', {'position': position, 'page': page }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-fast-backward"></span> </a>
+			<a href="{{ path('produit_service_articles_support', {'position': position, 'page': page }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-step-backward"></span> </a>
+				<a href="{{ path('produit_service_articles_support', {'position': position, 'page': 1 }) }}" style="display: inline-block;" class="round-effect activepage">1</a>
+			<a href="{{ path('produit_service_articles_support', {'position': position, 'page': page }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-step-forward"></span> </a>
+			<a href="{{ path('produit_service_articles_support', {'position': position, 'page': page }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-fast-forward"></span> </a>
+
+		</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="clearfix"></div>
+	{% endif %}
+
 </div>
 <div class="col-sm-12 col-md-4">
 

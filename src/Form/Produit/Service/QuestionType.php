@@ -15,6 +15,7 @@ class QuestionType extends AbstractType
     {
         $builder
             ->add('titre',TextType::class, array('attr'=>array('class'=>'form-control','placeholder'=>'Rentrez la question')))
+            ->add('consigne',TextType::class, array('attr'=>array('class'=>'form-control','placeholder'=>'Consigne')))
             ->add('nomGagnant',TextType::class, array('attr'=>array('class'=>'form-control','placeholder'=>'Nom du gagnant'), 'required'=>false))
             ->add('telGagnant',TextType::class, array('attr'=>array('class'=>'form-control','placeholder'=>'Téléphone du gagnant'), 'required'=>false))
             ->add('emailGagnant',TextType::class, array('attr'=>array('class'=>'form-control','placeholder'=>'Email du gagnant'), 'required'=>false))

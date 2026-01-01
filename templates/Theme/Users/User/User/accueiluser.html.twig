@@ -35,7 +35,7 @@
 	  
 	  {# % if is_granted('ROLE_ADMIN') %  #}
 		<div>
-			<a href="{{ path('users_adminuser_accueil_administration') }}">Administration</a>
+			<a href="{{ path('users_adminuser_accueil_administration') }}">Administration</a> <a href="{{ path('logout_session') }}">Déconnexion</a>
 		</div>
 	  {# % endif % #}
 	</div>

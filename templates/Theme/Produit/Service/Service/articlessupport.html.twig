@@ -12,6 +12,105 @@
 
 {% block stylesheets %}
   {{ parent() }}
+
+  <style>
+	
+.nav-scroller {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  margin-top: 30px;
+  background-color: #fff;
+}
+.nav-scroller .nav-scroller-nav {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  z-index: 1;
+  align-self: center;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.nav-scroller .nav-scroller-nav::-webkit-scrollbar {
+  display: none;
+}
+.nav-scroller .nav-scroller-content {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  will-change: transform;
+}
+.nav-scroller .nav-scroller-content:not(.no-transition) {
+  transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.nav-scroller .nav-scroller-item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  color: #000;
+  text-decoration: none;
+}
+.nav-scroller .nav-scroller-item img {
+  width: 27px;
+  height: auto;
+  margin-right: 5px;
+}
+.nav-scroller .nav-scroller-item .nav__link__title {
+  font-size: 14px;
+}
+.nav-scroller .nav-scroller-item .nav__link__subtitle {
+  font-size: 6px;
+}
+.nav-scroller .nav-scroller-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  min-height: 44px;
+  height: 100%;
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  color: #000;
+  background: #fff;
+  border: 0;
+  transition: color 0.3s, opacity 0.3s;
+  cursor: pointer;
+}
+.nav-scroller .nav-scroller-btn:hover {
+  color: #666;
+}
+.nav-scroller .nav-scroller-btn:focus {
+  outline: 0;
+}
+.nav-scroller .nav-scroller-btn:not(.active) {
+  opacity: 0;
+  pointer-events: none;
+}
+.nav-scroller .nav-scroller-btn .nav-scroller-icon {
+  width: 30px;
+  display: inline-block;
+  position: relative;
+  top: -0.1em;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: middle;
+}
+.nav-scroller .nav-scroller-btn.nav-scroller-btn--left {
+  left: 0;
+}
+.nav-scroller .nav-scroller-btn.nav-scroller-btn--right {
+  right: 0;
+}
+  </style>
 {% endblock %}
 
 {% block userblog_body %}
@@ -22,8 +121,8 @@
 
 <div class="container">
 
-<div class="shadow- bg-light1"style="padding: 0px 0px 15px 0px; z-index: 1; position: relative!important; background: #fff;  box-shadow: 0px 1px 5px 0px #d4d8de;">
-  <!-- div style="height: 40px; background: #fff;"></div -->
+<!-- div class="shadow- bg-light1" style="padding: 0px 0px 15px 0px; z-index: 1; position: relative!important; background: #fff;  box-shadow: 0px 1px 5px 0px #d4d8de;">
+  
   <div class="container" style="padding-top: 5px;">
     <h3>Notre mission en quelques points
       <span style="float: right;">
@@ -33,7 +132,7 @@
       </span>
     </h3>
   </div>
-</div>
+</div -->
 
 <section  style="padding-top: 20px; margin: 0 auto;">
 
@@ -47,23 +146,97 @@
 
 <div class="col-sm-12 col-md-8">
 
+	{% if currentTypeArticle != null %}
+	<div class="article-detail article-panel" style="padding: 0px;">
+		<h4>{{ currentTypeArticle.nom }}</h4>
+		<h6>
+			{{ currentTypeArticle.description }}
+		</h6>
+	</div>
+	{% else %}
+		<div class="article-detail article-panel" style="padding: 0px;">
+			{% if  position == "educationlarge" %}
+				<h4>Education Massive</h4>
+			{% elseif(position == "demasquer") %}
+				<h4>Démasquons les plans du boureau</h4>
+			{% elseif(position == "nosreperes") %}
+				<h4>Recherche de nos repères</h4>
+			{% elseif(position == "entrepreneur") %}
+				<h4>Promotion de l'entrepreneuriat</h4>
+			{% elseif(position == "educationlarge") %}
+				<h4>Education Massive</h4>
+			{% elseif(position == "marketing") %}
+				<h4>Notre stratégie de communication</h4>
+			{% elseif(position == "donation") %}
+				<h4>Donation</h4>
+			{% elseif(position == "action") %}
+				<h4>Achat des actions</h4>
+			{% elseif(position == "investissment") %}
+				<h4>Investissement en amorçage</h4>
+			{% elseif(position == "comptabilite") %}
+				<h4>Stratégie de comptabilité</h4>
+			{% elseif(position == "bourse") %}
+				<h4>La bourse AFHunt</h4>
+			{% else %}
+				<h4>Liste des acticles</h4>
+			{% endif %}
+			<h6>
+				Tu peux contribuer au changement en restant curieux et en avançant avec nous !
+			</h6>
+		</div>
+	{% endif %}
+
+<div class="nav-scroller" style="margin-bottom: 15px; z-index: 1; position: relative!important; background: #fff;  box-shadow: 0px 1px 5px 0px #d4d8de;">
+  <button type="button" class="nav-scroller-btn nav-scroller-btn--left" aria-label="Scroll left">
+    <svg class="nav-scroller-icon" height="512" viewBox="0 0 32 32" width="512" xmlns="http://www.w3.org/2000/svg" id="fi_2735069">
+      <g id="Layer_19" data-name="Layer 19">
+        <path d="m23.21 28.29a1 1 0 0 1 0 1.42 1 1 0 0 1 -1.42 0l-13-13a1 1 0 0 1 0-1.42l13-13a1 1 0 1 1 1.42 1.42l-12.3 12.29z"></path>
+      </g>
+    </svg>
+  </button>
+  <nav class="nav-scroller-nav">
+    <div class="nav-scroller-content">
+	  {% for typearticle in type_article %}
+      <a href="{{ path('produit_service_articles_support', {'idType': typearticle.id, 'position': position}) }}" class="nav-scroller-item nav__link">
+		{% if typearticle.src != "source" %}
+        <img src="{{ asset(typearticle.getwebpath) }}" alt="" style="height: 40px;">
+		{% endif %}
+        <div class="nav__link__content">
+          <div class="nav__link__title">{{ typearticle.nom }}</div>
+		  <div class="nav__link__subtitle">{{ typearticle.breve }}</div>
+        </div>
+      </a>
+	  {% endfor %}
+      
+    </div>
+  </nav>
+  <button type="button" class="nav-scroller-btn nav-scroller-btn--right" aria-label="Scroll right">
+    <svg class="nav-scroller-icon" height="512" viewBox="0 0 32 32" width="512" xmlns="http://www.w3.org/2000/svg" id="fi_2735071">
+      <g id="Layer_20" data-name="Layer 20">
+        <path d="m23.21 16.71-13 13a1 1 0 0 1 -1.42 0 1 1 0 0 1 0-1.42l12.3-12.29-12.3-12.29a1 1 0 0 1 1.42-1.42l13 13a1 1 0 0 1 0 1.42z"></path>
+      </g>
+    </svg>
+  </button>
+</div>
+
     <div class="shadow3" style="border: 3px solid #9dba3d; border-radius: 5px;">
       <div class="article-detail article-panel">
         <!-- h2>Le Challenge est grand</h2 -->
+		 {% if currentTypeArticle == null %}
         <h4 style="margin-bottom: 20px;">
           Dans un monde où les inégalités ne cessent de croître, les pays dominés doivent s’éveiller pour déjouer les stratégies de domination qui les maintiennent dans une position d’infériorité. Leur émancipation est essentielle pour bâtir un avenir plus équilibré et prospère.
 
           Chez <span class="mic" style="background: #98d3ce; color: #fff;">AFHunt Think Tank</span>, nous nous engageons à analyser les défis auxquels ces nations sont confrontées, afin de proposer des solutions innovantes et d’agir concrètement pour contribuer à les positionner comme des acteurs majeurs du monde multipolaire. Notre mission reflète notre détermination à bâtir des sociétés autonomes, influentes et porteuses de progrès, tant sur notre planète actuelle qu’au-delà.
         </h4>
+		{% else %}
+		<h4 style="margin-bottom: 20px;">
+          {{ currentTypeArticle.description }}
+        </h4>
+		{% endif %}
       </div>
     </div>
 
-	<div class="article-detail article-panel" style="padding: 0px;">
-		<h4>Quelques articles à propos de noud</h4>
-		<h6>
-			Quelques figures qui font la fierté du groupe
-		</h6>
-	</div>
+	
 
 	<div class="cards mb-3" style="width: 100%!important;">
 		{% for service in liste_article %}
@@ -117,6 +290,91 @@
 	  {% endfor %}
 	</div>
 
+
+	<div class="clearfix"></div>
+	{% if nombrepage > 0 %}
+				
+	{% if page > 1 and page <= nombrepage %}
+	{% set pagepre = page - 1 %}
+	{% else %}
+		{% set pagepre = nombrepage %}
+	{% endif %}
+
+	{% if page < nombrepage %}
+		{% set pagesuiv = page + 1 %}
+	{% else %}
+		{% set pagesuiv =  1 %}
+	{% endif %}
+
+	{% if nombrepage < 5 %}
+		{% set debut = 1 %}
+		{% set fin = nombrepage %}
+	{% else %}
+		{% if page > 2 and page < (nombrepage - 2) %}
+			{% set debut = page - 2 %}
+			{% if page + 2 >= nombrepage %}
+				{% set fin = nombrepage %}
+			{% else %}
+				{% set fin = page + 2 %}
+			{% endif %}
+		{% else %}
+			{% if page <= 2 %}
+				{% if page == 1 %}
+					{% set debut = 1 %}
+					{% set fin = page + 3 %}
+				{% else %}
+					{% set debut = 1 %}
+					{% set fin = page + 2 %}
+				{% endif %}
+			{% else %}
+				{% set debut = page - 2 %}
+				{% if page + 2 >= nombrepage %}
+					{% set fin = nombrepage %}
+				{% else %}
+					{% set fin = page + 2 %}
+				{% endif %}
+			{% endif %}
+		{% endif %}
+		
+	{% endif %}
+
+	<div class="row" style="margin: 15px  0px;">
+		<div class="col-md-12">
+		<div class="flex-container" style="background: #fafafa; ">
+			<div class="paginate-ctn">
+			<a href="{{ path('produit_service_articles_support', {'idType': idType, 'position': position, 'page': 1 }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-fast-backward"></span> </a>
+			<a href="{{ path('produit_service_articles_support', {'idType': idType, 'position': position, 'page': pagepre }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-step-backward"></span> </a>
+			{% for p in debut..fin %}
+				<a href="{{ path('produit_service_articles_support', {'idType': idType, 'position': position, 'page': p }) }}" style="display: inline-block;" class="round-effect {% if p == page %}activepage{% endif %}">{{ p }}</a>
+			{% endfor %}
+			<a href="{{ path('produit_service_articles_support', {'idType': idType, 'position': position, 'page': pagesuiv }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-step-forward"></span> </a>
+			<a href="{{ path('produit_service_articles_support', {'idType': idType, 'position': position, 'page': nombrepage }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-fast-forward"></span> </a>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="clearfix"></div>
+	{% else %}
+
+	<div class="row" style="margin: 15px  0px;">
+		<div class="col-md-12">
+		<div class="flex-container" style="background: #fafafa; ">
+			<div class="paginate-ctn">
+		
+			<a href="{{ path('produit_service_articles_support', {'idType': idType, 'position': position, 'page': page }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-fast-backward"></span> </a>
+			<a href="{{ path('produit_service_articles_support', {'idType': idType, 'position': position, 'page': page }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-step-backward"></span> </a>
+				<a href="{{ path('produit_service_articles_support', {'idType': idType, 'position': position, 'page': 1 }) }}" style="display: inline-block;" class="round-effect activepage">1</a>
+			<a href="{{ path('produit_service_articles_support', {'idType': idType, 'position': position, 'page': page }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-step-forward"></span> </a>
+			<a href="{{ path('produit_service_articles_support', {'idType': idType, 'position': position, 'page': page }) }}" style="display: inline-block;" class="round-effect"> <span class="fa fa-fast-forward"></span> </a>
+
+		</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="clearfix"></div>
+	{% endif %}
+	
 </div>
 <div class="col-sm-12 col-md-4">
 
@@ -180,6 +438,199 @@ function controlScrollPop()
     }
 }
 controlScrollPop();
+
+
+
+
+
+
+const PriorityNavScroller = function({
+    selector: selector = '.nav-scroller',
+    navSelector: navSelector = '.nav-scroller-nav',
+    contentSelector: contentSelector = '.nav-scroller-content',
+    itemSelector: itemSelector = '.nav-scroller-item',
+    buttonLeftSelector: buttonLeftSelector = '.nav-scroller-btn--left',
+    buttonRightSelector: buttonRightSelector = '.nav-scroller-btn--right',
+    scrollStep: scrollStep = 500
+  } = {}) {
+
+  const navScroller = typeof selector === 'string' ? document.querySelector(selector) : selector;
+
+  const validateScrollStep = () => {
+    return Number.isInteger(scrollStep) || scrollStep === 'average';
+  }
+
+  if (navScroller === undefined || navScroller === null || !validateScrollStep()) {
+    throw new Error('There is something wrong, check your options.');
+  }
+
+  const navScrollerNav = navScroller.querySelector(navSelector);
+  const navScrollerContent = navScroller.querySelector(contentSelector);
+  const navScrollerContentItems = navScrollerContent.querySelectorAll(itemSelector);
+  const navScrollerLeft = navScroller.querySelector(buttonLeftSelector);
+  const navScrollerRight = navScroller.querySelector(buttonRightSelector);
+
+  let scrolling = false;
+  let scrollAvailableLeft = 0;
+  let scrollAvailableRight = 0;
+  let scrollingDirection = '';
+  let scrollOverflow = '';
+  let timeout;
+
+  // Sets overflow and toggle buttons accordingly
+  const setOverflow = function() {
+    scrollOverflow = getOverflow();
+    toggleButtons(scrollOverflow);
+    calculateScrollStep();
+  }
+
+  // Debounce setting the overflow with requestAnimationFrame
+  const requestSetOverflow = function() {
+    if (timeout) window.cancelAnimationFrame(timeout);
+
+    timeout = window.requestAnimationFrame(() => {
+      setOverflow();
+    });
+  }
+
+  // Gets the overflow available on the nav scroller
+  const getOverflow = function() {
+    let scrollWidth = navScrollerNav.scrollWidth;
+    let scrollViewport = navScrollerNav.clientWidth;
+    let scrollLeft = navScrollerNav.scrollLeft;
+
+    scrollAvailableLeft = scrollLeft;
+    scrollAvailableRight = scrollWidth - (scrollViewport + scrollLeft);
+
+    // 1 instead of 0 to compensate for number rounding
+    let scrollLeftCondition = scrollAvailableLeft > 1;
+    let scrollRightCondition = scrollAvailableRight > 1;
+
+    // console.log(scrollWidth, scrollViewport, scrollAvailableLeft, scrollAvailableRight);
+
+    if (scrollLeftCondition && scrollRightCondition) {
+      return 'both';
+    }
+    else if (scrollLeftCondition) {
+      return 'left';
+    }
+    else if (scrollRightCondition) {
+      return 'right';
+    }
+    else {
+      return 'none';
+    }
+
+  }
+
+  // Calculates the scroll step based on the width of the scroller and the number of links
+  const calculateScrollStep = function() {
+    if (scrollStep === 'average') {
+      let scrollViewportNoPadding = navScrollerNav.scrollWidth - (parseInt(getComputedStyle(navScrollerContent).getPropertyValue('padding-left')) + parseInt(getComputedStyle(navScrollerContent).getPropertyValue('padding-right')));
+
+      let scrollStepAverage = Math.floor(scrollViewportNoPadding / navScrollerContentItems.length);
+
+      scrollStep = scrollStepAverage;
+    }
+  }
+
+  // Move the scroller with a transform
+  const moveScroller = function(direction) {
+
+    if (scrolling === true || (scrollOverflow !== direction && scrollOverflow !== 'both')) return;
+
+    let scrollDistance = scrollStep;
+    let scrollAvailable = direction === 'left' ? scrollAvailableLeft : scrollAvailableRight;
+
+    // If there will be less than 25% of the last step visible then scroll to the end
+    if (scrollAvailable < (scrollStep * 1.75)) {
+      scrollDistance = scrollAvailable;
+    }
+
+    if (direction === 'right') {
+      scrollDistance *= -1;
+    }
+
+    navScrollerContent.classList.remove('no-transition');
+    navScrollerContent.style.transform = 'translateX(' + scrollDistance + 'px)';
+
+    scrollingDirection = direction;
+    scrolling = true;
+  }
+
+  // Set the scroller position and removes transform, called after moveScroller() in the transitionend event
+  const setScrollerPosition = function() {
+    var style = window.getComputedStyle(navScrollerContent, null);
+    var transform = style.getPropertyValue('transform');
+    var transformValue = Math.abs(parseInt(transform.split(',')[4]) || 0);
+
+    if (scrollingDirection === 'left') {
+      transformValue *= -1;
+    }
+
+    navScrollerContent.classList.add('no-transition');
+    navScrollerContent.style.transform = '';
+    navScrollerNav.scrollLeft = navScrollerNav.scrollLeft + transformValue;
+    navScrollerContent.classList.remove('no-transition');
+
+    scrolling = false;
+  }
+
+  // Toggle buttons depending on overflow
+  const toggleButtons = function(overflow) {
+    if (overflow === 'both' || overflow === 'left') {
+      navScrollerLeft.classList.add('active');
+    }
+    else {
+      navScrollerLeft.classList.remove('active');
+    }
+
+    if (overflow === 'both' || overflow === 'right') {
+      navScrollerRight.classList.add('active');
+    }
+    else {
+      navScrollerRight.classList.remove('active');
+    }
+  }
+
+  const init = function() {
+
+    setOverflow();
+
+    window.addEventListener('resize', () => {
+      requestSetOverflow();
+    });
+
+    navScrollerNav.addEventListener('scroll', () => {
+      requestSetOverflow();
+    });
+
+    navScrollerContent.addEventListener('transitionend', () => {
+      setScrollerPosition();
+    });
+
+    navScrollerLeft.addEventListener('click', () => {
+      moveScroller('left');
+    });
+
+    navScrollerRight.addEventListener('click', () => {
+      moveScroller('right');
+    });
+
+  };
+
+  // Self init
+  init();
+
+  // Reveal API
+  return {
+    init
+  };
+
+};
+
+// // Init with default setup
+const priorityNavScrollerDefault = PriorityNavScroller();
 </script>
 
 

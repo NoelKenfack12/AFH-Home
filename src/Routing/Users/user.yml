@@ -56,3 +56,6 @@ users_user_large_vue_user:
 users_user_security_open_session:
     path: /open/session
     controller: App\Controller\Users\User\SecurityController::opensession
+logout_session: 
+    path: /logout/session
+    controller: App\Controller\Users\User\SecurityController::clearsession
