@@ -19,10 +19,10 @@ twig:
         email: infos@africexplorer.com
         number: /^[0-9][0-9]{7,12}$/
         mailregex: /[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}/i
-        othersite: rrer
+        othersite: AFH Home
         siteweb: http://www.afhunt.com
-        oauthloginUrl: http://localhost:4200/public/oauth2?clientid=sZjGlfwhpQsAa5o5EWfx96PVSJpilSDlC6t5P6A1CBvCKhcVMDsUBHkI7y6S2zXaSkPV+CziIu0cXSGbFIde6PxD2Jtw7iVoffC+Xg==]z12U[MQHdVvulzDnBeJ/vt4OrWdbRnjuk9musXv967qUHKPEKY994nH34zQhP7Zf8fHJIs7Kpac+V8CXGSnkHrKTEEcmGm4ruhkNwux5cmbnvLXo6A9jS7fpMd/02Pup9ev/i4cSu0AwthOZyAKvvUuaRCReeYpcCW+7i80ZJI7b3AvMWLzU93pMlLUNP+9+Vjg==
-        clientSecret: q173il4fh8yem1lv
+        oauthloginUrl: http://openid.afhunt.com/public/oauth2?clientid=BbKRP6//aFi1I6sFvk6I6dHHwrdGrTkLBXTV+xC/v5aD+04/ayrOSw9rhr6sCY/dpoAn5wr+/Zpdqkh7TehcEvZCOcVI9Z7sNkFO0ukN8q4NGw==]z12U[YVsSD+woNgrMb+/cgspawOJUkA6igoNJa6324UqBEmIpFgjzYtwbS6ZzmOW7P/GWiheoqyQl5MtjqFMBQx9kf/Zd0iNLaCvgRCyggemBgPaYDztQPgFDcPo+tKKWtLakKJe4Tax5z4ia0qYGVUCHg1XDj3Kc5UpsGePte0miV1yLm6Ji8hwfYWUeeNo=
+        clientSecret: ffqkfqnssqcwzmk1
         serverVideo: 'https://cm.gloobest.com'
 when@test:
     twig:

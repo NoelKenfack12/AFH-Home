@@ -217,7 +217,7 @@
 }
 .dropdown-group-menu-hover {
   padding-bottom: 1rem;
-  padding-inline: 1.5rem;
+  padding-inline: 0px;
 }
 .dropdown-title-menu-hover {
   display: flex;
@@ -233,7 +233,7 @@
 }
 .dropdown-items-menu-hover {
   row-gap: 0.5rem;
-  padding-inline: 3.5rem;
+  padding: 10px;
   padding-top: 0.35rem;
 }
 .dropdown-link-menu-hover {
@@ -483,19 +483,21 @@
                 <a href="#" class="text-base-menu-hover font-medium-menu-hover">Soumission de projets</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
                 Projets encadrés et développés par <strong>{{ site }}</strong> 
-                </p></li>
-              <li><a href="#" class="dropdown-link-menu-hover">AFH Market</a></li>
-              <li><a href="#" class="dropdown-link-menu-hover">AFH Host</a></li>
-              <li><a href="#" class="dropdown-link-menu-hover">AFH Code</a></li>
-              <li><a href="#" class="dropdown-link-menu-hover">Gloobest</a></li>
-              <li><a href="#" class="dropdown-link-menu-hover">AFH Ads&Win</a></li>
-              <li><a href="#" class="dropdown-link-menu-hover">AFH Formations</a></li>
-              <li><a href="#" class="dropdown-link-menu-hover">AFH Factory</a></li>
-              <li><a href="#" class="dropdown-link-menu-hover">AFH  Wallet</a></li>
-              <li><a href="#" class="dropdown-link-menu-hover">SYSCofie</a></li>
-              <li><a href="#" class="dropdown-link-menu-hover">Mel Moïse Market</a></li>
-              <li><a href="#" class="dropdown-link-menu-hover">AFH Box</a></li>
-              <li><a href="#" class="dropdown-link-menu-hover">AFH LiveCa</a></li>
+                </p>
+              </li>
+              <li><strong>AFH Market</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/6" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://market.afhunt.com"  class="dropdown-link-menu-hover">Site web</a></li>
+              <li><strong>AFH Host</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/2" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://host.afhunt.com"  class="dropdown-link-menu-hover">Site web</a></li>
+              <li><strong>AFH Code</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/7" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://code.afhunt.com"  class="dropdown-link-menu-hover">Site web</a></li>
+              <li><strong>Gloobest</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/8" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://gloobest.com"  class="dropdown-link-menu-hover">Site web</a></li>
+              <li><strong>AFH Ads&Win</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/1" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://ads.afhunt.com"  class="dropdown-link-menu-hover">Site web</a></li>
+              <li><strong>AFH Mentors</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/8" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://mentors.afhunt.com" class="dropdown-link-menu-hover">Site web</a></li>
+              <li><strong>AFH Factory</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/3" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://factory.afhunt.com" class="dropdown-link-menu-hover">Site web</a></li>
+              <li><strong>AFH Wallet</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/3" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://wallet.afhunt.com" class="dropdown-link-menu-hover">Site web</a></li>
+              <li><strong>SYSCofie</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/5" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://syscofie.com" class="dropdown-link-menu-hover">Site web</a></li>
+              <li><strong>Mel Moïse Market</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/4" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://melmoisemarket.com" class="dropdown-link-menu-hover">Site web</a></li>
+              <li><strong>AFH Workspace</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/7" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://workspace.afhunt.com"  class="dropdown-link-menu-hover">Site web</a></li>
+              <li><strong>AFH Solutions</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/7" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://solutions.afhunt.com"  class="dropdown-link-menu-hover">Site web</a></li>
+              <li><strong>AFH Send API</strong> <span class="bi bi-dot"></span> <a href="https://factory.afhunt.com/liste/svce/1" class="dropdown-link-menu-hover">Investissement</a> | <a href="https://sendapi.afhunt.com" class="dropdown-link-menu-hover">Site web</a></li>
             </ul>
           </div>
 
@@ -518,21 +520,21 @@
                 </p>
               </li>
               <li>
-                <a href="{{ path('produit_service_articles_support', {'position': 'investissment'}) }}" class="text-base-menu-hover font-medium-menu-hover">Investissement en amorçage</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'investissment'}) }}" class="text-base-menu-hover font-medium-menu-hover">Investissement AFH Group</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                  Investissement avec taux d'intérêt mensuel sans engagement pour le demandeur.
+                  Pour soutenir la croissance du groupe AFH, nous avons une structure légale qui encadre les investissements pour la croissance des entreprises associées au groupe.
                 </p>
               </li>
               <li>
-                <a href="{{ path('produit_service_articles_support', {'position': 'action'}) }}" class="text-base-menu-hover font-medium-menu-hover">Achat des actions</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'action'}) }}" class="text-base-menu-hover font-medium-menu-hover">Analyse de l’actualité</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                  Reprise des actions d'un actionnaire dans l'une de notre entreprise.
+                  Nous analysons l’actualité récente de manière objective, sans parti pris, afin d’éclairer les hypothèses les plus probables.
                 </p>
               </li>
               <li>
-                <a href="{{ path('produit_service_articles_support', {'position': 'donation'}) }}" class="text-base-menu-hover font-medium-menu-hover">Donation</a>
+                <a href="{{ path('produit_service_articles_support', {'position': 'donation'}) }}" class="text-base-menu-hover font-medium-menu-hover">Notre démarche pédagogique</a>
                 <p class="text-base-menu-hover font-normal-menu-hover">
-                  Nous acceptons les aides destinées au développement des projets portés par le think tank.
+                  Nous adoptons une pédagogie simple et accessible. Dans cette rubrique, nous proposons des articles qui présentent notre approche de production de contenu pour chaque thématique. 
                 </p>
               </li>
             </ul>

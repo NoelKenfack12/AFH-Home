@@ -896,7 +896,9 @@ class ServiceController extends AbstractController
 		{
 			if($param == 'about')
 			{
-				return $this->render('Theme/Produit/Service/Service/callbackaboutpage.html.twig');
+				$liste_appli = $em->getRepository(Produit::class)
+	                      		  ->myfindAll();
+				return $this->render('Theme/Produit/Service/Service/callbackaboutpage.html.twig', array('liste_appli'=>$liste_appli));
 			}else if($param == 'projet')
 			{
 				$liste_appli = $em->getRepository(Produit::class)

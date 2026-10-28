@@ -48,7 +48,7 @@
 		margin-top: 10px;
 	}
 
-	.tags ul li a {
+	.tags ul li a.siteweb {
 		display: block;
 		text-decoration: none;
 		padding: 10px 15px;
@@ -56,7 +56,7 @@
 		color: black;
 	}
 
-	.tags ul li a:hover {
+	.tags ul li a.siteweb:hover {
 		background-color: #f9eae3;
 		-webkit-transition-duration: 350ms;
 		transition-duration: 350ms;
@@ -214,14 +214,15 @@
 	</div>
 
 	<div class="tags">
-		<h1>Projets récents</h1>
+		<h1>Projets et investissements</h1>
 	  
 		<ul>
 			{% for appli in liste_appli %}
 			<li>
-				<a href="">
+				<a href="{{ appli.link }}" class="siteweb">
 				{{ appli.nom }}
 				</a>
+				<a href="{{ appli.bloglink }}" style="display: inline-block; margin: 10px;">Investissement</a>
 			</li>
 			{% endfor %}
 	  
@@ -236,7 +237,7 @@
 			<h4>Vision</h4>
 			<h5 style="margin-bottom: 20px;">
 				Le monde est petit. Sans un équilibre des puissances fortes, nous resterons vulnérables et condamnés à l’échec au lieu d’explorer ensemble d’autres formes de vie dans l’immensité de l’univers. Les conflits pour l’accès privilégié aux ressources limitées en sont la preuve éclatante.
-				<strong>AFHunt Think Thank</strong> ambitionne de travailler activement à la consolidation d’un monde multipolaire, où ces pôles collaborent étroitement, main dans la main, pour assurer leur développement et ouvrir ensemble la voie à l’exploration de nouvelles formes de vie au-delà de notre chère planète.
+				<strong>AFHunt Think Tank</strong> ambitionne de travailler activement à la consolidation d’un monde multipolaire, où ces pôles collaborent étroitement, main dans la main, pour assurer leur développement et ouvrir ensemble la voie à l’exploration de nouvelles formes de vie au-delà de notre chère planète.
 			</h5>
 		</div>
 	</div>
@@ -248,7 +249,7 @@
 		<div class="article-detail article-panel">
 			<h4>Mission</h4>
 			<h5 style="margin-bottom: 20px;">
-				AFHunt Think Thank se donne pour mission d’inspirer, concevoir et promouvoir des idées novatrices afin d’accélérer l’émergence d’un modèle de gouvernance multipolaire, où la recherche du bien-être collectif devient une réalité.
+				AFHunt Think Tank se donne pour mission d’inspirer, concevoir et promouvoir des idées novatrices afin d’accélérer l’émergence d’un modèle de gouvernance multipolaire, où la recherche du bien-être collectif devient une réalité.
 				À travers la recherche, l’analyse prospective et des initiatives concrètes, nous mobilisons une jeunesse engagée afin que chaque région du monde contribue, par les compétences qu’elle incarne, à la mise en place de cette transformation.
 			</h5>
 		</div>

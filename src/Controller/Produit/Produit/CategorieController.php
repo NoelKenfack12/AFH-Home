@@ -119,7 +119,6 @@ public function listeproduitadmin(GeneralServicetext $service, Request $request)
 {
 	$em = $this->getDoctrine()->getManager();
 	$produit = new Produit($service);
-	$request = $this->getRequest();
 	$formpro = $this->createForm(ProduitType::class, $produit);
 	if($request->getMethod() == 'POST')
 	{

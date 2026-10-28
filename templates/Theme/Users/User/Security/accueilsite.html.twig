@@ -12,6 +12,12 @@
 
 {% block stylesheets %}
   {{ parent() }}
+
+  <style>
+    .containary .inner figure.cube-face a {
+        font-size: 11px!important;
+    }
+  </style>
 {% endblock %}
 
 {% block userblog_body %}
@@ -294,7 +300,7 @@
 
                 <div class="box-samples-img box-samples-img-1 wow fadeIn" data-wow-delay="1.8s">
         					<div class="img-classic">
-        						<a href="#!" class="inner-parad-card first-item collapse-gigamenu"  value="about" data-parallax-scroll="{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}">
+        						<a href="{{ path('produit_service_articles_support') }}" class="inner-parad-card first-item collapse-gigamenu"  value="about" data-parallax-scroll="{&quot;y&quot;: -90,  &quot;smoothness&quot;: 30}">
 
                       <div class="text-left">
                         <img src="{{ asset('template/images/about.png') }}" alt="" style="">
@@ -459,7 +465,7 @@
                     </figure>
                     <figure class="top top9">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="http://mbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH MBill</a>
+                        <a href="http://solutions.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Slts</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -482,7 +488,7 @@
                     </figure>
                     <figure class="top top12">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="http://hbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH HBill</a>
+                        <a href="http://sendapi.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH SdAPI</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -498,7 +504,7 @@
                     </figure>
                     <figure class="top top14">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="http://lbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH LBill</a>
+                        <a href="http://host.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Host</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -514,7 +520,7 @@
                     </figure>
                     <figure class="top top16">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="http://box.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Box</a>
+                        <a href="http://workspace.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Box</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -530,7 +536,7 @@
                     </figure>
                     <figure class="top top18">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="http://africexplorer.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Disc.</a>
+                        <a href="http://digirh.workspace.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">DigiRH</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -546,7 +552,7 @@
                     </figure>
                     <figure class="top top20">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="http://messenger.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Mess.</a>
+                        <a href="http://liveca.workspace.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">LiveCa</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -571,7 +577,7 @@
                     </figure>
                     <figure class="top top23">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="http://myaccount.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Oauth</a>
+                        <a href="http://myaccount.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH OpenId</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -587,7 +593,7 @@
                     </figure>
                     <figure class="top top25">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="http://ads.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://digicare.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">DigiCare</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -603,7 +609,7 @@
                     </figure>
                     <figure class="top top27">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="http://code.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
+                        <a href="http://legalcase.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">LegalCase</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -619,7 +625,7 @@
                     </figure>
                     <figure class="top top29">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="http://factory.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Fact.</a>
+                        <a href="http://acadev.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Acadev</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -642,7 +648,7 @@
                     </figure>
                     <figure class="top top32">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="http://win.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
+                        <a href="http://gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -658,7 +664,7 @@
                     </figure>
                     <figure class="top top34">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="http://mbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH MBill</a>
+                        <a href="http://market.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Market</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -674,7 +680,7 @@
                     </figure>
                     <figure class="top top36">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="http://hbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH HBill</a>
+                        <a href="http://mentors.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Mentors</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -690,7 +696,7 @@
                     </figure>
                     <figure class="top top38">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="http://lbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH LBill</a>
+                        <a href="http://afh.li/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH LI</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -706,7 +712,7 @@
                     </figure>
                     <figure class="top top40">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="http://box.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Box</a>
+                        <a href="http://abita.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Abita</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -716,7 +722,7 @@
                     
                     <figure class="top top41">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="http://ads.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://delivery.afh.li/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Delivery</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -732,7 +738,7 @@
                     </figure>
                     <figure class="top top43">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="http://africexplorer.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Disc.</a>
+                        <a href="http://cm.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest CM</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -766,7 +772,7 @@
                     </figure>
                     <figure class="top top47">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="http://messenger.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Mess.</a>
+                        <a href="http://ci.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest CI</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -782,7 +788,7 @@
                     </figure>
                     <figure class="top top49">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="http://wallet.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Wallet</a>
+                        <a href="http://sn.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest SN</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -805,7 +811,7 @@
                     </figure>
                     <figure class="top top52">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="http://myaccount.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Oauth</a>
+                        <a href="http://bf.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest BF</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -821,7 +827,7 @@
                     </figure>
                     <figure class="top top54">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="http://ads.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Ads</a>
+                        <a href="http://cf.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest CF</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -855,7 +861,7 @@
                     </figure>
                     <figure class="top top58">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="http://code.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Code</a>
+                        <a href="http://dz.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest DZ</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -871,7 +877,7 @@
                     </figure>
                     <figure class="top top60">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="http://factory.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Fact.</a>
+                        <a href="http://ml.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest ML</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -880,7 +886,7 @@
                     </figure>
                     <figure class="top top61">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="http://win.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
+                        <a href="http://za.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest ZA</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -896,7 +902,7 @@
                     </figure>
                     <figure class="top top63">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="http://mbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH MBill</a>
+                        <a href="http://melmoisemarket.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">MMM</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -912,7 +918,7 @@
                     </figure>
                     <figure class="top top65">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="http://hbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH HBill</a>
+                        <a href="http://syscofie.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Syscofie</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -928,7 +934,7 @@
                     </figure>
                     <figure class="top top67">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="http://lbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH LBill</a>
+                        <a href="http://cd.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest CD</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -944,7 +950,7 @@
                     </figure>
                     <figure class="top top69">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="http://box.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Box</a>
+                        <a href="http://ga.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest GA</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -967,7 +973,7 @@
                     </figure>
                     <figure class="top top72">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="http://africexplorer.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Disc.</a>
+                        <a href="http://mg.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest MG</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -983,7 +989,7 @@
                     </figure>
                     <figure class="top top74">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="http://messenger.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Mess.</a>
+                        <a href="http://ne.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">Gloobest NE</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1088,7 +1094,7 @@
                     </figure>
                     <figure class="top top87">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="http://mbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH MBill</a>
+                        <a href="http://win.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Win</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1104,7 +1110,7 @@
                     </figure>
                     <figure class="top top89">
                       <figure class="cube-face cubeface1" style="background: #ed6e11;">
-                        <a href="http://hbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH HBill</a>
+                        <a href="http://solutions.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Slts</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1127,7 +1133,7 @@
                     </figure>
                     <figure class="top top92">
                       <figure class="cube-face cubeface1" style="background: #325ea9;">
-                        <a href="http://lbill.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH LBill</a>
+                        <a href="http://sendapi.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH SdAPI</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1143,7 +1149,7 @@
                     </figure>
                     <figure class="top top94">
                       <figure class="cube-face cubeface1" style="background: #9ebb3d;">
-                        <a href="http://box.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Box</a>
+                        <a href="http://workspace.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Box</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1159,7 +1165,7 @@
                     </figure>
                     <figure class="top top96">
                       <figure class="cube-face cubeface1" style="background: #364a5e;">
-                        <a href="http://africexplorer.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Disc.</a>
+                        <a href="http://abita.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Abita</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>
@@ -1175,7 +1181,7 @@
                     </figure>
                     <figure class="top top98">
                       <figure class="cube-face cubeface1" style="background: #92cac5;">
-                        <a href="http://messenger.afhunt.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">AFH Mess.</a>
+                        <a href="http://digicare.gloobest.com/" target="_blank" style=" padding: 3px; color: #fff; display: block;">DigiCare</a>
                       </figure>
                       <figure class="cube-face cubeface2"></figure>
                       <figure class="cube-face cubeface3"></figure>

@@ -38,7 +38,6 @@ class Service
      *
      * @ORM\Column(name="nom", type="string", length=255)
      * @Taillemin(valeur=3, message="Au moins 3 caractères")
-     * @Taillemax(valeur=50, message="Au plus 50 caractès")
      */
     private $nom;
 
@@ -46,8 +45,6 @@ class Service
      * @var string
      *
      * @ORM\Column(name="description", type="text")
-     * @Taillemin(valeur=3, message="Au moins 3 caractères")
-     * @Taillemax(valeur=200, message="Au plus 200 caractès")
      */
     private $description;
 
@@ -64,7 +61,6 @@ class Service
      * @var string
      *
      * @ORM\Column(name="prerequis", type="text", nullable=true)
-     * @Taillemax(valeur=5000, message="Au plus 5000 caractès")
      */
     private $prerequis;
 
